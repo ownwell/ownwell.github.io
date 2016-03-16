@@ -1,0 +1,972 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,翻译," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="cyning4星运" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+
+
+
+
+<meta name="description" content="如何创建一个View的分割线,如上图
+我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。
+这个例子是将为LinearLayout内的三个Button间添加分割线。
+这三个例子可能容易实现，相信会有更好的实现办法。
+buttons-with-separators3 
+1. 人工添加LinearLayout的分割线我们可以创建一个View，这个View就是分割线，只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Android]如何创建一个View的分割线">
+<meta property="og:url" content="http://ownwell.github.io/2015/04/14/如何创建一个View的分割线/index.html">
+<meta property="og:site_name" content="cyning4星运">
+<meta property="og:description" content="如何创建一个View的分割线,如上图
+我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。
+这个例子是将为LinearLayout内的三个Button间添加分割线。
+这三个例子可能容易实现，相信会有更好的实现办法。
+buttons-with-separators3 
+1. 人工添加LinearLayout的分割线我们可以创建一个View，这个View就是分割线，只">
+<meta property="og:image" content="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Android]如何创建一个View的分割线">
+<meta name="twitter:description" content="如何创建一个View的分割线,如上图
+我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。
+这个例子是将为LinearLayout内的三个Button间添加分割线。
+这三个例子可能容易实现，相信会有更好的实现办法。
+buttons-with-separators3 
+1. 人工添加LinearLayout的分割线我们可以创建一个View，这个View就是分割线，只">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: '',
+    fancybox: true,
+    motion: 
+  };
+</script>
+
+  <title> [Android]如何创建一个View的分割线 | cyning4星运 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">cyning4星运</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Follow your Heart</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android笔记">
+          <a href="http://ownwell.github.io/Algorithm" rel="section">
+            
+            menu.android笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [Android]如何创建一个View的分割线
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-14T00:00:00+08:00" content="2015-04-14">
+              2015-04-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/14/如何创建一个View的分割线/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/14/如何创建一个View的分割线/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" alt="image"></p>
+<p>如何创建一个View的分割线,如上图</p>
+<p>我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。</p>
+<p>这个例子是将为LinearLayout内的三个Button间添加分割线。</p>
+<p>这三个例子可能容易实现，相信会有更好的实现办法。</p>
+<p>buttons-with-separators3 </p>
+<h1 id="1-_人工添加LinearLayout的分割线">1. 人工添加LinearLayout的分割线</h1><p>我们可以创建一个View，这个View就是分割线，只要简单在Button之间添加这个分割线就可以。</p>
+<p>分割线的实现，如下：</p>
+<pre><code>&lt;View
+    android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>              android:<span class="variable">layout_width=</span><span class="string">"1dp"</span>
+     android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+     android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+     android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+/&gt;
+</code></pre><p>　　</p>
+<p>So the whole layout, as pictured, becomes:</p>
+<pre><code>&lt;LinearLayout
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    android:<span class="variable">adjustViewBounds=</span><span class="string">"true"</span>
+    android:<span class="variable">orientation=</span><span class="string">"horizontal"</span>&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Yes"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button1"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;View android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"1px"</span>
+    android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+    android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+    android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/separator1"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"No"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button2"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;View android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"1px"</span>
+    android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+    android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+    android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/separator2"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Neutral"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button3"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<h1 id="2-在LinearLayout定义divider">2.在LinearLayout定义divider</h1><p>你可以给LinearLayout设置a view divider，这很明显是个很好的解决方法，尤其是不知道LinearLayout下有多少个子Button。</p>
+<p>这种必须是在API level 11 或者更高的API版本使用。</p>
+<p>我们先定义这个分割线样式吧：</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">shape</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">size</span> <span class="attribute">android:width</span>=<span class="value">"1dp"</span> /&gt;</span>
+ <span class="tag">&lt;<span class="title">solid</span> <span class="attribute">android:color</span>=<span class="value">"#90909090"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">shape</span>&gt;</span> 
+</code></pre><p>　　</p>
+<p>把这个分割线的样式设置给LinearLayout：</p>
+<pre><code>&lt;LinearLayout
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    android:<span class="variable">adjustViewBounds=</span><span class="string">"true"</span>
+    android:<span class="variable">divider=</span><span class="string">"@drawable/separator"</span>
+    android:<span class="variable">showDividers=</span><span class="string">"middle"</span>
+    android:<span class="variable">orientation=</span><span class="string">"horizontal"</span>&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Yes"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button1"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"No"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button2"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Neutral"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button3"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<p>其中最重要当然就是：</p>
+<pre><code><span class="label">android:</span>divider=<span class="string">"@drawable/separator"</span>
+<span class="label">android:</span>showDividers=<span class="string">"middle"</span> 
+</code></pre><h1 id="3-_给容器组件设置ButtonBarStyle_(默认是分割线，最容易实现方法)">3. 给容器组件设置ButtonBarStyle (默认是分割线，最容易实现方法)</h1><p>As danialgoodwin mentioned in the comments, adding the buttonBarStyle to the LinearLayout will show default separators.  This is also for api level 11 or higher only.</p>
+<p>The important part here, is adding this line to the LinearLayout:</p>
+<pre><code><span class="tag">&lt;<span class="title">LinearLayout</span>
+    <span class="attribute">android:orientation</span>=<span class="value">"horizontal"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"fill_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"fill_parent"</span>
+    <span class="attribute">style</span>=<span class="value">"?android:buttonBarStyle"</span>
+    <span class="attribute">android:dividerPadding</span>=<span class="value">"15dp"</span>
+&gt;</span>
+
+<span class="tag">&lt;<span class="title">Button</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:text</span>=<span class="value">"New Button"</span>
+    <span class="attribute">android:id</span>=<span class="value">"@+id/button1"</span>
+    <span class="attribute">android:layout_gravity</span>=<span class="value">"center_vertical"</span> /&gt;</span>
+
+<span class="comment">&lt;!-- more buttons/views --&gt;</span>
+</code></pre><p>
+　　</p>
+<p>You can also adjust the paddings of the view separators with the “dividerPadding” setting.</p>
+<p>Button使用的相同的检举，所以他们之间的间距也是相同的。</p>
+<p>当然你可为分割线设置渐变色。</p>
+<p>原文 ：<a href="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" target="_blank" rel="external">http://envyandroid.com/archives/1193/view-separators</a></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/翻译/" rel="tag">#翻译</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/07/android_activity_lifecygle/" rel="next" title="[Android]Activty的生命周期">
+                <i class="fa fa-chevron-left"></i> [Android]Activty的生命周期
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/13/set-google-code-for-idea/" rel="prev" title="为IDEA设置Google's Code Stytle ">
+                为IDEA设置Google's Code Stytle  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/04/14/如何创建一个View的分割线/"
+     data-title="[Android]如何创建一个View的分割线"
+     data-content=""
+     data-url="http://ownwell.github.io/2015/04/14/如何创建一个View的分割线/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/04/14/如何创建一个View的分割线/"
+           data-title="[Android]如何创建一个View的分割线" data-url="http://ownwell.github.io/2015/04/14/如何创建一个View的分割线/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xj9f0.com1.z0.glb.clouddn.com/psb.jpeg"
+               alt="小李" />
+          <p class="site-author-name" itemprop="name">小李</p>
+          <p class="site-description motion-element" itemprop="description">一起分享技术</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ownwell" target="_blank">
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ownwell" target="_blank">
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name"></p>
+            
+              <span class="links-of-author-item">
+                <a href="http://developer.android.com/index.html" target="_blank">Android官网</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://gold.xitu.io/#/" target="_blank">稀土掘金</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.devtf.cn/" target="_blank">开发技术最前线</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://app.memect.com/" target="_blank">App开发日报</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://androidweekly.cn/" target="_blank">Android开发周报</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://gank.io" target="_blank">GankIO</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jcodecraeer.com/" target="_blank">泡在网上的日子</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://android.jobbole.com/" target="_blank">伯乐在线</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stormzhang.github.io" target="_blank">StormZhang</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://my.csdn.net/xyz_lmn" target="_blank">张兴业</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://blog.stylingandroid.com" target="_blank">AndroidStyle</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小李</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.4.5.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.4.5.1"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.4.5.1"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ownwell"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script type="text/javascript">
+        var duoshuo_user_ID = ownwell;
+        var duoshuo_admin_nickname = "博主";
+      </script>
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
