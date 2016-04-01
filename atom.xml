@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Rxjava你不知道的秘密]]></title>
-    <link href="http://ownwell.github.io/2016/04/01/Rxjava%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%AF%86%E7%A0%81/"/>
-    <id>http://ownwell.github.io/2016/04/01/Rxjava你不知道的密码/</id>
+    <link href="http://ownwell.github.io/2016/04/01/Rxjava%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%A7%98%E5%AF%86/"/>
+    <id>http://ownwell.github.io/2016/04/01/Rxjava你不知道的秘密/</id>
     <published>2016-04-01T04:48:24.000Z</published>
     <updated>2016-04-01T06:06:48.000Z</updated>
     <content type="html"><![CDATA[<h1 id="概述">概述</h1><p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如<a href="https://github.com/JakeWharton" target="_blank" rel="external">JakeWharton</a>参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><img src="http://upload-images.jianshu.io/upload_images/675733-2254c982389d3d93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RxJava,我爱你"></p>
