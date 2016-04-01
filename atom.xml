@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Follow your Heart]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://ownwell.github.io/"/>
-  <updated>2016-04-01T05:59:25.000Z</updated>
+  <updated>2016-04-01T06:00:40.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Rxjava你不知道的密码]]></title>
+    <title><![CDATA[Rxjava你不知道的秘密]]></title>
     <link href="http://ownwell.github.io/2016/04/01/Rxjava%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E5%AF%86%E7%A0%81/"/>
     <id>http://ownwell.github.io/2016/04/01/Rxjava你不知道的密码/</id>
     <published>2016-04-01T04:48:24.000Z</published>
-    <updated>2016-04-01T05:59:25.000Z</updated>
+    <updated>2016-04-01T06:00:40.000Z</updated>
     <content type="html"><![CDATA[<h1 id="概述">概述</h1><p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的使用和拓展上，如<a href="https://github.com/JakeWharton" target="_blank" rel="external">JakeWharton</a>参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><img src="http://upload-images.jianshu.io/upload_images/675733-2254c982389d3d93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RxJava,我爱你"></p>
 <h1 id="前言">前言</h1><p>大概是在14年底，我在一个创业公司，从yahoo来的曾Sir就给我们分享RxJava但是当时资料甚少，加上项目赶紧，就大概知道了RxJava这种响应式处理数据太好了，但是使用起来需要自己写一堆配套的库，所以就搁置了。但是随着Retrofit 2.0、RxVolley等这些好用的第三方RxJava拓展库 —-<strong>用一次就觉得爽到爆</strong>—我决定在公司的项目中使用RxJava了。</p>
 <p>RxJava是一个针对JVM通用的工具库，在Github上你会发现一堆的扩展库，在简书、CSDN等技术论坛上，你会发现有N多篇RxJava的文章，对于一个新手或者进阶的开发者，我就以过来人的身份为大家列出一些入门的文章和项目。</p>
