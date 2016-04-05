@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Follow your Heart]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://ownwell.github.io/"/>
-  <updated>2016-04-01T06:06:48.000Z</updated>
+  <updated>2016-04-05T14:55:02.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -15,12 +15,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Rxjava你不知道的秘密]]></title>
+    <title><![CDATA[踩在别人的肩膀上看RxJava]]></title>
     <link href="http://ownwell.github.io/2016/04/01/Rxjava%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%A7%98%E5%AF%86/"/>
     <id>http://ownwell.github.io/2016/04/01/Rxjava你不知道的秘密/</id>
     <published>2016-04-01T04:48:24.000Z</published>
-    <updated>2016-04-01T06:06:48.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="概述">概述</h1><p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如<a href="https://github.com/JakeWharton" target="_blank" rel="external">JakeWharton</a>参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><img src="http://upload-images.jianshu.io/upload_images/675733-2254c982389d3d93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RxJava,我爱你"></p>
+    <updated>2016-04-05T14:55:02.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="概述">概述</h1><p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如<a href="https://github.com/JakeWharton" target="_blank" rel="external">JakeWharton</a>参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><img src="http://upload-images.jianshu.io/upload_images/675733-2254c982389d3d93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RxJava,我爱你">。</p>
+<p>今天我们就是要踩在这些过来人的肩膀上，来学习RxJava，这个主要是针对不熟悉RxJava的，若是已经很熟练使用了，这篇可能就不太设和您了。</p>
 <h1 id="前言">前言</h1><p>大概是在14年底，我在一个创业公司，从yahoo来的曾Sir就给我们分享RxJava但是当时资料甚少，加上项目赶紧，就大概知道了RxJava这种响应式处理数据太好了，但是使用起来需要自己写一堆配套的库，所以就搁置了。但是随着Retrofit 2.0、RxVolley等这些好用的第三方RxJava拓展库 —-<strong>用一次就觉得爽到爆</strong>—我决定在公司的项目中使用RxJava了。</p>
 <p>RxJava是一个针对JVM通用的工具库，在Github上你会发现一堆的扩展库，在简书、CSDN等技术论坛上，你会发现有N多篇RxJava的文章，对于一个新手或者进阶的开发者，我就以过来人的身份为大家列出一些入门的文章和项目。</p>
 <h1 id="技术入门">技术入门</h1><p>首先你得熟悉RxJava，至于RxAndroid、RxBinding等可以放到后面在看，这个是基础。</p>
@@ -56,9 +57,9 @@
 <li><a href="http://p.codekk.com/detail/Android/SilenceDut/NBAPlus" target="_blank" rel="external">NBAPlus</a>。</li>
 <li><a href="https://github.com/vyshane/rex-weather" target="_blank" rel="external">RxWeather</a></li>
 </ol>
-<h2 id="RxVolley"><a href="https://github.com/kymjs/RxVolley" target="_blank" rel="external">RxVolley</a></h2><p>使用起来简单，最主要作者是国内的<a href="http://www.kymjs.com/" target="_blank" rel="external">kymjs 张涛</a></p>
-<h2 id=""><img src="https://github.com/JakeWharton/RxBinding" alt="RxBinding"></h2><p>主要是和UI组件绑定，将Onclick、TextWatcher等时间作为一个事件源，再扔物线中也有提及。</p>
-<h2 id="RxLifecycle用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。"><a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">RxLifecycle</a>用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。</h2><h2 id="rx-preferences用RxJava实现Android中的SharedPreferences"><a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">rx-preferences</a>用RxJava实现Android中的SharedPreferences</h2><h2 id="Storio支持RxJava的网络请求库"><a href="https://github.com/pushtorefresh/storio" target="_blank" rel="external">Storio</a>支持RxJava的网络请求库</h2><h2 id="参考文章">参考文章</h2><ol>
+<h2 id="RxVolley"><a href="https://github.com/kymjs/RxVolley" target="_blank" rel="external">RxVolley</a></h2><p>使用起来简单，最主要作者是国内的 <a href="http://www.kymjs.com/" target="_blank" rel="external">kymjs 张涛</a></p>
+<h2 id="RxBinding"><a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="external">RxBinding</a></h2><p>主要是和UI组件绑定，将Onclick、TextWatcher等时间作为一个事件源，再扔物线中也有提及。</p>
+<h2 id="RxLifecycle用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。"><a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">RxLifecycle</a>用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。</h2><h2 id="Rx-preferences用RxJava实现Android中的SharedPreferences"><a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">Rx-preferences</a>用RxJava实现Android中的SharedPreferences</h2><h2 id="Storio支持RxJava的数据库"><a href="https://github.com/pushtorefresh/storio" target="_blank" rel="external">Storio</a>支持RxJava的数据库</h2><h2 id="参考文章">参考文章</h2><ol>
 <li><a href="https://github.com/lzyzsd/Awesome-RxJava" target="_blank" rel="external">Awesome-RxJava</a></li>
 <li><a href="http://www.jianshu.com/p/6917510b0e4c" target="_blank" rel="external">RxJava常见的使用场景总结</a></li>
 </ol>
