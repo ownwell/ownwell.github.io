@@ -194,7 +194,7 @@
     <link href="http://ownwell.github.io/2015/09/28/mutichannel4Android/"/>
     <id>http://ownwell.github.io/2015/09/28/mutichannel4Android/</id>
     <published>2015-09-28T15:09:32.000Z</published>
-    <updated>2016-04-05T16:23:27.000Z</updated>
+    <updated>2016-04-05T16:25:26.000Z</updated>
     <content type="html"><![CDATA[<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/b1f9ddc451da81cb302607745666d0160b2431d9.jpg" alt=""></p>
 <h1 id="概要">概要</h1><p>听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。</p>
 <p>其实这篇博客应该在上周就要写的，因为本人搬家的缘故一直此次往后退，今天终于可以腾出时间来写这篇博客了——Android的多渠道打包。</p>
