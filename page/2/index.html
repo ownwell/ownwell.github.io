@@ -2,8 +2,10 @@
 
 
 
+  
 
-<html class="theme-next pisces">
+
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -30,18 +32,16 @@
 
 
 
-  
-    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
 
 
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Cyning" />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -52,7 +52,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
 
 
 
@@ -75,9 +75,13 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
-    sidebar: '',
+    sidebar: {"position":"left","display":"post"},
     fancybox: true,
-    motion: 
+    motion: true,
+    duoshuo: {
+      userId: ownwell,
+      author: '博主'
+    }
   };
 </script>
 
@@ -103,10 +107,16 @@
 
 
 
+
+
+
+
   
+  
+    
   
 
-  <div class="container one-collumn  
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -137,11 +147,13 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
           </a>
@@ -151,6 +163,8 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
             分类
           </a>
         </li>
@@ -158,6 +172,8 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
           </a>
@@ -167,6 +183,8 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
             标签
           </a>
         </li>
@@ -174,6 +192,8 @@
         
         <li class="menu-item menu-item-android笔记">
           <a href="http://ownwell.github.io/Algorithm" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
             
             menu.android笔记
           </a>
@@ -183,13 +203,13 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
             关于
           </a>
         </li>
       
 
-      
-      
       
     </ul>
   
@@ -206,12 +226,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-
-    
-
-    
-    
-
     
       
 
@@ -270,6 +284,7 @@
 
           
           
+
         </div>
       </header>
     
@@ -283,18 +298,20 @@
       
         
           
-           这几天安卓界仿佛开启了兴奋模式，虽然国内没啥感觉。。主要是因为万众瞩目一年一度的google I/O大会就要召开了。2015年Google I/O大会定于5月28 - 29日在旧金山芳草地艺术中心召开。虽然现在还不知道会议的细节，但是上周谷歌公布的会议日程中简短的提到了Android M，Android M极有可能是安卓系统的下一个版本。
-
-APK
+            <p> 这几天安卓界仿佛开启了兴奋模式，虽然国内没啥感觉。。主要是因为万众瞩目一年一度的google I/O大会就要召开了。2015年Google I/O大会定于5月28 - 29日在旧金山芳草地艺术中心召开。虽然现在还不知道会议的细节，但是上周谷歌公布的会议日程中简短的提到了Android M，Android M极有可能是安卓系统的下一个版本。</p>
+<p><img src="http://www.jcodecraeer.com/uploads/20150514/1431569225671941.png" alt="image"></p>
+<p><a href="http://pan.baidu.com/s/1hqCMhlM" target="_blank" rel="external">APK</a></p>
 
           
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/05/google-io-2015/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -388,6 +405,7 @@ APK
 
           
           
+
         </div>
       </header>
     
@@ -401,17 +419,40 @@ APK
       
         
           
-          5月28日，一年一度的Google IO在美国旧金山召开，Android M、 Brillo等众多亮点值得开发者关注。
-但是本文要说的是Material Design，有点落后了，不过对于Andoid开发者，App的Material化是我们必须经历的事，那么会有那些问题呢？颜色 —- 是我们必须要改的。
-Activity首先要明白的是我们的Activity不再是ActionBarActivity，而是AppCompatActivity,ActionBar不够灵活，以前就发现这个问题，ToolBa
-          ...
+            <p>5月28日，一年一度的Google IO在美国旧金山召开，Android M、 Brillo等众多亮点值得开发者关注。</p>
+<p>但是本文要说的是Material Design，有点落后了，不过对于Andoid开发者，App的Material化是我们必须经历的事，那么会有那些问题呢？颜色 —- 是我们必须要改的。</p>
+<h1 id="Activity">Activity</h1><p>首先要明白的是我们的Activity不再是<code>ActionBarActivity</code>，而是<code>AppCompatActivity</code>,ActionBar不够灵活，以前就发现这个问题，<code>ToolBar</code>是个很好的替代,同时Toolbar可以作为ActionBar，具有更好的灵活性。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">      <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">      <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">      <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></span><br><span class="line">      <span class="attribute">android:minHeight</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">      <span class="attribute">app:popupTheme</span>=<span class="value">"@style/Theme.AppCompat.Light.DarkActionBar"</span></span><br><span class="line">      <span class="attribute">app:theme</span>=<span class="value">"@style/Toolbar"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>切记：Toolbar的背景色<code>android:background=&quot;?attr/colorPrimary&quot;</code>一定要设置。</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">setContentView(R.layout.main);</span><br><span class="line"></span><br><span class="line"> setSupportActionBar((Toolbar) findViewById(R.id.toolbar));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其实Activity是有默认的ActionBar，若是我们想通过Toolbar自己设置，记得将theme继承自Theme.AppCompat.Light.NoActionBar。</p>
+<p>Theme.AppCompat.Light.DarkActionBar 默认的有个黑色的ActiionBar</p>
+</blockquote>
+<h1 id="color">color</h1><p>以前设置actionbar的那一套记得替换：</p>
+<p><img src="http://img0.tuicool.com/nMbi63.png" alt="image"></p>
+<p>提供一个UI设计的颜色配置模板：<a href="http://www.materialpalette.com/red/red" target="_blank" rel="external">link</a>这个是网易红。</p>
+<blockquote>
+<p>推荐阅读： </p>
+<ol>
+<li><a href="http://blog.isming.me/tags/material-design/" target="_blank" rel="external">sam的Material专题</a></li>
+<li><a href="http://blog.csdn.net/bbld_/article/details/41439715" target="_blank" rel="external">Android Material Design之Toolbar与Palette实践</a></li>
+<li><a href="http://blog.csdn.net/bbld_/article/details/40400343" target="_blank" rel="external">Android Material Design</a></li>
+</ol>
+</blockquote>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/01/android-material-color/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -505,6 +546,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -518,16 +560,28 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          今天闲来无事，查看源码，发现一个有意思的接口Application.ActivityLifecycleCallbacks
-123456789public interface ActivityLifecycleCallbacks &#123;        void onActivityCreated(Activity activity, Bundle savedInstanceState);        void onActivityStarted(Activity activity);   
-          ...
+            <p>今天闲来无事，查看源码，发现一个有意思的接口<code>Application.ActivityLifecycleCallbacks</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ActivityLifecycleCallbacks</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Activity activity, Bundle savedInstanceState)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityStarted</span><span class="params">(Activity activity)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityResumed</span><span class="params">(Activity activity)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityPaused</span><span class="params">(Activity activity)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityStopped</span><span class="params">(Activity activity)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(Activity activity, Bundle outState)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onActivityDestroyed</span><span class="params">(Activity activity)</span></span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这就让我想起一个以前经历过的事，要求怎么判断APP进入后台。<br>看你的招商银行客户端，进入后台（就是这个APP所有页面不可见）就会一个Notication提示APP在后台运行。那么问题来了，我们需要怎么样判断，这个APP进入后台？</p>
+<p>其实很简单，就是为每个Activity都注册一个事件，有一个计数器来记录所有的Activity是可见的：当Acitivity在onResume时，计数器加一，当Activity在onStop时，计数器减一，当计数器为零就可以判断这个APP不在我们手机的可见页面内，也就是我们说的进入了后台。</p>
+<p>怎么监听Activity的onResume和onStop，我记得以前我们是自己写了一个BaseActivity，里面有相关的生命周期的监听，所有的Activity都要继承BaseActivity。但是在Acitivity代码我们我们发现这几句：</p>
+<p><code>Activity</code>源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">       ……</span><br><span class="line">       mFragments.dispatchCreate();</span><br><span class="line">       getApplication().dispatchActivityCreated(<span class="keyword">this</span>, savedInstanceState);</span><br><span class="line">       </span><br><span class="line">       ……</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       getApplication().dispatchActivityStopped(<span class="keyword">this</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> ……</span><br></pre></td></tr></table></figure></p>
+<p>在Application里我们也去看看这个dispatchActivity<strong>*</strong>（Create、Start、Resume等其他生命周期函数）是干嘛的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchActivityStopped</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">       Object[] callbacks = collectActivityLifecycleCallbacks();</span><br><span class="line">       <span class="keyword">if</span> (callbacks != <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;callbacks.length; i++) &#123;</span><br><span class="line">               ((ActivityLifecycleCallbacks)callbacks[i]).onActivityStopped(activity);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">private</span> Object[] collectActivityLifecycleCallbacks() &#123;</span><br><span class="line">       Object[] callbacks = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">synchronized</span> (mActivityLifecycleCallbacks) &#123;</span><br><span class="line">           <span class="keyword">if</span> (mActivityLifecycleCallbacks.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               callbacks = mActivityLifecycleCallbacks.toArray();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> callbacks;</span><br><span class="line">       </span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerActivityLifecycleCallbacks</span><span class="params">(ActivityLifecycleCallbacks callback)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (mActivityLifecycleCallbacks) &#123;</span><br><span class="line">           mActivityLifecycleCallbacks.add(callback);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregisterActivityLifecycleCallbacks</span><span class="params">(ActivityLifecycleCallbacks callback)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">synchronized</span> (mActivityLifecycleCallbacks) &#123;</span><br><span class="line">           mActivityLifecycleCallbacks.remove(callback);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">  <span class="keyword">private</span> ArrayList&lt;ActivityLifecycleCallbacks&gt; mActivityLifecycleCallbacks =</span><br><span class="line">           <span class="keyword">new</span> ArrayList&lt;ActivityLifecycleCallbacks&gt;();</span><br></pre></td></tr></table></figure>
+<p>这就是说我们在<code>Application</code>放了一个监听器的数组ArrayList<activitylifecyclecallbacks>，当在activity生命周期有变化出发dispatchActivity<strong>*</strong>时，这里面的监听器都可以监听到，所有我们就可以通过注册和注销注册来坚挺所有的Activity的处理过程。</activitylifecyclecallbacks></p>
+<p>这也是一个妙用。</p>
+<p>希望对大家有用。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/28/Activity-lifeCircle-CallBack/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -621,6 +675,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -634,24 +689,28 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          Ruby作为一个小众语言，很适合没事玩玩，这就上手了，开始吧。
-首先是安装Ruby，这个是个很蛋疼的问题，不过没关系，咱们可以通过HomeBrew来安装Ruby，
-安装成功了就看下版本吧：
-12ruby -v
-出来相关版本吧。
-开始第一个程序吧。
-1$ cd workSpace&#10;$ mk Ruby&#10;$ touch test.rb&#10;$ vi test.rb
-开始一个HellWorl吧
-123#!/usr/bin/ruby -wputs "Hello, Ruby!";
-跳出v
-          ...
+            <p>Ruby作为一个小众语言，很适合没事玩玩，这就上手了，开始吧。</p>
+<p>首先是安装Ruby，这个是个很蛋疼的问题，不过没关系，咱们可以通过<a href="http://blog.csdn.net/maojudong/article/details/7920578" target="_blank" rel="external">HomeBrew来安装Ruby</a>，</p>
+<p>安装成功了就看下版本吧：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ruby -v</span><br></pre></td></tr></table></figure>
+<p>出来相关版本吧。</p>
+<p>开始第一个程序吧。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd workSpace&#10;$ mk Ruby&#10;$ touch test.rb&#10;$ vi test.rb</span><br></pre></td></tr></table></figure>
+<p>开始一个HellWorl吧</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/ruby -w</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">"Hello, Ruby!"</span>;</span><br></pre></td></tr></table></figure>
+<p>跳出vi的编辑模式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;$ chmod a+x test.rb&#10;$ Ruby ./test.rb</span><br></pre></td></tr></table></figure>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/23/Ruby-learson/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -726,6 +785,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -739,17 +799,19 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          LeakCanary 牛逼哄哄的检测内存性能的工具，square又一神作。
-博客翻译的链接：点击此处。
+            <p>LeakCanary 牛逼哄哄的检测内存性能的工具，<a href="https://github.com/square/leakcanary" target="_blank" rel="external">square</a>又一神作。</p>
+<p>博客翻译的链接：<a href="http://www.liaohuqiu.net/cn/posts/leak-canary/" target="_blank" rel="external">点击此处</a>。</p>
 
           
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/23/leakCanary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -843,6 +905,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -856,16 +919,28 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          对于现在的应用开发，Server端一般都会将API以Json的形式返回给客户端，客户端所做的就是能准确的解析这些Json。还记得以前那种辛辛苦苦的一个个字段的解析么?数据准备：
-1234567891011121314&#123;    "phone": [        "12345678",        "87654321"    ],    "name": "yuanzhifei89",    "age": 100,    "address": &#123;        "country
-          ...
+            <p>对于现在的应用开发，Server端一般都会将API以Json的形式返回给客户端，客户端所做的就是能准确的解析这些Json。还记得以前那种辛辛苦苦的一个个字段的解析么?<br>数据准备：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"phone"</span>: [</span><br><span class="line">        <span class="string">"12345678"</span>,</span><br><span class="line">        <span class="string">"87654321"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"yuanzhifei89"</span>,</span><br><span class="line">    <span class="string">"age"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="string">"address"</span>: &#123;</span><br><span class="line">        <span class="string">"country"</span>: <span class="string">"china"</span>,</span><br><span class="line">        <span class="string">"province"</span>: <span class="string">"jiangsu"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"married"</span>: <span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以前的咱们怎么解析：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user</span><span class="params">(String json)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           JSONObject mObject = <span class="keyword">new</span> JSONObject(json);</span><br><span class="line"></span><br><span class="line">           String name = mObject.optString(<span class="string">"name"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">int</span> age = mObject.optInt(<span class="string">"age"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">boolean</span> isMarried = mObject.getBoolean(<span class="string">"married"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           JSONObject address = mObject.optJSONObject(<span class="string">"address"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">if</span> (address != <span class="keyword">null</span>) &#123;</span><br><span class="line">               String country = address.optString(<span class="string">"country"</span>);</span><br><span class="line">               String province = address.optString(<span class="string">"province"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">           ……</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (JSONException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>这个是要考虑字段和Json的数据结构的，哎，这样辛辛苦苦写了一上午可能也搞不定几个接口，太累了。<br>还好有Gson这个Google开发的工具类，国内有好多人使用不用担心，<a href="http://blog.csdn.net/lk_blog/article/category/1172246" target="_blank" rel="external">CSDN Gson介绍</a></p>
+<p>下载代码瞬间就是一个Java的对应关系</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> String name;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">boolean</span> isMarried;</span><br><span class="line">       <span class="keyword">private</span> ArrayList&lt;String&gt; phone;</span><br><span class="line">       <span class="keyword">private</span> Address address;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">           <span class="keyword">private</span> String country;</span><br><span class="line">           <span class="keyword">private</span> String province;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>解析这个json字符串JSON_DATA</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Gson gson = <span class="keyword">new</span> GsonBuilder().create();</span><br><span class="line">gson.fromJson(JSON_DATA,Person.class);</span><br></pre></td></tr></table></figure>
+<p>像上面的person返回的是一个list的形式的，只需要改动解析的过程即可：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type listType = <span class="keyword">new</span> TypeToken&lt;ArrayList&lt;Person&gt;&gt;()&#123;&#125;.getType();</span><br><span class="line">ArrayList&lt;Person&gt; mPersonList = <span class="keyword">new</span> Gson().fromJson(JSON_DATA, listType);</span><br></pre></td></tr></table></figure></p>
+<p>结合<a href="http://ownwell.github.io/2015/05/15/2015-1-13-androidstudiotools/" target="_blank" rel="external">GsonFormat</a>疗效更好哦。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/23/Good-Way-to-Parse-Json/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -959,6 +1034,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -972,17 +1048,28 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          介绍   IDEA是一个很好用的IDE，或者说JetBrain这一系列的IDE都很好用，Android Studio也是其改装版，用完了IDEA都不轻易用Eclipse了，不信你用用。
-   Android Studio 我也在用，不过还是感觉IDEA可以兼容Eclipse，最近在学习公司的老项目（Eclipse+ADT开发的），不过一直都在向我的大Google靠拢—-采用Android Studio +Gradle+Git。
-   我是Google粉，以前是敬仰，后来学代码了，就开始模仿学习，
-          ...
+            <h1 id="介绍">介绍</h1><p>   IDEA是一个很好用的IDE，或者说JetBrain这一系列的IDE都很好用，Android Studio也是其改装版，用完了IDEA都不轻易用Eclipse了，不信你用用。</p>
+<p>   Android Studio 我也在用，不过还是感觉IDEA可以兼容Eclipse，最近在学习公司的老项目（Eclipse+ADT开发的），不过一直都在向我的大Google靠拢—-采用Android Studio +Gradle+Git。</p>
+<p>   我是Google粉，以前是敬仰，后来学代码了，就开始模仿学习，似乎她总像一个淑女，令人赏之悦目。那今天就来看看她的Code Style代码样式。</p>
+<h1 id="设置">设置</h1><p>   IDEA内支持自定义的CodeStyle，那就把Google 提倡的Code Stytle给设置到IDEA（在IDEA上开发的其他IDE如Android Studio也支持这样）：</p>
+<p>   <a href="https://github.com/ownwell/google-styleguide/blob/master/intellij-java-google-style.xml" target="_blank" rel="external">Google Code Stytle</a></p>
+<ol>
+<li><p>将你的这个文件放到你的~/Library/Preferences/IDEA/codestyles下。</p>
+</li>
+<li><p>重启你的IDEA看下，在你的Prefrence下的Editor——&gt;Code Stytle—&gt;Java 有个GoogleStyle。哈哈。</p>
+</li>
+</ol>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/05/13/set-google-code-for-idea/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1088,6 +1175,7 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
 
           
           
+
         </div>
       </header>
     
@@ -1101,24 +1189,156 @@ Activity首先要明白的是我们的Activity不再是ActionBarActivity，而�
       
         
           
-          
-如何创建一个View的分割线,如上图
-我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。
-这个例子是将为LinearLayout内的三个Button间添加分割线。
-这三个例子可能容易实现，相信会有更好的实现办法。
-buttons-with-separators3 
-1. 人工添加LinearLayout的分割线我们可以创建一个View，这个View就是分割线，只要简单在Button之间添加这个分割线就可以。
-分割线的实现，如下：
-&lt;View
-    a
-          ...
+            <p><img src="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" alt="image"></p>
+<p>如何创建一个View的分割线,如上图</p>
+<p>我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。</p>
+<p>这个例子是将为LinearLayout内的三个Button间添加分割线。</p>
+<p>这三个例子可能容易实现，相信会有更好的实现办法。</p>
+<p>buttons-with-separators3 </p>
+<h1 id="1-_人工添加LinearLayout的分割线">1. 人工添加LinearLayout的分割线</h1><p>我们可以创建一个View，这个View就是分割线，只要简单在Button之间添加这个分割线就可以。</p>
+<p>分割线的实现，如下：</p>
+<pre><code>&lt;View
+    android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>              android:<span class="variable">layout_width=</span><span class="string">"1dp"</span>
+     android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+     android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+     android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+/&gt;
+</code></pre><p>　　</p>
+<p>So the whole layout, as pictured, becomes:</p>
+<pre><code>&lt;LinearLayout
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    android:<span class="variable">adjustViewBounds=</span><span class="string">"true"</span>
+    android:<span class="variable">orientation=</span><span class="string">"horizontal"</span>&gt;
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/04/14/如何创建一个View的分割线/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Yes"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button1"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;View android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"1px"</span>
+    android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+    android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+    android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/separator1"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"No"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button2"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;View android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"1px"</span>
+    android:<span class="variable">background=</span><span class="string">"#90909090"</span>
+    android:<span class="variable">layout_marginBottom=</span><span class="string">"5dp"</span>
+    android:<span class="variable">layout_marginTop=</span><span class="string">"5dp"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/separator2"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Neutral"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button3"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<h1 id="2-在LinearLayout定义divider">2.在LinearLayout定义divider</h1><p>你可以给LinearLayout设置a view divider，这很明显是个很好的解决方法，尤其是不知道LinearLayout下有多少个子Button。</p>
+<p>这种必须是在API level 11 或者更高的API版本使用。</p>
+<p>我们先定义这个分割线样式吧：</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">shape</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">size</span> <span class="attribute">android:width</span>=<span class="value">"1dp"</span> /&gt;</span>
+ <span class="tag">&lt;<span class="title">solid</span> <span class="attribute">android:color</span>=<span class="value">"#90909090"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">shape</span>&gt;</span> 
+</code></pre><p>　　</p>
+<p>把这个分割线的样式设置给LinearLayout：</p>
+<pre><code>&lt;LinearLayout
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    android:<span class="variable">adjustViewBounds=</span><span class="string">"true"</span>
+    android:<span class="variable">divider=</span><span class="string">"@drawable/separator"</span>
+    android:<span class="variable">showDividers=</span><span class="string">"middle"</span>
+    android:<span class="variable">orientation=</span><span class="string">"horizontal"</span>&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Yes"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button1"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"No"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button2"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;Button
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+    <span class="variable">style=</span><span class="string">"?android:attr/buttonBarButtonStyle"</span>
+    android:<span class="variable">text=</span><span class="string">"Neutral"</span>
+    android:<span class="variable">layout_weight=</span><span class="string">"1"</span>
+    android:<span class="variable">id=</span><span class="string">"@+id/button3"</span>
+    android:<span class="variable">textColor=</span><span class="string">"#00b0e4"</span> /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<p>其中最重要当然就是：</p>
+<pre><code><span class="label">android:</span>divider=<span class="string">"@drawable/separator"</span>
+<span class="label">android:</span>showDividers=<span class="string">"middle"</span> 
+</code></pre><h1 id="3-_给容器组件设置ButtonBarStyle_(默认是分割线，最容易实现方法)">3. 给容器组件设置ButtonBarStyle (默认是分割线，最容易实现方法)</h1><p>As danialgoodwin mentioned in the comments, adding the buttonBarStyle to the LinearLayout will show default separators.  This is also for api level 11 or higher only.</p>
+<p>The important part here, is adding this line to the LinearLayout:</p>
+<pre><code><span class="tag">&lt;<span class="title">LinearLayout</span>
+    <span class="attribute">android:orientation</span>=<span class="value">"horizontal"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"fill_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"fill_parent"</span>
+    <span class="attribute">style</span>=<span class="value">"?android:buttonBarStyle"</span>
+    <span class="attribute">android:dividerPadding</span>=<span class="value">"15dp"</span>
+&gt;</span>
+
+<span class="tag">&lt;<span class="title">Button</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:text</span>=<span class="value">"New Button"</span>
+    <span class="attribute">android:id</span>=<span class="value">"@+id/button1"</span>
+    <span class="attribute">android:layout_gravity</span>=<span class="value">"center_vertical"</span> /&gt;</span>
+
+<span class="comment">&lt;!-- more buttons/views --&gt;</span>
+</code></pre><p>
+　　</p>
+<p>You can also adjust the paddings of the view separators with the “dividerPadding” setting.</p>
+<p>Button使用的相同的检举，所以他们之间的间距也是相同的。</p>
+<p>当然你可为分割线设置渐变色。</p>
+<p>原文 ：<a href="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" target="_blank" rel="external">http://envyandroid.com/archives/1193/view-separators</a></p>
+
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1212,6 +1432,7 @@ buttons-with-separators3
 
           
           
+
         </div>
       </header>
     
@@ -1225,19 +1446,21 @@ buttons-with-separators3
       
         
           
+            <p><img src="http://blogs.cyning.me/image/complete_android_fragment_lifecycle.png" alt="image"></p>
+<blockquote>
+<p>Cyning的博客:<a href="http://blogs.cyning.me/" target="_blank" rel="external">Cyning的博客</a></p>
+</blockquote>
+
           
-
-Cyning的博客:Cyning的博客
-
-
-          
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/04/07/android_activity_lifecygle/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1331,6 +1554,7 @@ Cyning的博客:Cyning的博客
 
           
           
+
         </div>
       </header>
     
@@ -1344,17 +1568,19 @@ Cyning的博客:Cyning的博客
       
         
           
-          插件GsonFormat
-
+            <h1 id="插件">插件</h1><p><a href="https://github.com/zzz40500/GsonFormat" target="_blank" rel="external">GsonFormat</a></p>
+<p><img src="https://camo.githubusercontent.com/fbf4b89e2ec64e80d351f725d11762ebd2b7a515/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f3136363836362d303766333038346262363735386566612e676966" alt="image"></p>
 
           
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/13/androidstudiotools/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1448,6 +1674,7 @@ Cyning的博客:Cyning的博客
 
           
           
+
         </div>
       </header>
     
@@ -1461,17 +1688,19 @@ Cyning的博客:Cyning的博客
       
         
           
-          从Mac OSX 10.6系统开始苹果系统已经内置对NTFS写入功能，但苹果没有公开说明，而且在默认状态下是没有开启的。SL-NTFS是一款Mac上的小工具，它可以直接为你的Mac增加NTFS的写入权限
-SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Logo。2.进入“系统 偏好设置”。3.在最下面打开SL-NTFS面板。4.在SL-NTFS面板中直接勾选你需要开启NTFS写入功能的磁盘就可以了
+            <p>从Mac OSX 10.6系统开始苹果系统已经内置对NTFS写入功能，但苹果没有公开说明，而且在默认状态下是没有开启的。SL-NTFS是一款Mac上的小工具，它可以直接为你的Mac增加NTFS的写入权限</p>
+<p>SL-NTFS使用起来非常简单：<br>1.安装好软件，点击左上角的苹果Logo。<br>2.进入“系统 偏好设置”。<br>3.在最下面打开SL-NTFS面板。<br>4.在SL-NTFS面板中直接勾选你需要开启NTFS写入功能的磁盘就可以了</p>
 
           
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/08/mac_ntfs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1565,6 +1794,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -1578,18 +1808,173 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-          
-记得以前在Eclipse开发，用的是一个插件，现在好不容易转到IDEA上（下一步就是Android Studio），在文件结构保持和Eclipse一段后，采用了Gradlew进行编译，加上我们公司的香香同学又整理好了Jenkin这个CI自动集成系统，瞬间感觉高大上了。
-今天结束了公司的一个版本的开发，回家在整理多渠道包的问题，看了友盟的多渠道方式，有个1.11的在我机器上死活报那个manifest下没有对应渠道的manifest文件，果断采取了copy的方法，也是没办法了。
-今天先把代码贴出来
-          ...
+            <hr>
+<p>记得以前在Eclipse开发，用的是一个插件，现在好不容易转到IDEA上（下一步就是Android Studio），在文件结构保持和Eclipse一段后，采用了Gradlew进行编译，加上我们公司的香香同学又整理好了Jenkin这个CI自动集成系统，瞬间感觉高大上了。</p>
+<p>今天结束了公司的一个版本的开发，回家在整理多渠道包的问题，看了友盟的多渠道方式，有个1.11的在我机器上死活报那个manifest下没有对应渠道的manifest文件，果断采取了copy的方法，也是没办法了。</p>
+<p>今天先把代码贴出来，明天在好好整理下，太困了。</p>
+<p>```Java<br>    apply plugin: ‘android’</p>
+<pre><code>android {
+    compileSdkVersion    <span class="number">19</span>
+    buildToolsVersion    <span class="string">"19.1"</span>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/11/17/GradlewMutilChannelInAndroid/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+    <span class="keyword">sourceSets</span> {
+        main {
+            manifest.srcFile <span class="string">'AndroidManifest.xml'</span>
+            java.srcDirs = [<span class="string">'src'</span>]
+            res.srcDirs = [<span class="string">'res'</span>]
+            assets.srcDirs = [<span class="string">'assets'</span>]
+        }
+
+    }    
+
+    defaultConfig {
+        minSdkVersion    <span class="number">11</span>
+        targetSdkVersion    <span class="number">19</span>
+        versionCode    <span class="number">20141107</span>
+        versionName    <span class="string">"2.2.0"</span>
+    }
+
+    packagingOptions {
+        <span class="keyword">exclude</span> <span class="string">'META-INF/DEPENDENCIES.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/LICENSE.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/NOTICE.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/NOTICE'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/LICENSE'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/DEPENDENCIES'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/notice.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/license.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/dependencies.txt'</span>
+        <span class="keyword">exclude</span> <span class="string">'META-INF/LGPL2.1'</span>
+    }
+
+
+
+<span class="comment">//下面一段是将libs/*/*.so文件加入打包</span>
+<span class="comment">//如果你的项目是使用Eclipse+ADT建立的，则需要这段代码</span>
+    <span class="keyword">task</span> copyNativeLibs(type: <span class="keyword">Copy</span>) {
+        <span class="keyword">from</span>(<span class="keyword">new</span> <span class="keyword">File</span>(<span class="string">'libs'</span>)) { <span class="keyword">include</span> <span class="string">'**/*.so'</span> }
+        <span class="keyword">into</span> <span class="keyword">new</span> <span class="keyword">File</span>(buildDir, <span class="string">'native-libs'</span>)
+    }
+
+    tasks.withType(<span class="keyword">Compile</span>) { compileTask -&gt; compileTask.dependsOn copyNativeLibs }
+
+    clean.dependsOn <span class="string">'cleanCopyNativeLibs'</span>
+
+    tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask -&gt;
+        pkgTask.jniFolders = <span class="keyword">new</span> HashSet&lt;<span class="keyword">File</span>&gt;()
+        pkgTask.jniFolders.add(<span class="keyword">new</span> <span class="keyword">File</span>(buildDir, <span class="string">'native-libs'</span>))
+    }
+    signingConfigs {
+        release {
+            storeFile = <span class="keyword">file</span>(System.getenv()[<span class="string">'APK_SIGNING_KEYSTORE'</span>])    
+            storePassword = System.getenv()[<span class="string">'APK_SIGNING_STOREPASS'</span>]
+            keyAlias = System.getenv()[<span class="string">'APK_SIGNING_KEYALIAS'</span>]
+            keyPassword = System.getenv()[<span class="string">'APK_SIGNING_KEYPASS'</span>]
+        }    
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            runProguard <span class="keyword">false</span>    
+            proguardFiles    getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), \
+                <span class="string">'proguard-rules.txt'</span>
+
+
+        }
+    }
+
+    <span class="comment">//渠道</span>
+    productFlavors {
+        Wandoujia{}
+        Qihu360{}
+        QQYingyongBao{}
+
+    }
+
+    <span class="comment">//这个是解决lint报错的代码</span>
+    lintOptions {
+        abortOnError <span class="keyword">false</span>
+    }
+
+
+
+}
+
+
+<span class="keyword">dependencies</span> {
+    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])
+
+    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">":libs:libapp"</span>)
+
+
+}
+
+
+<span class="comment">//替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称</span>
+android.applicationVariants.all{ variant -&gt;
+    variant.processManifest.<span class="keyword">doLast</span>{
+        <span class="keyword">copy</span>{
+            <span class="keyword">from</span>(<span class="string">"${buildDir}/manifests"</span>){
+                <span class="keyword">include</span> <span class="string">"${variant.dirName}/AndroidManifest.xml"</span>
+            }
+            <span class="keyword">into</span>(<span class="string">"${buildDir}/manifests/$variant.name"</span>)
+
+            filter{
+                String line -&gt; line.replaceAll(<span class="string">"UMENG_CHANNEL_VALUE"</span>, <span class="string">"$variant.name"</span>)
+            }
+
+            variant.processResources.manifestFile = <span class="keyword">file</span>(<span class="string">"${buildDir}/manifests/${variant.name}/${variant.dirName}/AndroidManifest.xml"</span>)
+
+
+<span class="comment">//            applicationVariants.all { variant -&gt;</span>
+                <span class="keyword">def</span> <span class="keyword">file</span> = variant.outputFile
+                <span class="keyword">def</span> manifestParser = <span class="keyword">new</span> com.android.builder.core.DefaultManifestParser()
+                <span class="keyword">def</span> destName = <span class="string">"AppName_"</span>+manifestParser.getVersionName(android.<span class="keyword">sourceSets</span>.main.manifest.srcFile)+<span class="string">"20141117"</span>+<span class="string">"_"</span>+<span class="string">"$variant.name"</span>+<span class="string">"_release"</span>+<span class="string">".apk"</span>
+                variant.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(<span class="keyword">file</span>.parent,destName)
+<span class="comment">//            }</span>
+
+
+
+        }
+
+
+    }
+
+
+}
+
+
+<span class="comment">////替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称 By Remex Huang</span>
+<span class="comment">//android.applicationVariants.all{ variant -&gt;</span>
+<span class="comment">//    variant.processManifest.doLast{</span>
+<span class="comment">//</span>
+<span class="comment">//        //之前这里用的copy{}，我换成了文件操作，这样可以在v1.11版本正常运行，并保持文件夹整洁</span>
+<span class="comment">////${buildDir}是指./build文件夹</span>
+<span class="comment">////${variant.dirName}是flavor/buildtype，例如GooglePlay/release，运行时会自动生成</span>
+<span class="comment">////下面的路径是类似这样：./build/manifests/GooglePlay/release/AndroidManifest.xml</span>
+<span class="comment">//def manifestFile = "${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml"</span>
+<span class="comment">//</span>
+<span class="comment">////将字符串UMENG_CHANNEL_VALUE替换成flavor的名字</span>
+<span class="comment">//def updatedContent = new File(manifestFile).getText('UTF-8').replaceAll("UMENG_CHANNEL_VALUE", "${variant.productFlavors[0].name}")</span>
+<span class="comment">//new File(manifestFile).write(updatedContent, 'UTF-8')</span>
+<span class="comment">//</span>
+<span class="comment">////将此次flavor的AndroidManifest.xml文件指定为我们修改过的这个文件</span>
+<span class="comment">//variant.processResources.manifestFile = file("${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml")</span>
+<span class="comment">//}</span>
+<span class="comment">//}</span>
+</code></pre><p>```Java</p>
+
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1683,6 +2068,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -1696,17 +2082,37 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-          1. 概述—Android的碎片化
-相对于IOS封闭的生态，从上游的操作系统到下端的App发布审核，Android是一个开放的天地，它生来就是Open Source，其底层就是Linux系统，其系统每个版本都有相关的源码开放，同时 Android只是一个基带系统，任何厂商都可以在认证许可下进行自己的系统的定制，如三星、华为、小米等这些厂商都有自己的基于Android开发的生态系统，不同的厂商又在用不同的标准使用不同的硬件，却在做一个手机系统—Android。
-现在Android碎片越来越严重，G
-          ...
+            <h1 id="1-_概述—Android的碎片化">1. 概述—Android的碎片化</h1><hr>
+<p>相对于IOS封闭的生态，从上游的操作系统到下端的App发布审核，Android是一个开放的天地，它生来就是Open Source，其底层就是Linux系统，其系统每个版本都有相关的源码开放，同时 Android只是一个基带系统，任何厂商都可以在认证许可下进行自己的系统的定制，如三星、华为、小米等这些厂商都有自己的基于Android开发的生态系统，不同的厂商又在用不同的标准使用不同的硬件，却在做一个手机系统—Android。</p>
+<p>现在Android碎片越来越严重，Google也需要从源头控制，叫停一些可能碎片化的合作，将新版本发布时间间隔不再这么频繁，这些措施在一定程度上也在减缓碎片化。</p>
+<p><img src="https://ownwell.github.io/image/support.png" alt=""><br><img src="http://img.blog.csdn.net/20140730180338183" alt=""><br>在<a href="http://www.cnblogs.com/xyzlmn/p/3884078.html" target="_blank" rel="external">兴业的博客</a>中已经很好的分析了分辨率、屏幕大小（没事，大家多看看他的博客，很牛逼）。</p>
+<p>先在主要是从开发者角度来解决系统版本的碎片化的一些问题。</p>
+<h1 id="2-_google_support-library">2. google support-library</h1><hr>
+<p>google提供了Android Support Library package 系列的包来保证来高版本sdk开发的向下兼容性，即我们用4.x开发时，在1.6等版本上，可以使用高版本的有些特性，如Fragement,ViewPager等，下面，简单说明下这几个版本间的区别：</p>
+<ol>
+<li><p>Android Support v4:  这个包是为了照顾1.6及更高版本而设计的，这个包是使用最广泛的，eclipse新建工程时，都默认带有了。常用的Fragment是在3.0之后才出现的，但是有了V4包，1.6以上的也可用Fragment、FragmentActivity，同时也有<a href="http://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html" target="_blank" rel="external">SwipeRefreshLayout</a>、<a href="http://developer.android.com/training/implementing-navigation/nav-drawer.html" target="_blank" rel="external">Navigation Drawer</a>、<a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.html" target="_blank" rel="external">NotificationCompat</a>.等一些低版本可以的组件.</p>
+<p> 参考链接：<a href="http://developer.android.com/tools/support-library/index.html" target="_blank" rel="external">http://developer.android.com/tools/support-library/index.html</a><br><a href="http://developer.android.com/tools/support-library/features.html#v4" target="_blank" rel="external">http://developer.android.com/tools/support-library/features.html#v4</a>.</p>
+</li>
+<li><p>Android Support v7:  这个包是为了考虑照顾2.1及以上版本实现4.0一些新的API而设计的，但不包含更低，故如果不考虑1.6,我们可以采用再加上这个包，另外注意，v7是要依赖v4这个包的，即，两个得同时被包含。<br>这个包目前我们使用比较多的是ActionBar、ActionBarActivity等一些和ActionBar依赖的东西.</p>
+<p> 参考链接：<br> <a href="http://developer.android.com/tools/support-library/features.html#v7" target="_blank" rel="external">http://developer.android.com/tools/support-library/features.html#v7</a></p>
+<p> <a href="http://developer.android.com/reference/android/support/v7/app/ActionBar.html" target="_blank" rel="external">http://developer.android.com/reference/android/support/v7/app/ctionBar.html
+</a></p>
+</li>
+<li><p>Android Support v13:这个包的设计是为了android 3.2及更高版本的，一般我们都不常用，平板开发中能用到。<br>这个使用较少。</p>
+</li>
+</ol>
+<p>以后有时间我会写一些Fragment、ActionBar一些文章。这个在<a href="http://blog.csdn.net/xyz_lmn" target="_blank" rel="external">兴业博客</a>中也可以找得到。</p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/10/15/android_support/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1800,6 +2206,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -1813,20 +2220,64 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-          概述—UI线程及Android的单线程模型原则
+            <h1 id="概述—UI线程及Android的单线程模型原则">概述—UI线程及Android的单线程模型原则</h1><hr>
+<blockquote>
+<p>当应用启动，系统会创建一个主线程（main thread）。</p>
+</blockquote>
+<p>   这个主线程负责向UI组件分发事件（包括绘制事件），也是在这个主线程里，你的应用和Android的UI组件（components from the Android UI toolkit (components from the <code>android.widget</code> and <code>android.view packages</code>)）发生交互。</p>
+<p>   所以main thread也叫UI thread也即UI线程。</p>
+<p>   系统不会为每个组件单独创建线程，在同一个进程里的UI组件都会在UI线程里实例化，系统对每一个组件的调用都从UI线程分发出去。</p>
+<p>   结果就是，响应系统回调的方法（比如响应用户动作的<code>onKeyDown</code>()和各种生命周期回调）永远都是在UI线程里运行。</p>
+<p>   当App做一些比较重（intensive）的工作的时候，除非你合理地实现，否则单线程模型的performance会很poor。</p>
+<p>  特别的是，如果所有的工作都在UI线程，做一些比较耗时的工作比如访问网络或者数据库查询，都会阻塞UI线程，导致事件停止分发（包括绘制事件）。对于用户来说，应用看起来像是卡住了，更坏的情况是，如果UI线程blocked的时间太长（大约超过5秒），用户就会看到ANR（application not responding）的对话框。</p>
+<p>  另外，Andoid UI toolkit并不是线程安全的，所以你不能从非UI线程来操纵UI组件。你必须把所有的UI操作放在UI线程里，所以Android的单线程模型有两条原则：　　</p>
+<ol>
+<li><p>不要阻塞ui线程。</p>
+</li>
+<li><p>不要在UI线程之外访问Android UI toolkit（主要是这两个包中的组件：android.widget and android.view）。</p>
+</li>
+</ol>
+<h1 id="使用Worker线程">使用Worker线程</h1><hr>
+<p>　　根据单线程模型的两条原则，首先，要保证应用的响应性，不能阻塞UI线程，所以当你的操作不是即时的那种（not instantaneous），你应该把他们放进单另的线程中（叫做background或者叫worker线程）。</p>
+<p>　　比如点击按钮后，下载一个图片然后在<code>ImageView</code>中展示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> 	public void onClick(View v) &#123;</span><br><span class="line">    new Thread(new Runnable() &#123;</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            Bitmap b = loadImageFromNetwork("http://example.com/image.png");</span><br><span class="line">            mImageView.setImageBitmap(b);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">``` </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">　　这段代码用新的线程来处理网络操作，但是它违反了第二条原则：</span><br><span class="line"></span><br><span class="line">&gt;Do not access the Android UI toolkit from outside the UI thread.&lt;/br&gt;</span><br><span class="line">**从非ui线程访问ui组件会导致未定义和不能预料的行为。**</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">　　为了解决这个问题，Android提供了一些方法，从其他线程访问UI线程：</span><br><span class="line">```Java</span><br><span class="line">	Activity.runOnUiThread(Runnable)</span><br><span class="line">	View.post(Runnable)</span><br><span class="line">	View.postDelayed(Runnable, long)</span><br></pre></td></tr></table></figure>
+<p>　　比如，上面这段代码可以这么改：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">final</span> Bitmap bitmap = loadImageFromNetwork(<span class="string">"http://example.com/image.png"</span>);</span><br><span class="line">           mImageView.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                   mImageView.setImageBitmap(bitmap);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　这么改之后就是线程安全的了。</p>
+<p>　　但是，当操作变得复杂的时候，这种代码会变得非常复杂，为了处理非UI线程和UI线程之间更加复杂的交互，可以考虑在worker线程中使用一个<code>Handler</code>，来处理UI线程中传来的消息。</p>
+<p>　　也可以继承这个类<code>AsyncTask</code> 。</p>
+<h2 id="Communicating_with_the_UI_Thread"><h1>Communicating with the UI Thread</h1></h2><p>　　只有在UI线程中的对象才能操作UI线程中的对象，为了将非UI线程中的数据传送到UI线程，可以使用一个 Handler运行在UI线程中。</p>
+<p>　　<code>Handler</code>是Android framework中管理线程的部分，一个<code>Handler</code>对象负责接收消息然后处理消息。</p>
+<p>　　你可以为一个新的线程创建一个<code>Handler</code>，也可以创建一个<code>Handler</code>然后将它和已有线程连接。</p>
+<p>　　如果你将一个Handler和你的UI线程连接，处理消息的代码就将会在UI线程中执行。</p>
+<p>　　可以在你创建线程池的类的构造方法中实例化<code>Handler</code>的对象，然后用全局变量存储这个对象。</p>
+<p>　　要和UI线程连接，实例化<code>Handler</code>的时候应该使用<code>Handler</code>(<code>Looper</code>) 这个构造方法。</p>
+<p>　　这个构造方法使用了一个 <code>Looper</code> 对象，这是Android系统中线程管理的framework的另一个部分。</p>
+<p>　　当你用一个特定的 <code>Looper</code>实例来创建一个 Handler<code>时，这个</code>Handler<code>就运行在这个</code>Loope`r的线程中。</p>
+<p>　　在<code>Handle</code>r中，要覆写<code>handleMessage()</code> 方法。Android系统会在<code>Handler</code>管理的相应线程收到新消息时调用这个方法。</p>
+<p>　　一个特定线程的所有<code>Handler</code>对象都会收到同样的方法。（这是一个“一对多”的关系）。</p>
+<h1 id="参考资料">参考资料</h1><p>　　官方Training: 与UI线程通信：</p>
+<p>　　<a href="http://developer.android.com/training/multiple-threads/communicate-ui.html" target="_blank" rel="external">http://developer.android.com/training/multiple-threads/communicate-ui.html</a></p>
+<p>　　Guides: Processes and Threads</p>
+<p>　　<a href="http://developer.android.com/guide/components/processes-and-threads.html" target="_blank" rel="external">http://developer.android.com/guide/components/processes-and-threads.html</a></p>
+<p>　　类参考：</p>
+<p>　　<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank" rel="external">http://developer.android.com/reference/android/os/Looper.html</a></p>
+<p>　　<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank" rel="external">http://developer.android.com/reference/android/os/Handler.html</a></p>
+<p>　　<a href="http://developer.android.com/reference/android/os/HandlerThread.html" target="_blank" rel="external">http://developer.android.com/reference/android/os/HandlerThread.html</a></p>
+<p>　　博客：</p>
+<p>　　Android的线程使用来更新UI——Thread、Handler、Looper、TimerTask等：</p>
+<p>　　<a href="http://www.cnblogs.com/playing/archive/2011/03/24/1993583.html" target="_blank" rel="external">http://www.cnblogs.com/playing/archive/2011/03/24/1993583.html</a></p>
 
-当应用启动，系统会创建一个主线程（main thread）。
-
-   这个主线程负责向UI组件分发事件（包括绘制事件），也是在这个主线程里，你的应用和Android的UI组件（components from the Android UI toolkit (components from the android.widget and android.view packages)）发生交互。
-   所以main thread也叫UI thread也即
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/10/14/android_thread_handler/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -1920,6 +2371,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -1933,17 +2385,72 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-          ListView和GridView已经成为原生的Android应用实现中两个最流行的设计模式。目前，这些模式被大量的开发者使用，主要是因为他们是简单而直接的实现，同时他们提供了一个良好，整洁的用户体验。
-对于ListView和GridView一个共同的需求就是在用户不断向下滚动，组件仍能动态的加载更多地加载更多数据。这篇博客就将带领大家实现在ListView和GridView中这个功能。
-我们需要的主要组件就是我们的InfiniteScrollListener类，这个类是继承于OnScrollL
-          ...
+            <p>ListView和GridView已经成为原生的Android应用实现中两个最流行的设计模式。目前，这些模式被大量的开发者使用，主要是因为他们是简单而直接的实现，同时他们提供了一个良好，整洁的用户体验。</p>
+<p>对于ListView和GridView一个共同的需求就是在用户不断向下滚动，组件仍能动态的加载更多地加载更多数据。这篇博客就将带领大家实现在ListView和GridView中这个功能。</p>
+<p>我们需要的主要组件就是我们的InfiniteScrollListener类，这个类是继承于OnScrollListener，就让我们来看下具体的代码实现：</p>
+<h1 id="实现代码">实现代码</h1><pre><code><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">InfiniteScrollListener</span> <span class="keyword">implements</span> <span class="title">AbsListView</span>.<span class="title">OnScrollListener</span> </span>{
+<span class="keyword">private</span> <span class="keyword">int</span> bufferItemCount = <span class="number">10</span>;
+<span class="keyword">private</span> <span class="keyword">int</span> currentPage = <span class="number">0</span>;
+<span class="keyword">private</span> <span class="keyword">int</span> itemCount = <span class="number">0</span>;
+<span class="keyword">private</span> <span class="keyword">boolean</span> isLoading = <span class="keyword">true</span>; 
+<span class="function"><span class="keyword">public</span> <span class="title">InfiniteScrollListener</span><span class="params">(<span class="keyword">int</span> bufferItemCount)</span> </span>{
+    <span class="keyword">this</span>.bufferItemCount = bufferItemCount;
+} 
+<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">loadMore</span><span class="params">(<span class="keyword">int</span> page, <span class="keyword">int</span> totalItemsCount)</span></span>;
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/08/InfiniteScrollListener/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<span class="annotation">@Override</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(AbsListView view, <span class="keyword">int</span> scrollState)</span> </span>{
+    <span class="comment">// Do Nothing</span>
+}
+
+<span class="annotation">@Override</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScroll</span><span class="params">(AbsListView view, <span class="keyword">int</span> firstVisibleItem, <span class="keyword">int</span> visibleItemCount, <span class="keyword">int</span> totalItemCount)</span>
+</span>{
+    <span class="keyword">if</span> (totalItemCount &lt; itemCount) {
+        <span class="keyword">this</span>.itemCount = totalItemCount;
+        <span class="keyword">if</span> (totalItemCount == <span class="number">0</span>) {
+            <span class="keyword">this</span>.isLoading = <span class="keyword">true</span>; }
+    }
+
+    <span class="keyword">if</span> (isLoading &amp;&amp; (totalItemCount &gt; itemCount)) {
+        isLoading = <span class="keyword">false</span>;
+        itemCount = totalItemCount;
+        currentPage++;
+    }
+
+    <span class="keyword">if</span> (!isLoading &amp;&amp; (totalItemCount - visibleItemCount)&lt;=(firstVisibleItem + bufferItemCount)) {
+        loadMore(currentPage + <span class="number">1</span>, totalItemCount);
+        isLoading = <span class="keyword">true</span>;
+    }
+  } 
+}
+</code></pre><p>添加到事件到ListView中：</p>
+<pre><code>yourListView.setOnScrollListener(<span class="keyword">new</span> InfiniteScrollListener(<span class="number">5</span>) {
+
+    <span class="annotation">@Override</span>
+    public <span class="keyword">void</span> loadMore(<span class="built_in">int</span> page, <span class="built_in">int</span> totalItemsCount) {
+        <span class="built_in">List</span>&lt;HashMap&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;&gt; newData = loader.loadData();
+        dataList.addAll(newData);
+        adapter.notifyDataSetChanged();
+     }
+});
+</code></pre><p>如上，我们已经将这个类作为抽象类，这是一个很好的设计。我们的InfiniteScrollListener类实现了onScroll（）方法，但是没有实现loadMore（），而是又给实现类来实现。</p>
+<p>onScroll()方法在我们滚动时，程序会自动调用。所以我们推荐在这个方法里，不要进行过重的处理和数据计算，因为滚动是很频繁，这个方法调用也是很频繁的。</p>
+<p>为了实现这个效果，我们只需要在实现InfiniteScrollListener，并将这个实现类设置给ListView/GridView的setOnScrollListener()方法，就像是第二个代码片段的匿名类。</p>
+<p>我们实现了InfiniteScrollListener类，我们也需要实现loadMore（）方法，在这个方法里，我们可以给ListView/GridView添加Item并通过notifyDataSetChanged()通知ListView/GridView数据发生改变。当然我们可以手动添加本地数据，也可以l从数据库或者RESTful service来Load更多的数据。</p>
+<p>这就是我们在Android中实现的在ListView/GridView的可以无限滚动的所作的。对于有大量信息，ListView/GridView无疑有着很好的出处用户体验。</p>
+<p>原文:<a href="http://www.avocarrot.com/blog/implement-infinitely-scrolling-list-android/" target="_blank" rel="external">http://www.avocarrot.com/blog/implement-infinitely-scrolling-list-android/</a></p>
+
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -2037,6 +2544,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -2050,18 +2558,45 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-          介绍   单例模式是一种常用的软件设计模式，其定义是单例对象的类只能允许一个实例存在。
-　　许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理。
-   For example，就是一个王国(Kingdom)里，应该只有一位国王(King)，每次调用国王就应该是同一个国王。
-基本的实
-          ...
+            <h1 id="介绍">介绍</h1><p>   单例模式是一种常用的软件设计模式，其定义是单例对象的类只能允许一个实例存在。</p>
+<p>　　许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理。</p>
+<p>   For example，就是一个王国(Kingdom)里，应该只有一位国王(King)，每次调用国王就应该是同一个国王。</p>
+<h1 id="基本的实现思路">基本的实现思路</h1><p>   对于一个类，每次都只有一个实例，这个就要确保单例模式要求类能够有返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）。</p>
+<p>  单例的实现主要是通过以下两个步骤：</p>
+<p>将该类的构造方法定义为私有方法，这样其他处的代码就无法通过调用该类的构造方法来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例；<br>在该类内提供一个静态方法，当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用。<br>常见的实现方式</p>
+<h2 id="饿汉式">饿汉式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然了，这个也可以写一个静态代码块。</p>
+<h2 id="懒汉式(双重检查)">懒汉式(双重检查)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton singleton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> singleton;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个很少见到的这面这种静态类的到时很少见吧.</p>
+<h2 id="静态内部类">静态内部类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonInstance</span> </span>&#123;</span><br><span class="line">          <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> SingletonInstance.INSTANCE;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   这种方式跟饿汉式方式采用的机制类似，但又有不同。两者都是采用了类装载的机制来保证初始化实例时只有一个线程。不同的地方在饿汉式方式是只要Singleton类被装载就会实例化，没有Lazy-Loading的作用，而静态内部类方式在Singleton类被装载时并不会立即实例化，而是在需要实例化时，调用getInstance方法，才会装载SingletonInstance类，从而完成Singleton的实例化。</p>
+<p>　类的静态属性只会在第一次加载类的时候初始化，所以在这里，JVM帮助我们保证了线程的安全性，在类进行初始化时，别的线程是无法进入的。</p>
+<p>　优点：避免了线程不安全，延迟加载，效率高。　
+　</p>
+<h2 id="枚举">枚举</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>借助JDK1.5中添加的枚举来实现单例模式。不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象。可能是因为枚举在JDK1.5中才添加，所以在实际项目开发中，很少见人这么写过。</p>
+<p>优点</p>
+<p>　　系统内存中该类只存在一个对象，节省了系统资源，对于一些需要频繁创建销毁的对象，使用单例模式可以提高系统性能。</p>
+<p>缺点</p>
+<p>　　当想实例化一个单例类的时候，必须要记住使用相应的获取对象的方法，而不是使用new，可能会给其他开发人员造成困扰，特别是看不到源码的时候。</p>
+<h1 id="适用场合">适用场合</h1><ol>
+<li>需要频繁的进行创建和销毁的对象；</li>
+<li>对象时耗时过多或耗费资源过多，但又经常用到的对象；</li>
+<li>工具类对象；</li>
+<li>频繁访问数据库或文件的对象。</li>
+</ol>
+<p><a href="newsapp://topic/S1438933687931" target="_blank" rel="external">link</a></p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/07/02/desigSingleton/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -2155,6 +2690,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
           
           
+
         </div>
       </header>
     
@@ -2168,16 +2704,43 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       
         
           
-           &emsp;&emsp;由于项目需要,需要使用友盟的Sdk给多个渠道打包，什么豌豆荚、小米、GooglePlay、QQ应用宝等等七八个渠道，Android这几个渠道一个都没少（说明我们公司渠道广，哈哈），每次都给他们打包是个纠结的事情，你想想每次都要停下来一个个该改配置，那个痛苦。作为一个程序员为这事烦恼，不该，我就上网准备学Ant打包，结果，无意间看到一个神奇的利器————兰贝壳儿（Eclipse的插件），结果一试，太好了。现在就将这个分享给大家。
-&emsp;&emsp;可以去官网http
-          ...
+            <p> &emsp;&emsp;由于项目需要,需要使用友盟的Sdk给多个渠道打包，什么豌豆荚、小米、GooglePlay、QQ应用宝等等七八个渠道，Android这几个渠道一个都没少（说明我们公司渠道广，哈哈），每次都给他们打包是个纠结的事情，你想想每次都要停下来一个个该改配置，那个痛苦。作为一个程序员为这事烦恼，不该，我就上网准备学Ant打包，结果，无意间看到一个神奇的利器————兰贝壳儿（Eclipse的插件），结果一试，太好了。现在就将这个分享给大家。</p>
+<p>&emsp;&emsp;可以去官网<a href="http://www.orchidshell.com/" target="_blank" rel="external">http://www.orchidshell.com/</a>看下，里面有这个插件的现在地址。<br>下载兰贝壳儿Eclipse插件</p>
+<h3 id="下载后解压缩OrchidShell-rar">下载后解压缩OrchidShell.rar</h3><p>确认文件夹路径为OrchidShell—-eclipse—-plugins<br><img src="http://www.orchidshell.com/Instructions/OchidShellInstructions.files/image008.jpg" alt=""></p>
+<h3 id="安装兰贝壳儿插件，建立Android工程">安装兰贝壳儿插件，建立Android工程</h3><p>安装Eclipse插件，将OrchidShell文件夹拷贝到Eclipse的dropins文件夹下后，启动（重启）Eclipse</p>
+<h3 id="建立Android工程">建立Android工程</h3><p>在工程上点击右键可看到菜单 “兰贝壳儿”，说明安装成功</p>
+<h3 id="使用”在资源管理器中打开”功能">使用”在资源管理器中打开”功能</h3><p>点击兰贝壳儿菜单中的在资源管理器中打开菜单，可以将当前选中的资源所在的文件夹打开。</p>
+<p>如果选中的资源是一个文件夹，那么插件会直接打开这个文件夹</p>
+<p>如果选中的资源是一个文件，那么插件会打开文件的父文件夹，并且选中该文件</p>
+<h3 id="使用配置文件、默认配置文件">使用配置文件、默认配置文件</h3><p>兰贝壳儿使用xml作为插件配置文件，当工程中不存在配置文件，而插件的某些功能需要用到配置文件的时候，插件会新建一个默认的配置文件。</p>
+<p>该配置文件引用了一个通用的安卓开发工具包。配置了一个签名用的密钥库。你需要根据自己的实际情况修改这个配置文件。在下面两个功能中，有详细介绍。</p>
+<h3 id="使用”依赖更新”功能">使用”依赖更新”功能</h3><p>点击插件右键中的“依赖更新”菜单，可以对工程的第三方依赖jar包进行更新管理。</p>
+<p>这里使用的第三方jar包，使用maven管理jar包的组织形式</p>
+<p>需要指出的是，这里的jar包必须有一个统一的下载网站。该网站可以是任何一家maven库或者maven库镜像。如果您自己有Team的服务器，当然也可以自己建一个Maven库来管理常用的通用组件。</p>
+<p>点击菜单之后，会在Eclipse的控制台打出更新的过程。</p>
+<p>注意，如果配置文件配置不正确，可能会报出一些错误提示，根据错误提示进行修改配置文件即可。</p>
+<h3 id="使用”打包发布”功能">使用”打包发布”功能</h3><p>点击兰贝壳儿菜单中的“打包发布”菜单，可以对工程按渠道分别打包，打包的过程中可以对apk文件进行自动签名。</p>
+<p>注意打包发布前，需要修改配置文件中对应的项目：</p>
+<p>其中channels 的keyname=””是指在你的AndroidManifest.xml文件中配置的Application级的<meta-data>的名称。例如：</meta-data></p>
+<pre><code>&lt;meta-data <span class="string">android:</span>value=<span class="string">"andao007.com"</span> <span class="string">android:</span>name=<span class="string">"UMENG_CHANNEL"</span>/&gt;
+&lt;meta-data <span class="string">android:</span>value=<span class="string">"andao007.com"</span> <span class="string">android:</span>name=<span class="string">"gfan_cpid"</span>/&gt;
+</code></pre><p>这里使用的是友盟的统计SDK和机锋网的统计SDK，所以名称为“UMENG_CHANNEL,gfan_cpid”，你可以修改为你自己应用的统计SDK的渠道项目标识符，如果有多个，使用半角逗号隔开即可。</p>
+<pre><code><span class="tag">&lt;<span class="title">channel</span> <span class="attribute">value</span>=<span class="value">”andao007.com”</span>/&gt;</span>
+</code></pre><p>是对应于你要打包的每个渠道名称，也就是统计SDK中渠道的标识符。对于写在这里的每个渠道，插件会自动为其修改meta-data中的value值，并且打包为一个apk文件。然后为这个apk文件进行签名。</p>
+<p><keystore path="F:\Repos\android\keystore\common\common.key" passwd="123456"></keystore></p>
+<p><alias name="marsor_common" passwd="123456"><br><br>这里的keystore就是你对apk文件进行签名时使用的个人密钥。需要你将path修改为你的密钥库路径，passwd为密钥库的密码。<br>下面的alias是指每个密钥对应的别名，以及对应的密码。如果你有多个alias，可以在这里指定，插件会选取第一个可用的alias以及密码对应的密钥Key对你的apk文件进行签名。</alias></p>
+<p><outpath value="F:\Repos\android\keystore\output\"><br>这个路径就是你的apk文件自动打包生成出来以后的存放路径。注意插件会在这个路径下创建以你的工程名为名称的文件夹。<br><a href="http://www.orchidshell.com/Instructions/OchidShellInstructions.htm" target="_blank" rel="external">http://www.orchidshell.com/Instructions/OchidShellInstructions.htm</a></outpath></p>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/06/24/package4Android/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -2195,7 +2758,6 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
 
     
-
   </section>
 
   
@@ -2233,7 +2795,7 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://7xj9f0.com1.z0.glb.clouddn.com/psb.jpeg"
+               src="/images/default_avatar.jpg"
                alt="cyning4星运" />
           <p class="site-author-name" itemprop="name">cyning4星运</p>
           <p class="site-description motion-element" itemprop="description">因爱好而奋斗，因分享而快乐</p>
@@ -2246,19 +2808,23 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">27</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
@@ -2273,77 +2839,13 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/ownwell" target="_blank">
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/ownwell" target="_blank">
-                  
-                </a>
-              </span>
-            
-          
         </div>
 
         
         
 
-        <div class="links-of-author motion-element">
-          
-            <p class="site-author-name"></p>
-            
-              <span class="links-of-author-item">
-                <a href="http://developer.android.com/index.html" target="_blank">Android官网</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://gold.xitu.io/#/" target="_blank">稀土掘金</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.devtf.cn/" target="_blank">开发技术最前线</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://app.memect.com/" target="_blank">App开发日报</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://androidweekly.cn/" target="_blank">Android开发周报</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://gank.io" target="_blank">GankIO</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jcodecraeer.com/" target="_blank">泡在网上的日子</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://android.jobbole.com/" target="_blank">伯乐在线</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://stormzhang.github.io" target="_blank">StormZhang</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://my.csdn.net/xyz_lmn" target="_blank">张兴业</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://blog.stylingandroid.com" target="_blank">AndroidStyle</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰博客</a>
-              </span>
-            
+        
+        <div class="links-of-blogroll motion-element">
           
         </div>
 
@@ -2363,10 +2865,10 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cyning4星运</span>
 </div>
@@ -2387,7 +2889,9 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
   
@@ -2395,6 +2899,14 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
   
 
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
@@ -2413,28 +2925,28 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.4.5.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=0.4.5.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
 
 
 
   
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
 
 
 
@@ -2459,13 +2971,6 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
   
     
-      <script type="text/javascript">
-        var duoshuo_user_ID = ownwell;
-        var duoshuo_admin_nickname = "博主";
-      </script>
-      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
-      <script src="/js/src/hook-duoshuo.js"></script>
-    
   
 
 
@@ -2474,10 +2979,11 @@ SL-NTFS使用起来非常简单：1.安装好软件，点击左上角的苹果Lo
 
   
   
-
-  
   
 
+  
+
+  
 
 </body>
 </html>

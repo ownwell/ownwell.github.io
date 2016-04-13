@@ -1,19 +1,22 @@
+/* global DUOSHUO: true */
+/* jshint camelcase: false */
+
 typeof DUOSHUO !== 'undefined' ?
-  hookDUOSHUO_tp() :
-  ($('#duoshuo-script')[0].onload = hookDUOSHUO_tp);
+  hookTemplate() :
+  ($('#duoshuo-script')[0].onload = hookTemplate);
 
 
-function hookDUOSHUO_tp() {
-  var _D_post = DUOSHUO.templates.post;
+function hookTemplate() {
+  var post = DUOSHUO.templates.post;
 
   DUOSHUO.templates.post = function (e, t) {
-    var rs = _D_post(e, t);
+    var rs = post(e, t);
     var agent = e.post.agent;
     var userId = e.post.author.user_id;
     var admin = '';
 
-    if (userId && (userId == duoshuo_user_ID)) {
-      admin = '<span class="duoshuo-ua-admin">' + duoshuo_admin_nickname + '</span>';
+    if (userId && (userId == CONFIG.duoshuo.userId)) {
+      admin = '<span class="duoshuo-ua-admin">' + CONFIG.duoshuo.author + '</span>';
     }
 
     if (agent && /^Mozilla/.test(agent)) {
@@ -21,7 +24,7 @@ function hookDUOSHUO_tp() {
     }
 
     return rs;
-  }
+  };
 }
 
 function getAgentInfo(string) {
@@ -29,7 +32,7 @@ function getAgentInfo(string) {
 
   var UNKNOWN = 'Unknown';
   var sua = $.ua;
-  var seperator = isMobile() ? '<br><br>' : '<span class="duoshuo-ua-seperator"></span>';
+  var separator = isMobile() ? '<br><br>' : '<span class="duoshuo-ua-separator"></span>';
   var osName = sua.os.name || UNKNOWN;
   var osVersion = sua.os.version  || UNKNOWN;
   var browserName = sua.browser.name || UNKNOWN;
@@ -44,30 +47,46 @@ function getAgentInfo(string) {
       unknown : 'desktop'
     },
     browser: {
-      chrome : 'chrome',
-      'chromium': 'chrome',
-      firefox: 'firefox',
-      opera  : 'opera',
-      safari : 'safari',
-      ie     : 'internet-explorer',
-      unknown: 'globe'
+      chrome   : 'chrome',
+      chromium : 'chrome',
+      firefox  : 'firefox',
+      opera    : 'opera',
+      safari   : 'safari',
+      ie       : 'internet-explorer',
+      wechat   : 'wechat',
+      qq       : 'qq',
+      unknown  : 'globe'
     }
   };
   var osIcon = iconMapping.os[osName.toLowerCase()];
-  var browserIcon =  iconMapping.browser[browserName.toLowerCase()];
+  var browserIcon =  iconMapping.browser[getBrowserKey()];
 
-  return seperator +
+  return separator +
     '<span class="duoshuo-ua-platform duoshuo-ua-platform-' + osName.toLowerCase() + '">' +
        '<i class="fa fa-' + osIcon + '"></i>' +
        osName + ' ' + osVersion +
-    '</span>' + seperator +
+    '</span>' + separator +
     '<span class="duoshuo-ua-browser duoshuo-ua-browser-' + browserName.toLowerCase() + '">' +
       '<i class="fa fa-' + browserIcon + '"></i>' +
       browserName + ' ' + browserVersion +
     '</span>';
 
+  function getBrowserKey () {
+    var key = browserName.toLowerCase();
+
+    if (key.match(/WeChat/i)) {
+      return 'wechat';
+    }
+
+    if (key.match(/QQBrowser/i)) {
+      return 'qq';
+    }
+
+    return key;
+  }
+
   function isMobile() {
-    var userAgent = navigator.userAgent;
+    var userAgent = window.navigator.userAgent;
 
     var isiPad = userAgent.match(/iPad/i) !== null;
     var mobileUA = [
