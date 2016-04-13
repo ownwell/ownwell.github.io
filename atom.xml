@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[cyning4星运]]></title>
+  <title><![CDATA[cyning]]></title>
   <subtitle><![CDATA[Follow your Heart]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://ownwell.github.io/"/>
@@ -8,7 +8,7 @@
   <id>http://ownwell.github.io/</id>
   
   <author>
-    <name><![CDATA[cyning4星运]]></name>
+    <name><![CDATA[cyning]]></name>
     
   </author>
   
