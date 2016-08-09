@@ -22,7 +22,9 @@ widgets:
 - links
 - archive
 
-
+toc:
+  enable: true
+  line_number: true
 
 # Links
 links:
