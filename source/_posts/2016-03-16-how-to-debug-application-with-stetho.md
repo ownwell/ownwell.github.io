@@ -9,6 +9,9 @@ categories: [Android]
 在开发过程中，我们经常喊着我们需要一个root的手机，为什么呢？
 ![](http://pic.baike.soso.com/p/20090712/20090712210314-622536671.jpg)
 
+<!-- more -->
+
+
 因为有时我们需要查看手机/data/data里面的数据，如数据库、SharedPreferences，不过有的是否真的没有root过的手机，有人说你可以用虚拟机啊，不过虚拟机不友好的操作，让我很是不习惯。若是有一个工具是通过chrome浏览器就可以帮我们查看数据库、SharedPreferences是不是会让我们欣喜若狂啊。好了，FaceBook退出的[Stetho](https://github.com/facebook/stetho)满足你这个小小的愿望。
 
 ~不得不感叹FB真是良心企业~。

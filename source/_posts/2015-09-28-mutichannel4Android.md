@@ -9,9 +9,12 @@ categories: [Android]
 # 概要
 
 听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。
+<!-- more -->
+
 
 其实这篇博客应该在上周就要写的，因为本人搬家的缘故一直此次往后退，今天终于可以腾出时间来写这篇博客了----Android的多渠道打包。
 
+<!-- more -->
 # 多渠道打包
 1. [插件打包法：](http://ownwell.github.io/2014/06/24/package4Android/)
 

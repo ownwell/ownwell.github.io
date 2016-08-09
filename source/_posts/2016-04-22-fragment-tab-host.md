@@ -6,6 +6,8 @@ categories: [Android]
 ---
 # 前言
 现在Google已经在新的APP UI规范中开始提倡使用底部导航栏（`BottomNavigation`），而不是以前的侧拉导航栏（`NavigationView`,对于大屏手机，这个规范是很人性的。`BottomNavigation`分为底部的Tab导航栏和上面的内容展示部分，实现上，每个Tab对应一个`Fragment`，同时也需要我们正确处理每个`Fragment`在Tab间进行切换，同时每次打开那个Tab时，那个Tab对应的`Fragment`才加载。
+<!-- more -->
+
 ![tab](http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160422-1.png)
  >如上图：
   1. 当选中下面的Tab时,对应的Tab显示（其实在代码实现上就是Fragment能加载显示）

@@ -7,6 +7,9 @@ categories: [Tools]
 # 介绍
 
  Android Studio已经被越来越多的人任何，继承了IDEA的一切有点。我很喜欢代码提示，但是我们也需要自己的定义的live Temple，就是自己的一些快捷键。
+ <!-- more -->
+ 
+ 
  如：
  
  ```Java

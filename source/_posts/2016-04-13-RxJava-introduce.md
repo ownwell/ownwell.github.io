@@ -6,9 +6,11 @@ tags:
 
 #概述
 
-![](http://upload-images.jianshu.io/upload_images/675733-2254c982389d3d93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png" />
 
 RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。
+<!-- more -->
+
 
 今天我们就是要踩在这些过来人的肩膀上，来学习RxJava，这个主要是针对不熟悉RxJava的，若是已经很熟练使用了，这篇可能就不太适合你。
 

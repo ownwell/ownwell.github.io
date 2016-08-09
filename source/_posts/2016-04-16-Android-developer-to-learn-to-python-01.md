@@ -1,5 +1,5 @@
 ---
-title: Python学习--安装第三方库
+title: Python学习-pip和virtualenv
 date: 2016-04-16 21:57:04
 tags: [Python]
 categories: [Python]
@@ -10,6 +10,8 @@ categories: [Python]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python可以作为运维人员的工具，无论是windows、mac和linux，都可以跑起来，比shell脚本方便，可以作为web的开发工具，搭建网站，在大数据方面Python也不弱，所以选择Python作为开发语言的工程师可能是一个全栈工程师。
 
 ![](http://7xj9f0.com1.z0.glb.clouddn.com/308085d7cbf0dfed3d87bd686d564143_r.jpg)
+
+<!-- more -->
 
 那么`Python`作为一个热门语言，肯定有很多开发者，也有很多第三方库，那么我们怎么导入这些呢，就像我们通过`maven center`来获取第三方的库呢，不要担心`Python`也有。
 就请出我们的男猪脚吧 ----`pip`。

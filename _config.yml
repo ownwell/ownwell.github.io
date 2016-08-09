@@ -7,8 +7,8 @@ title: cyning
 subtitle: Follow your Heart
 description:
 author: 一起分享技术
-# language: zh-CN
-language: zh-Hans
+language: zh-CN
+# language: zh-Hans
 timezone:
 
 # URL
@@ -64,8 +64,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+# theme: next
+theme: landscape-plus
 # theme: minos
+toc:
+  maxDepth: 4
 
 # plugins:
 # - hexo-generator-feed

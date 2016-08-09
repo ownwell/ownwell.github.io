@@ -9,6 +9,7 @@ categories: [Android]
 # Maven
 
 一个完整的系统，模块与模块之间，尽可能的使其独立存在。也就是说，让每个模块，尽可能的独立完成某个特定的子功能。模块与模块之间的接口，尽量的少而简单。
+<!-- more -->
 
 在写文章之前先吊书袋子了一下，告诉大家软件设计中的低耦合，所以我们会把一个个模块分开，模块之前相互独立，即插即用，这个书袋子吊的还可以吧。
 ![maven](http://img4.imgtn.bdimg.com/it/u=835084131,3132971467&fm=21&gp=0.jpg)
@@ -21,7 +22,7 @@ categories: [Android]
 
 <th>![藐视](http://qq.yh31.com/tp/qq/ZJBQ/201111/201111041444379709.gif)</th>
 
-#准备工作
+# 准备工作
 
 ## 注册
 JCenter作为一个规模相当大的中心仓库，我们需要到[https://bintray.com/#](https://bintray.com/#)，去注册的账号，若你有账号跳过这一步。注册一般通过邮箱验证，试下登录是否注册成功。
@@ -47,7 +48,7 @@ version   项目的版本
 
 所以你要确定自己的groupId和artifactId。
 
-## 配置gradle上传maven的配置
+# 配置gradle上传maven的配置
 
 ### 在更项目的build.gradle添加如下几句：
 
@@ -57,9 +58,7 @@ version   项目的版本
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
         ……
-
-        }
-
+}
 ```   
 
 
@@ -68,17 +67,14 @@ version   项目的版本
 
 
 bintray.gradle文件
-```
-apply plugin: 'com.github.dcendents.android-maven'
+```apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-
 
 Properties properties = new Properties()
 properties.load(project.file('bintray.properties').newDataInputStream())
 def siteUrl = properties.getProperty("bintray.siteUrl")
 
 def desc = properties.getProperty("bintray.descrip")
-
 
 // Maven Group ID for the artifact，一般填你唯一的包名
 group = properties.getProperty("bintray.group")
@@ -91,9 +87,6 @@ def useremail = properties.getProperty("bintray.useremail")
 
 def licensename = properties.getProperty("bintray.licensename")
 def licenseurl = properties.getProperty("bintray.licenseurl")
-
-
-
 install {
     repositories.mavenInstaller {
          // This generates POM.xml with proper parameters
@@ -103,12 +96,12 @@ install {
                 // Add your description here
                 name desc //项目描述
 
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name licensename
-                        url licenseurl
+               url siteUrl
+               // Set your license
+               licenses {
+                   license {
+                       name licensename
+                       url licenseurl
                     }
                 }
 
@@ -128,7 +121,6 @@ install {
         }
     }
 }
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -159,10 +151,9 @@ bintray {
         websiteUrl = properties.getProperty("bintray.siteUrl")
         vcsUrl = properties.getProperty("bintray.vcs")
         licenses =[properties.getProperty("bintray.licenses")]
-        publish = true
+                publish = true
 
     }
-
 }
 ```
 你看到的那些`bintray.licenses`都是我们需要新建另外一个配置文件的：
