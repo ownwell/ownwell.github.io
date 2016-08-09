@@ -1,4 +1,7 @@
 <div id="toc" class="toc-article">
-    <div class="toc-title">目录</div>
-    <%- toc(item.content, {list_number: false}) %>
+    <% if (theme.toc){ %>
+    	<div class="toc-title">目录</div>
+    	<%- toc(post.content, {list_number: theme.toc.list_number}) %>
+    <%}%>
+    
 </div>

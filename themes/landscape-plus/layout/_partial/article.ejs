@@ -22,10 +22,14 @@
           </p>
         <% } %>
       <% } else { %>
+        <% if(post.toc !== false) {%>
+            <p class="entry">
+              <%- partial('toc') %>
+            </p>
+         <% } %>
         <%- post.content %>
       <% } %>
     </div>
-     
     <% if (!index){ %>
       <%- partial('wechat-subscriber') %>
     <% } %>
