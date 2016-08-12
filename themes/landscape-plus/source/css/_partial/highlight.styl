@@ -1,5 +1,6 @@
 // https://github.com/chriskempson/tomorrow-theme
-highlight-background = #333
+highlight-background = #222
+highlight-line-numbers = #339999
 highlight-current-line = #3E3D32
 highlight-selection = #49483E
 highlight-foreground = #CCC
@@ -14,7 +15,7 @@ highlight-purple = #AE81FF
 
 $code-block
   background: highlight-background
-  margin: 0 article-padding * -1
+
   padding: 15px article-padding
   border-style: solid
   border-color: color-border
@@ -24,7 +25,7 @@ $code-block
   line-height: font-size * line-height
 
 $line-numbers
-  color: #339999
+  color: highlight-line-numbers
   font-size: 0.85em
 
 .article-entry
@@ -33,6 +34,7 @@ $line-numbers
   code
     background: #f0f0f0
     text-shadow: 0 1px #fff
+    color: black
     font-size:  0.85em
     padding: 0 0.3em
     border: 1px solid #dcdcdc
@@ -149,6 +151,8 @@ pre
   .css .hexcolor
     color: highlight-aqua
   .function
+  .java .decorator
+  .java .function .title
   .python .decorator
   .python .title
   .ruby .function .title

@@ -69,6 +69,7 @@ theme: landscape-plus
 # theme: minos
 toc:
   maxDepth: 4
+  
 
 # plugins:
 # - hexo-generator-feed

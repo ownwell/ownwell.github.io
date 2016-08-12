@@ -3,6 +3,7 @@ menu:
   Home: /
   Archives: /archives
   Book: /booklist
+  weekly: /weekly
   About: /about
 rss: /atom.xml
 
@@ -20,7 +21,6 @@ widgets:
 - archive
 - tagcloud
 - links
-- archive
 
 toc:
   enable: true
