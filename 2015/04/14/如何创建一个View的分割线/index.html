@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><title>[Android]如何创建一个View的分割线 - cyning</title><meta name="description" content="如何创建一个View的分割线,如上图我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。这个例子是将为LinearLayout内的三个Button间添加分割线。这三个例子可能容易实现，相信会有更好的实现办法。buttons-with-separators3 #1. "><link type="text/css" rel="stylesheet" href="/css/basic.css?v=0.0.0"><link type="text/css" rel="stylesheet" href="/css/pure.css?v=0.0.0"><link type="text/css" rel="stylesheet" href="/css/style.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script></head></html><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">[Android]如何创建一个View的分割线</h1><a id="logo" href="/.">cyning</a></div><div id="nav-menu"><div class="bitcron_nav"><div class="site_nav_wrap"><div class="site_nav"><span class="a_container"><a href="/." class="selected active current">首页</a></span><span class="a_container"><a href="/archives/">归档</a></span><span class="a_container"><a href="/about/">关于</a></span><span class="a_container"><a href="/atom.xml">订阅</a></span></div></div></div></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">[Android]如何创建一个View的分割线</h1><div class="post-meta">Apr 14, 2015<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" type="text/javascript"></script><span class="meta-space">  |  </span><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span><span> 浏览</span></span></div><div class="post-content"><p><img src="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" alt="image"></p>
+<p>如何创建一个View的分割线,如上图<br><a id="more"></a><br>我们见介绍三种可以创建看起来很不错的view的分割线，如在button之间添加分割线。</p>
+<p>这个例子是将为LinearLayout内的三个Button间添加分割线。</p>
+<p>这三个例子可能容易实现，相信会有更好的实现办法。</p>
+<p>buttons-with-separators3 </p>
+<p>#1. 人工添加LinearLayout的分割线</p>
+<p>我们可以创建一个View，这个View就是分割线，只要简单在Button之间添加这个分割线就可以。</p>
+<p>分割线的实现，如下：</p>
+<pre><code>&lt;View
+    android:layout_height=&quot;fill_parent&quot;              android:layout_width=&quot;1dp&quot;
+     android:background=&quot;#90909090&quot;
+     android:layout_marginBottom=&quot;5dp&quot;
+     android:layout_marginTop=&quot;5dp&quot;
+/&gt;
+</code></pre><p>　　</p>
+<p>So the whole layout, as pictured, becomes:</p>
+<pre><code>&lt;LinearLayout
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:adjustViewBounds=&quot;true&quot;
+    android:orientation=&quot;horizontal&quot;&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;Yes&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button1&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;View android:layout_height=&quot;fill_parent&quot;
+    android:layout_width=&quot;1px&quot;
+    android:background=&quot;#90909090&quot;
+    android:layout_marginBottom=&quot;5dp&quot;
+    android:layout_marginTop=&quot;5dp&quot;
+    android:id=&quot;@+id/separator1&quot; /&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;No&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button2&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;View android:layout_height=&quot;fill_parent&quot;
+    android:layout_width=&quot;1px&quot;
+    android:background=&quot;#90909090&quot;
+    android:layout_marginBottom=&quot;5dp&quot;
+    android:layout_marginTop=&quot;5dp&quot;
+    android:id=&quot;@+id/separator2&quot; /&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;Neutral&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button3&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<p>#2.在LinearLayout定义divider</p>
+<p>你可以给LinearLayout设置a view divider，这很明显是个很好的解决方法，尤其是不知道LinearLayout下有多少个子Button。</p>
+<p>这种必须是在API level 11 或者更高的API版本使用。</p>
+<p>我们先定义这个分割线样式吧：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+ &lt;size android:width=&quot;1dp&quot; /&gt;
+ &lt;solid android:color=&quot;#90909090&quot; /&gt;
+&lt;/shape&gt; 
+</code></pre><p>　　</p>
+<p>把这个分割线的样式设置给LinearLayout：</p>
+<pre><code>&lt;LinearLayout
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:adjustViewBounds=&quot;true&quot;
+    android:divider=&quot;@drawable/separator&quot;
+    android:showDividers=&quot;middle&quot;
+    android:orientation=&quot;horizontal&quot;&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;Yes&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button1&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;No&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button2&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;Button
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    style=&quot;?android:attr/buttonBarButtonStyle&quot;
+    android:text=&quot;Neutral&quot;
+    android:layout_weight=&quot;1&quot;
+    android:id=&quot;@+id/button3&quot;
+    android:textColor=&quot;#00b0e4&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>　　</p>
+<p>其中最重要当然就是：</p>
+<pre><code>android:divider=&quot;@drawable/separator&quot;
+android:showDividers=&quot;middle&quot; 
+</code></pre><p>#3. 给容器组件设置ButtonBarStyle (默认是分割线，最容易实现方法)</p>
+<p>As danialgoodwin mentioned in the comments, adding the buttonBarStyle to the LinearLayout will show default separators.  This is also for api level 11 or higher only.</p>
+<p>The important part here, is adding this line to the LinearLayout:</p>
+<pre><code>&lt;LinearLayout
+    android:orientation=&quot;horizontal&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;fill_parent&quot;
+    style=&quot;?android:buttonBarStyle&quot;
+    android:dividerPadding=&quot;15dp&quot;
+&gt;
+
+&lt;Button
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;New Button&quot;
+    android:id=&quot;@+id/button1&quot;
+    android:layout_gravity=&quot;center_vertical&quot; /&gt;
+
+&lt;!-- more buttons/views --&gt;
+</code></pre><p>
+　　</p>
+<p>You can also adjust the paddings of the view separators with the “dividerPadding” setting.</p>
+<p>Button使用的相同的检举，所以他们之间的间距也是相同的。</p>
+<p>当然你可为分割线设置渐变色。</p>
+<p>原文 ：<a href="http://envyandroid.com/wp/wp-content/uploads/2014/06/buttons-with-separators3.png" target="_blank" rel="external">http://envyandroid.com/archives/1193/view-separators</a></p>
+</div><div class="tags"><a href="/tags/Android/">Android</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" id="search" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://ownwell.github.io"/></form></div><div class="widget"><div class="widget-title"> 分类</div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java源码/">Java源码</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"> 标签</div><div class="tagcloud"><a href="/tags/Google/" style="font-size: 12px;">Google</a> <a href="/tags/Android/" style="font-size: 18px;">Android</a> <a href="/tags/Mac/" style="font-size: 12px;">Mac</a> <a href="/tags/CodeStyle/" style="font-size: 12px;">CodeStyle</a> <a href="/tags/IDEA/" style="font-size: 12px;">IDEA</a> <a href="/tags/Ruby/" style="font-size: 12px;">Ruby</a> <a href="/tags/Git/" style="font-size: 13.5px;">Git</a> <a href="/tags/抓包/" style="font-size: 12px;">抓包</a> <a href="/tags/Sublime-Text/" style="font-size: 12px;">Sublime Text</a> <a href="/tags/Android源码/" style="font-size: 12px;">Android源码</a> <a href="/tags/Transition/" style="font-size: 12px;">Transition</a> <a href="/tags/Animations/" style="font-size: 12px;">Animations</a> <a href="/tags/翻译/" style="font-size: 12px;">翻译</a> <a href="/tags/Material/" style="font-size: 12px;">Material</a> <a href="/tags/Python/" style="font-size: 16.5px;">Python</a> <a href="/tags/Tomcat/" style="font-size: 12px;">Tomcat</a> <a href="/tags/Tools/" style="font-size: 16.5px;">Tools</a> <a href="/tags/Jenkins/" style="font-size: 12px;">Jenkins</a> <a href="/tags/多渠道/" style="font-size: 12px;">多渠道</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/UI/" style="font-size: 12px;">UI</a> <a href="/tags/生活/" style="font-size: 12px;">生活</a> <a href="/tags/JavaEE/" style="font-size: 12px;">JavaEE</a> <a href="/tags/《Android开发艺术探索》读书笔记/" style="font-size: 12px;">《Android开发艺术探索》读书笔记</a> <a href="/tags/View/" style="font-size: 12px;">View</a> <a href="/tags/JCenter/" style="font-size: 12px;">JCenter</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/hot-fix/" style="font-size: 12px;">hot-fix</a> <a href="/tags/闲言碎语/" style="font-size: 12px;">闲言碎语</a> <a href="/tags/Realm/" style="font-size: 12px;">Realm</a> <a href="/tags/Android热修复/" style="font-size: 12px;">Android热修复</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/单例/" style="font-size: 12px;">单例</a></div></div><div class="widget"><div class="widget-title"> 最新文章</div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/13/Android-状态栏颜色的适配/">【Android】状态栏颜色的适配</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/classloader/">Classloader源码探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/热修复之美团方案/">热修复之美团方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/30/android-hot-fix-introduce/">Android热修复--实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/android-status-bar/">Android下多彩的StatusView的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/17/git-work-flow/">Gitflow工作流</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/11/Anroid沉浸式状态栏/">Anroid沉浸式状态栏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/28/realm-note/">Realm分享直播笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/thinking-in-2016-07/">年中思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/14/push-library-to-jcenter/">[Androoid]开源自己的项目到JCenter</a></li></ul></div><div class="widget"><div class="widget-title"> 友情链接</div><ul class="links-list"><li class="links-list-item"><a href="http://www.example.com" title="标题" target="_blank">标题</a></li></ul></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">cyning.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a> Theme<a target="_blank" href="https://github.com/7ye/maupassant-hexo"> Maupassant.</a></div><a id="back_to_top" href="javascript:void(0)" class="back_to_top"><span>△</span></a><script type="text/javascript" src="/js/totop.js?v=0.0.0"></script><link rel="stylesheet" href="/css/jquery.fancybox.css"><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0"></script><script>function auto_code_fit(){
+  if($(".highlight").length != 0){
+    var pc_width = $(".post-content").width();
+    $(".highlight .code").find("pre").width((pc_width-70)+"px");
+  }
+}
+window.onresize = function(){
+  auto_code_fit();
+}
+auto_code_fit();</script></div></body>
