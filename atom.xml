@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-04-19T05:57:19.000Z</updated>
+  <updated>2017-05-24T11:11:44.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Robust热修复-入门使用</title>
+    <link href="http://ownwell.github.io/2017/05/24/Robust%E7%83%AD%E4%BF%AE%E5%A4%8D-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/"/>
+    <id>http://ownwell.github.io/2017/05/24/Robust热修复-入门使用/</id>
+    <published>2017-05-24T11:11:44.000Z</published>
+    <updated>2017-05-24T11:11:44.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>【Android】状态栏颜色的适配</title>
@@ -975,48 +989,6 @@
     
     
       <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SwipeBackLayout的一个让人揪心的问题</title>
-    <link href="http://ownwell.github.io/2015/09/30/swipeback-windowIsTranslucent/"/>
-    <id>http://ownwell.github.io/2015/09/30/swipeback-windowIsTranslucent/</id>
-    <published>2015-09-30T11:30:15.000Z</published>
-    <updated>2017-05-24T07:19:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Google 新品发布会，我就不想说了，太烂了，其他的不多说。</p>
-<p>今天愣是被一个问题给搞蒙，虽然待会还要坐车回家过十一，但是还是趁着现在的时间，总结一下自己的问题。</p>
-<p>看到网易财经的交互不是很友好，对于习惯了IOS手机操作的人来说，滑动就关掉当前页面是个很好的交互，对于单手操作尤其方便，但是Android系统是不提供这种交互的，所以有些APP就做了，如网易新闻、简书等，这能极大方便用户。<br><a id="more"></a></p>
-<h1 id="SwipeBackLayout"><a href="#SwipeBackLayout" class="headerlink" title="SwipeBackLayout"></a>SwipeBackLayout</h1><p>这不我也给财经APP加上，用的是<a href="https://github.com/ikew0ng/SwipeBackLayout" target="_blank" rel="external">SwipeBackLayout</a>这个还蛮好用的，所以就重点推荐它吧。</p>
-<p>使用就不用说了吧，直接继承<code>SwipeBackActivity</code>这个类,</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwipeBackActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> <span class="keyword">implements</span> <span class="title">SwipeBackActivityBase</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> SwipeBackActivityHelper mHelper;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mHelper = <span class="keyword">new</span> SwipeBackActivityHelper(<span class="keyword">this</span>);</div><div class="line">        mHelper.onActivityCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPostCreate(savedInstanceState);</div><div class="line">        mHelper.onPostCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">findViewById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        View v = <span class="keyword">super</span>.findViewById(id);</div><div class="line">        <span class="keyword">if</span> (v == <span class="keyword">null</span> &amp;&amp; mHelper != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> mHelper.findViewById(id);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> v;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> SwipeBackLayout <span class="title">getSwipeBackLayout</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mHelper.getSwipeBackLayout();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSwipeBackEnable</span><span class="params">(<span class="keyword">boolean</span> enable)</span> </span>&#123;</div><div class="line">        getSwipeBackLayout().setEnableGesture(enable);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollToFinishActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">        Utils.convertActivityToTranslucent(<span class="keyword">this</span>);</div><div class="line">        getSwipeBackLayout().scrollToFinishActivity();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其他的不变，不过这样可以左右滑动，但是下面的页面是黑乎乎的，那是因为你只是滑动了Activity的contentView，至于他们的之间的关系，建议你google下Activity，Window，DecorView就知道了（要看最新的，DecorView以前是个线性布局，现在最新的是FrameLayout）。</p>
-<p>所以需要将window设置为透明：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;item name="android:windowIsTranslucent"&gt;true&lt;/item&gt;</div></pre></td></tr></table></figure></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p> 这样问题就来了，我以前是给activity设置了<code>windowAnimationStyle</code>,现在全部失效，我给跪了。</p>
-<pre><code class="Java">&lt;item name="android:activityOpenExitAnimation"&gt;@anim/hold&lt;/item&gt;
-&lt;item name="android:activityCloseEnterAnimation"&gt;@anim/hold&lt;/item&gt;
-&lt;item name="android:activityOpenEnterAnimation"&gt;@anim/slide_in_from_bottom&lt;/item&gt;
-……
-</code></pre>
-<p> 这个也有人遇到了：<a href="https://github.com/ikew0ng/SwipeBackLayout/issues/3" target="_blank" rel="external">issue</a>。</p>
-<p> 参照下面的问题，我找到这个了，发现居然又解决方案：<a href="http://blog.csdn.net/xuewater/article/details/36398803" target="_blank" rel="external">方案</a>。不过我们需要为Activity的task的其他属性。</p>
-<p> 好了说多了多是泪，还是有时间自己也模仿着写个吧。</p>
-<p> 十一了，快回家了，先祝媳妇十一快乐，感觉最对不起的就是她。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Google 新品发布会，我就不想说了，太烂了，其他的不多说。&lt;/p&gt;
-&lt;p&gt;今天愣是被一个问题给搞蒙，虽然待会还要坐车回家过十一，但是还是趁着现在的时间，总结一下自己的问题。&lt;/p&gt;
-&lt;p&gt;看到网易财经的交互不是很友好，对于习惯了IOS手机操作的人来说，滑动就关掉当前页面是个很好的交互，对于单手操作尤其方便，但是Android系统是不提供这种交互的，所以有些APP就做了，如网易新闻、简书等，这能极大方便用户。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="UI" scheme="http://ownwell.github.io/tags/UI/"/>
     
   </entry>
   
