@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-05-24T11:11:44.000Z</updated>
+  <updated>2017-05-24T12:34:41.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -16,16 +16,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Robust热修复-入门使用</title>
+    <title>Robust热修复-使用和项目介绍</title>
     <link href="http://ownwell.github.io/2017/05/24/Robust%E7%83%AD%E4%BF%AE%E5%A4%8D-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/"/>
     <id>http://ownwell.github.io/2017/05/24/Robust热修复-入门使用/</id>
     <published>2017-05-24T11:11:44.000Z</published>
-    <updated>2017-05-24T11:11:44.000Z</updated>
+    <updated>2017-05-24T12:34:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>[Robust]是美团推出的一款热修复框架，我记的之前我们分享过一篇<a href="http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/">热修复之美团方案</a>,这篇文章是去年9月份时，我记得那时搞得一个Demo版，只是从思路上简单实现美团放出的文章的简单实现。今年三月份美团将已经趋向于稳定的<a href="https://github.com/Meituan-Dianping/Robust" target="_blank" rel="external">Robust</a>开源，在Andoid开发界也是一致好评。</p>
+<p>后面会陆续放出Robust热修复的代码分析。<br>作为开篇第一篇，会介绍怎么使用和以及整个项目的简单的介绍。<br><a id="more"></a></p>
+<h1 id="热修复使用"><a href="#热修复使用" class="headerlink" title="热修复使用"></a>热修复使用</h1><h2 id="热修复的步骤"><a href="#热修复的步骤" class="headerlink" title="热修复的步骤"></a>热修复的步骤</h2><p>按照它的步骤：</p>
+<ol>
+<li>导入Robust插件</li>
+<li>打出基础包，将生成的Robust相关文件放到指定目录下</li>
+<li>修改代码</li>
+<li>添加自动打补丁包插件</li>
+<li>打出补丁包，并将包放到指定路径</li>
+<li>基础包加载补丁包实现热修复</li>
+</ol>
+<h2 id="Robust使用注意事项"><a href="#Robust使用注意事项" class="headerlink" title="Robust使用注意事项"></a>Robust使用注意事项</h2><p>不过在实际操作中，发现了如下问题：</p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 打出基础包后，需要将生成的mapping文件以及build/outputs/robust/methodsMap.robust文件。</div><div class="line">为了更好使用写了个Gradel脚本.  </div><div class="line"></div><div class="line">```java</div><div class="line">task deleteFiles(type: Delete) &#123;</div><div class="line">    delete fileTree(&apos;output&apos;) &#123;</div><div class="line">        include &apos;**&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">copyFiles &#123;</div><div class="line">    description = &apos;copy methodsMap to output file&apos;</div><div class="line">    from &apos;build/outputs/robust/methodsMap.robust&apos;</div><div class="line">    into &apos;robust/&apos;</div><div class="line"></div><div class="line">    from &apos;build/outputs/mapping/release/mapping.txt&apos;</div><div class="line">    into &apos;robust/&apos;</div><div class="line"></div><div class="line">    from &apos;build/outputs/apk/app-release.apk&apos;</div><div class="line">    into &apos;robust/&apos;</div><div class="line">&#125;</div><div class="line">task copyFiles(type: Copy) dependsOn deleteFiles</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>所以在打基础包后，可以直接运行<code>./gradlew copyFiles</code>（Windows：<code>./gradlew.bat copyFiles</code>））.<br>这样在app下就有<code>methodsMap.robust</code>、<code>mapping.txt</code>、<code>app-release.apk</code>这三个文件。     </p>
+<ol>
+<li>配置主项目下一定要配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">```java</div><div class="line">&lt;!--需要热补的包名或者类名，这些包名下的所有类都被会插入代码--&gt;</div><div class="line">&lt;packname name=&quot;hotfixPackage&quot;&gt;</div><div class="line">       &lt;name&gt;com.meituan&lt;/name&gt;</div><div class="line">       &lt;name&gt;com.sankuai&lt;/name&gt;</div><div class="line">       &lt;name&gt;com.dianping&lt;/name&gt;</div><div class="line">&lt;/packname&gt;</div><div class="line"></div><div class="line">   &lt;!--不需要热补的包名或者类名，可以在需要热补的包中剔除指定的类或者包--&gt;</div><div class="line">   &lt;exceptPackname name=&quot;exceptPackage&quot;&gt;</div><div class="line">       &lt;name&gt;com.meituan.robust&lt;/name&gt;</div><div class="line">   &lt;/exceptPackname&gt;</div><div class="line"></div><div class="line">   &lt;!--补丁的包名--&gt;</div><div class="line">   &lt;patchPackname name=&quot;patchPackname&quot;&gt;</div><div class="line">       &lt;name&gt;com.meituan.robust.patch&lt;/name&gt;</div><div class="line">   &lt;/patchPackname&gt;</div></pre></td></tr></table></figure></li>
+</ol>
+<p>这个需要根据我们的实际情况来配置。<code>hotfixPackage</code>下所有类都会有一桩，也就是说每个类里面都会有一个静态的接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> ChangeQuickRedirect     changeQuickRedirect;</div></pre></td></tr></table></figure></p>
+<h1 id="Robust项目介绍"><a href="#Robust项目介绍" class="headerlink" title="Robust项目介绍"></a>Robust项目介绍</h1><p>在Robust项目下有四个模板：<br>Robust<br> – auto-patch-plugin<br> – gradle-plugin<br> – patch<br> – autopatchbase   </p>
+<p>auto-patch-plugin 这个是自动打包的插件<br>gradle-plugin 是为类中插桩的插件<br>patch 辅助管理和加载补丁的基础类<br>autopatchbase  是Robust最最基础的类，这个里面有我们的<code>ChangeQuickRedirect</code>这个桩接口。其他三个模块都需要依赖这个模块。<br>其基本流程如下：</p>
+<ol>
+<li><p>第一次打基础包，我们使用的<code>gradle-plugin</code>,会在打包过程中将我们需要的类插入一个<code>ChangeQuickRedirect</code>桩接口的静态实例，每个函数前插入如下代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(changeQuickRedirect != <span class="keyword">null</span>) &#123;    </div><div class="line">            <span class="comment">//PatchProxy中封装了获取当前className和methodName的逻辑，并在其内部最终调用了changeQuickRedirect的对应函数</span></div><div class="line">            <span class="keyword">if</span>(PatchProxy.isSupport(<span class="keyword">new</span> Object[<span class="number">0</span>], <span class="keyword">this</span>, changeQuickRedirect, <span class="keyword">false</span>)) &#123;     </div><div class="line">                <span class="keyword">return</span> ((Long)PatchProxy.accessDispatch(<span class="keyword">new</span> Object[<span class="number">0</span>], <span class="keyword">this</span>, changeQuickRedirect, <span class="keyword">false</span>)).longValue();    </div><div class="line">            &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改代码，在改动的代码前添加@Add或者@Modify的注释</p>
+</li>
+<li>使用<code>auto-patch-plugin</code>插件，来生成相对应的补丁。</li>
+<li>加载补丁，通过补丁中的<code>com.meituan.robust.patch.PatchesInfoImpl</code>获取哪个类需要插桩和插入的桩接口对应的实现类。</li>
+</ol>
+<p>现在留下几个疑问：</p>
+<ol>
+<li>如何通过<code>gradle-plugin</code>为需要的类插桩？</li>
+<li>打包过程中会有代码混淆，这个怎么解决</li>
+<li>改变代码后，这个注解有什么用，<code>auto-patch-plugin</code>如何通过和之前的文件比较，怎么生存补丁。</li>
+</ol>
+]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;[Robust]是美团推出的一款热修复框架，我记的之前我们分享过一篇&lt;a href=&quot;http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/&quot;&gt;热修复之美团方案&lt;/a&gt;,这篇文章是去年9月份时，我记得那时搞得一个Demo版，只是从思路上简单实现美团放出的文章的简单实现。今年三月份美团将已经趋向于稳定的&lt;a href=&quot;https://github.com/Meituan-Dianping/Robust&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Robust&lt;/a&gt;开源，在Andoid开发界也是一致好评。&lt;/p&gt;
+&lt;p&gt;后面会陆续放出Robust热修复的代码分析。&lt;br&gt;作为开篇第一篇，会介绍怎么使用和以及整个项目的简单的介绍。&lt;br&gt;
+    
     </summary>
     
+      <category term="Android热修复" scheme="http://ownwell.github.io/categories/Android%E7%83%AD%E4%BF%AE%E5%A4%8D/"/>
+    
+    
+      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
     
   </entry>
   

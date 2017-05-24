@@ -4,14 +4,19 @@
     
   <url>
     <loc>http://ownwell.github.io/2017/05/24/Robust%E7%83%AD%E4%BF%AE%E5%A4%8D-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2017-05-24T11:11:44.000Z</lastmod>
+    <lastmod>2017-05-24T12:34:41.000Z</lastmod>
     <data>
         <display>
-        <title>Robust热修复-入门使用</title>
+        <title>Robust热修复-使用和项目介绍</title>
         <pubTime>2017-05-24T11:11:44.000Z</pubTime>
         
+        <tag>Android </tag>
+         
          
            
+             
+              <breadCrumb title="Android热修复" url="http://ownwell.github.io/categories/Android%E7%83%AD%E4%BF%AE%E5%A4%8D/"/>
+          
         </display>
     </data>
     </url>
@@ -498,6 +503,133 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   <url>
     <loc>http://ownwell.github.io/2015/05/23/Ruby-learson/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
@@ -519,12 +651,193 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
+        
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>热修复之美团方案</title>
+        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
+        
+        <tag>Android热修复 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2016/07/28/realm-note/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Realm分享直播笔记</title>
+        <pubTime>2016-07-28T14:53:51.000Z</pubTime>
+        
+        <tag>Realm </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2016/07/27/thinking-in-2016-07/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>年中思考</title>
+        <pubTime>2016-07-27T14:26:33.000Z</pubTime>
+        
+        <tag>闲言碎语 </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
         <title>Android开发中事半功倍的小知识点</title>
         <pubTime>2016-02-29T13:52:28.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>多渠道打包时，多渠道不同的配置文件夹</title>
+        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring学习笔记（1）</title>
+        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -579,26 +892,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python学习笔记(1)</title>
-        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
-        
-        <tag>Python </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/06/15/A-sharp-tool-Charles/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -614,6 +907,26 @@
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python学习笔记(1)</title>
+        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
+        
+        <tag>Python </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -697,63 +1010,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/07/27/thinking-in-2016-07/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>年中思考</title>
-        <pubTime>2016-07-27T14:26:33.000Z</pubTime>
-        
-        <tag>闲言碎语 </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2016/07/28/realm-note/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Realm分享直播笔记</title>
-        <pubTime>2016-07-28T14:53:51.000Z</pubTime>
-        
-        <tag>Realm </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring学习笔记（1）</title>
-        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/05/23/Good-Way-to-Parse-Json/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -789,26 +1045,6 @@
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -856,26 +1092,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>热修复之美团方案</title>
-        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
-        
-        <tag>Android热修复 </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -885,50 +1101,6 @@
         
         <tag>Android </tag>
          
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
-        
         <tag>Tools </tag>
          
          
@@ -968,46 +1140,6 @@
         <display>
         <title>[Android]Android 版本兼容库</title>
         <pubTime>2014-10-14T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>多渠道打包时，多渠道不同的配置文件夹</title>
-        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
