@@ -260,7 +260,7 @@ a:focus {
 }
 
 .post .post-title a {
-	color: #666;
+	color: #111;
 }
 
 .post .post-title a:hover {
@@ -338,7 +338,7 @@ a:focus {
   padding-left: 15px;
 }
 #pageToc .toc-article .toc-link{
-  font-size: 12px; 
+  font-size: 12px;
 }
 #pageToc .toc-article li{
   line-height: 20px;
