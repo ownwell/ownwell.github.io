@@ -110,12 +110,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -130,12 +130,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -695,14 +695,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>热修复之美团方案</title>
-        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
         
-        <tag>Android热修复 </tag>
+        <tag>Android </tag>
          
          
            
@@ -715,14 +715,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        <title>热修复之美团方案</title>
+        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Android热修复 </tag>
          
          
            
@@ -772,12 +772,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Android开发中事半功倍的小知识点</title>
-        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
+        <title>多渠道打包时，多渠道不同的配置文件夹</title>
+        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -792,12 +792,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
+    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>多渠道打包时，多渠道不同的配置文件夹</title>
-        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
+        <title>Android开发中事半功倍的小知识点</title>
+        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
         
         <tag>Android </tag>
          
