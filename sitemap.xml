@@ -631,14 +631,14 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
+    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>关于Mysql允许远程连接</title>
-        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
+        <title>Spring学习笔记（1）</title>
+        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
         
-        <tag>JavaEE </tag>
+        <tag>Java </tag>
          
          
            
@@ -715,6 +715,23 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>leakCanary</title>
+        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -755,17 +772,20 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/07/27/thinking-in-2016-07/</loc>
+    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>年中思考</title>
-        <pubTime>2016-07-27T14:26:33.000Z</pubTime>
+        <title>Android开发中事半功倍的小知识点</title>
+        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
         
-        <tag>闲言碎语 </tag>
+        <tag>Android </tag>
          
          
            
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
         </display>
     </data>
     </url>
@@ -792,12 +812,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Android开发中事半功倍的小知识点</title>
-        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -812,39 +832,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
+    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Spring学习笔记（1）</title>
-        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
+        <title>关于Mysql允许远程连接</title>
+        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
         
-        <tag>Java </tag>
+        <tag>JavaEE </tag>
          
          
            
              
               <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -967,23 +967,6 @@
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>leakCanary</title>
-        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -1134,12 +1117,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          

@@ -565,39 +565,6 @@
   </entry>
   
   <entry>
-    <title>年中思考</title>
-    <link href="http://ownwell.github.io/2016/07/27/thinking-in-2016-07/"/>
-    <id>http://ownwell.github.io/2016/07/27/thinking-in-2016-07/</id>
-    <published>2016-07-27T14:26:33.000Z</published>
-    <updated>2017-04-19T05:57:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>2016年是个特殊的一年，至少到现在是，很多重要的时刻都在今年，如我去见女友的父母、如好友得娃等等，一件件喜事，填充了我的整个上半年，心情大好啊，哈哈，不过，技术荒废不少。（郁闷中……）今天和同事闲聊（他带着我，拿了公司的神码比赛的一等奖，很有自己想法的一个工程师）他鼓励我多去思考，多去总结，可能不对，但这个过程也是你成长的一部分，所以要捡起来以前决定放弃的博客，我觉得我有必要整理下过去的上半年，去规划下半年。<br><a id="more"></a></p>
-<p><strong>世界上最难的事，不是去做一百件事，而是你完完整整滴做完、做好一件事。</strong></p>
-<p>现在我主要负责网易财经APP的Android客户端的研发，由于人手不足、资源不到位等，很多时候都是我一个人在坚持，人走求去去，不过我仍然坚守，我喜欢现在的工作（尽管没有各种资源支持，尽管会有一些不开心的地方），我喜欢现在的生活方式，我知道自己要干嘛，自己能干嘛，以及我在做着我喜欢的事情，其他事我们能决定的太少。不要抱怨，那样只会让你觉得你很失败；不要气馁，只要你付出的足够多，你会得到你想要的。多听取别人的意见和建议，那样你知道你自己的方向是否已经航离路线。内心平和，豁达面对，这是我要的人生。</p>
-<p>上半年里，我主要是更新了一个大版本，自己学习的RxJava。retrofit、dragger、mvp/mvvm等最新最火的技术，并慢慢移植到财经APP中，不过性能待考验，一些自定义组价，仍会有各种各样的问题，对于一些复杂页面，缺乏组件化开发的思考，项目里需要加入插件化进行热更新，这些都是暴露的问题，同时执行力不够，对于今年的<a href="http://ownwell.github.io/booklist/">书单</a>，没有执行到位。</p>
-<p>所以下半年，主要任务是上述提到的几个：性能优化、热修复，可能的话做一个开源的换肤框架（开源一大堆，跟你有个P关系，自己去尝试做，即使失败，那也是失败的一部分）。</p>
-<p>列出的书单，至少基本：</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1469631065505.png" width="310"></p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1469630817140.png" width="270"></p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1469631147625.png" width="270"></p>
-<p>读书独立会坚持写的，其他剩下的书，若是能提前读也是不错的。</p>
-<p>感谢女友大人的大量支持我买书，希望她健康快乐，你时刻告诉我要成长。<br>感谢老爸老妈的没完没了的唠叨，让我知道你们才是我奋斗的动力。<br>感谢所有爱我的人，我也爱你们。</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=26601360&auto=1&height=66"></iframe>
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2016年是个特殊的一年，至少到现在是，很多重要的时刻都在今年，如我去见女友的父母、如好友得娃等等，一件件喜事，填充了我的整个上半年，心情大好啊，哈哈，不过，技术荒废不少。（郁闷中……）今天和同事闲聊（他带着我，拿了公司的神码比赛的一等奖，很有自己想法的一个工程师）他鼓励我多去思考，多去总结，可能不对，但这个过程也是你成长的一部分，所以要捡起来以前决定放弃的博客，我觉得我有必要整理下过去的上半年，去规划下半年。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="闲言碎语" scheme="http://ownwell.github.io/tags/%E9%97%B2%E8%A8%80%E7%A2%8E%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
     <title>[Androoid]开源自己的项目到JCenter</title>
     <link href="http://ownwell.github.io/2016/07/14/push-library-to-jcenter/"/>
     <id>http://ownwell.github.io/2016/07/14/push-library-to-jcenter/</id>
@@ -1033,6 +1000,48 @@
     
     
       <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SwipeBackLayout的一个让人揪心的问题</title>
+    <link href="http://ownwell.github.io/2015/09/30/swipeback-windowIsTranslucent/"/>
+    <id>http://ownwell.github.io/2015/09/30/swipeback-windowIsTranslucent/</id>
+    <published>2015-09-30T11:30:15.000Z</published>
+    <updated>2017-05-24T07:19:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Google 新品发布会，我就不想说了，太烂了，其他的不多说。</p>
+<p>今天愣是被一个问题给搞蒙，虽然待会还要坐车回家过十一，但是还是趁着现在的时间，总结一下自己的问题。</p>
+<p>看到网易财经的交互不是很友好，对于习惯了IOS手机操作的人来说，滑动就关掉当前页面是个很好的交互，对于单手操作尤其方便，但是Android系统是不提供这种交互的，所以有些APP就做了，如网易新闻、简书等，这能极大方便用户。<br><a id="more"></a></p>
+<h1 id="SwipeBackLayout"><a href="#SwipeBackLayout" class="headerlink" title="SwipeBackLayout"></a>SwipeBackLayout</h1><p>这不我也给财经APP加上，用的是<a href="https://github.com/ikew0ng/SwipeBackLayout" target="_blank" rel="external">SwipeBackLayout</a>这个还蛮好用的，所以就重点推荐它吧。</p>
+<p>使用就不用说了吧，直接继承<code>SwipeBackActivity</code>这个类,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwipeBackActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> <span class="keyword">implements</span> <span class="title">SwipeBackActivityBase</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> SwipeBackActivityHelper mHelper;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mHelper = <span class="keyword">new</span> SwipeBackActivityHelper(<span class="keyword">this</span>);</div><div class="line">        mHelper.onActivityCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPostCreate(savedInstanceState);</div><div class="line">        mHelper.onPostCreate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">findViewById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        View v = <span class="keyword">super</span>.findViewById(id);</div><div class="line">        <span class="keyword">if</span> (v == <span class="keyword">null</span> &amp;&amp; mHelper != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> mHelper.findViewById(id);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> v;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> SwipeBackLayout <span class="title">getSwipeBackLayout</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mHelper.getSwipeBackLayout();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSwipeBackEnable</span><span class="params">(<span class="keyword">boolean</span> enable)</span> </span>&#123;</div><div class="line">        getSwipeBackLayout().setEnableGesture(enable);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scrollToFinishActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">        Utils.convertActivityToTranslucent(<span class="keyword">this</span>);</div><div class="line">        getSwipeBackLayout().scrollToFinishActivity();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其他的不变，不过这样可以左右滑动，但是下面的页面是黑乎乎的，那是因为你只是滑动了Activity的contentView，至于他们的之间的关系，建议你google下Activity，Window，DecorView就知道了（要看最新的，DecorView以前是个线性布局，现在最新的是FrameLayout）。</p>
+<p>所以需要将window设置为透明：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;item name="android:windowIsTranslucent"&gt;true&lt;/item&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p> 这样问题就来了，我以前是给activity设置了<code>windowAnimationStyle</code>,现在全部失效，我给跪了。</p>
+<pre><code class="Java">&lt;item name="android:activityOpenExitAnimation"&gt;@anim/hold&lt;/item&gt;
+&lt;item name="android:activityCloseEnterAnimation"&gt;@anim/hold&lt;/item&gt;
+&lt;item name="android:activityOpenEnterAnimation"&gt;@anim/slide_in_from_bottom&lt;/item&gt;
+……
+</code></pre>
+<p> 这个也有人遇到了：<a href="https://github.com/ikew0ng/SwipeBackLayout/issues/3" target="_blank" rel="external">issue</a>。</p>
+<p> 参照下面的问题，我找到这个了，发现居然又解决方案：<a href="http://blog.csdn.net/xuewater/article/details/36398803" target="_blank" rel="external">方案</a>。不过我们需要为Activity的task的其他属性。</p>
+<p> 好了说多了多是泪，还是有时间自己也模仿着写个吧。</p>
+<p> 十一了，快回家了，先祝媳妇十一快乐，感觉最对不起的就是她。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Google 新品发布会，我就不想说了，太烂了，其他的不多说。&lt;/p&gt;
+&lt;p&gt;今天愣是被一个问题给搞蒙，虽然待会还要坐车回家过十一，但是还是趁着现在的时间，总结一下自己的问题。&lt;/p&gt;
+&lt;p&gt;看到网易财经的交互不是很友好，对于习惯了IOS手机操作的人来说，滑动就关掉当前页面是个很好的交互，对于单手操作尤其方便，但是Android系统是不提供这种交互的，所以有些APP就做了，如网易新闻、简书等，这能极大方便用户。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="UI" scheme="http://ownwell.github.io/tags/UI/"/>
     
   </entry>
   
