@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-07-17T16:38:03.080Z</updated>
+  <updated>2017-07-17T16:42:02.100Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://ownwell.github.io/2017/07/18/dynamic-load-so/"/>
     <id>http://ownwell.github.io/2017/07/18/dynamic-load-so/</id>
     <published>2017-07-17T16:29:19.000Z</published>
-    <updated>2017-07-17T16:38:03.080Z</updated>
+    <updated>2017-07-17T16:42:02.100Z</updated>
     
-    <content type="html"><![CDATA[<p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下怎么怎么做减法–减小包的体积。</p>
+    <content type="html"><![CDATA[<p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。</p>
 <p>结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让so文件不随apk一起发布呢，而是按需下载(只有当需要播放视频时才去服务器下载，然后再在本地load)。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png" alt=""></p>
 <h1 id="为什么要动态加载"><a href="#为什么要动态加载" class="headerlink" title="为什么要动态加载"></a>为什么要动态加载</h1><p>其实刚才已经解释了，可以有效避免apk安装包过大，因为这些so文件是依赖server的下发，本地只是load的过程。<br>其次，动态加载可以动态升级so文件，也是动态化的一部分。可以在不发版的情况下，升级so文件。</p>
 <blockquote>
@@ -57,8 +57,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下怎么怎么做减法–减小包的体积。&lt;/p&gt;
-&lt;p&gt;结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC playe
+      &lt;p&gt;随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。&lt;/p&gt;
+&lt;p&gt;结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player
     
     </summary>
     
