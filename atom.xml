@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-07-18T01:43:49.880Z</updated>
+  <updated>2017-07-18T01:56:40.910Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ownwell.github.io/2017/07/18/dynamic-load-so/"/>
     <id>http://ownwell.github.io/2017/07/18/dynamic-load-so/</id>
     <published>2017-07-17T16:29:19.000Z</published>
-    <updated>2017-07-18T01:43:49.880Z</updated>
+    <updated>2017-07-18T01:56:40.910Z</updated>
     
     <content type="html"><![CDATA[<p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。</p>
 <p>结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让so文件不随apk一起发布呢，而是按需下载(只有当需要播放视频时才去服务器下载，然后再在本地load)。<br><a id="more"></a><br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png" alt=""></p>
@@ -50,8 +50,9 @@
 <p>看到了吧，会先找system下的so文件，再找<code>nativeLibraryDirectories</code>下的，而这个<code>nativeLibraryDirectories</code>就是我们的自己项目中jniLibs下对应的so文件的路径。<br>当以当我们静态加载时，其实找的so文件就是<code>nativeLibraryDirectories</code>，所以我们可以以此作为突破口，利用反射，将这个nativeLibraryDirectories的开始处加上我们自己放so的文件夹下（感觉像QQ空间对class做patch的方式哦，其实替换旧的so文件这种可以可行的）。<br>开始hook啦。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">PathClassLoader pathClassLoader = (PathClassLoader) context.getApplicationContext().getClassLoader();</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           Object pathList = getPathList(pathClassLoader);</div><div class="line">                </div><div class="line">           <span class="comment">// 拿到nativeLibraryDirectories的Field</span></div><div class="line">           Field nativeLibraryDirectoriesField = pathList.getClass().getDeclaredField(<span class="string">"nativeLibraryDirectories"</span>);</div><div class="line">           nativeLibraryDirectoriesField.setAccessible(<span class="keyword">true</span>);</div><div class="line">           File[] libPaths = (File[]) nativeLibraryDirectoriesField.get(pathList);</div><div class="line">           File[] envilLibPaths = <span class="keyword">new</span> File[libPaths.length + <span class="number">1</span>];</div><div class="line">           <span class="comment">// 将存放我们自己so的文件夹加到第一位</span></div><div class="line">           envilLibPaths[<span class="number">0</span>] = dir;</div><div class="line">           <span class="comment">// 将原来的路径追加到后面</span></div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; libPaths.length; i++) &#123;</div><div class="line">               envilLibPaths[i + <span class="number">1</span>] = libPaths[i];</div><div class="line">           &#125;</div><div class="line">           <span class="comment">// 将新的nativeLibraryDirectories设置给pathList</span></div><div class="line">           nativeLibraryDirectoriesField.set(pathList, envilLibPaths);</div><div class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
 <p>这个代码是在14-22都是ok的，但是23源码不是这样滴，看源码吧：<br><a href="https://android.googlesource.com/platform/libcore/+/android-6.0.1_r48/dalvik/src/main/java/dalvik/system/DexPathList.java" target="_blank" rel="external">23的源码</a>先放这,hook起来也不难。</p>
 <blockquote>
-<p>Android 23源码建议hook <code>nativeLibraryPathElements</code>这个而不是<code>nativeLibraryDirectories;</code><br>方案2：Hook DexPathList的nativeLibraryPathElements或者nativeLibraryDirectories，将我们自定义存so文件的文件夹作为他们的第一个元素。</p>
+<p>Android 23源码建议hook <code>nativeLibraryPathElements</code>这个而不是<code>nativeLibraryDirectories;</code></p>
 </blockquote>
+<p>方案2：Hook DexPathList的nativeLibraryPathElements或者nativeLibraryDirectories，将我们自定义存so文件的文件夹作为他们的第一个元素。</p>
 <h1 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h1><p>刚开始我把所有视频相关的so文件扔到本地的一个文件下，再copy到/data/**{package}下，居然报<code>32-bit instead of 64-bit</code> 这个错误，我把so再放到jniLibs/armeabi下再跑可以啊，后来google了下发现有人在<a href="https://github.com/singwhatiwanna/dynamic-load-apk/issues/113" target="_blank" rel="external">动态化</a>时也遇到了，其中Anjon-github提到了一个方案：只要找任意一个32位的so文件（当然越小越好了）放到主程序中即可,于是我找了个1k的so文件放到了项目的jniLibs/armeabi下居然真的可以，这个原因不知为何，这个涉及到native代码，本人技术有限暂时没找到答案，不知道大家是否更好的解答或者解决方法。</p>
 ]]></content>
     
