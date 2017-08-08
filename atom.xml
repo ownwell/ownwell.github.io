@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-07-18T01:56:40.910Z</updated>
+  <updated>2017-08-08T15:00:10.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>注解在Android开发中的使用（1）</title>
+    <link href="http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/"/>
+    <id>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</id>
+    <published>2017-08-08T13:58:07.000Z</published>
+    <updated>2017-08-08T15:00:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。</p>
+<p>为了容易让大家理解什么是注解，文章会分为分为以下两篇来分别介绍：</p>
+<ul>
+<li>注解的基本概念以及自定义注解</li>
+<li>模仿ButterKnife</li>
+</ul>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>今天我们的任务是自定义一个注解，并在运行时获取到它的值。</p>
+<p>— 代码1：—<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@BindView</span>(R.id.btnTest)</div><div class="line">    Button btnTest;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h1><p>Java1.5引入了注解，当前许多框架中大量使用注解，如Spring。我们可以自己定义注解来， 这些注解会在编译过程或执行时产生作用。</p>
+<p>如上面的代码中<code>@BindView</code>就是一个自定义的注解，我么需要在使用前先声明：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Target</span>(ElementType.FIELD)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> BindView &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先BindView这不是一个接口，因为它的声明是<code>@interface</code>,其次它的定义需要用到<code>Retention</code>和<code>Target</code>这两个元注解。</p>
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解的作用就是负责注解其他注解。Java5.0定义了4个标准的meta-annotation类型，它们被用来提供对其它 annotation类型作说明。Java5.0定义的元注解：</p>
+<ul>
+<li>@Target,</li>
+<li>@Retention,</li>
+<li>@Documented,</li>
+<li>@Inherited</li>
+</ul>
+<h3 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h3><p>@Target主要是描述注解的范围，如包，类，变量等，像代码1中的BindView是声明在变量上，下面是target常用的几个：</p>
+<ol>
+<li>CONSTRUCTOR:用于描述构造器</li>
+<li>FIELD:用于描述域</li>
+<li>LOCAL_VARIABLE:用于描述局部变量</li>
+<li>METHOD:用于描述方法</li>
+<li>PACKAGE:用于描述包</li>
+<li>PARAMETER:用于描述参数</li>
+<li>TYPE:用于描述类、接口(包括注解类型) 或enum声明</li>
+</ol>
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><p>Retention代表它什么时候发生作用，常用就三种：</p>
+<ol>
+<li>SOURCE:在源文件中有效（即源文件保留）</li>
+<li>CLASS:在class文件中有效（即class保留）</li>
+<li>RUNTIME:在运行时有效（即运行时保留）</li>
+</ol>
+<h1 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h1><p>主要是javadoc档案化需要</p>
+<h1 id="Inherited："><a href="#Inherited：" class="headerlink" title="@Inherited："></a>@Inherited：</h1><p>@Inherited阐述了某个被标注的类型是被继承的</p>
+<h1 id="验证自定义的情况"><a href="#验证自定义的情况" class="headerlink" title="验证自定义的情况"></a>验证自定义的情况</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processAnnotation</span><span class="params">()</span> </span>&#123;</div><div class="line">        Log.e(TAG, <span class="string">"btn id : "</span> + R.id.btnTest );</div><div class="line"></div><div class="line">        </div><div class="line">        Field[] fields  =  <span class="keyword">this</span>.getClass().getDeclaredFields();</div><div class="line">        <span class="keyword">for</span> (Field field : fields) &#123;</div><div class="line">            <span class="keyword">if</span> (field.isAnnotationPresent(BindView.class)) &#123;</div><div class="line">                BindView bindView = field.getAnnotation(BindView.class);</div><div class="line">                <span class="keyword">int</span> viewID = bindView.value();</div><div class="line">                Log.e(TAG, <span class="string">"processAnnotation: "</span> + viewID );</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>发现打印的两个值是相等的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解
+    
+    </summary>
+    
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="注解" scheme="http://ownwell.github.io/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>Android动态加载so文件</title>
@@ -1021,33 +1081,6 @@
     
       &lt;p&gt;最近一直在偷懒，没有更新自己的博客，曾经想放弃更新博客，觉得别人都写的挺好，为什么我的博客越写越不想写，产生了困惑和疑问，不过我后来觉得自己还是要写，是给自己写，一篇优质的博客，何尝不是自己从零开始思考，想通了也就决定今天开始，没一周至少一篇动心思写的博客或者翻译文章，由于女朋友也要复习自己的考试的东西，也要读读一些自己一直没看的书。&lt;/p&gt;
 &lt;p&gt;开发Android也已经快3年，在网易也已经呆了快一年，觉得自己成长的任然是很慢，当然了这还是自己的原因，不过在开源社区待久了，发现自己还是学到了一些好东西，下面就慢慢总结出来供大家参考。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多渠道打包时，多渠道不同的配置文件夹</title>
-    <link href="http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/"/>
-    <id>http://ownwell.github.io/2015/12/02/多渠道打包时，多渠道注意事宜/</id>
-    <published>2015-12-02T12:44:31.000Z</published>
-    <updated>2017-04-19T05:57:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>记得上次说过给多个渠道打包，用的是美团的那种方式，但是现在开发中还是有各种各样的问题，如给豌豆荚首发需要改变一些UI布局，想给自己的dubug和release用不同的图标标识一下等需要，不要说你没有，要是没有，小伙子你等着你产品经理肯定会找到你让你这么搞得。<br><a id="more"></a></p>
-<p>Android Studio的文件结构其实是支持的。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/mdQQ20160229-1%402x.png" alt=""></p>
-<p>其中<br>src<br><br>—main/java就是存放源代码 <br><br>—main/res存放资源<br><br>—AndroidMannifest manifest文件<br><br>而对于多渠道我们可以新建不同的文件夹,如</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/mdQQ20160229-2%402x.png" alt=""></p>
-<p>这样在用productFlavors打渠道包就会找到不同的路径，如你的渠道是qihu360，其ad_image_bottom.png资源就会是src/qihu360下的ad_image_bottom.png。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记得上次说过给多个渠道打包，用的是美团的那种方式，但是现在开发中还是有各种各样的问题，如给豌豆荚首发需要改变一些UI布局，想给自己的dubug和release用不同的图标标识一下等需要，不要说你没有，要是没有，小伙子你等着你产品经理肯定会找到你让你这么搞得。&lt;br&gt;
     
     </summary>
     
