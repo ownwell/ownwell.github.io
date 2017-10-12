@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-10-12T16:32:43.210Z</updated>
+  <updated>2017-10-12T16:36:26.450Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ownwell.github.io/2017/10/13/apk-two-signer/"/>
     <id>http://ownwell.github.io/2017/10/13/apk-two-signer/</id>
     <published>2017-10-12T16:24:48.000Z</published>
-    <updated>2017-10-12T16:32:43.210Z</updated>
+    <updated>2017-10-12T16:36:26.450Z</updated>
     
     <content type="html"><![CDATA[<p>前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。</p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>目前为止，android通用的打包过程时使用的签名工具有两套–jarsigner和apksigner。其中apksigner也就是刚才我们提到的APK Signature Scheme v2，两者有什么关系，为什么要使用新的签名机制呢？这是我们这篇文章介绍的重点。</p>
@@ -60,7 +60,7 @@
 </blockquote>
 <p>其中apk签名块也是个的结构如下：<br><img src="https://user-gold-cdn.xitu.io/2017/10/12/6127028bd1d01f848712035120ff9855" alt="apk签名块"><br>美团又一次利用了规则，在ID-Value的加入一个渠道ID-Value(apk不会校验id，value的有效性)。<br>其文章思路参考：<a href="https://tech.meituan.com/android-apk-v2-signature-scheme.html" target="_blank" rel="external">新一代开源Android渠道包生成工具Walle
 </a>.</p>
-<p>apksign签名是也更安全，同时同时和jarsign相比也更小,赶快动手试试吧。<br>使用么就很简单啦：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apksigner sign --ks keystore.jks |</div><div class="line">  --key key.pk8 --cert cert.x509.pem</div><div class="line">  [signer_options] app-name.apk</div></pre></td></tr></table></figure></p>
+<p>所以，和jarsign相比，apksign签名更安全，其打包生成的apk也更小,赶快动手试试吧。<br>使用么就很简单啦：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apksigner sign --ks keystore.jks |</div><div class="line">  --key key.pk8 --cert cert.x509.pem</div><div class="line">  [signer_options] app-name.apk</div></pre></td></tr></table></figure></p>
 <p>更多工具可以参考<a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="external">谷歌官方文档</a>.<br>总结下：jarsigner签名是jdk提供的签名工具，它是针对apk文件压缩后的文件进行的完整和安全性校验，而apksign也是通过对apk二进制文件的校验，也更安全。</p>
 ]]></content>
     
