@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-08-08T15:00:10.000Z</updated>
+  <updated>2017-10-12T16:32:43.210Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android的APK两种签名</title>
+    <link href="http://ownwell.github.io/2017/10/13/apk-two-signer/"/>
+    <id>http://ownwell.github.io/2017/10/13/apk-two-signer/</id>
+    <published>2017-10-12T16:24:48.000Z</published>
+    <updated>2017-10-12T16:32:43.210Z</updated>
+    
+    <content type="html"><![CDATA[<p>前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>目前为止，android通用的打包过程时使用的签名工具有两套–jarsigner和apksigner。其中apksigner也就是刚才我们提到的APK Signature Scheme v2，两者有什么关系，为什么要使用新的签名机制呢？这是我们这篇文章介绍的重点。</p>
+<p>在了解签名之前我们需要了解几个知识点：</p>
+<ul>
+<li>数字签名</li>
+<li>ZipAlign</li>
+<li>keystore</li>
+</ul>
+<h2 id="数字签名-–-Signature"><a href="#数字签名-–-Signature" class="headerlink" title="数字签名 – Signature"></a>数字签名 – Signature</h2><ul>
+<li>数字签名就是信息的发送者用自己的私钥对消息摘要加密产生一个字符串，加密算法确保别人无法伪造生成这段字符串，这段数字串也是对信息的发送者发送信息真实性的一个有效证明。</li>
+<li>数字签名是 非对称密钥加密技术 + 数字摘要技术 的结合。</li>
+<li>数字签名技术是将信息摘要用发送者的私钥加密，与原文一起传送给接收者。接收者只有用发送者的公钥才能解密被加密的信息摘要，然后接收者用相同的Hash函数对收到的原文产生一个信息摘要，与解密的信息摘要做比对。如果相同，则说明收到的信息是完整的，在传输过程中没有被修改；不同则说明信息被修改过，因此数字签名能保证信息的完整性。并且由于只有发送者才有加密摘要的私钥，所以我们可以确定信息一定是发送者发送的。<br>我们的APK就是通过这种数字签名技术保证我们APK的安全。</li>
+</ul>
+<h2 id="ZipAlign"><a href="#ZipAlign" class="headerlink" title="ZipAlign"></a>ZipAlign</h2><p>zip对齐，因为APK包的本质是一个zip压缩文档，经过边界对齐方式优化能使包内未压缩的数据有序的排列，从而减少应用程序运行时的内存消耗 ，通过空间换时间的方式提高执行效率（zipalign后的apk包体积增大了90KB左右）。</p>
+<p>切换目录到SDK的build-tools目录下（例如 SDK/build-tools/25.0.2/），执行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zipalign -v <span class="number">4</span> infile.apk outfile.apk</div></pre></td></tr></table></figure></p>
+<h2 id="keystore"><a href="#keystore" class="headerlink" title="keystore"></a>keystore</h2><p> keystore是我们打包过程中必须要填写的内容，这个类似我们代表我们开发者信息的一个『证书』，这个证书类似开发者的”身份证”,它是唯一的，所以只要一个app有这个证书，在应用市场上就可以保证这个app不会被别人冒充，也可以作为一个开发者的凭证（只要keystore的密码账号不被泄露）。<br> 具体内容可以参考：<a href="http://www.jianshu.com/p/644ddb6e3d9c" target="_blank" rel="external">Android Keystore漫谈</a>.<br> 我们可以通过jdk/bin/下的keytool工具来创建自己的keystore：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkeypair -alias &quot;cyning&quot; -keyalg &quot;RSA&quot; -keystore &quot;cyningfile.keystore&quot;</div></pre></td></tr></table></figure>
+<p>创建一个别名为cyning的证书，该证书存放在名为cyningfile.keystore的密钥库中，若cyningfile.keystore密钥库不存在则创建。<br>现在更多人是通过Android Studio的工具来创建自己的keystore。</p>
+<p>参数说明：</p>
+<p>-genkeypair：生成一对非对称密钥;<br>-alias：指定密钥对的别名，该别名是公开的;<br>-keyalg：指定加密算法，本例中的采用通用的RAS加密算法;<br>-keystore:密钥库的路径及名称，不指定的话，默认在操作系统的用户目录下生成一个”.keystore”的文件</p>
+<p>查看这个keystore：<br>keytool -list -keystore cyningfile.keystore</p>
+<h1 id="APK的签名"><a href="#APK的签名" class="headerlink" title="APK的签名"></a>APK的签名</h1><p>在V2签名出来之前我们都是通过<code>jarsigner</code>签名，而后才有<code>APK Signature Scheme v2</code>.他们有很大的不同。</p>
+<h2 id="META-INF下签名三兄弟"><a href="#META-INF下签名三兄弟" class="headerlink" title="META-INF下签名三兄弟"></a>META-INF下签名三兄弟</h2><p>所谓签名三兄弟，实际上就是META-INF文件夹下的MANIFEST.MF、CERT.SF、CERT.RSA三个文件。<br>它会先通过SHA1算法生成这些文件（png，dex等）的信息摘要，而后会生产MANIFEST.MF。</p>
+<h1 id="jarsigner"><a href="#jarsigner" class="headerlink" title="jarsigner"></a>jarsigner</h1><p>jarsigner是由JDK提供的一个签名工具，JDK/bin/jarsigner(jarsigner，windows上是exe文件).<br>通过这个工具也可以给我们的APK进行签名，在<code>APK Signature Scheme v2</code>出来之前都是采用这种方式。<br>我们可以使用如下命令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jarsigner -verbose -keystore test.keystore -signedjar -signed.apk unsigned.apk <span class="string">'test.keystore'</span></div></pre></td></tr></table></figure></p>
+<p>对照签名前后，META-INFO文件的变化：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/10/10/a86b4f21d90cbf54c181caf6bcbfd860" alt="签名前"><br><img src="https://user-gold-cdn.xitu.io/2017/10/10/8c2f51b4135469231ec206fb8a724128" alt="签名后"></p>
+<p>就会发现签名后多了两个文件CERT.SF、CERT.RSA，同时MANIFEST.MF会多了文件和对应的SHA1算法下的摘要。<br>MF实际上会列出文件解压后的所有文件除了META-INF下所有文件的签名。<br>SF则是MF文件的摘要信息以及.MF文件当中每个条目在用摘要算法计算得到的摘要信息并用base64编码保存；CERT.SF文件则存放证书信息，公钥信息，以及用私钥对.SF文件的加密数据即签名信息，这样保证了每个文件的完整性，但都是基于apk解压后的所有文件。</p>
+<p>在安装APK时，会先检查CERT.SF文件，确认签名正确，而后检查SF文件，再通过SF去检查apk文件下各个文件，这样一步步环环相扣确保了每个文件都是有效的，确保了文件的完整和安全性，但是对于好事者还是发现了其中的漏洞，美团有个方案就是通过在META-INF下添加一个空文件来代表渠道，这个空文件不会被检查，他和任何文件没有关联（CERT.SF、CERT.RSA和MANIFEST.MF他们是相关关联的）。</p>
+<p>这样是没有问题的，什么对于apk文件ZipAlign处理后他们的压缩产物是一致的，所以在安装apk时，也是可以通过，但是这样真的安全么？<br>答案是否！<br>我们可以通过这些不检测文件中存放不安全的代码，同时每次安装apk都需要解压apk文件来进行校验，耗时，也是个耗电的过程。</p>
+<p>于是乎，在Android Build Tools从24.0.3版本引入的一个新的apk文件签名工具apksigner，也就是google官网上说的<br><a href="https://source.android.com/security/apksigning/v2" target="_blank" rel="external"><code>Signature Scheme v2</code>翻译过来过来就是APK签名方案v2</a>.</p>
+<h1 id="apksigner"><a href="#apksigner" class="headerlink" title="apksigner"></a>apksigner</h1><p>apksigner是基于真个apk二进制文件进行校验的，即使你使用了ZipAlign对齐后，二进制文件发生了改变，就认为两个apk不一样,实际上也就是两个不同的文件。<br>官方解释是在apk文件的Central Directory前面插入了一个apk签名块用来存放apk的签名信息，来确保apk签名的安全性，如图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/10/12/dd03318efe8ad982b36db9e8d8516644" alt=""></p>
+<p>这样apk就等于是是有了四块：<br><img src="https://user-gold-cdn.xitu.io/2017/10/12/2bfa5ef2448e40a17f54fcf19db4e489" alt=""></p>
+<blockquote>
+<p>google建议： APK 签名方案 v2 是在 Android 7.0 (Nougat) 中引入的。为了使 APK 可在 Android 6.0 (Marshmallow) 及更低版本的设备上安装，应先使用 JAR 签名功能对 APK 进行签名，然后再使用 v2 方案对其进行签名。<br>在android studio的Gradle Plugin 2.2以及之上版本的插件当中，默认是v2开启的,需要的话可以自定义关或者开：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">signConfig &#123;</div><div class="line">    v1SigningEnabled <span class="keyword">false</span></div><div class="line">    v2SigningEnabled <span class="keyword">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>其中apk签名块也是个的结构如下：<br><img src="https://user-gold-cdn.xitu.io/2017/10/12/6127028bd1d01f848712035120ff9855" alt="apk签名块"><br>美团又一次利用了规则，在ID-Value的加入一个渠道ID-Value(apk不会校验id，value的有效性)。<br>其文章思路参考：<a href="https://tech.meituan.com/android-apk-v2-signature-scheme.html" target="_blank" rel="external">新一代开源Android渠道包生成工具Walle
+</a>.</p>
+<p>apksign签名是也更安全，同时同时和jarsign相比也更小,赶快动手试试吧。<br>使用么就很简单啦：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apksigner sign --ks keystore.jks |</div><div class="line">  --key key.pk8 --cert cert.x509.pem</div><div class="line">  [signer_options] app-name.apk</div></pre></td></tr></table></figure></p>
+<p>更多工具可以参考<a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="external">谷歌官方文档</a>.<br>总结下：jarsigner签名是jdk提供的签名工具，它是针对apk文件压缩后的文件进行的完整和安全性校验，而apksign也是通过对apk二进制文件的校验，也更安全。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。&lt;/p&gt;
+&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>注解在Android开发中的使用（1）</title>
@@ -1047,40 +1110,6 @@
     <summary type="html">
     
       &lt;p&gt;在开发过程中，我们经常喊着我们需要一个root的手机，为什么呢？&lt;br&gt;&lt;img src=&quot;http://pic.baike.soso.com/p/20090712/20090712210314-622536671.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android开发中事半功倍的小知识点</title>
-    <link href="http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://ownwell.github.io/2016/02/29/Android开发中事半功倍的小知识点/</id>
-    <published>2016-02-29T13:52:28.000Z</published>
-    <updated>2017-04-19T05:57:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近一直在偷懒，没有更新自己的博客，曾经想放弃更新博客，觉得别人都写的挺好，为什么我的博客越写越不想写，产生了困惑和疑问，不过我后来觉得自己还是要写，是给自己写，一篇优质的博客，何尝不是自己从零开始思考，想通了也就决定今天开始，没一周至少一篇动心思写的博客或者翻译文章，由于女朋友也要复习自己的考试的东西，也要读读一些自己一直没看的书。</p>
-<p>开发Android也已经快3年，在网易也已经呆了快一年，觉得自己成长的任然是很慢，当然了这还是自己的原因，不过在开源社区待久了，发现自己还是学到了一些好东西，下面就慢慢总结出来供大家参考。<br><a id="more"></a></p>
-<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><h2 id="IDEA-Android-Studio"><a href="#IDEA-Android-Studio" class="headerlink" title="IDEA/Android Studio"></a>IDEA/Android Studio</h2><p> Android Studio 是Google重点推荐的工具，以前的Eclipse+ADT已经不再维护了，它强大的地方就不再赘述。为了更好配合开发，有一些插件我们可能需要安装的：</p>
-<ol>
-<li>Android Parcelable code generator 在<code>Javabean</code>里右键，会有一个<code>Parcelable</code>可将javabean实现<code>Parcelable</code>接口。</li>
-<li>GsonFormat 将json转成JaveBean。</li>
-</ol>
-<h1 id="干货聚集地"><a href="#干货聚集地" class="headerlink" title="干货聚集地"></a>干货聚集地</h1><p>  <a href="gank.io">干货，每天下午两点更新</a><br>  <a href="http://p.codekk.com/" target="_blank" rel="external">开源项目</a><br>  <a href="http://www.jcodecraeer.com/" target="_blank" rel="external">泡在网上的日子</a><br>  <a href="">Android developer Blog</a><br>  <a href="">AndroidStyling</a><br>  <a href="">开发者最前线</a></p>
-<h1 id="好用第三方库"><a href="#好用第三方库" class="headerlink" title="好用第三方库"></a>好用第三方库</h1><p>   <a href="">Gson</a><br>   <a href="">Android-support</a><br>   <a href="">OkHttpClient</a><br>   <a href="">Rxjava/RxAndroid</a><br>   <a href="">Glide/Piccaso/UIL</a>    </p>
-<h1 id="插件化框架"><a href="#插件化框架" class="headerlink" title="插件化框架"></a>插件化框架</h1><p>   <a href="https://github.com/bunnyblue/ACDD" target="_blank" rel="external">OpenAtlas/ACDD</a><br>   <a href="https://github.com/Qihoo360/DroidPlugin" target="_blank" rel="external">DroidPlug</a><br>   <a href="https://github.com/mmin18/AndroidDynamicLoader" target="_blank" rel="external">AndroidDynamicLoader</a>      </p>
-<h1 id="高质量的APP"><a href="#高质量的APP" class="headerlink" title="高质量的APP"></a>高质量的APP</h1><p>  <a href="">NBAPlus</a><br>  <a href="">Gank.io</a>   </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近一直在偷懒，没有更新自己的博客，曾经想放弃更新博客，觉得别人都写的挺好，为什么我的博客越写越不想写，产生了困惑和疑问，不过我后来觉得自己还是要写，是给自己写，一篇优质的博客，何尝不是自己从零开始思考，想通了也就决定今天开始，没一周至少一篇动心思写的博客或者翻译文章，由于女朋友也要复习自己的考试的东西，也要读读一些自己一直没看的书。&lt;/p&gt;
-&lt;p&gt;开发Android也已经快3年，在网易也已经呆了快一年，觉得自己成长的任然是很慢，当然了这还是自己的原因，不过在开源社区待久了，发现自己还是学到了一些好东西，下面就慢慢总结出来供大家参考。&lt;br&gt;
     
     </summary>
     
