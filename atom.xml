@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-11-05T15:32:00.300Z</updated>
+  <updated>2017-11-05T15:38:46.390Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>android_better_progurad</title>
+    <title>在Android中使用ProGuard</title>
     <link href="http://ownwell.github.io/2017/10/30/android-better-progurad/"/>
     <id>http://ownwell.github.io/2017/10/30/android-better-progurad/</id>
     <published>2017-10-30T14:08:30.000Z</published>
-    <updated>2017-11-05T15:32:00.300Z</updated>
+    <updated>2017-11-05T15:38:46.390Z</updated>
     
     <content type="html"><![CDATA[<p>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。</p>
 <h1 id="简单认识ProGuard"><a href="#简单认识ProGuard" class="headerlink" title="简单认识ProGuard"></a>简单认识ProGuard</h1><p>在平时开发中，我们的项目是ProGuard开关默认是是关的，我们通过如下代码打开ProGuard：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">true</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>，  'project.pro'</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
