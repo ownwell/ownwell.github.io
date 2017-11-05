@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-10-12T16:36:26.450Z</updated>
+  <updated>2017-11-05T15:32:00.300Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,253 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android_better_progurad</title>
+    <link href="http://ownwell.github.io/2017/10/30/android-better-progurad/"/>
+    <id>http://ownwell.github.io/2017/10/30/android-better-progurad/</id>
+    <published>2017-10-30T14:08:30.000Z</published>
+    <updated>2017-11-05T15:32:00.300Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。</p>
+<h1 id="简单认识ProGuard"><a href="#简单认识ProGuard" class="headerlink" title="简单认识ProGuard"></a>简单认识ProGuard</h1><p>在平时开发中，我们的项目是ProGuard开关默认是是关的，我们通过如下代码打开ProGuard：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">true</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>，  'project.pro'</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>先解释下我们可以通过<code>minifyEnabled</code>打开开关，通过<code>proguardFiles</code>指定我们的<code>ProGuard Rule</code>的多个文件（后面会介绍）。我们也可以使用<code>proguardFile</code>指定一个一个文件，其中<code>proguard-android.txt</code>实际上是我们的<code>{Android Sdk path}/tools/proguard/</code>下<code>proguard-android.txt</code>。这样就可以简单使用我们的ProGuard，当然了对应的<code>ProGuard</code>也是我们SDK下<code>proguard-android.txt</code></p>
+<h1 id="什么是ProGuard"><a href="#什么是ProGuard" class="headerlink" title="什么是ProGuard"></a>什么是ProGuard</h1><p>那个究竟什么是ProGuard呢，我们可以看下<code>{Android Sdk path}/tools/proguard/</code>下的ProGuard的doc文档：</p>
+<blockquote>
+<p>ProGuard is a free Java class file shrinker, optimizer, obfuscator, and preverifier. It detects and removes unused classes, fields, methods, and attributes. It optimizes bytecode and removes unused instructions. It renames the remaining classes, fields, and methods using short meaningless names. Finally, it preverifies the processed code for Java 6 or for Java Micro Edition.</p>
+</blockquote>
+<p>大概意思就是： ProGuard是一个免费的可以将java class文件进行压缩，优化，混淆，预校验的工具。它能删除无用的类，变量、方法以及属性。它能优化字节码，移除无用的指令，同时它将（压缩后）保留的类，变量和方法使用无意义的段字符来重命名，而后还能在对应的java版本上进行预校验这些处理后的code。</p>
+<p>## ProGuard四兄弟</p>
+<p><img src="http://7xwwa2.com1.z0.glb.clouddn.com/proguard_intro.png" alt=""></p>
+<p>如上图，ProGuard实际上四大天王（魔家四将），他们分别是压缩（shrinking），优化（optimization），混淆（obfuscation）和预校验（preverification），一个class和四大天王碰过面才可以到最后的南天门（。</p>
+<p>压缩(shrinking)：检测并移除代码中无用的类、字段、方法和特性（Attribute）<br>优化(optimization)：对字节码进行优化，移除无用的指令<br>混淆(obfuscation)：使用a，b，c，d这样简短而无意义的名称，对类、字段和方法进行重命名<br>预检(preverification)：在Java平台上对处理后的代码进行预检，确保加载的class文件是可执行的。<br>对于一个class文件也要经历如下四步：</p>
+<ol>
+<li>会首先检查这个类是否有地方用到（没用到直接删除），这个类里面的方法或者变量哪些我们没用到，没用到就直接删除</li>
+<li><p>若类没有被删除，检查class文件的无用指令和字节</p>
+</li>
+<li><p>将仍然保留的类，混淆class名及内部的变量和方法名</p>
+</li>
+<li>在对应的java的平台上预校验这个class是否完整有效<br>这个是默认的情况下经历着四个步骤，这个也不是必须的。很像目前中国的大环境，你可以通过人情来避免不必要的麻烦，这四大天王也不例外。<br>例如我写个SDK，里面封装很多java文件，最后类库为第三方服务，最后我打出一个jar，这个jar我期望用混淆。严格按照混淆的四大天王的规则，就会遇到很多问题：</li>
+<li>保留一些类。里面的类好对外使用的，不会被SDK内部使用，按照混淆的四大天王的规则，第一步直接就被干掉了，所有就得走点后门<br>2. 某些class，method或者变量，我期望不要混淆。例如一个支付的class为PaySDK，里面的方法也尽量是aliPay，wxPay，名称有意义，使用混淆后PaySDK成了a，方法名也是无意义的a，b，这对使用sdk的开发者是不友好的。<br>为了避免这个问题，就需要我们自己来制定一个规则，在去南天门的路上，你只管这个规则来给四大天王看，告诉按照我们的规则走，而这个规则就是<code>ProGuard Rule</code>我们刚才配置的<code>proguardFiles</code>,对于我们来说写一个<code>ProGuard Rule</code>是目前比较不太好写的一件事。</li>
+</ol>
+<h1 id="ProGuard-Rule"><a href="#ProGuard-Rule" class="headerlink" title="ProGuard Rule"></a>ProGuard Rule</h1><p>在第一部分我们提到在主项目下的build.gradle配置我们的<code>ProGuard Rule</code>,其中Google官方提供了一个简单的<a href="https://gist.github.com/ownwell/373860e6468671e8e65c8b9eb849f7c2#file-proguard-android-txt" target="_blank" rel="external">基础示例</a>：<br>我们就来大致看下他们是分别的作用：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># dont 一般是代表do not不要的意思，这个就表示混淆的字符不适用大小写混合的（如Ab）</div><div class="line">-dontusemixedcaseclassnames</div><div class="line">-dontskipnonpubliclibraryclasses</div></pre></td></tr></table></figure></p>
+<p>这个是Google建议的，若你非使用大小混合，没人会拦你。😆。<br><br><br></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 不优化，dex不是运行在JVM上的，当然了也不做预校验</div><div class="line">-dontoptimize</div><div class="line">-dontpreverify</div></pre></td></tr></table></figure>
+<p>这个是针对android的开发而言，不过你要使用优化，尽量使用<code>{Android Sdk path}/tools/proguard/</code>下的<code>proguard-android-optimize.txt</code>文件。<br><br><br></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 注解相关的</div><div class="line">-keepattributes *Annotation*</div><div class="line"># 猜测是Google服务相关的</div><div class="line">-keep public class com.google.vending.licensing.ILicensingService</div><div class="line">-keep public class com.android.vending.licensing.ILicensingService</div></pre></td></tr></table></figure>
+<p>可以看到有个<code>keepattributes</code>肯定是保留类的属性啦，还有个<code>-keep public class 类名</code>这个肯定就是为了保留这个类不被压缩或者混淆。<br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclasseswithmembernames <span class="class"><span class="keyword">class</span> * </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个<code>-keepclasseswithmembernames public class 类名</code>不难解释吧，字面意思是保留class和类的成员，并且这个类有个native方法。<br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> * <span class="keyword">extends</span> <span class="title">android</span>.<span class="title">view</span>.<span class="title">View</span> </span>&#123;</div><div class="line">   <span class="keyword">void</span> set*(***);</div><div class="line">   *** get*();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个就代表保留类中的getter/setter方法，这个类是继承自<code>android.view.View</code><br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers <span class="class"><span class="keyword">class</span> **.<span class="title">R</span>$* </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;fields&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个肯定是保留我们资源ID对应的R文件中所有的静态变量。<br><br><br></p>
+<p>看了这么多我们会产生疑问：keep、keepclassmembers等这些keep开头的有哪些，区别是什么，怎么配置参数，class，method这些怎么写，<em>*以及</em>分别代表什么，就让我们来一起探索<code>ProGuard Rule</code>的写法吧。</p>
+<h2 id="Keep-options"><a href="#Keep-options" class="headerlink" title="Keep options"></a>Keep options</h2><p>keep目前常见的就6六种：</p>
+<ol>
+<li>-keep [,modifier,…] class_specification </li>
+<li>-keepclassmembers [,modifier,…] class_specification   </li>
+<li>-keepclasseswithmembers [,modifier,…] class_specification </li>
+<li>-keepnames class_specification 在压缩（删除无用的类和成员）后保留下来的类和其成员中，阻止类和类的成员(里面的变量和方法都是成员)混淆</li>
+<li>-keepclassmembernames class_specification 在压缩后保留下来的类中，阻止类的成员被混淆</li>
+<li>-keepclasseswithmembernames class_specification</li>
+</ol>
+<h3 id="有无name的keep"><a href="#有无name的keep" class="headerlink" title="有无name的keep*"></a>有无name的keep*</h3><p>可以看到前三个实际上是比后三个少了name的，但是意义却大不同啊。就以keep和keepName为例吧，<br>keep是阻止类和类的变量（实际上就是类中的方法和变量）被压缩和混淆，而keepnames那么则是在压缩后，防止类和类的成员被混淆。换句话说，keep在压缩第一道大门时，就已经生效，可以避免被压缩掉，即使这个类或者成员没有被用到也不会被移除，而keepnames则是在压缩后，从保留的类中来看哪些类和成员不能被混淆，是在压缩后才生效。<br>官方文档解释的很到位：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Short for -keep,allowshrinking class_specification</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>实际上加了<code>allowshrinking</code>的kepp命令，允许压缩。</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>概述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keep</td>
+<td>阻止类和成员被和混淆</td>
+</tr>
+<tr>
+<td>keepclassmember</td>
+<td>阻止类的成员被和混淆</td>
+</tr>
+<tr>
+<td>keepclasseswithmembers</td>
+<td>阻止类和类中特定的成员被压缩和混淆</td>
+</tr>
+<tr>
+<td>keepnames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类和类的成员(里面的变量和方法都是成员)混淆</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类的成员被混淆</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类和类中特定的成员被混淆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="keep-VS-keepclasseswithmembers"><a href="#keep-VS-keepclasseswithmembers" class="headerlink" title="keep VS keepclasseswithmembers"></a>keep VS keepclasseswithmembers</h3><p>这两个都可以注释保留住class及其成员，但是二者区分最大之处在于：keep只看后面的class 是什么，不关心后面的成员，而keepclasseswithmembers则是更关心后面的条件。干说太硬，来点湿的。<br>如下规则：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclasseswithmembernames <span class="class"><span class="keyword">class</span> <span class="title">me</span>.<span class="title">cyning</span>.* </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当在me.cyning包下，遇到方法体有native方法时，则keep其class，同时keep这个class的native的方法（其他无用方法可能会被删掉或者方法名会被混淆）。</p>
+<p>而<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keep <span class="class"><span class="keyword">class</span> <span class="title">me</span>.<span class="title">cyning</span>.* </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>则会将class不压缩</p>
+<p>这个keep*可以保证类或者方法不被压缩和混淆，至于选哪个看你心情喽。</p>
+<p>## </p>
+<h2 id="Class-specifications"><a href="#Class-specifications" class="headerlink" title="Class specifications"></a>Class specifications</h2><p>在刚才示例中，有个代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">google</span>.<span class="title">vending</span>.<span class="title">licensing</span>.<span class="title">ILicensingService</span></span></div></pre></td></tr></table></figure></p>
+<p>通过这一句<code>keep</code>了<code>com.google.vending.licensing.ILicensingService</code>，但是我们若是<code>keep</code>某一类时而不只是一个class时，我们要怎么办？<br>这就需要我们将这一类的做个抽象，而将这所有的类都列出来一个个keep。</p>
+<p>我们可以来看下class的基本示例：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[@annotationtype] [[!]public|final|abstract|@ ...] [!]interface|class|enum classname</div><div class="line">    [extends|implements [@annotationtype] classname]</div><div class="line">[&#123;</div><div class="line">    [@annotationtype] [[!]public|private|protected|static|volatile|transient ...] &lt;fields&gt; |</div><div class="line">                                                                      (fieldtype fieldname);</div><div class="line">    [@annotationtype] [[!]public|private|protected|static|synchronized|native|abstract|strictfp ...] &lt;methods&gt; |</div><div class="line">                                                                                           &lt;init&gt;(argumenttype,...) |</div><div class="line">                                                                                           classname(argumenttype,...) |</div><div class="line">                                                                                           (returntype methodname(argumenttype,...));</div><div class="line">    [@annotationtype] [[!]public|private|protected|static ... ] *;</div><div class="line">    ...</div><div class="line">&#125;]</div></pre></td></tr></table></figure></p>
+<p>先来解释下[]吧，这个都是可选的，可以选择无，也可以选择[]里的一种或者多种。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@me</span>.cyning.Keep <span class="class"><span class="keyword">class</span> * </span>&#123;</div><div class="line">   <span class="keyword">native</span> &lt;methods&gt;() </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就表示所有加了<code>me.cyning.Keep</code>类注解且有native方法的类。<br>就让我们分别来看<code>Class specifications</code></p>
+<ol>
+<li>annotationtype实际上就是类注解，如上面<code>@me.cyning.Keep</code></li>
+<li>class/interface/enum 前可以添加修饰符如public，final，abstract等修饰符，也可以在这些修饰符前加!表示否定，如!private 非私有的；在class/interface/enum前也可以加!表示否定，都是黑科技啊</li>
+<li>extends/implements 后可以添加我们继承或者实现的类或者接口，但是记住一定要写全名（包名+classname）。</li>
+<li><fields> 表示里面的变量，他的前面可以加入修饰符<code>public</code>、<code>private</code>、<code>protected</code>、<code>static</code>、<code>volatile</code>、<code>transient</code>等。</fields></li>
+<li><methods>可以表示出了构造函数外的方法，它前面也可以加入<code>public</code>、<code>private</code>、<code>protected</code>、<code>static</code>|<code>synchronized</code>、<code>native</code>、<code>abstract</code>、<code>strictfp</code>等修饰符;而<init>则表示构造函数<br>6.</init></methods></li>
+<li>针对一个class/interface/enum下的所有方法我们可以用<em>来表示如 `public </em>;`则表示所有修饰符为public的方法和变量。</li>
+</ol>
+<p>针对上面的问题，我们还遗漏了一个很重的东西就是通配符，如<em>，*</em>。而通配符又分为以下：</p>
+<h2 id="packageName-className-methodName"><a href="#packageName-className-methodName" class="headerlink" title="packageName/className/methodName"></a>packageName/className/methodName</h2><p>包名或者类名是我们常见需要用到的，我们列出我们常用的通配符。<br>通配符 |   概述<br>—-    | —<br>？    | 表示任何一个任意但不是包名中的.分隔符。如<code>me.cyning.Test?</code>可以表示<code>me.cyning.Test1</code>和<code>me.cyning.TestA</code>，而不能代表<code>me.cyning.Test11</code></p>
+<ul>
+<li>|  表示任何多个字符但不能是包名中的.分隔符。如<code>me.cyning.Test*</code>可以表示<code>me.cyning.Test1</code>和<code>me.cyning.Test11</code>，而不能代表<code>me.cyning.Test.A</code><br><strong>         | 表示任何多个字符,可以是包名中的.分隔符,如`me.cyning.</strong><code>可以表示</code>me.cyning.Test1<code>和</code>me.cyning.Test11<code>,也可以是</code>me.cyning.Test.A`</li>
+</ul>
+<h2 id="类型描述"><a href="#类型描述" class="headerlink" title="类型描述"></a>类型描述</h2><p>包名或者类名是我们常见需要用到的，我们列出我们常用的通配符。和<code>packageName/className/methodName</code>有类似之处<br>通配符 |   概述<br>—-    | —<br>%  | 除了void的基本类型<br>?  | 单个字符</p>
+<ul>
+<li>| 不包括.包分隔符的任意类名的一部分<br><strong>  | 包括.包分隔符的任意类名的一部分<br>*</strong>  | 任意类型<br>…  | 可表示多个任意且任意类型的类型的参数 如init(…)可代表init(int a, int b) 也可以代表是init(String)<br>熟悉了ProGuard Rule的规则，那么我们再来看最开始我们提到的[默认的ProGuard Rule](—<br>title: android_better_progurad<br>date: 2017-10-30 22:08:30<br>tags:</li>
+</ul>
+<hr>
+<p>过了19大，党有了未来5年的规划，新理念你Get了没？（我觉得开完19大，做地铁都轻松多了，哈哈）。我也给自己裂了个规划，两周一篇博客，越干（gan 一声）越好。今天给自己带来的干货是ProGuard。<br>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。</p>
+<h1 id="简单认识ProGuard-1"><a href="#简单认识ProGuard-1" class="headerlink" title="简单认识ProGuard"></a>简单认识ProGuard</h1><p>在平时开发中，我们的项目是ProGuard开关默认是是关的，我们通过如下代码打开ProGuard：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">true</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>，  'project.pro'</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>先解释下我们可以通过<code>minifyEnabled</code>打开开关，通过<code>proguardFiles</code>指定我们的<code>ProGuard Rule</code>的多个文件（后面会介绍）。我们也可以使用<code>proguardFile</code>指定一个一个文件，其中<code>proguard-android.txt</code>实际上是我们的<code>{Android Sdk path}/tools/proguard/</code>下<code>proguard-android.txt</code>。这样就可以简单使用我们的ProGuard，当然了对应的<code>ProGuard</code>也是我们SDK下<code>proguard-android.txt</code></p>
+<h1 id="什么是ProGuard-1"><a href="#什么是ProGuard-1" class="headerlink" title="什么是ProGuard"></a>什么是ProGuard</h1><p>那个究竟什么是ProGuard呢，我们可以看下<code>{Android Sdk path}/tools/proguard/</code>下的ProGuard的doc文档：</p>
+<blockquote>
+<p>ProGuard is a free Java class file shrinker, optimizer, obfuscator, and preverifier. It detects and removes unused classes, fields, methods, and attributes. It optimizes bytecode and removes unused instructions. It renames the remaining classes, fields, and methods using short meaningless names. Finally, it preverifies the processed code for Java 6 or for Java Micro Edition.</p>
+</blockquote>
+<p>大概意思就是： ProGuard是一个免费的可以将java class文件进行压缩，优化，混淆，预校验的工具。它能删除无用的类，变量、方法以及属性。它能优化字节码，移除无用的指令，同时它将（压缩后）保留的类，变量和方法使用无意义的段字符来重命名，而后还能在对应的java版本上进行预校验这些处理后的code。<br>## ProGuard四兄弟<br><img src="http://7xwwa2.com1.z0.glb.clouddn.com/proguard_intro.png" alt=""></p>
+<p>如上图，ProGuard实际上四大天王（魔家四将），他们分别是压缩（shrinking），优化（optimization），混淆（obfuscation）和预校验（preverification），一个class和四大天王碰过面才可以到最后的南天门（。</p>
+<p>压缩(shrinking)：检测并移除代码中无用的类、字段、方法和特性（Attribute）<br>优化(optimization)：对字节码进行优化，移除无用的指令<br>混淆(obfuscation)：使用a，b，c，d这样简短而无意义的名称，对类、字段和方法进行重命名<br>预检(preverification)：在Java平台上对处理后的代码进行预检，确保加载的class文件是可执行的。<br>对于一个class文件也要经历如下四步：</p>
+<ol>
+<li>会首先检查这个类是否有地方用到（没用到直接删除），这个类里面的方法或者变量哪些我们没用到，没用到就直接删除</li>
+<li><p>若类没有被删除，检查class文件的无用指令和字节</p>
+</li>
+<li><p>将仍然保留的类，混淆class名及内部的变量和方法名</p>
+</li>
+<li>在对应的java的平台上预校验这个class是否完整有效<br>这个是默认的情况下经历着四个步骤，这个也不是必须的。很像目前中国的大环境，你可以通过人情来避免不必要的麻烦，这四大天王也不例外。<br>例如我写个SDK，里面封装很多java文件，最后类库为第三方服务，最后我打出一个jar，这个jar我期望用混淆。严格按照混淆的四大天王的规则，就会遇到很多问题：</li>
+<li>保留一些类。里面的类好对外使用的，不会被SDK内部使用，按照混淆的四大天王的规则，第一步直接就被干掉了，所有就得走点后门<br>2. 某些class，method或者变量，我期望不要混淆。例如一个支付的class为PaySDK，里面的方法也尽量是aliPay，wxPay，名称有意义，使用混淆后PaySDK成了a，方法名也是无意义的a，b，这对使用sdk的开发者是不友好的。<br>为了避免这个问题，就需要我们自己来制定一个规则，在去南天门的路上，你只管这个规则来给四大天王看，告诉按照我们的规则走，而这个规则就是<code>ProGuard Rule</code>我们刚才配置的<code>proguardFiles</code>,对于我们来说写一个<code>ProGuard Rule</code>是目前比较不太好写的一件事。</li>
+</ol>
+<h1 id="ProGuard-Rule-1"><a href="#ProGuard-Rule-1" class="headerlink" title="ProGuard Rule"></a>ProGuard Rule</h1><p>在第一部分我们提到在主项目下的build.gradle配置我们的<code>ProGuard Rule</code>,其中Google官方提供了一个简单的<a href="https://gist.github.com/ownwell/373860e6468671e8e65c8b9eb849f7c2#file-proguard-android-txt" target="_blank" rel="external">基础示例</a>：<br>我们就来大致看下他们是分别的作用：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># dont 一般是代表do not不要的意思，这个就表示混淆的字符不适用大小写混合的（如Ab）</div><div class="line">-dontusemixedcaseclassnames</div><div class="line">-dontskipnonpubliclibraryclasses</div></pre></td></tr></table></figure></p>
+<p>这个是Google建议的，若你非使用大小混合，没人会拦你。😆。<br><br><br></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 不优化，dex不是运行在JVM上的，当然了也不做预校验</div><div class="line">-dontoptimize</div><div class="line">-dontpreverify</div></pre></td></tr></table></figure>
+<p>这个是针对android的开发而言，不过你要使用优化，尽量使用<code>{Android Sdk path}/tools/proguard/</code>下的<code>proguard-android-optimize.txt</code>文件。<br><br><br></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 注解相关的</div><div class="line">-keepattributes *Annotation*</div><div class="line"># 猜测是Google服务相关的</div><div class="line">-keep public class com.google.vending.licensing.ILicensingService</div><div class="line">-keep public class com.android.vending.licensing.ILicensingService</div></pre></td></tr></table></figure>
+<p>可以看到有个<code>keepattributes</code>肯定是保留类的属性啦，还有个<code>-keep public class 类名</code>这个肯定就是为了保留这个类不被压缩或者混淆。<br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclasseswithmembernames <span class="class"><span class="keyword">class</span> * </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个<code>-keepclasseswithmembernames public class 类名</code>不难解释吧，字面意思是保留class和类的成员，并且这个类有个native方法。<br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> * <span class="keyword">extends</span> <span class="title">android</span>.<span class="title">view</span>.<span class="title">View</span> </span>&#123;</div><div class="line">   <span class="keyword">void</span> set*(***);</div><div class="line">   *** get*();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个就代表保留类中的getter/setter方法，这个类是继承自<code>android.view.View</code><br><br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclassmembers <span class="class"><span class="keyword">class</span> **.<span class="title">R</span>$* </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;fields&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个肯定是保留我们资源ID对应的R文件中所有的静态变量。<br><br><br></p>
+<p>看了这么多我们会产生疑问：keep、keepclassmembers等这些keep开头的有哪些，区别是什么，怎么配置参数，class，method这些怎么写，<em>*以及</em>分别代表什么，就让我们来一起探索<code>ProGuard Rule</code>的写法吧。</p>
+<h2 id="Keep-options-1"><a href="#Keep-options-1" class="headerlink" title="Keep options"></a>Keep options</h2><p>keep目前常见的就6六种：</p>
+<ol>
+<li>-keep [,modifier,…] class_specification </li>
+<li>-keepclassmembers [,modifier,…] class_specification   </li>
+<li>-keepclasseswithmembers [,modifier,…] class_specification </li>
+<li>-keepnames class_specification 在压缩（删除无用的类和成员）后保留下来的类和其成员中，阻止类和类的成员(里面的变量和方法都是成员)混淆</li>
+<li>-keepclassmembernames class_specification 在压缩后保留下来的类中，阻止类的成员被混淆</li>
+<li>-keepclasseswithmembernames class_specification</li>
+</ol>
+<h3 id="有无name的keep-1"><a href="#有无name的keep-1" class="headerlink" title="有无name的keep*"></a>有无name的keep*</h3><p>可以看到前三个实际上是比后三个少了name的，但是意义却大不同啊。就以keep和keepName为例吧，<br>keep是阻止类和类的变量（实际上就是类中的方法和变量）被压缩和混淆，而keepnames那么则是在压缩后，防止类和类的成员被混淆。换句话说，keep在压缩第一道大门时，就已经生效，可以避免被压缩掉，即使这个类或者成员没有被用到也不会被移除，而keepnames则是在压缩后，从保留的类中来看哪些类和成员不能被混淆，是在压缩后才生效。<br>官方文档解释的很到位：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Short for -keep,allowshrinking class_specification</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>实际上加了<code>allowshrinking</code>的kepp命令，允许压缩。</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>概述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keep</td>
+<td>阻止类和成员被和混淆</td>
+</tr>
+<tr>
+<td>keepclassmember</td>
+<td>阻止类的成员被和混淆</td>
+</tr>
+<tr>
+<td>keepclasseswithmembers</td>
+<td>阻止类和类中特定的成员被压缩和混淆</td>
+</tr>
+<tr>
+<td>keepnames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类和类的成员(里面的变量和方法都是成员)混淆</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类的成员被混淆</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>在压缩后保留下来的类和其成员中，阻止类和类中特定的成员被混淆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="keep-VS-keepclasseswithmembers-1"><a href="#keep-VS-keepclasseswithmembers-1" class="headerlink" title="keep VS keepclasseswithmembers"></a>keep VS keepclasseswithmembers</h3><p>这两个都可以注释保留住class及其成员，但是二者区分最大之处在于：keep只看后面的class 是什么，不关心后面的成员，而keepclasseswithmembers则是更关心后面的条件。干说太硬，来点湿的。<br>如下规则：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keepclasseswithmembernames <span class="class"><span class="keyword">class</span> <span class="title">me</span>.<span class="title">cyning</span>.* </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当在me.cyning包下，遇到方法体有native方法时，则keep其class，同时keep这个class的native的方法（其他无用方法可能会被删掉或者方法名会被混淆）。</p>
+<p>而<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-keep <span class="class"><span class="keyword">class</span> <span class="title">me</span>.<span class="title">cyning</span>.* </span>&#123;</div><div class="line">    <span class="keyword">native</span> &lt;methods&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>则会将class不压缩</p>
+<p>这个keep*可以保证类或者方法不被压缩和混淆，至于选哪个看你心情喽。</p>
+<p>## </p>
+<h2 id="Class-specifications-1"><a href="#Class-specifications-1" class="headerlink" title="Class specifications"></a>Class specifications</h2><p>在刚才示例中，有个代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-keep <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">google</span>.<span class="title">vending</span>.<span class="title">licensing</span>.<span class="title">ILicensingService</span></span></div></pre></td></tr></table></figure></p>
+<p>通过这一句<code>keep</code>了<code>com.google.vending.licensing.ILicensingService</code>，但是我们若是<code>keep</code>某一类时而不只是一个class时，我们要怎么办？<br>这就需要我们将这一类的做个抽象，而将这所有的类都列出来一个个keep。</p>
+<p>我们可以来看下class的基本示例：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[@annotationtype] [[!]public|final|abstract|@ ...] [!]interface|class|enum classname</div><div class="line">    [extends|implements [@annotationtype] classname]</div><div class="line">[&#123;</div><div class="line">    [@annotationtype] [[!]public|private|protected|static|volatile|transient ...] &lt;fields&gt; |</div><div class="line">                                                                      (fieldtype fieldname);</div><div class="line">    [@annotationtype] [[!]public|private|protected|static|synchronized|native|abstract|strictfp ...] &lt;methods&gt; |</div><div class="line">                                                                                           &lt;init&gt;(argumenttype,...) |</div><div class="line">                                                                                           classname(argumenttype,...) |</div><div class="line">                                                                                           (returntype methodname(argumenttype,...));</div><div class="line">    [@annotationtype] [[!]public|private|protected|static ... ] *;</div><div class="line">    ...</div><div class="line">&#125;]</div></pre></td></tr></table></figure></p>
+<p>先来解释下[]吧，这个都是可选的，可以选择无，也可以选择[]里的一种或者多种。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@me</span>.cyning.Keep <span class="class"><span class="keyword">class</span> * </span>&#123;</div><div class="line">   <span class="keyword">native</span> &lt;methods&gt;() </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就表示所有加了<code>me.cyning.Keep</code>类注解且有native方法的类。<br>就让我们分别来看<code>Class specifications</code></p>
+<ol>
+<li>annotationtype实际上就是类注解，如上面<code>@me.cyning.Keep</code></li>
+<li>class/interface/enum 前可以添加修饰符如public，final，abstract等修饰符，也可以在这些修饰符前加!表示否定，如!private 非私有的；在class/interface/enum前也可以加!表示否定，都是黑科技啊</li>
+<li>extends/implements 后可以添加我们继承或者实现的类或者接口，但是记住一定要写全名（包名+classname）。</li>
+<li><fields> 表示里面的变量，他的前面可以加入修饰符<code>public</code>、<code>private</code>、<code>protected</code>、<code>static</code>、<code>volatile</code>、<code>transient</code>等。</fields></li>
+<li><methods>可以表示出了构造函数外的方法，它前面也可以加入<code>public</code>、<code>private</code>、<code>protected</code>、<code>static</code>|<code>synchronized</code>、<code>native</code>、<code>abstract</code>、<code>strictfp</code>等修饰符;而<init>则表示构造函数<br>6.</init></methods></li>
+<li>针对一个class/interface/enum下的所有方法我们可以用<em>来表示如 `public </em>;`则表示所有修饰符为public的方法和变量。</li>
+</ol>
+<p>针对上面的问题，我们还遗漏了一个很重的东西就是通配符，如<em>，*</em>。而通配符又分为以下：</p>
+<h2 id="packageName-className-methodName-1"><a href="#packageName-className-methodName-1" class="headerlink" title="packageName/className/methodName"></a>packageName/className/methodName</h2><p>包名或者类名是我们常见需要用到的，我们列出我们常用的通配符。<br>通配符 |   概述<br>—-    | —<br>？    | 表示任何一个任意但不是包名中的.分隔符。如<code>me.cyning.Test?</code>可以表示<code>me.cyning.Test1</code>和<code>me.cyning.TestA</code>，而不能代表<code>me.cyning.Test11</code></p>
+<ul>
+<li>|  表示任何多个字符但不能是包名中的.分隔符。如<code>me.cyning.Test*</code>可以表示<code>me.cyning.Test1</code>和<code>me.cyning.Test11</code>，而不能代表<code>me.cyning.Test.A</code><br><strong>         | 表示任何多个字符,可以是包名中的.分隔符,如`me.cyning.</strong><code>可以表示</code>me.cyning.Test1<code>和</code>me.cyning.Test11<code>,也可以是</code>me.cyning.Test.A`</li>
+</ul>
+<h2 id="类型描述-1"><a href="#类型描述-1" class="headerlink" title="类型描述"></a>类型描述</h2><p>包名或者类名是我们常见需要用到的，我们列出我们常用的通配符。和<code>packageName/className/methodName</code>有类似之处<br>通配符 |   概述<br>—-    | —<br>%  | 除了void的基本类型<br>?  | 单个字符</p>
+<ul>
+<li>| 不包括.包分隔符的任意类名的一部分<br><strong>  | 包括.包分隔符的任意类名的一部分<br>*</strong>  | 任意类型<br>…  | 可表示多个任意且任意类型的类型的参数 如init(…)可代表init(int a, int b) 也可以代表是init(String)<br>熟悉了ProGuard Rule的规则，那么我们再来看最开始我们提到的<a href="https://gist.github.com/ownwell/373860e6468671e8e65c8b9eb849f7c2#file-proguard-android-txt" target="_blank" rel="external">默认的ProGuard Rule</a>。 </li>
+</ul>
+<p>—— 建议读者有时间结合上面介绍的Class specifications和Keep Options，来重新认识和验证下。——–</p>
+<h2 id="自定义ProGuard-Rule"><a href="#自定义ProGuard-Rule" class="headerlink" title="自定义ProGuard Rule)"></a>自定义ProGuard Rule)</h2><p>我们要自定义的ProGuard Rule，其实也是三步走：基本Proguard Rule，业务中常见代码的ProGuard Rule，第三方SDK的ProGuard Rule，一般情况主要按照三步走，尽量做到ProGuard涉及到我们应ProGuard之处。</p>
+<h3 id="基本Proguard-Rule"><a href="#基本Proguard-Rule" class="headerlink" title="基本Proguard Rule"></a>基本Proguard Rule</h3><p>可以直接参考我们的<a href="https://gist.github.com/ownwell/373860e6468671e8e65c8b9eb849f7c2#file-proguard-android-txt" target="_blank" rel="external">默认的ProGuard Rule</a>，这个一般不会涉及到业务，也可以在其尾部继续适当加入，如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># 避免混淆泛型，这在JSON实体映射时非常重要，比如fastJson</div><div class="line">-keepattributes Signature</div><div class="line"></div><div class="line"># 抛出异常时保留代码行号，在异常分析中可以方便定位</div><div class="line">-keepattributes SourceFile,LineNumberTable</div><div class="line"></div><div class="line"># 抛出异常时保留代码行号，在异常分析中可以方便定位</div><div class="line">-keepattributes SourceFile,LineNumberTable</div><div class="line"></div><div class="line"># 保留Serializable序列化的类不被混淆</div><div class="line">-keepclassmembers class * implements java.io.Serializable &#123;</div><div class="line">    static final long serialVersionUID;</div><div class="line">    private static final java.io.ObjectStreamField[] serialPersistentFields;</div><div class="line">    private void writeObject(java.io.ObjectOutputStream);</div><div class="line">    private void readObject(java.io.ObjectInputStream);</div><div class="line">    java.lang.Object writeReplace();</div><div class="line">    java.lang.Object readResolve();</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 对于R（资源）下的所有类及其方法，都不能被混淆</div><div class="line">-keep class **.R$* &#123;</div><div class="line">    *;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个大家是不是基本上是我们最最常见的，不是一定如此，这个是个人观点，仅供参考使用。</p>
+<h3 id="业务常见"><a href="#业务常见" class="headerlink" title="业务常见"></a>业务常见</h3><p>这个需要结合自己的业务来做，或者来看，例如我的：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line"> 保留实体类和成员不被混淆</div><div class="line">-keep public class com.xxxx.entity.** &#123;</div><div class="line">    public void set*(***);</div><div class="line">    public *** get*();</div><div class="line">    public *** is*();</div><div class="line">&#125;</div><div class="line">一</div><div class="line"></div><div class="line"></div><div class="line"># 对WebView的处理</div><div class="line">-keepclassmembers class * extends android.webkit.webViewClient &#123;</div><div class="line">    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);</div><div class="line">    public boolean *(android.webkit.WebView, java.lang.String)</div><div class="line">&#125;</div><div class="line">-keepclassmembers class * extends android.webkit.webViewClient &#123;</div><div class="line">    public void *(android.webkit.webView, java.lang.String)</div><div class="line">&#125;</div><div class="line"># 保留JS方法不被混淆</div><div class="line">-keepclassmembers class com.example.xxx.MainActivity$JSInterface1 &#123;</div><div class="line">    &lt;methods&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#  反射中用到的类或者方法</div><div class="line"></div><div class="line"></div><div class="line">### 第三方库</div><div class="line">一个优秀的开源库，一般会提供我们ProGuard Rule，都说啦是一班啦，二班的同学还是需要根据源代码来自己为开源库添加ProGuard Rule。</div><div class="line"></div><div class="line">```java</div><div class="line">-keep class android.support.v4.**  &#123; *; &#125;</div><div class="line">-keep interface android.support.v4.app.** &#123; *; &#125;</div><div class="line">-keep public class * extends android.support.v4.**</div><div class="line">-keep public class * extends android.app.Fragment</div><div class="line"></div><div class="line">-dontwarn com.alipay.android.app.**</div><div class="line">-keep public class com.alipay.**  &#123; *; &#125;</div></pre></td></tr></table></figure></p>
+<p>网上有雷锋帮我们准备了一份：<a href="https://github.com/msdx/android-proguard-cn" target="_blank" rel="external">msdx/android-proguard-cn</a>,拿走不谢。</p>
+<h1 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h1><p>之前看赵四大哥的一篇文章，<a href="http://www.wjdiankong.cn/android%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E4%B9%8B%E6%97%85-%E5%B8%A6%E4%BD%A0%E6%8A%8Aapk%E6%B7%B7%E6%B7%86%E6%88%90%E4%B8%AD%E6%96%87%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81/" target="_blank" rel="external">Android安全防护之旅—带你把Apk混淆成中文语言代码
+</a>,它从源码上做了处理，不过这个不是我期望的，后来居然发现，ProGuard居然真的可以设置mappding的字典：<br>-obfuscationdictionary naruto.txt<br>naruto已经上传到<a href="https://gist.github.com/ownwell/2dc6486b4cdda3ab556859c1d63045d3" target="_blank" rel="external">gitgist</a>啦.<br>打开有惊喜哦。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).&lt;br&gt;ProGuard其实
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Android的APK两种签名</title>
@@ -1085,38 +1332,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>用chrome调试Android程序</title>
-    <link href="http://ownwell.github.io/2016/03/16/how-to-debug-application-with-stetho/"/>
-    <id>http://ownwell.github.io/2016/03/16/how-to-debug-application-with-stetho/</id>
-    <published>2016-03-16T14:02:50.000Z</published>
-    <updated>2017-05-24T07:19:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在开发过程中，我们经常喊着我们需要一个root的手机，为什么呢？<br><img src="http://pic.baike.soso.com/p/20090712/20090712210314-622536671.jpg" alt=""></p>
-<a id="more"></a>
-<p>因为有时我们需要查看手机/data/data里面的数据，如数据库、SharedPreferences，不过有的是否真的没有root过的手机，有人说你可以用虚拟机啊，不过虚拟机不友好的操作，让我很是不习惯。若是有一个工具是通过chrome浏览器就可以帮我们查看数据库、SharedPreferences是不是会让我们欣喜若狂啊。好了，FaceBook退出的<a href="https://github.com/facebook/stetho" target="_blank" rel="external">Stetho</a>满足你这个小小的愿望。</p>
-<p>~不得不感叹FB真是良心企业~。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/mdfacebook.png-blog" alt="facebook"><br>FaceBook的东西总是采用比较流行的一些工具，<code>Stetho</code>编译也是Android Studio的，可以直接通过gradle来编译，那就开始使用Stetho吧。</p>
-<h2 id="引入stetho"><a href="#引入stetho" class="headerlink" title="引入stetho"></a>引入stetho</h2><p>Java<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    //debug工具</div><div class="line">    compile &apos;com.facebook.stetho:stetho:1.2.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="配置Stetho"><a href="#配置Stetho" class="headerlink" title="配置Stetho"></a>配置Stetho</h2><p>在项目的Application下也需要配置下Stetho。</p>
-<p>Java<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">private void initStetho() &#123;</div><div class="line">    Stetho.initialize(</div><div class="line">        Stetho.newInitializerBuilder(this)</div><div class="line">            .enableDumpapp(</div><div class="line">                Stetho.defaultDumperPluginsProvider(this))</div><div class="line">            .enableWebKitInspector(</div><div class="line">                Stetho.defaultInspectorModulesProvider(this))</div><div class="line">            .build());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>好了编译下，你的手机就启动了（废话一句，USB调试开关这时肯定是打开的）。</p>
-<h2 id="在chrome查看"><a href="#在chrome查看" class="headerlink" title="在chrome查看"></a>在chrome查看</h2><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/mdstetho_inspect.png-blog" alt=""></p>
-<p>打开chrome浏览器，在地址栏输入<a href="chrome://inspect" target="_blank" rel="external">chrome://inspect</a>，好了你就可以可以在resource的tab下看到你想要的东西，还不快快体验下。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在开发过程中，我们经常喊着我们需要一个root的手机，为什么呢？&lt;br&gt;&lt;img src=&quot;http://pic.baike.soso.com/p/20090712/20090712210314-622536671.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
     
   </entry>
   
