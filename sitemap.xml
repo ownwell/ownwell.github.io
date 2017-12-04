@@ -3,6 +3,66 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2017/07/18/dynamic-load-so/</loc>
+    <lastmod>2017-12-04T15:13:05.400Z</lastmod>
+    <data>
+        <display>
+        <title>【Android进阶】Android动态加载so文件</title>
+        <pubTime>2017-07-17T16:29:19.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
+    <lastmod>2017-12-04T15:13:05.400Z</lastmod>
+    <data>
+        <display>
+        <title>【Android进阶】Android的APK两种签名</title>
+        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
+    <lastmod>2017-12-04T15:13:05.370Z</lastmod>
+    <data>
+        <display>
+        <title>【Android进阶】Android中使用ProGuard</title>
+        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2017/12/04/love-yourself/</loc>
     <lastmod>2017-12-04T14:58:21.000Z</lastmod>
     <data>
@@ -16,41 +76,6 @@
            
              
               <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
-    <lastmod>2017-11-05T15:38:46.390Z</lastmod>
-    <data>
-        <display>
-        <title>在Android中使用ProGuard</title>
-        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
-    <lastmod>2017-10-12T16:36:26.450Z</lastmod>
-    <data>
-        <display>
-        <title>Android的APK两种签名</title>
-        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -77,26 +102,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/07/18/dynamic-load-so/</loc>
-    <lastmod>2017-07-18T01:56:40.910Z</lastmod>
-    <data>
-        <display>
-        <title>Android动态加载so文件</title>
-        <pubTime>2017-07-17T16:29:19.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://ownwell.github.io/2017/05/24/Robust%E7%83%AD%E4%BF%AE%E5%A4%8D-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/</loc>
@@ -599,12 +604,32 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>Python学习笔记(1)</title>
+        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
+        
+        <tag>Python </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -619,19 +644,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
+    <loc>http://ownwell.github.io/2015/06/28/love-your-life/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(1)</title>
-        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
+        <title>热爱生活，珍爱生命</title>
+        <pubTime>2015-06-28T13:40:07.000Z</pubTime>
         
-        <tag>Python </tag>
+        <tag>生活 </tag>
          
          
            
              
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -654,26 +679,6 @@
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/28/love-your-life/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>热爱生活，珍爱生命</title>
-        <pubTime>2015-06-28T13:40:07.000Z</pubTime>
-        
-        <tag>生活 </tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -940,12 +945,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -960,12 +965,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Android开发中事半功倍的小知识点</title>
-        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
+        <title>多渠道打包时，多渠道不同的配置文件夹</title>
+        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1085,12 +1090,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
+    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>多渠道打包时，多渠道不同的配置文件夹</title>
-        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
+        <title>Android开发中事半功倍的小知识点</title>
+        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
         
         <tag>Android </tag>
          

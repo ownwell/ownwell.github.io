@@ -45,11 +45,11 @@
   </entry>
   
   <entry>
-    <title>在Android中使用ProGuard</title>
+    <title>【Android进阶】Android中使用ProGuard</title>
     <link href="http://ownwell.github.io/2017/10/30/android-better-progurad/"/>
     <id>http://ownwell.github.io/2017/10/30/android-better-progurad/</id>
     <published>2017-10-30T14:08:30.000Z</published>
-    <updated>2017-11-05T15:38:46.390Z</updated>
+    <updated>2017-12-04T15:13:05.370Z</updated>
     
     <content type="html"><![CDATA[<p>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。</p>
 <h1 id="简单认识ProGuard"><a href="#简单认识ProGuard" class="headerlink" title="简单认识ProGuard"></a>简单认识ProGuard</h1><p>在平时开发中，我们的项目是ProGuard开关默认是是关的，我们通过如下代码打开ProGuard：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">true</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>，  'project.pro'</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -288,15 +288,19 @@
     
     </summary>
     
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="Android进阶" scheme="http://ownwell.github.io/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   
   <entry>
-    <title>Android的APK两种签名</title>
+    <title>【Android进阶】Android的APK两种签名</title>
     <link href="http://ownwell.github.io/2017/10/13/apk-two-signer/"/>
     <id>http://ownwell.github.io/2017/10/13/apk-two-signer/</id>
     <published>2017-10-12T16:24:48.000Z</published>
-    <updated>2017-10-12T16:36:26.450Z</updated>
+    <updated>2017-12-04T15:13:05.400Z</updated>
     
     <content type="html"><![CDATA[<p>前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。</p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>目前为止，android通用的打包过程时使用的签名工具有两套–jarsigner和apksigner。其中apksigner也就是刚才我们提到的APK Signature Scheme v2，两者有什么关系，为什么要使用新的签名机制呢？这是我们这篇文章介绍的重点。</p>
@@ -350,7 +354,7 @@
       <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
+      <category term="Android进阶" scheme="http://ownwell.github.io/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   
@@ -415,11 +419,11 @@
   </entry>
   
   <entry>
-    <title>Android动态加载so文件</title>
+    <title>【Android进阶】Android动态加载so文件</title>
     <link href="http://ownwell.github.io/2017/07/18/dynamic-load-so/"/>
     <id>http://ownwell.github.io/2017/07/18/dynamic-load-so/</id>
     <published>2017-07-17T16:29:19.000Z</published>
-    <updated>2017-07-18T01:56:40.910Z</updated>
+    <updated>2017-12-04T15:13:05.400Z</updated>
     
     <content type="html"><![CDATA[<p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。</p>
 <p>结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让so文件不随apk一起发布呢，而是按需下载(只有当需要播放视频时才去服务器下载，然后再在本地load)。<br><a id="more"></a><br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png" alt=""></p>
@@ -465,7 +469,7 @@
       <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
+      <category term="Android进阶" scheme="http://ownwell.github.io/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   
