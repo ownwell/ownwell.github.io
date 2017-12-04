@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2017-11-05T15:38:46.390Z</updated>
+  <updated>2017-12-04T14:58:21.000Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>爱自己</title>
+    <link href="http://ownwell.github.io/2017/12/04/love-yourself/"/>
+    <id>http://ownwell.github.io/2017/12/04/love-yourself/</id>
+    <published>2017-12-04T14:54:08.000Z</published>
+    <updated>2017-12-04T14:58:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>经历了一些事情，让我们增加的不仅仅是我们的知识，更多的是这些事情也在改变我们的心态，如前几日得知我的一位同学身犯重病，我们所有人都在诧异的同时也在反思着，万一是我呢，思虑了几天，总觉得该把这些记录下来，为自己，，也为了自己爱的人，我们是时候来深刻反思自我啦。<br><a id="more"></a></p>
+<p>或许脑子里，不断重复的是我之前读过的一个故事，故事是讲一个流浪汉说自己很穷，遇到了一个刚从医院出来的富翁，流浪汉就上去乞讨，富翁很生气，流浪汉反诘道：『你是如此的富有，为什么不施舍给我点吃饭的钱呢』，富翁用严厉的语气问道：『小伙子，我愿意用100w买一双健康的眼睛，你愿意买给我么』，流浪汉摇摇头；富翁又问到：【我愿意用200w买你的心脏，来治疗我的心脏病，你愿意么】，流浪汉又摇摇了头，富翁终于用平和的语气说道【孩子，你是富有的，因为你拥有健康，你年轻这就是你最大的资本啊】。<br>虽然故事有演绎色彩（本人不善于讲故事）,但是其中的道理是值得我们深思的，珍惜你现在拥有的健康，年轻。</p>
+<h1 id="理想"><a href="#理想" class="headerlink" title="理想"></a>理想</h1><p>『不想当将军的士兵不是个好士兵』，是一句很励志的名言。他告诉我们要有梦想，梦想是指引我们前进的最大动力；其次，这是告诫我们要高标准要求自己，一般情况下你你期望总是低于你实际奋斗的果实，你要求自己得优，可能你得到的是良，你要求自己的是良，有可能你得到的是差。</p>
+<p>每个人在心里一定要有理想，它是冬天蛰伏的草根，只待一个时机，他将冲破寒冷的缚束，昂扬迎接他的第一缕春晖。</p>
+<h1 id="知足"><a href="#知足" class="headerlink" title="知足"></a>知足</h1><p>理想很丰满，现实很骨感。似乎现实和理想是冲突的？<br>其实不然，理想是我们对明天的憧憬，而知足是我们对我们历史和现状的认可，就像故事中的年轻人，年轻，健康是他目前最大的财富，他应该知足目前的现状，而不能奢求长生。</p>
+<h1 id="健康"><a href="#健康" class="headerlink" title="健康"></a>健康</h1><p>无论对未来充满理想，还是对现状十分满意，我们都需要一个强大的身体。理想是我们生命之树的果实，而身体也是树根虽然不起眼，确实我们在人世间存活的最重要的根基。<br>他是我们最最基础的保障，也是我们对家人，对朋友最大的礼物，所以要锻炼自己，使得自己有个健康的身体。</p>
+<p>爱自己，爱自己，爱自己。重要的事情说三遍</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;经历了一些事情，让我们增加的不仅仅是我们的知识，更多的是这些事情也在改变我们的心态，如前几日得知我的一位同学身犯重病，我们所有人都在诧异的同时也在反思着，万一是我呢，思虑了几天，总觉得该把这些记录下来，为自己，，也为了自己爱的人，我们是时候来深刻反思自我啦。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="http://ownwell.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>在Android中使用ProGuard</title>
@@ -1268,70 +1297,6 @@
     
     
       <category term="Python" scheme="http://ownwell.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>站在大神肩膀上看RxJava</title>
-    <link href="http://ownwell.github.io/2016/04/13/RxJava-introduce/"/>
-    <id>http://ownwell.github.io/2016/04/13/RxJava-introduce/</id>
-    <published>2016-04-13T13:44:49.000Z</published>
-    <updated>2017-05-24T07:19:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png"></p>
-<p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><a id="more"></a></p>
-<p>今天我们就是要踩在这些过来人的肩膀上，来学习RxJava，这个主要是针对不熟悉RxJava的，若是已经很熟练使用了，这篇可能就不太适合你。</p>
-<p>大概是在14年底，我在一个创业公司，从yahoo来的曾Sir就给我们分享RxJava但是当时资料甚少，加上项目赶紧，就大概知道了RxJava这种响应式处理数据太好了，但是使用起来需要自己写一堆配套的库，所以就搁置了。但是随着Retrofit 2.0、RxVolley等这些好用的第三方RxJava拓展库 —-用一次就觉得爽到爆—我决定在公司的项目中使用RxJava了。</p>
-<p>RxJava是一个针对JVM通用的工具库，在Github上你会发现一堆的扩展库，在简书、CSDN等技术论坛上，你会发现有N多篇RxJava的文章，对于一个新手或者进阶的开发者，我就以过来人的身份为大家列出一些入门的文章和项目，本人不会有什么实质性的介绍或者解释，会给大家列出一系列的文章和书，一步步给大家知道。</p>
-<h1 id="什么是RxJava以及RxJava能干什么"><a href="#什么是RxJava以及RxJava能干什么" class="headerlink" title="什么是RxJava以及RxJava能干什么"></a>什么是RxJava以及RxJava能干什么</h1><p>在Flipboard工作的扔物线同学用通俗的描述为我们讲述什么是Rxjava，为什么要用RxJava — <a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给 Android 开发者的 RxJava </a>详解。很喜欢他的文章风格，图文都是让你过目不忘。还是建议你直接跳转去看看扔物线的<a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">文章</a>。</p>
-<h1 id="该怎么用RxJava"><a href="#该怎么用RxJava" class="headerlink" title="该怎么用RxJava"></a>该怎么用RxJava</h1><p>其实我以前是先看的大头鬼翻译的文章，觉得翻译的很好（英文的，看着多多少少有时不太理解），深入浅出告诉你怎么使用RxJava。</p>
-<ol>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/41833541" target="_blank" rel="external">深入浅出RxJava（一：基础篇）</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/44094895" target="_blank" rel="external">深入浅出RxJava(二：操作符)</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/44891933" target="_blank" rel="external">深入浅出RxJava三–响应式的好处</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/45033611" target="_blank" rel="external">深入浅出RxJava四-在Android中使用响应式编程</a></li>
-</ol>
-<p>看完了这些你或许对RxJava有个大概的印象和使用常见的操作符，那你可以试试用RxJava和RxAndroid来一个简单的项目。<br><a href="https://github.com/jpetitto/MovieListApp" target="_blank" rel="external">MovieListApp</a>没事可以看看这个项目，将请求的服务器远程数据请求后，通过Observable.just(）后，可以处理这些数据，通过map转换、onNext（）里缓存，线程切换、最后通过subcriber交给我们需要展示的UI组件上。</p>
-<p>是不是有点意思了。<br>还有一个<a href="https://github.com/kaushikgopal/RxJava-Android-Samples" target="_blank" rel="external">Demo</a>。</p>
-<p>等等，我感觉我还是不熟练啊。没关系，我是雷锋，继续给你发放福利。</p>
-<ol>
-<li><p><a href="https://github.com/mcxiaoke/RxDocs" target="_blank" rel="external">ReactiveX文档中文翻译</a></p>
-</li>
-<li><p><a href="http://rxmarbles.com/" target="_blank" rel="external">各种操作符的示例图</a>，满足你的视觉。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-1.png" alt=""></p>
-</li>
-<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0430/2815.html" target="_blank" rel="external">泡网相关的RxJava总结</a>，泡网里决定是都良心博文。</p>
-</li>
-</ol>
-<h1 id="拓展库"><a href="#拓展库" class="headerlink" title="拓展库"></a>拓展库</h1><p>RxJava的拓展库太多了，如JakeWharton参与或者主导的项目就参与了RxBinding、RxAndroid等项目，现在越来越多的人参与RxJava的推广中。</p>
-<p>我就项目中可能会用到的一些库给大家推荐几款。</p>
-<h2 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a><a href="http://square.github.io/retrofit/" target="_blank" rel="external">Retrofit</a></h2><p>一个懒人必备神器，可以简化我们对网络请求的封装，用它可能也有一些问题，需要你再开发中解决。建议使用Retrofit 2.0。</p>
-<ol>
-<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html" target="_blank" rel="external">Retrofit 2.0：有史以来最大的改进</a></p>
-</li>
-<li><p><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">RxJava 与 Retrofit 结合的最佳实践</a> Gank.io的匠心写作系列文章。</p>
-</li>
-<li><p><a href="https://futurestud.io/blog/retrofit-getting-started-and-android-client" target="_blank" rel="external">Retrofit的使用手册</a>，必备手册。</p>
-</li>
-</ol>
-<h2 id="RxBinding"><a href="#RxBinding" class="headerlink" title="RxBinding"></a><a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="external">RxBinding</a></h2><p>JakeWharton大神操刀项目，主要是各种组件绑定，将Onclick、TextWatcher等时间作为一个事件源，通过RxJava可以改善用户的交互体验，避免了快速点击会出现两个点击事件。另外，还支持kotlin。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-2.png" alt=""></p>
-<h2 id="RxLifecycle"><a href="#RxLifecycle" class="headerlink" title="RxLifecycle"></a><a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">RxLifecycle</a></h2><p>用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-3.png" alt=""></p>
-<h2 id="Rx-preferences"><a href="#Rx-preferences" class="headerlink" title="Rx-preferences"></a><a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">Rx-preferences</a></h2><p>用RxJava实现Android中的SharedPreferences</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-4.png" alt="image">)</p>
-<h2 id="Storio"><a href="#Storio" class="headerlink" title="Storio"></a><a href="https://github.com/pushtorefresh/storio" target="_blank" rel="external">Storio</a></h2><p>支持RxJava的数据库</p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
-<li><a href="https://github.com/lzyzsd/Awesome-RxJava" target="_blank" rel="external">Awesome-RxJava</a></li>
-<li><a href="http://www.jianshu.com/p/6917510b0e4c" target="_blank" rel="external">RxJava常见的使用场景总结</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。&lt;br&gt;
-    
-    </summary>
-    
     
   </entry>
   
