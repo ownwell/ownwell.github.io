@@ -359,6 +359,47 @@
   </entry>
   
   <entry>
+    <title>annotation-for-andrroid-2</title>
+    <link href="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/"/>
+    <id>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</id>
+    <published>2017-08-17T13:15:58.000Z</published>
+    <updated>2018-02-07T13:17:37.320Z</updated>
+    
+    <content type="html"><![CDATA[<p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。</p>
+<p>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
+<h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><p>万事先从一个HelloWorld开始，我们可以通过<code>Annotation Processor</code>来自己生成一个类，这个类中的main方法可以打印hello world。</p>
+<h2 id="声明注解"><a href="#声明注解" class="headerlink" title="声明注解"></a>声明注解</h2><p>需要我们通过Android Studio来新建一个java lib项目 helloAnotation。<br>其中需要声明一个注解如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> HelloWorld &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">version</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Annotation-Processor"><a href="#Annotation-Processor" class="headerlink" title="Annotation Processor"></a>Annotation Processor</h2><p>再来一个java lib项目helloAnotation需要继承<code>AbstractProcessor</code>的Processor类的通过<code>javapoet</code>生成相关的方法和类。</p>
+<p>后面会详细介绍<code>AbstractProcessor</code>和<code>javapoet</code>，我们先来自己定义一个Processor类。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/5C6689ADF977FB09DD3B60ADFD839FF.png" alt=""></p>
+<p> <strong>Processor类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> com.squareup.javapoet.JavaFile;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.MethodSpec;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeSpec;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Collections;</div><div class="line"><span class="keyword">import</span> java.util.Set;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.annotation.processing.AbstractProcessor;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.RoundEnvironment;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.Modifier;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.TypeElement;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWord</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</div><div class="line">        MethodSpec main = MethodSpec.methodBuilder(<span class="string">"main"</span>)</div><div class="line">                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)</div><div class="line">                .returns(<span class="keyword">void</span>.class)</div><div class="line">                .addParameter(String[].class, <span class="string">"args"</span>)</div><div class="line">                .addStatement(<span class="string">"$T.out.println($S)"</span>, System.class, <span class="string">"Hello, World! "</span> )</div><div class="line">                .build();</div><div class="line">        TypeSpec helloWorld = TypeSpec.classBuilder(<span class="string">"HelloWorldC"</span>)</div><div class="line">                .addModifiers(Modifier.PUBLIC, Modifier.FINAL)</div><div class="line">                .addMethod(main)</div><div class="line">                .build();</div><div class="line">        JavaFile javaFile = JavaFile.builder(<span class="string">"com.example.helloworld"</span>, helloWorld)</div><div class="line">                .build();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            javaFile.writeTo(processingEnv.getFiler());</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Collections.singleton(<span class="string">"me.cyning.anotationan.HelloWorld"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如今已经编写完毕了 processor，需要告知系统，我们创建/<code>src/main/resources/META-INF/services</code>文件夹，同时在这个文件夹下创建<code>javax.annotation.processing.Processor</code>文件，在这个文件下，写入我们的processor的完全路径。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">me.cyning.anotationcore.HelloWord</div></pre></td></tr></table></figure>
+<p>build.gradle</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">'com.squareup:javapoet:1.7.0'</span></div><div class="line">implementation <span class="string">'com.google.guava:guava:23.3-android</span></div></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在主项目的入口类TestActivity的类使用这个注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@HelloWorld</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span></div></pre></td></tr></table></figure>
+<p>再次编译就可以在你的主项目的build/generated/source/apt/debug下看到我们生成的类。</p>
+<p>build.gradle</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function">annotationProcessor <span class="title">project</span><span class="params">(<span class="string">':AnotationCompiler'</span>)</span></span></div><div class="line">implementation <span class="title">project</span><span class="params">(<span class="string">': helloAnotation'</span>)</span></div></pre></td></tr></table></figure>
+<p>居然真的有这个类在我们的build文件夹下，<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/d90d56a0fadfdc05505e5d34474e7159.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;大家还记得&lt;code&gt;[JakeWharton](https://github.com/JakeWharton)&lt;/code&gt;写的翻遍ui注解的库&lt;code&gt;butterknife&lt;/code&gt;么？&lt;br&gt;之前我们都是使用findviewById来查找view，有了&lt;cod
+    
+    </summary>
+    
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="Android进阶" scheme="http://ownwell.github.io/tags/Android%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>注解在Android开发中的使用（1）</title>
     <link href="http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/"/>
     <id>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</id>
@@ -1255,52 +1296,6 @@
     
     
       <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python学习-pip和virtualenv</title>
-    <link href="http://ownwell.github.io/2016/04/16/Android-developer-to-learn-to-python-01/"/>
-    <id>http://ownwell.github.io/2016/04/16/Android-developer-to-learn-to-python-01/</id>
-    <published>2016-04-16T13:57:04.000Z</published>
-    <updated>2017-05-24T07:19:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python可以作为运维人员的工具，无论是windows、mac和linux，都可以跑起来，比shell脚本方便，可以作为web的开发工具，搭建网站，在大数据方面Python也不弱，所以选择Python作为开发语言的工程师可能是一个全栈工程师。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/308085d7cbf0dfed3d87bd686d564143_r.jpg" alt=""></p>
-<a id="more"></a>
-<p>那么<code>Python</code>作为一个热门语言，肯定有很多开发者，也有很多第三方库，那么我们怎么导入这些呢，就像我们通过<code>maven center</code>来获取第三方的库呢，不要担心<code>Python</code>也有。<br>就请出我们的男猪脚吧 —-<code>pip</code>。<br>对了我的电脑上有好几个版本的<code>Python</code>，<code>Python2.7</code>和<code>Python3</code>都有，搞得眼花缭乱，怎么办，不要担心今天的女猪脚也来了 —<code>virtualenv</code>。</p>
-<p>双剑在手，<code>Python</code>无愁。</p>
-<h1 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a><code>Pip</code></h1><h2 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装<code>pip</code></h2><p><code>mac</code>系统为例，<code>brew</code>安装<code>wget</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py</div><div class="line"></div><div class="line">python get-pip.py</div></pre></td></tr></table></figure>
-<h2 id="pip-常用命令"><a href="#pip-常用命令" class="headerlink" title="pip 常用命令"></a>pip 常用命令</h2><h3 id="pip升级自己"><a href="#pip升级自己" class="headerlink" title="pip升级自己"></a>pip升级自己</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade pip</div></pre></td></tr></table></figure>
-<h3 id="使用search、install这两个参数"><a href="#使用search、install这两个参数" class="headerlink" title="使用search、install这两个参数"></a>使用search、install这两个参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip install pack  </div><div class="line"></div><div class="line">pip install package</div></pre></td></tr></table></figure>
-<h3 id="查看已经安装的库"><a href="#查看已经安装的库" class="headerlink" title="查看已经安装的库"></a>查看已经安装的库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip list</div></pre></td></tr></table></figure>
-<h3 id="获取过期的库："><a href="#获取过期的库：" class="headerlink" title="获取过期的库："></a>获取过期的库：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pip list --outdated</div><div class="line"></div><div class="line">例如：</div><div class="line">pip list --outdated | grep Jinja2</div></pre></td></tr></table></figure>
-<h1 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h1><h2 id="virtualenv安装"><a href="#virtualenv安装" class="headerlink" title="virtualenv安装"></a><code>virtualenv</code>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div><div class="line"></div><div class="line">python3下</div><div class="line">pip install virtualenv</div></pre></td></tr></table></figure>
-<h2 id="virtualenv使用"><a href="#virtualenv使用" class="headerlink" title="virtualenv使用"></a><code>virtualenv</code>使用</h2><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Mac:~ cyning$ mkdir myproject</div><div class="line">Mac:~ cyning$ cd myproject/</div><div class="line">Mac:myproject cyning$</div></pre></td></tr></table></figure>
-<h3 id="创建一个独立的Python运行环境，命名为venv"><a href="#创建一个独立的Python运行环境，命名为venv" class="headerlink" title="创建一个独立的Python运行环境，命名为venv"></a>创建一个独立的<code>Python</code>运行环境，命名为<code>venv</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Mac:myproject cyning$ virtualenv --no-site-packages venv</div><div class="line">Using base prefix '/usr/local/.../Python.framework/Versions/3.4'</div><div class="line">New python executable in venv/bin/python3.4</div><div class="line">Also creating executable in venv/bin/python</div><div class="line">Installing setuptools, pip, wheel...done.</div></pre></td></tr></table></figure>
-<p>参数<code>--no-site-packages</code>，这样，已经安装到系统<code>Python</code>环境中的所有第三方包都不会复制过来，这样，我们就得到了一个不带任何第三方包的“干净”的<code>Python</code>运行环境。</p>
-<p>有了<code>venv</code>这个Python环境，可以用source进入该环境：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Mac:myproject cyning$ source venv/bin/activate</div><div class="line">(venv)Mac:myproject cyning$</div></pre></td></tr></table></figure>
-<p>有个(venv)前缀，表示当前环境是一个名为<code>venv</code>的<code>Python</code>环境。</p>
-<h3 id="在自己的Python环境下管理自己的Python的环境"><a href="#在自己的Python环境下管理自己的Python的环境" class="headerlink" title="在自己的Python环境下管理自己的Python的环境"></a>在自己的<code>Python</code>环境下管理自己的<code>Python</code>的环境</h3><p>下面正常安装各种第三方包，并运行<code>Python</code>命令:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(venv)Mac:myproject cyning$ pip install jinja2</div><div class="line">...</div><div class="line">Successfully installed jinja2<span class="number">-2.7</span><span class="number">.3</span> markupsafe<span class="number">-0.23</span></div><div class="line">(venv)Mac:myproject cyning$ python myapp.py</div></pre></td></tr></table></figure></p>
-<p>在<code>venv</code>环境下，用<code>pip</code>安装的包都被安装到<code>venv</code>这个环境下，系统<code>Python</code>环境不受任何影响。也就是说，<code>venv</code>环境是专门针对myproject这个应用创建的。</p>
-<p>退出当前的<code>venv</code>环境，使用<code>deactivate</code>命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(venv)Mac:myproject cyning$ deactivate</div><div class="line">Mac:myproject cyning$</div></pre></td></tr></table></figure>
-<p>在<code>venv</code>和系统的<code>python</code>间自由的飞翔吧。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Python可以作为运维人员的工具，无论是windows、mac和linux，都可以跑起来，比shell脚本方便，可以作为web的开发工具，搭建网站，在大数据方面Python也不弱，所以选择Python作为开发语言的工程师可能是一个全栈工程师。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/308085d7cbf0dfed3d87bd686d564143_r.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://ownwell.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="http://ownwell.github.io/tags/Python/"/>
     
   </entry>
   

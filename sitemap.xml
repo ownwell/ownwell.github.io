@@ -3,12 +3,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/07/18/dynamic-load-so/</loc>
-    <lastmod>2017-12-04T15:13:05.400Z</lastmod>
+    <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
+    <lastmod>2018-02-07T13:17:37.320Z</lastmod>
     <data>
         <display>
-        <title>【Android进阶】Android动态加载so文件</title>
-        <pubTime>2017-07-17T16:29:19.000Z</pubTime>
+        <title>annotation-for-andrroid-2</title>
+        <pubTime>2017-08-17T13:15:58.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -29,6 +29,26 @@
         <display>
         <title>【Android进阶】Android的APK两种签名</title>
         <pubTime>2017-10-12T16:24:48.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/07/18/dynamic-load-so/</loc>
+    <lastmod>2017-12-04T15:13:05.400Z</lastmod>
+    <data>
+        <display>
+        <title>【Android进阶】Android动态加载so文件</title>
+        <pubTime>2017-07-17T16:29:19.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -210,12 +230,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -230,12 +250,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -624,19 +644,21 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
+         
+        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -657,28 +679,6 @@
            
              
               <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -905,26 +905,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Activity生命周期的回调妙用</title>
-        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
-        
-        <tag>Android源码 </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/06/01/android-material-color/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -945,14 +925,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>Activity生命周期的回调妙用</title>
+        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Android源码 </tag>
          
          
            
@@ -979,6 +959,45 @@
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Google IO 2015 APK 来了</title>
+        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Google </tag>
+         
+         
+           
         </display>
     </data>
     </url>
@@ -1029,25 +1048,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Google IO 2015 APK 来了</title>
-        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Google </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1083,6 +1083,26 @@
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
