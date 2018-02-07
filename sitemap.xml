@@ -4,10 +4,10 @@
     
   <url>
     <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
-    <lastmod>2018-02-07T13:17:37.320Z</lastmod>
+    <lastmod>2018-02-07T13:31:20.910Z</lastmod>
     <data>
         <display>
-        <title>annotation-for-andrroid-2</title>
+        <title>注解（2）-- 定义自己的Annotation Processor</title>
         <pubTime>2017-08-17T13:15:58.000Z</pubTime>
         
         <tag>Android进阶 </tag>
@@ -230,12 +230,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -250,12 +250,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -905,14 +905,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/01/android-material-color/</loc>
+    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Android Material的主题</title>
-        <pubTime>2015-06-01T15:41:42.000Z</pubTime>
+        <title>Activity生命周期的回调妙用</title>
+        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
         
-        <tag>Material </tag>
+        <tag>Android源码 </tag>
          
          
            
@@ -925,14 +925,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
+    <loc>http://ownwell.github.io/2015/06/01/android-material-color/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Activity生命周期的回调妙用</title>
-        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
+        <title>Android Material的主题</title>
+        <pubTime>2015-06-01T15:41:42.000Z</pubTime>
         
-        <tag>Android源码 </tag>
+        <tag>Material </tag>
          
          
            
