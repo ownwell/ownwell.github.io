@@ -400,16 +400,17 @@
   </entry>
   
   <entry>
-    <title>注解在Android开发中的使用（1）</title>
+    <title>注解（1）-- 什么是注解</title>
     <link href="http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/"/>
     <id>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</id>
     <published>2017-08-08T13:58:07.000Z</published>
-    <updated>2017-08-08T15:00:10.000Z</updated>
+    <updated>2018-02-08T01:51:33.280Z</updated>
     
     <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。</p>
 <p>为了容易让大家理解什么是注解，文章会分为分为以下两篇来分别介绍：</p>
 <ul>
 <li>注解的基本概念以及自定义注解</li>
+<li>定义自己的Annotation Processor</li>
 <li>模仿ButterKnife</li>
 </ul>
 <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>今天我们的任务是自定义一个注解，并在运行时获取到它的值。</p>
