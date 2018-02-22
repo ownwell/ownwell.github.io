@@ -4,10 +4,10 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/02/22/dog-year-plain/</loc>
-    <lastmod>2018-02-22T07:00:20.050Z</lastmod>
+    <lastmod>2018-02-22T07:06:24.960Z</lastmod>
     <data>
         <display>
-        <title>dog_year_plain</title>
+        <title>狗年，再出发</title>
         <pubTime>2018-02-21T16:00:00.000Z</pubTime>
         
         <tag>2018 </tag>
@@ -644,19 +644,19 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>Python学习笔记(1)</title>
+        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Python </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -863,26 +863,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -896,6 +876,26 @@
            
              
               <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -1088,6 +1088,26 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1103,26 +1123,6 @@
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python学习笔记(1)</title>
-        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
-        
-        <tag>Python </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
