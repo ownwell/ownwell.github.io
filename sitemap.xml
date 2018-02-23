@@ -3,8 +3,28 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
+    <lastmod>2018-02-23T03:38:24.930Z</lastmod>
+    <data>
+        <display>
+        <title>注解（2）-- 定义自己的Annotation Processor</title>
+        <pubTime>2017-08-17T13:15:58.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2018/02/22/dog-year-plain/</loc>
-    <lastmod>2018-02-23T02:22:39.700Z</lastmod>
+    <lastmod>2018-02-23T02:25:28.050Z</lastmod>
     <data>
         <display>
         <title>狗年，再出发</title>
@@ -31,26 +51,6 @@
         <pubTime>2017-08-08T13:58:07.000Z</pubTime>
         
         <tag>注解 </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
-    <lastmod>2018-02-07T13:31:20.910Z</lastmod>
-    <data>
-        <display>
-        <title>注解（2）-- 定义自己的Annotation Processor</title>
-        <pubTime>2017-08-17T13:15:58.000Z</pubTime>
-        
-        <tag>Android进阶 </tag>
          
          
            
@@ -644,21 +644,19 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
-         
-        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -848,6 +846,26 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -878,26 +896,6 @@
            
              
               <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -1090,19 +1088,21 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
+         
+        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
