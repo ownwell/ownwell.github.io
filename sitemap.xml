@@ -4,7 +4,7 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/02/22/dog-year-plain/</loc>
-    <lastmod>2018-02-22T07:06:24.960Z</lastmod>
+    <lastmod>2018-02-23T02:22:39.700Z</lastmod>
     <data>
         <display>
         <title>狗年，再出发</title>
@@ -644,19 +644,21 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(1)</title>
-        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
         
-        <tag>Python </tag>
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -1108,21 +1110,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>Python学习笔记(1)</title>
+        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
         
-        <tag>Android </tag>
-         
-        <tag>Tools </tag>
+        <tag>Python </tag>
          
          
            
              
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
