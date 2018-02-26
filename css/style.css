@@ -186,16 +186,25 @@ a:focus {
 
 #sidebar .widget {
 	margin-bottom: 30px;
+    color: #63a35c;
+    text-shadow: 0 1px #fff;
+    background: #ddd;
+    -webkit-box-shadow: 0 -1px 4px #ccc inset;
+    box-shadow: 0 -1px 4px #ccc inset;
+    border: 1px solid #63a35c36;
+    padding: 15px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 #sidebar .widget .widget-title {
-	color: #6E7173;
-	line-height: 2.7;
-	margin-top: 0;
-	font-size: 16px;
-	border-bottom: 1px solid #ddd;
-	display: block;
-	font-weight: normal;
+	color: #008b45;
+    line-height: 2.7;
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #63a35c70;
+    display: block;
+    font-weight: normal;
 }
 
 #sidebar .widget ul {
@@ -796,19 +805,22 @@ figure.highlight figcaption a,
 
 figure.highlight .gutter,
   .codeblock .gutter {
-  background: rgb(236, 238, 237);
+  background: #333;
 	padding: 0.8em 15px;
 }
 
 figure.highlight .gutter .line,
     .codeblock .gutter .line {
-	color: rgba(102, 128, 153, 0.4);
+
+    color: #666;
 }
 
 figure.highlight .code,
   .codeblock .code {
 	padding: 0.8em 15px 0.8em 1em;
 	width: 100%;
+	color: #ddd;
+    background: #000;
 }
 
 figure.highlight .code pre,
@@ -832,15 +844,15 @@ figure.highlight .line,
 }
 
 .highlight .comment {
-	color: #969896;
+	color: #999;
 }
 
 .highlight .string {
-	color: #183691;
+	color: #9c9;
 }
 
 .highlight .keyword {
-	color: #a71d5d;
+	color: #c9c;
 }
 
 .highlight.apacheconf .code .common,
@@ -875,7 +887,8 @@ figure.highlight .line,
 }
 
 .highlight.bash .code .title {
-	color: #795da3;
+	color: #f99157;
+	
 }
 
 .highlight.coffeescript .code .title {
@@ -1015,7 +1028,8 @@ figure.highlight .line,
 }
 
 .highlight.java .code .title {
-	color: #795da3;
+	color: #df5000;
+	
 }
 
 .highlight.java .code .javadoc {
@@ -1033,7 +1047,7 @@ figure.highlight .line,
 }
 
 .highlight.java .code .params {
-	color: #1d3e81;
+	color: #129fea;
 }
 
 .highlight.js .code .built_in,
