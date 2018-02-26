@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-02-26T06:20:15.470Z</updated>
+  <updated>2018-02-26T07:28:45.780Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://ownwell.github.io/2018/02/26/learning-kotlin-1/"/>
     <id>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</id>
     <published>2018-02-26T06:15:55.000Z</published>
-    <updated>2018-02-26T06:20:15.470Z</updated>
+    <updated>2018-02-26T07:28:45.780Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p><img src="https://cdn.worldvectorlogo.com/logos/kotlin-1.svg" alt=""></p>
-<h2 id="函数-变量"><a href="#函数-变量" class="headerlink" title="函数 变量"></a>函数 变量</h2><ol>
+    <content type="html"><![CDATA[<p>kotlin的学习笔记，先做记录，以后再整理<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png" alt=""><br><a id="more"></a></p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="函数-变量"><a href="#函数-变量" class="headerlink" title="函数 变量"></a>函数 变量</h2><ol>
 <li>main函数可以独立于class</li>
 <li><p>静态函数<br>类的静态函数，需要通过将函数放入到companion object的大括号内。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Static</span> </span>&#123;</div><div class="line">    companion object &#123;</div><div class="line">       <span class="function">fun <span class="title">add</span><span class="params">( a: Int,  b:Int)</span>:Int </span>=  (</div><div class="line">             a + b</div><div class="line">               )</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">fun <span class="title">main</span><span class="params">(args: Array&lt;String&gt;)</span> </span>&#123;</div><div class="line">    Static.add(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -58,7 +58,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.worldvectorlogo.com/logos/kotlin-1.svg&quot; alt=&quot;&quot;&gt;&lt;
+      &lt;p&gt;kotlin的学习笔记，先做记录，以后再整理&lt;br&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -74,10 +74,9 @@
     <link href="http://ownwell.github.io/2018/02/22/dog-year-plain/"/>
     <id>http://ownwell.github.io/2018/02/22/dog-year-plain/</id>
     <published>2018-02-21T16:00:00.000Z</published>
-    <updated>2018-02-23T02:25:28.050Z</updated>
+    <updated>2018-02-26T06:51:34.260Z</updated>
     
-    <content type="html"><![CDATA[<p>狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。</p>
-<p>现在我要给自己写一封信，来告诉已经三十岁的自己，狗年你才真正出发。</p>
+    <content type="html"><![CDATA[<p>狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。<br><a id="more"></a><br>现在我要给自己写一封信，来告诉已经三十岁的自己，狗年你才真正出发。</p>
 <hr>
 <p>狗年是旺的一样，你要自信面对以前的三十年，是是三十年，让你有了现在的自己，虽然不够努力，可你至少没有沉沦，而今的你才需要规划自己，狗年，这样一年，你需要更加努力，更加勤奋，更加自信走自己的路。</p>
 <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>   我希望你能正确面对工作，这是你的本分工作，无论别人怎么夸赞你，你都要认识到自己的不足，无论别人怎么质疑你，你都要认识到自己的优秀之处，不卑不亢，快乐前行。</p>
@@ -105,10 +104,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。&lt;/p&gt;
-&lt;p&gt;现在我要给自己写一封信，来告诉已经三十岁的自己，狗年你才真正出发。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;狗年是旺的一样，你要自信面对以前的三十年，是是三十年，让你有了现在的自己
+      &lt;p&gt;狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。&lt;br&gt;
     
     </summary>
     
@@ -153,9 +149,9 @@
     <link href="http://ownwell.github.io/2017/10/30/android-better-progurad/"/>
     <id>http://ownwell.github.io/2017/10/30/android-better-progurad/</id>
     <published>2017-10-30T14:08:30.000Z</published>
-    <updated>2017-12-04T15:13:05.370Z</updated>
+    <updated>2018-02-26T06:51:34.260Z</updated>
     
-    <content type="html"><![CDATA[<p>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。</p>
+    <content type="html"><![CDATA[<p>对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).<br>ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。<br><a id="more"></a></p>
 <h1 id="简单认识ProGuard"><a href="#简单认识ProGuard" class="headerlink" title="简单认识ProGuard"></a>简单认识ProGuard</h1><p>在平时开发中，我们的项目是ProGuard开关默认是是关的，我们通过如下代码打开ProGuard：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">true</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>，  'project.pro'</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>先解释下我们可以通过<code>minifyEnabled</code>打开开关，通过<code>proguardFiles</code>指定我们的<code>ProGuard Rule</code>的多个文件（后面会介绍）。我们也可以使用<code>proguardFile</code>指定一个一个文件，其中<code>proguard-android.txt</code>实际上是我们的<code>{Android Sdk path}/tools/proguard/</code>下<code>proguard-android.txt</code>。这样就可以简单使用我们的ProGuard，当然了对应的<code>ProGuard</code>也是我们SDK下<code>proguard-android.txt</code></p>
 <h1 id="什么是ProGuard"><a href="#什么是ProGuard" class="headerlink" title="什么是ProGuard"></a>什么是ProGuard</h1><p>那个究竟什么是ProGuard呢，我们可以看下<code>{Android Sdk path}/tools/proguard/</code>下的ProGuard的doc文档：</p>
@@ -388,7 +384,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).&lt;br&gt;ProGuard其实
+      &lt;p&gt;对于一个有经验的程序员，ProGuard大家一定不陌生，有人说他是混淆，我必须纠正，混淆只是ProGuard的一个过程(我不会称ProGuard为混淆，ProGuard就是ProGuard，谁再说ProGuard才是真正的混淆视听，下面有解释).&lt;br&gt;ProGuard其实不是Android特有的工具，他其实更早适用于java项目中，优化java代码，保证java程序的安全性。由于Android程序大部分也是是Java代码，所以ProGuard成为Android工程师必修的一门课程。&lt;br&gt;
     
     </summary>
     
@@ -404,9 +400,9 @@
     <link href="http://ownwell.github.io/2017/10/13/apk-two-signer/"/>
     <id>http://ownwell.github.io/2017/10/13/apk-two-signer/</id>
     <published>2017-10-12T16:24:48.000Z</published>
-    <updated>2017-12-04T15:13:05.400Z</updated>
+    <updated>2018-02-26T06:51:34.250Z</updated>
     
-    <content type="html"><![CDATA[<p>前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。</p>
+    <content type="html"><![CDATA[<p>前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。<br><a id="more"></a></p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>目前为止，android通用的打包过程时使用的签名工具有两套–jarsigner和apksigner。其中apksigner也就是刚才我们提到的APK Signature Scheme v2，两者有什么关系，为什么要使用新的签名机制呢？这是我们这篇文章介绍的重点。</p>
 <p>在了解签名之前我们需要了解几个知识点：</p>
 <ul>
@@ -450,8 +446,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。&lt;/p&gt;
-&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot;
+      &lt;p&gt;前几天在研究APK瘦身的相关知识，发现有个很有意思的知识点就是apk的签名 – APK Signature Scheme v2，虽然出来了一段时间，但是这方便真是没做太多的关注，趁着十一刚过的热乎劲撸起袖子干一波。&lt;br&gt;
     
     </summary>
     
@@ -467,10 +462,9 @@
     <link href="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/"/>
     <id>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</id>
     <published>2017-08-17T13:15:58.000Z</published>
-    <updated>2018-02-23T03:38:24.930Z</updated>
+    <updated>2018-02-26T06:51:34.240Z</updated>
     
-    <content type="html"><![CDATA[<p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。</p>
-<p>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
+    <content type="html"><![CDATA[<p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。<br><a id="more"></a><br>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
 <h1 id="一、Hello-world"><a href="#一、Hello-world" class="headerlink" title="一、Hello world"></a>一、Hello world</h1><p>万事先从一个HelloWorld开始，我们可以通过<code>Annotation Processor</code>来自己生成一个类，这个类中的main方法可以打印hello world。</p>
 <h2 id="1-声明注解"><a href="#1-声明注解" class="headerlink" title="1. 声明注解"></a>1. 声明注解</h2><p>需要我们通过Android Studio来新建一个java lib项目 helloAnotation。<br>其中需要声明一个注解如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> HelloWorld &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">version</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -540,7 +534,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;大家还记得&lt;code&gt;[JakeWharton](https://github.com/JakeWharton)&lt;/code&gt;写的翻遍ui注解的库&lt;code&gt;butterknife&lt;/code&gt;么？&lt;br&gt;之前我们都是使用findviewById来查找view，有了&lt;cod
+      &lt;p&gt;大家还记得&lt;code&gt;[JakeWharton](https://github.com/JakeWharton)&lt;/code&gt;写的翻遍ui注解的库&lt;code&gt;butterknife&lt;/code&gt;么？&lt;br&gt;之前我们都是使用findviewById来查找view，有了&lt;code&gt;butterknife&lt;/code&gt;我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。&lt;br&gt;
     
     </summary>
     
@@ -556,9 +550,9 @@
     <link href="http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/"/>
     <id>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</id>
     <published>2017-08-08T13:58:07.000Z</published>
-    <updated>2018-02-08T01:51:33.280Z</updated>
+    <updated>2018-02-26T07:21:21.980Z</updated>
     
-    <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。</p>
+    <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。<br><a id="more"></a></p>
 <p>为了容易让大家理解什么是注解，文章会分为分为以下两篇来分别介绍：</p>
 <ul>
 <li>注解的基本概念以及自定义注解</li>
@@ -601,7 +595,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解
+      &lt;p&gt;作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。&lt;br&gt;
     
     </summary>
     

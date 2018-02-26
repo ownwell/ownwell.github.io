@@ -4,7 +4,7 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</loc>
-    <lastmod>2018-02-26T06:20:15.470Z</lastmod>
+    <lastmod>2018-02-26T07:28:45.780Z</lastmod>
     <data>
         <display>
         <title>kotlin学习笔记</title>
@@ -23,48 +23,8 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
-    <lastmod>2018-02-23T03:38:24.930Z</lastmod>
-    <data>
-        <display>
-        <title>注解（2）-- 定义自己的Annotation Processor</title>
-        <pubTime>2017-08-17T13:15:58.000Z</pubTime>
-        
-        <tag>Android进阶 </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2018/02/22/dog-year-plain/</loc>
-    <lastmod>2018-02-23T02:25:28.050Z</lastmod>
-    <data>
-        <display>
-        <title>狗年，再出发</title>
-        <pubTime>2018-02-21T16:00:00.000Z</pubTime>
-        
-        <tag>2018 </tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</loc>
-    <lastmod>2018-02-08T01:51:33.280Z</lastmod>
+    <lastmod>2018-02-26T07:21:21.980Z</lastmod>
     <data>
         <display>
         <title>注解（1）-- 什么是注解</title>
@@ -83,12 +43,72 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
+    <lastmod>2018-02-26T06:51:34.260Z</lastmod>
+    <data>
+        <display>
+        <title>【Android进阶】Android中使用ProGuard</title>
+        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2018/02/22/dog-year-plain/</loc>
+    <lastmod>2018-02-26T06:51:34.260Z</lastmod>
+    <data>
+        <display>
+        <title>狗年，再出发</title>
+        <pubTime>2018-02-21T16:00:00.000Z</pubTime>
+        
+        <tag>2018 </tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
-    <lastmod>2017-12-04T15:13:05.400Z</lastmod>
+    <lastmod>2018-02-26T06:51:34.250Z</lastmod>
     <data>
         <display>
         <title>【Android进阶】Android的APK两种签名</title>
         <pubTime>2017-10-12T16:24:48.000Z</pubTime>
+        
+        <tag>Android进阶 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</loc>
+    <lastmod>2018-02-26T06:51:34.240Z</lastmod>
+    <data>
+        <display>
+        <title>注解（2）-- 定义自己的Annotation Processor</title>
+        <pubTime>2017-08-17T13:15:58.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -109,26 +129,6 @@
         <display>
         <title>【Android进阶】Android动态加载so文件</title>
         <pubTime>2017-07-17T16:29:19.000Z</pubTime>
-        
-        <tag>Android进阶 </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
-    <lastmod>2017-12-04T15:13:05.370Z</lastmod>
-    <data>
-        <display>
-        <title>【Android进阶】Android中使用ProGuard</title>
-        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -1024,28 +1024,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1063,6 +1041,28 @@
            
              
               <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
