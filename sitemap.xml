@@ -664,17 +664,20 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
+    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>leakCanary</title>
-        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
+        <title>Activity生命周期的回调妙用</title>
+        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Android源码 </tag>
          
          
            
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
         </display>
     </data>
     </url>
@@ -823,6 +826,25 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Google IO 2015 APK 来了</title>
+        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Google </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -837,25 +859,6 @@
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Google IO 2015 APK 来了</title>
-        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Google </tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -902,19 +905,36 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
+    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Activity生命周期的回调妙用</title>
-        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
+        <title>leakCanary</title>
+        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
         
-        <tag>Android源码 </tag>
+        <tag>Android </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/05/23/Ruby-learson/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>初尝Ruby</title>
+        <pubTime>2015-05-23T09:27:38.000Z</pubTime>
+        
+        <tag>Ruby </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -935,26 +955,6 @@
            
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/05/23/Ruby-learson/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>初尝Ruby</title>
-        <pubTime>2015-05-23T09:27:38.000Z</pubTime>
-        
-        <tag>Ruby </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -1004,16 +1004,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>Mac系统读写NFTS磁盘分区的方法</title>
+        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
         
-        <tag>Android </tag>
-         
-        <tag>Tools </tag>
+        <tag>Mac </tag>
          
          
            
@@ -1026,14 +1024,16 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Mac系统读写NFTS磁盘分区的方法</title>
-        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
         
-        <tag>Mac </tag>
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
          
          
            
@@ -1110,12 +1110,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1150,12 +1150,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
