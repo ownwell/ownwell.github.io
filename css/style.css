@@ -371,7 +371,7 @@ a:focus {
 .post .post-content h2, .post .post-content h3 {
 	margin: 1.4em 0 1.1em;
 	font-weight: normal;
-	color: #999;
+	color: #444;
 }
 
 .post .post-content pre code {

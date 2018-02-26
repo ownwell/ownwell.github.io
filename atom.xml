@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-02-26T07:28:45.780Z</updated>
+  <updated>2018-02-26T11:27:01.100Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://ownwell.github.io/2018/02/26/learning-kotlin-1/"/>
     <id>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</id>
     <published>2018-02-26T06:15:55.000Z</published>
-    <updated>2018-02-26T07:28:45.780Z</updated>
+    <updated>2018-02-26T11:27:01.100Z</updated>
     
-    <content type="html"><![CDATA[<p>kotlin的学习笔记，先做记录，以后再整理<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png" alt=""><br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>kotlin的学习笔记，先做记录，以后再整理<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png-blog" alt=""><br><a id="more"></a></p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="函数-变量"><a href="#函数-变量" class="headerlink" title="函数 变量"></a>函数 变量</h2><ol>
 <li>main函数可以独立于class</li>
 <li><p>静态函数<br>类的静态函数，需要通过将函数放入到companion object的大括号内。</p>
@@ -58,7 +58,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;kotlin的学习笔记，先做记录，以后再整理&lt;br&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;p&gt;kotlin的学习笔记，先做记录，以后再整理&lt;br&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png-blog&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -74,9 +74,9 @@
     <link href="http://ownwell.github.io/2018/02/22/dog-year-plain/"/>
     <id>http://ownwell.github.io/2018/02/22/dog-year-plain/</id>
     <published>2018-02-21T16:00:00.000Z</published>
-    <updated>2018-02-26T06:51:34.260Z</updated>
+    <updated>2018-02-26T11:26:12.930Z</updated>
     
-    <content type="html"><![CDATA[<p>狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。<br><a id="more"></a><br>现在我要给自己写一封信，来告诉已经三十岁的自己，狗年你才真正出发。</p>
+    <content type="html"><![CDATA[<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/27336955_1912123552151043_5553721495423153257_n.jpg-blog" alt=""><br>狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。<br><a id="more"></a><br>现在我要给自己写一封信，来告诉已经三十岁的自己，狗年你才真正出发。</p>
 <hr>
 <p>狗年是旺的一样，你要自信面对以前的三十年，是是三十年，让你有了现在的自己，虽然不够努力，可你至少没有沉沦，而今的你才需要规划自己，狗年，这样一年，你需要更加努力，更加勤奋，更加自信走自己的路。</p>
 <h1 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h1><p>   我希望你能正确面对工作，这是你的本分工作，无论别人怎么夸赞你，你都要认识到自己的不足，无论别人怎么质疑你，你都要认识到自己的优秀之处，不卑不亢，快乐前行。</p>
@@ -104,7 +104,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。&lt;br&gt;
+      &lt;p&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/27336955_1912123552151043_5553721495423153257_n.jpg-blog&quot; alt=&quot;&quot;&gt;&lt;br&gt;狗年，来了，我也二十九了，老家有个习俗，逢九入十，这样一算我就三十了，三十而立，而今我还没立。&lt;br&gt;
     
     </summary>
     
