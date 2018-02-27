@@ -550,9 +550,10 @@
     <link href="http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/"/>
     <id>http://ownwell.github.io/2017/08/08/annotation-for-andrroid-one/</id>
     <published>2017-08-08T13:58:07.000Z</published>
-    <updated>2018-02-26T07:21:21.980Z</updated>
+    <updated>2018-02-27T06:10:34.490Z</updated>
     
-    <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。</p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/%E6%B3%A8%E8%A7%A3.png-blog" alt=""><br><a id="more"></a></p>
 <p>为了容易让大家理解什么是注解，文章会分为分为以下两篇来分别介绍：</p>
 <ul>
 <li>注解的基本概念以及自定义注解</li>
@@ -595,7 +596,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。&lt;br&gt;
+      &lt;p&gt;作为一个Android程序员，注解（Annotation）会是一个让我们事半功倍的一个开发利器，它可以简化代码（如ButterKnife），可以约束输入条件（如support-annotations），可以将输入条件改为配置（如Retrofit 2.0）等，就让我们开下注解在注解在Android开发中是怎么使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xj9f0.com1.z0.glb.clouddn.com/%E6%B3%A8%E8%A7%A3.png-blog&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
