@@ -1,11 +1,11 @@
 body {
-	background-color: #FFF;
+	background-color: #F6F6F6;
 	color: #444;
 	font-family: 'TIBch', 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB',
     'STHeiti', 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1.6em;
 }
 
@@ -65,11 +65,6 @@ body {
 	max-width: 1400px;
 	margin: 0 auto;
 }
-
-body {
-	background-image: url(http://7xj9f0.com1.z0.glb.clouddn.com/98989308490328429023.png)
-}
-
 .content_container {
 	padding-right: 50px;
 	padding-top: 20px;
@@ -192,10 +187,10 @@ a:focus {
 	margin-bottom: 30px;
     color: #63a35c;
     text-shadow: 0 1px #fff;
-    background: #ddd;
+    background: #efefef;
     -webkit-box-shadow: 0 -1px 4px #ccc inset;
     box-shadow: 0 -1px 4px #ccc inset;
-    border: 1px solid #63a35c36;
+    border: 1px solid #eee;
     padding: 15px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -205,7 +200,7 @@ a:focus {
 	color: #008b45;
     line-height: 2.7;
     margin-top: 0;
-    font-size: 16px;
+    font-size: 12px;
     border-bottom: 1px solid #63a35c70;
     display: block;
     font-weight: normal;
@@ -280,7 +275,7 @@ a:focus {
 }
 
 .post .post-title a:hover {
-	color: #222;
+	color: #36e610;
 }
 
 .post .post-meta {
