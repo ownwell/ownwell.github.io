@@ -61,9 +61,10 @@ body {
 }
 
 .body_container {
-	padding: 0 60px;
-	max-width: 1200px;
+	padding: 0 50px;
+	max-width: 1400px;
 	margin: 0 auto;
+	background-image: url(http://7xj9f0.com1.z0.glb.clouddn.com/1801151113050.jpg)
 }
 
 .content_container {
