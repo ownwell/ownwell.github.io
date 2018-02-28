@@ -273,7 +273,7 @@ a:focus {
 }
 
 .post .post-title a {
-	color: #111;
+	color: #63a35c;
 }
 
 .post .post-title a:hover {
@@ -699,7 +699,7 @@ pre {
 a.back_to_top {
 	text-decoration: none;
 	position: fixed;
-	bottom: 20%;
+	bottom: 8%;
 	right: 60px;
 	width: 50px;
 	line-height: 36px;
