@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-01T15:57:43.330Z</updated>
+  <updated>2018-03-01T16:03:56.640Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Kotlin 02 之lambda表达式 </title>
+    <title>Kotlin学习02-lambda表达式 </title>
     <link href="http://ownwell.github.io/2018/03/01/kotlin-learning-02/"/>
     <id>http://ownwell.github.io/2018/03/01/kotlin-learning-02/</id>
     <published>2018-03-01T14:25:08.000Z</published>
-    <updated>2018-03-01T15:57:43.330Z</updated>
+    <updated>2018-03-01T16:03:56.640Z</updated>
     
     <content type="html"><![CDATA[<p>不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png" alt=""></p>
 <p>今天继续<code>Kotlin</code>的学习,主要从<code>lambda</code>的历史，定义，和集合的函数API，以及推荐使用的<code>with</code>和<code>apply</code>两个常用的函数。</p>
@@ -56,7 +56,7 @@
 <p>apply基本上使用和with类似：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</div><div class="line">    val stringBuilder = StringBuilder()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> StringBuilder().apply &#123;                <span class="comment">// 1　在你调用的方法中制定接收器的值</span></div><div class="line">        <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.append(letter)                 <span class="comment">// 2 通过显式的“this”调用接收器值的方法</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        append(<span class="string">"\nNow I know the alphabet!"</span>)   <span class="comment">// 3 调用方法，忽略“this”</span></div><div class="line"></div><div class="line">                               <span class="comment">// 4　从lambda中返回值</span></div><div class="line">    &#125;.toString()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>二者的不同主要在返回值，用with返回值不是<code>stringBuilder</code>自己的类型，而apply返回则仍然是<code>StringBuilder</code>类型。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/8856b545cc3a45aa283ec43cd0587940.png" alt=""></p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/8856b545cc3a45aa283ec43cd0587940.png-blog" alt=""></p>
 ]]></content>
     
     <summary type="html">
@@ -73,11 +73,11 @@
   </entry>
   
   <entry>
-    <title>kotlin学习笔记</title>
+    <title>Kotlin学习01-基础</title>
     <link href="http://ownwell.github.io/2018/02/26/learning-kotlin-1/"/>
     <id>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</id>
     <published>2018-02-26T06:15:55.000Z</published>
-    <updated>2018-02-28T05:53:57.660Z</updated>
+    <updated>2018-03-01T16:03:45.230Z</updated>
     
     <content type="html"><![CDATA[<p>kotlin的学习笔记，先做记录，以后再整理<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/ce3ceb9a98080ada154107eaefa21fcd.png-blog" alt=""><br><a id="more"></a></p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="函数-变量"><a href="#函数-变量" class="headerlink" title="函数 变量"></a>函数 变量</h2><ol>
