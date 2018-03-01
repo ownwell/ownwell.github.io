@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-01T16:03:56.640Z</updated>
+  <updated>2018-03-01T16:09:26.140Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ownwell.github.io/2018/03/01/kotlin-learning-02/"/>
     <id>http://ownwell.github.io/2018/03/01/kotlin-learning-02/</id>
     <published>2018-03-01T14:25:08.000Z</published>
-    <updated>2018-03-01T16:03:56.640Z</updated>
+    <updated>2018-03-01T16:09:26.140Z</updated>
     
     <content type="html"><![CDATA[<p>不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png" alt=""></p>
 <p>今天继续<code>Kotlin</code>的学习,主要从<code>lambda</code>的历史，定义，和集合的函数API，以及推荐使用的<code>with</code>和<code>apply</code>两个常用的函数。</p>
@@ -37,8 +37,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btn?.setOnClickListener()&#123; v -&gt;</div><div class="line">           print(v.id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当lambda是函数的唯一参数时，你也可以删掉空的圆括号：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btn?.setOnClickListener&#123; v -&gt;</div><div class="line">           print(v.id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#使用</p>
-<h2 id="集合的函数式API"><a href="#集合的函数式API" class="headerlink" title="集合的函数式API"></a>集合的函数式API</h2><p>函数式风格代码，简化了代码，使得代码不被各种逻辑分离，其中集合也提供一些常见的函数式API，使得我们的开发事半功倍。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="集合的函数式API"><a href="#集合的函数式API" class="headerlink" title="集合的函数式API"></a>集合的函数式API</h2><p>函数式风格代码，简化了代码，使得代码不被各种逻辑分离，其中集合也提供一些常见的函数式API，使得我们的开发事半功倍。</p>
 <h3 id="filter和map"><a href="#filter和map" class="headerlink" title="filter和map"></a>filter和map</h3><p>记得之前学习RxJava时有这两个函数，在Kotlin中其实也很类似，可以参考RxJava来理解这两个函数(<a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Filter.html" target="_blank" rel="external">filter</a>, <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Map.html" target="_blank" rel="external">map</a>)。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val nums = listof(<span class="number">1</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>)</div><div class="line">list.filter&#123; it % <span class="number">2</span> == <span class="number">0</span>&#125; <span class="comment">//  偶数</span></div></pre></td></tr></table></figure>
 <p>打印结果是</p>

@@ -4,7 +4,7 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/03/01/kotlin-learning-02/</loc>
-    <lastmod>2018-03-01T16:03:56.640Z</lastmod>
+    <lastmod>2018-03-01T16:09:26.140Z</lastmod>
     <data>
         <display>
         <title>Kotlin学习02-lambda表达式 </title>
@@ -764,26 +764,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/28/love-your-life/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>热爱生活，珍爱生命</title>
-        <pubTime>2015-06-28T13:40:07.000Z</pubTime>
-        
-        <tag>生活 </tag>
-         
-         
-           
-             
-              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -797,6 +777,26 @@
            
              
               <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/06/28/love-your-life/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>热爱生活，珍爱生命</title>
+        <pubTime>2015-06-28T13:40:07.000Z</pubTime>
+        
+        <tag>生活 </tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
         </display>
     </data>
@@ -1044,6 +1044,28 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1061,28 +1083,6 @@
            
              
               <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -1130,12 +1130,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1170,12 +1170,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
