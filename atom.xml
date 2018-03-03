@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-03T13:09:10.850Z</updated>
+  <updated>2018-03-03T13:13:14.450Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Kotlin学习02-函数</title>
+    <title>Kotlin学习03-函数</title>
     <link href="http://ownwell.github.io/2018/03/03/kotlin-learning-03/"/>
     <id>http://ownwell.github.io/2018/03/03/kotlin-learning-03/</id>
     <published>2018-03-03T11:45:02.000Z</published>
-    <updated>2018-03-03T13:09:10.850Z</updated>
+    <updated>2018-03-03T13:13:14.450Z</updated>
     
     <content type="html"><![CDATA[<p>Kotlin的语言很简洁，或许可以通过lambda表达式就能惊叹它很优秀，不过函数或许也是它更出彩的地方。</p>
 <p>在开始前，我们需要认识到很多类，如集合类，Kotlin其实是基于Java的api，只是对Java类的API又做了拓展，丰富了其API，而不是推倒重建，在JVM重做一套，所以Kotlin是很大一部分API是基于Java对应的API实现的。但是可能会有疑惑为什么Kotlin的集合类有那么丰富的API呢？ </p>
