@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-01T16:09:26.140Z</updated>
+  <updated>2018-03-03T13:09:10.850Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin学习02-函数</title>
+    <link href="http://ownwell.github.io/2018/03/03/kotlin-learning-03/"/>
+    <id>http://ownwell.github.io/2018/03/03/kotlin-learning-03/</id>
+    <published>2018-03-03T11:45:02.000Z</published>
+    <updated>2018-03-03T13:09:10.850Z</updated>
+    
+    <content type="html"><![CDATA[<p>Kotlin的语言很简洁，或许可以通过lambda表达式就能惊叹它很优秀，不过函数或许也是它更出彩的地方。</p>
+<p>在开始前，我们需要认识到很多类，如集合类，Kotlin其实是基于Java的api，只是对Java类的API又做了拓展，丰富了其API，而不是推倒重建，在JVM重做一套，所以Kotlin是很大一部分API是基于Java对应的API实现的。但是可能会有疑惑为什么Kotlin的集合类有那么丰富的API呢？ </p>
+<p>可以用下面的例子来验证下：在Kotlin中，计算数组的最大值其简单，代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val persons = listOf(</div><div class="line">        Person(<span class="string">"cyning"</span>, <span class="number">21</span>),</div><div class="line">        Person(<span class="string">"gaodaren"</span>, <span class="number">18</span>),</div><div class="line">        Person(<span class="string">"damei"</span>, <span class="number">4</span>))</div><div class="line"></div><div class="line">println(persons.maxBy(Person::age))</div></pre></td></tr></table></figure>
+<p> 若是去打印person的类型，会发现实际上它是java的类型</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">println(persons.maxBy(Person::age))</div></pre></td></tr></table></figure>
+<p> 打印：<br> <code>class java.util.Arrays$ArrayList</code>.<br> 这正验证了刚才咱们说的：Kotlin在很多实细节上是基于<code>java</code>实现的。</p>
+<h3 id="带默认值的函数"><a href="#带默认值的函数" class="headerlink" title="带默认值的函数"></a>带默认值的函数</h3><p>在开始前需要了解下函数的默认参数值，在其他语言如<code>python</code>, 不是什么新鲜玩意儿。</p>
+<p>所谓带参数值的函数，实际上在调用函数时，选择性指定参数，否则函数验证按照参数个数，类型，顺序查找到对应签名的函数。</p>
+<p>如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">fun <span class="title">update</span><span class="params">(name:String, age:Int = <span class="number">0</span>, address:String = <span class="string">""</span>)</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//todo do somethings</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实际上我们不为函数传值age和address，他可以走默认值0和””,也可以指定的传一个值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">update(<span class="string">"cyning"</span>, <span class="number">18</span>)</div><div class="line">update(<span class="string">"cyning"</span>, address = <span class="string">"china"</span>)</div></pre></td></tr></table></figure>
+<p>这样一个函数可以提供多个参数的同时，确保了某些参数使用默认值。</p>
+<blockquote>
+<blockquote>
+<p>为了保证java能调起来Kotlin的带默认值的参数，我们需要在Kotlin中用@JvmOverloads来确保多个同名函数的重载</p>
+</blockquote>
+</blockquote>
+<h3 id="顶层的函数"><a href="#顶层的函数" class="headerlink" title="顶层的函数"></a>顶层的函数</h3><p>顶层参数主要是为了解决类似utils工具类的问题，函数可以在类的顶层（不在类的内部），调用时，类似调用java的静态工具类。</p>
+<p>对于java调用kotlin的顶层函数，需要注意导入的类是这个函数所在的类名加Kt后缀。</p>
+<h3 id="拓展函数"><a href="#拓展函数" class="headerlink" title="拓展函数"></a>拓展函数</h3><p>在Kotlin中，我们是可以为其他类添加函数，好像是这个函数本身有的方法一样。这样的函数我们称之为拓展函数。定义规则如下：</p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201803032056_class_litlkjdksjfkjfks.png" alt=""></p>
+<p>这样String就多个一个方法lastChar()函数。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun  String.lastChar():Char = <span class="keyword">this</span>.get(length-<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="string">"cyning li"</span>.lastChar()</div></pre></td></tr></table></figure></p>
+<p>其中=后面的可以理解成是在String类的操作（其中的this自己体会下）</p>
+<p>若嫌不够，再来一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fun  List&lt;Int&gt;.maxElem():Int  &#123;</div><div class="line">    var max:Int = <span class="keyword">this</span>.get(<span class="number">0</span>);</div><div class="line">    <span class="keyword">this</span>.forEach &#123; <span class="comment">//this实际上就是接收者对象</span></div><div class="line">        max = (<span class="keyword">if</span>  (it &gt; max) it <span class="keyword">else</span> max )</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> max;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line">val  list = listOf&lt;Int&gt;(<span class="number">20</span>, <span class="number">4</span>, <span class="number">67</span>, <span class="number">90</span>);</div><div class="line">println(list.maxElem())</div></pre></td></tr></table></figure>
+<p>其中的forEach的this实际上是指List<int>的一个对象。</int></p>
+<p>在其他Kotlin使用，只需要导入相关的包名，类名，拓展方法名，就可以正常使用了，类似于调用顶层函数。</p>
+<blockquote>
+<p>所有拓展方法调用的方法都必须是接收类型的共有方法。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Kotlin的语言很简洁，或许可以通过lambda表达式就能惊叹它很优秀，不过函数或许也是它更出彩的地方。&lt;/p&gt;
+&lt;p&gt;在开始前，我们需要认识到很多类，如集合类，Kotlin其实是基于Java的api，只是对Java类的API又做了拓展，丰富了其API，而不是推倒重建，在
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://ownwell.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Kotlin" scheme="http://ownwell.github.io/tags/Kotlin/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin学习02-lambda表达式 </title>
@@ -1310,33 +1364,6 @@
     
     
       <category term="JCenter" scheme="http://ownwell.github.io/tags/JCenter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>扩大view的点击区域</title>
-    <link href="http://ownwell.github.io/2016/06/19/expand_touch/"/>
-    <id>http://ownwell.github.io/2016/06/19/expand_touch/</id>
-    <published>2016-06-19T09:54:20.000Z</published>
-    <updated>2017-05-24T07:19:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在做一个一个页面，发现有些小Button实在是很难击中,可能你会想各种办法，比如在外面套一个大的容器、把Padding设置的大一点等等，今天给你提供一个新思路。<br><a id="more"></a></p>
-<h1 id="扩大view的点击区域"><a href="#扩大view的点击区域" class="headerlink" title="扩大view的点击区域"></a>扩大view的点击区域</h1><p>今天在看View代码时，发现有个方法叫<code>setTouchDelegate</code>，后来查阅了一下发现这个实际上是个代理类，我们可以通过它的父组件来扩大点击区域。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470736727319.png" width="299"></p>
-<p>代码很简单，直接贴上吧：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * 扩大View的触摸和点击响应范围,最大不超过其父View范围</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> view</div><div class="line">     * <span class="doctag">@param</span> top</div><div class="line">     * <span class="doctag">@param</span> bottom</div><div class="line">     * <span class="doctag">@param</span> left</div><div class="line">     * <span class="doctag">@param</span> right</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">expandViewTouchDelegate</span><span class="params">(<span class="keyword">final</span> View view, <span class="keyword">final</span> <span class="keyword">int</span> top,</span></span></div><div class="line">                                               <span class="keyword">final</span> <span class="keyword">int</span> bottom, <span class="keyword">final</span> <span class="keyword">int</span> left, <span class="keyword">final</span> <span class="keyword">int</span> right) &#123;</div><div class="line"></div><div class="line">        ((View) view.getParent()).post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                Rect bounds = <span class="keyword">new</span> Rect();</div><div class="line">                view.setEnabled(<span class="keyword">true</span>);</div><div class="line">                view.getHitRect(bounds);</div><div class="line"></div><div class="line">                bounds.top -= top;</div><div class="line">                bounds.bottom += bottom;</div><div class="line">                bounds.left -= left;</div><div class="line">                bounds.right += right;</div><div class="line"></div><div class="line">                TouchDelegate touchDelegate = <span class="keyword">new</span> TouchDelegate(bounds, view);</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (View.class.isInstance(view.getParent())) &#123;</div><div class="line">                    ((View) view.getParent()).setTouchDelegate(touchDelegate);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 还原View的触摸和点击响应范围,最小不小于View自身范围</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> view</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">restoreViewTouchDelegate</span><span class="params">(<span class="keyword">final</span> View view)</span> </span>&#123;</div><div class="line"></div><div class="line">        ((View) view.getParent()).post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                Rect bounds = <span class="keyword">new</span> Rect();</div><div class="line">                bounds.setEmpty();</div><div class="line">                TouchDelegate touchDelegate = <span class="keyword">new</span> TouchDelegate(bounds, view);</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (View.class.isInstance(view.getParent())) &#123;</div><div class="line">                    ((View) view.getParent()).setTouchDelegate(touchDelegate);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在做一个一个页面，发现有些小Button实在是很难击中,可能你会想各种办法，比如在外面套一个大的容器、把Padding设置的大一点等等，今天给你提供一个新思路。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="View" scheme="http://ownwell.github.io/tags/View/"/>
     
   </entry>
   
