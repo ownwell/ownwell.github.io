@@ -255,7 +255,9 @@ a:focus {
 }
 
 .post-content>h1 {
-	color: #666;
+	color: #63a35c;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 .post {
 	padding: 25px 0 15px;
@@ -368,9 +370,9 @@ a:focus {
 }
 
 .post .post-content h2, .post .post-content h3 {
-	margin: 1.4em 0 1.1em;
+	margin: 0.6em 0 0.6em;
 	font-weight: normal;
-	color: #444;
+	color: #63a35c;
 }
 
 .post .post-content pre code {
