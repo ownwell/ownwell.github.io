@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-19T14:22:37.760Z</updated>
+  <updated>2018-03-19T14:26:40.940Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://ownwell.github.io/2018/03/19/server-install-apps/"/>
     <id>http://ownwell.github.io/2018/03/19/server-install-apps/</id>
     <published>2018-03-19T13:39:28.000Z</published>
-    <updated>2018-03-19T14:22:37.760Z</updated>
+    <updated>2018-03-19T14:26:40.940Z</updated>
     
     <content type="html"><![CDATA[<p>在腾讯云上买了个服务器，3年多,这也是为自己学习的投资。拿到新机器，我们需要搭常见的环境，如java，python等，中间一顿折腾，后来居然还重置了机器。今天就把周末自己折腾的结果整理下，防止有人进坑。</p>
 <h1 id="安装python环境"><a href="#安装python环境" class="headerlink" title="安装python环境"></a>安装python环境</h1><p>python不必多说，是各种语言（Java，Oc，sh脚本）的粘合剂，提供丰富的库，语言简洁，人生苦短，我用Python。</p>
-<p>安装Python可以去下载Python3.x（不要再用Python2.7了），也可以通过<a href="https://anaconda.org/anaconda/python" target="_blank" rel="external">Anaconda</a>安装。</p>
+<p>安装Python可以去下载Python3.x（不要再用Python2.7了），也可以通过<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>安装。</p>
 <p>linux直接下载sh脚本，然后执行这个脚本，就进入安装步骤。</p>
 <p>只要安装完Anaconda，像pip，Numpy等工具库都已经安装成功。</p>
 <h1 id="安装java8"><a href="#安装java8" class="headerlink" title="安装java8"></a>安装java8</h1><p>Java是我我接触时间比较久的语言，所以必须安装它，首选Java8.</p>
