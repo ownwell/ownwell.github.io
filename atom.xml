@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-19T15:02:15.990Z</updated>
+  <updated>2018-03-19T15:07:33.300Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://ownwell.github.io/2018/03/19/server-install-apps/"/>
     <id>http://ownwell.github.io/2018/03/19/server-install-apps/</id>
     <published>2018-03-19T13:39:28.000Z</published>
-    <updated>2018-03-19T15:02:15.990Z</updated>
+    <updated>2018-03-19T15:07:33.300Z</updated>
     
     <content type="html"><![CDATA[<p>在腾讯云上买了个服务器，3年多,这也是为自己学习的投资。拿到新机器，我们需要搭常见的环境，如java，python等，中间一顿折腾，后来居然还重置了机器。今天就把周末自己折腾的结果整理下，防止有人进坑。</p>
 <h1 id="安装python环境"><a href="#安装python环境" class="headerlink" title="安装python环境"></a>安装python环境</h1><p>python不必多说，是各种语言（Java，Oc，sh脚本）的粘合剂，提供丰富的库，语言简洁，人生苦短，我用Python。</p>
-<p>安装Python可以去下载Python3.x（不要再用Python2.7了），也可以通过<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>安装。</p>
-<p>我推荐使用<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>安装，能省去很多体力活。</p>
+<p>安装Python可以去下载Python3.x（不要再用Python2.7了!!），也可以通过<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>安装。</p>
+<p>我推荐使用<a href="https://www.anaconda.com/download/" target="_blank" rel="external">Anaconda</a>安装，能省去很多体力活。下面就开始安装Anaconda:</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19%2022-30-36.png" alt=""><br>DownLoad实际上是个sh文件，我们通过wget来下载,并通过sh来执行这个安装文件：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh</div><div class="line"></div><div class="line">sh Anaconda3-5.1.0-Linux-x86_64.sh</div></pre></td></tr></table></figure>
 <p>然后执行这个脚本，就进入安装步骤。</p>
