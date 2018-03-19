@@ -11,10 +11,8 @@
 <li><p>yum 安装</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum localinstall jdk-<span class="number">8</span>u162-linux-x64.rpm -y</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>这样java就安装到/usr目录下了，具体路径是<code>/usr/java/jdk1.8.0_162</code>.</p>
-<ol>
-<li>配置<br>在自己的shell的配置文件(如bash的.bashrc)配置：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/java/jdk1.8.0_162</div><div class="line">export JRE_HOME=/usr/java/jdk1.8.0_162/jre</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div></pre></td></tr></table></figure>
+<li><p>配置<br>这样java就安装到<code>/usr/java/jdk1.8.0_162</code>.在自己的shell的配置文件(如bash的.bashrc)配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/java/jdk1.8.0_162</div><div class="line">export JRE_HOME=/usr/java/jdk1.8.0_162/jre</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>最后通过<code>java -version</code>验证下。</p>
@@ -22,10 +20,10 @@
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>之前我用<code>yum install mysql</code> 是没问题的，但是安装<code>mysql-server</code>  时提示没找到，于是就搜了下，还需要添加yum源.</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-03-19-01.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget <span class="string">'https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm'</span></div><div class="line"></div><div class="line">sudo rpm -Uvh mysql57-community-release-el7-<span class="number">11</span>.noarch.rpm</div><div class="line"></div><div class="line">yum repolist all | grep mysql</div></pre></td></tr></table></figure>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-03-19_02.png" alt=""></p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-03-19_02.png-blog" alt=""></p>
 <p>就找到5.7的，开始安装：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mysql-community-server</div></pre></td></tr></table></figure></p>
 <h1 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h1><p>开启mysql的服务：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service mysqld start </div><div class="line">sudo systemctl start mysqld</div><div class="line">sudo systemctl status mysqld</div></pre></td></tr></table></figure></p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19_03.png" alt=""></p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19_03.png-blog" alt=""></p>
 <h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>这个密码让我纠结很久，因为我想登录mysql，但是发现我没有密码！！<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p  <span class="comment">#输入mysql密码</span></div></pre></td></tr></table></figure></p>
 <p>后来记得我之前在mac安装时会有个临时密码弹窗，感觉在linux也类似。上网查了下果然如此，只需要找到这个临时密码，再重设置就OK。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.lo查看到的密码</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19_04.png" alt=""></p>
