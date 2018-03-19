@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-19T14:38:18.520Z</updated>
+  <updated>2018-03-19T14:45:53.710Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>在Center OS安装常用软件(1)</title>
+    <title>Center OS下安装常用软件</title>
     <link href="http://ownwell.github.io/2018/03/19/server-install-apps/"/>
     <id>http://ownwell.github.io/2018/03/19/server-install-apps/</id>
     <published>2018-03-19T13:39:28.000Z</published>
-    <updated>2018-03-19T14:38:18.520Z</updated>
+    <updated>2018-03-19T14:45:53.710Z</updated>
     
     <content type="html"><![CDATA[<p>在腾讯云上买了个服务器，3年多,这也是为自己学习的投资。拿到新机器，我们需要搭常见的环境，如java，python等，中间一顿折腾，后来居然还重置了机器。今天就把周末自己折腾的结果整理下，防止有人进坑。</p>
 <h1 id="安装python环境"><a href="#安装python环境" class="headerlink" title="安装python环境"></a>安装python环境</h1><p>python不必多说，是各种语言（Java，Oc，sh脚本）的粘合剂，提供丰富的库，语言简洁，人生苦短，我用Python。</p>
