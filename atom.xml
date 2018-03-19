@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-03-03T13:13:14.450Z</updated>
+  <updated>2018-03-19T13:40:44.320Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>server_install_apps</title>
+    <link href="http://ownwell.github.io/2018/03/19/server-install-apps/"/>
+    <id>http://ownwell.github.io/2018/03/19/server-install-apps/</id>
+    <published>2018-03-19T13:39:28.000Z</published>
+    <updated>2018-03-19T13:40:44.320Z</updated>
+    
+    <content type="html"><![CDATA[<p>在腾讯云上买了个服务器，3年多,这也是为自己学习的投资。</p>
+<p>拿到新机器，我们需要搭常见的环境，如java，python等，中间一顿折腾，后来居然还重置了机器。今天就把周末自己折腾的结果整理下，防止有人进坑。</p>
+<h1 id="安装python环境"><a href="#安装python环境" class="headerlink" title="安装python环境"></a>安装python环境</h1><p>python不必多说，是各种语言（java oc）的粘合剂，提供丰富的库，语言简洁，人生苦短，我用Python。</p>
+<p>安装Python可以去下载Python3.x（不要再用Python2.7了），也可以通过<a href="https://anaconda.org/anaconda/python" target="_blank" rel="external">Anaconda</a>安装。</p>
+<p>linux直接下载sh写脚本，然后执行这个脚本，就进入安装步骤。</p>
+<p>只要安装完Anaconda，像pip，Numpy等工具库都已经安装成功。</p>
+<h1 id="安装java8"><a href="#安装java8" class="headerlink" title="安装java8"></a>安装java8</h1><p>Java是我我接触时间比较久的语言，所以必须安装它，首选Java8.</p>
+<ol>
+<li><p>下载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.rpm”</div></pre></td></tr></table></figure>
+</li>
+<li><p>yum 安装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum localinstall jdk-<span class="number">8</span>u162-linux-x64.rpm -y</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样java就安装到/usr目录下了，具体路径是<code>/usr/java/jdk1.8.0_162</code>.</p>
+<ol>
+<li>配置<br>在自己的shell的配置文件(如bash的.bashrc)配置：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/java/jdk1.8.0_162</div><div class="line">export JRE_HOME=/usr/java/jdk1.8.0_162/jre</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>最后通过<code>java -version</code>验证下。</p>
+<h1 id="mysql的安装和配置"><a href="#mysql的安装和配置" class="headerlink" title="mysql的安装和配置"></a>mysql的安装和配置</h1><p>安装mysql走了点弯路，不过没关系，后面居然都是很顺利的。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>之前我用<code>yum install mysql</code> 是没问题的，但是安装<code>mysql-server</code>  时提示没找到，于是就搜了下，还需要添加yum源.</p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-03-19-01.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget <span class="string">'https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm'</span></div><div class="line"></div><div class="line">sudo rpm -Uvh mysql57-community-release-el7-<span class="number">11</span>.noarch.rpm</div><div class="line"></div><div class="line">yum repolist all | grep mysql</div></pre></td></tr></table></figure>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-03-19_02.png" alt=""></p>
+<p>就找到5.7的，开始安装：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mysql-community-server</div></pre></td></tr></table></figure></p>
+<h1 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h1><p>开启mysql的服务：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service mysqld start </div><div class="line">sudo systemctl start mysqld</div><div class="line">sudo systemctl status mysqld</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19_03.png" alt=""></p>
+<h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>这个密码让我纠结很久，因为我想登录mysql，但是发现我没有密码！！<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p  <span class="comment">#输入mysql密码</span></div></pre></td></tr></table></figure></p>
+<p>后来记得我之前在mac安装时会有个临时密码弹窗，感觉在linux也类似。上网查了下果然如此，只需要找到这个临时密码，再重设置就OK。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.lo查看到的密码</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-03-19_04.png" alt=""></p>
+<p>再通过密码登录mysql数据库，设置密码:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p  <span class="comment">#输入mysql临时密码</span></div><div class="line"></div><div class="line">ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'root1244'</span>; <span class="comment"># 登录mysql设置新密码root1244</span></div></pre></td></tr></table></figure></p>
+<p>退出mysql后，就可以快乐使用了。</p>
+<blockquote>
+<p>5.6之后有个安全设置，可以重置密码，修改数据库是否可以被远程访问等<code>mysql_secure_installation</code></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在腾讯云上买了个服务器，3年多,这也是为自己学习的投资。&lt;/p&gt;
+&lt;p&gt;拿到新机器，我们需要搭常见的环境，如java，python等，中间一顿折腾，后来居然还重置了机器。今天就把周末自己折腾的结果整理下，防止有人进坑。&lt;/p&gt;
+&lt;h1 id=&quot;安装python环境&quot;&gt;&lt;a 
+    
+    </summary>
+    
+      <category term="编程" scheme="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="服务器" scheme="http://ownwell.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin学习03-函数</title>
@@ -1319,51 +1380,6 @@
     
     
       <category term="Realm" scheme="http://ownwell.github.io/tags/Realm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[Androoid]开源自己的项目到JCenter</title>
-    <link href="http://ownwell.github.io/2016/07/14/push-library-to-jcenter/"/>
-    <id>http://ownwell.github.io/2016/07/14/push-library-to-jcenter/</id>
-    <published>2016-07-14T03:15:17.000Z</published>
-    <updated>2017-05-24T07:19:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>一个完整的系统，模块与模块之间，尽可能的使其独立存在。也就是说，让每个模块，尽可能的独立完成某个特定的子功能。模块与模块之间的接口，尽量的少而简单。<br><a id="more"></a></p>
-<p>在写文章之前先吊书袋子了一下，告诉大家软件设计中的低耦合，所以我们会把一个个模块分开，模块之前相互独立，即插即用，这个书袋子吊的还可以吧。<br><img src="http://img4.imgtn.bdimg.com/it/u=835084131,3132971467&amp;fm=21&amp;gp=0.jpg" alt="maven"></p>
-<p>所以maven在一个大型系统是经常见到的，如各个模块做成独立的压缩文件如jar，放在服务器上，所有需要的都可以直接DownLoad到本地，拿来用，这是一种很爽的体验吧。</p>
-<p>所以Maven使我们解决依赖的一种最常用的方法，当然了你也可以通过maven来构建项目。但是这不是我们的重点，我们要讲的是对于android开发者如何上传自己的项目到JCenter(一个供程序员玩耍的Maven仓库)，世界上所有的程序员都可以通过JCenter上传自己的项目或者下载别人的项目来使用。</p>
-<th><img src="http://qq.yh31.com/tp/qq/ZJBQ/201111/201111041444379709.gif" alt="藐视"></th>
-
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>JCenter作为一个规模相当大的中心仓库，我们需要到<a href="https://bintray.com/#" target="_blank" rel="external">https://bintray.com/#</a>，去注册的账号，若你有账号跳过这一步。注册一般通过邮箱验证，试下登录是否注册成功。</p>
-<h2 id="获取API-key"><a href="#获取API-key" class="headerlink" title="获取API key"></a><span id="apikey">获取API key</span></h2><p> 注册完成后我们需要查看自己的key，进入到<a href="https://bintray.com/profile/edit" target="_blank" rel="external">https://bintray.com/profile/edit</a>，看到有个API KEY输入密码就可以见到，下面会用到这个key。</p>
-<h2 id="认识GAV"><a href="#认识GAV" class="headerlink" title="认识GAV"></a>认识GAV</h2><p>为了确定你的包唯一，我们使用GAV来保证，如下面的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;    </div><div class="line">  	&lt;groupId&gt;org.apache.struts&lt;/groupId&gt;    </div><div class="line">	&lt;artifactId&gt;struts2-core&lt;/artifactId&gt;    </div><div class="line">	&lt;version&gt;2.0.11&lt;/version&gt;    </div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
-<p>groupId 是你的Group的唯一标示<br>artifactId  你的项目名称<br>version   项目的版本    </p>
-<p>所以你要确定自己的groupId和artifactId。</p>
-<h1 id="配置gradle上传maven的配置"><a href="#配置gradle上传maven的配置" class="headerlink" title="配置gradle上传maven的配置"></a>配置gradle上传maven的配置</h1><h3 id="在更项目的build-gradle添加如下几句："><a href="#在更项目的build-gradle添加如下几句：" class="headerlink" title="在更项目的build.gradle添加如下几句："></a>在更项目的build.gradle添加如下几句：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"> dependencies &#123;</div><div class="line">        ……</div><div class="line">        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'</div><div class="line">        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'</div><div class="line">        ……</div><div class="line">&#125;</div><div class="line">```   </div><div class="line"></div><div class="line"></div><div class="line">### 准备脚本和配置</div><div class="line"> 新建一个发布到Jcenter的gradle脚本到你的library,这个脚本是单独处理和JCenter上传的操作</div><div class="line"></div><div class="line"></div><div class="line">bintray.gradle文件</div><div class="line">```apply plugin: 'com.github.dcendents.android-maven'</div><div class="line">apply plugin: 'com.jfrog.bintray'</div><div class="line"></div><div class="line">Properties properties = new Properties()</div><div class="line">properties.load(project.file('bintray.properties').newDataInputStream())</div><div class="line">def siteUrl = properties.getProperty("bintray.siteUrl")</div><div class="line"></div><div class="line">def desc = properties.getProperty("bintray.descrip")</div><div class="line"></div><div class="line">// Maven Group ID for the artifact，一般填你唯一的包名</div><div class="line">group = properties.getProperty("bintray.group")</div><div class="line">version = properties.getProperty("bintray.version")</div><div class="line"></div><div class="line">def giturl = properties.getProperty("bintray.vcs")</div><div class="line">def userid = properties.getProperty("bintray.userid")</div><div class="line">def username = properties.getProperty("bintray.username")</div><div class="line">def useremail = properties.getProperty("bintray.useremail")</div><div class="line"></div><div class="line">def licensename = properties.getProperty("bintray.licensename")</div><div class="line">def licenseurl = properties.getProperty("bintray.licenseurl")</div><div class="line">install &#123;</div><div class="line">    repositories.mavenInstaller &#123;</div><div class="line">         // This generates POM.xml with proper parameters</div><div class="line">        pom &#123;</div><div class="line">            project &#123;</div><div class="line">                packaging 'aar'</div><div class="line">                // Add your description here</div><div class="line">                name desc //项目描述</div><div class="line"></div><div class="line">               url siteUrl</div><div class="line">               // Set your license</div><div class="line">               licenses &#123;</div><div class="line">                   license &#123;</div><div class="line">                       name licensename</div><div class="line">                       url licenseurl</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                developers &#123;</div><div class="line">                    developer &#123;</div><div class="line">                        id userid</div><div class="line">                        name username</div><div class="line">                        email useremail</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                scm &#123;</div><div class="line">                    connection giturl</div><div class="line">                    developerConnection giturl</div><div class="line">                    url siteUrl</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">task sourcesJar(type: Jar) &#123;</div><div class="line">    from android.sourceSets.main.java.srcDirs</div><div class="line">    classifier = 'sources'</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">task javadoc(type: Javadoc) &#123;</div><div class="line">    source = android.sourceSets.main.java.srcDirs</div><div class="line">    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line">task javadocJar(type: Jar, dependsOn: javadoc) &#123;</div><div class="line">    classifier = 'javadoc'</div><div class="line">    from javadoc.destinationDir</div><div class="line">&#125;</div><div class="line">artifacts &#123;</div><div class="line">//    archives javadocJar</div><div class="line">    archives sourcesJar</div><div class="line"></div><div class="line">&#125;</div><div class="line">bintray &#123;</div><div class="line">    user = properties.getProperty("bintray.user")</div><div class="line">    key = properties.getProperty("bintray.key")</div><div class="line">    configurations = ['archives']</div><div class="line">    pkg &#123;</div><div class="line">        repo = "maven"</div><div class="line">        name = properties.getProperty("bintray.name") //发布到JCenter上的项目名字</div><div class="line">        websiteUrl = properties.getProperty("bintray.siteUrl")</div><div class="line">        vcsUrl = properties.getProperty("bintray.vcs")</div><div class="line">        licenses =[properties.getProperty("bintray.licenses")]</div><div class="line">                publish = true</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你看到的那些<code>bintray.licenses</code>都是我们需要新建另外一个配置文件的：</p>
-<hr>
-<p>bintray.properties文件<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">bintray.key= #填写刚才获取[API key](#apikey)中的key</div><div class="line">bintray.user=#填写刚才登录时的昵称</div><div class="line"></div><div class="line">bintray.userid=</div><div class="line">bintray.username=#需要显示在maven中的作者昵称</div><div class="line">bintray.useremail=#需要显示在maven中的作者邮箱</div><div class="line"></div><div class="line">bintray.licensename=The Apache Software License, Version 2.0</div><div class="line">bintray.licenseurl=http://www.apache.org/licenses/LICENSE-2.0.txt</div><div class="line"></div><div class="line">bintray.group=#项目的groupId</div><div class="line">bintray.name=#项目名称</div><div class="line">bintray.version=#项目版本号</div><div class="line">bintray.siteUrl=#项目的对应网站</div><div class="line">bintray.vcs=#项目的地址如githun等代码托管的链接</div><div class="line">bintray.licenses=#开源协议如mit等</div><div class="line">bintray.descrip=项目描述</div><div class="line">`</div></pre></td></tr></table></figure></p>
-<p>准备妥当了，需要把gradle脚本放到你的libray的<code>build.gradle</code>,因为项目执行会去执行<code>build.gradle</code>,我们把刚才的bintray.gradle</p>
-<p>apply from: “bintray.gradle”</p>
-<p>整个项目结构我们可以这么看</p>
-<p>library<br>–main<br>   –java<br>–build.gradle 在结尾记得加apply from: “bintray.gradle”<br>–bintray.gradle<br>–bintray.properties</p>
-<h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>./gradlew clean bintrayUpload</p>
-<p>这样就可以上传到jcenter上，去你的jcenter账号下看看有没有文件上传成功吧。</p>
-<h3 id="申请同步到jcenter"><a href="#申请同步到jcenter" class="headerlink" title="申请同步到jcenter"></a>申请同步到jcenter</h3><p>会看到左侧使我们可以使用的GAV<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470416953314.png" width="685"></p>
-<p>右侧是我们需要自己填写同步到jcenter的，否则只是私有库不能直接通过jcenter访问。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一个完整的系统，模块与模块之间，尽可能的使其独立存在。也就是说，让每个模块，尽可能的独立完成某个特定的子功能。模块与模块之间的接口，尽量的少而简单。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="JCenter" scheme="http://ownwell.github.io/tags/JCenter/"/>
     
   </entry>
   
