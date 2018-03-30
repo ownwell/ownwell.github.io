@@ -946,12 +946,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1023,6 +1023,50 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
+        
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1073,50 +1117,6 @@
         <pubTime>2015-01-07T16:00:00.000Z</pubTime>
         
         <tag>Mac </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
-        
-        <tag>Tools </tag>
          
          
            
@@ -1191,12 +1191,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
