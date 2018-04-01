@@ -61,9 +61,9 @@
     <link href="http://ownwell.github.io/2018/03/20/aop/"/>
     <id>http://ownwell.github.io/2018/03/20/aop/</id>
     <published>2018-03-19T16:00:00.000Z</published>
-    <updated>2018-04-01T14:35:12.610Z</updated>
+    <updated>2018-04-01T14:41:17.190Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。那AOP在Spring中是怎样运作的呢？当你只能使用core java，却需要AOP技术时，这个问题的解答变得极为关键。不仅如此，在高级技术岗位的面试中，此类问题也常作为考题出现。这不，我的朋友最近参加了一个面试，就被问到了这样一个棘手的问题——如何在不使用Spring及相关库，只用core Java的条件下实现AOP。因此，我将在本文中提供一份大纲，帮助大家了解如何只用core Java实现一个AOP（当然啦，这种AOP在功能上有一定的局限性）。注意，本文不是一篇有关Spring AOP与Java AOP的对比研究，而是有关在core Java中借助固有的设计模式 。</p>
+    <content type="html"><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。<br><a id="more"></a><br>那AOP在Spring中是怎样运作的呢？当你只能使用core java，却需要AOP技术时，这个问题的解答变得极为关键。不仅如此，在高级技术岗位的面试中，此类问题也常作为考题出现。这不，我的朋友最近参加了一个面试，就被问到了这样一个棘手的问题——如何在不使用Spring及相关库，只用core Java的条件下实现AOP。因此，我将在本文中提供一份大纲，帮助大家了解如何只用core Java实现一个AOP（当然啦，这种AOP在功能上有一定的局限性）。注意，本文不是一篇有关Spring AOP与Java AOP的对比研究，而是有关在core Java中借助固有的设计模式 。</p>
 <p>想必大家已经知道AOP是什么，也知道在Spring框架中如何使用它，因此本文只着眼于如何在不用Spring的前提下实现AOP。首先，我们得知道，Spring是借助了JDK proxy和CGlib两种技术实现AOP的。JDK dynamic proxy提供了一种灵活的方式来hook一个方法并执行指定的操作，但执行操作时得有一个限制条件：必须先提供一个相关的接口以及该接口的实现类。实践出真知，让我们透过一个案例来理解这句吧！现在有一个计算器程序，用于完成一些数学运算。让我们来考虑下除法功能，此时的问题是：如果core framework 已经具备了一份实现除法的代码，我们能否在代码执行时劫持（highjack）它并执行额外的校验呢？答案是肯定的，我将用下面提供的代码片段来证明这点。首先来看基础接口的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>该接口实现类的代码如下：</p>
@@ -102,7 +102,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。&lt;br&gt;
     
     </summary>
     
