@@ -57,6 +57,65 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://ownwell.github.io/2018/04/01/python-data-analysis-nba-01/"/>
+    <id>http://ownwell.github.io/2018/04/01/python-data-analysis-nba-01/</id>
+    <published>2018-03-31T16:00:00.000Z</published>
+    <updated>2018-04-01T15:55:41.050Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: 数据分析–NBA哪个月的比赛最多<br>date: 2018-03-25<br>tags: [Python]</p>
+<h2 id="categories-数据分析"><a href="#categories-数据分析" class="headerlink" title="categories: [数据分析]"></a>categories: [数据分析]</h2><p>我是个NBA伪球迷，去打篮球很少，但是天天看球赛，什么NBA，CBA甚至连NCAA的八强赛也关注，前几天接触Python的数据分析，发现挺有意思，于是我就自己搞了一个简单的程序来分析—从96年哪个月的比赛最多。</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>我自己喜欢搞爬虫，自己爬了一点数据到数据库，至于怎么爬取，请关注公众号:<strong>爱代码的Cyning</strong>，后续会将爬虫代码程序发出来。<br>我将爬取的数据放到了Mysql的数据库，大概的数据如下：<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/20180401230409.png" alt=""></p>
+<h3 id="数据库连接和数据获取"><a href="#数据库连接和数据获取" class="headerlink" title="数据库连接和数据获取"></a>数据库连接和数据获取</h3><ul>
+<li><strong>安装pymysql</strong> </li>
+</ul>
+<p>对于这个分享程序使用的是Python3.X，Python怎么链接Mysql呢？<br>首先需要安装<code>pymysql</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install -i http://pypi.douban.com/simple --trusted-host pypi.douban.com pymysql</div></pre></td></tr></table></figure>
+<ul>
+<li>获取数据库的数据</li>
+</ul>
+<p>跟其他语言获取数据库方式一样，拿到游标就可以拿到数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>  MySQLdb.connect(host=<span class="string">'localhost'</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'root'</span>, port=<span class="number">3306</span>, db=<span class="string">"nba"</span>) <span class="keyword">as</span> cursor:</div><div class="line">    <span class="comment"># 使用cursor()方法获取操作游标</span></div><div class="line">    sql = <span class="string">"select * from `match-time`"</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="comment"># 执行SQL语句</span></div><div class="line">        cursor.execute(sql)</div><div class="line">        <span class="comment"># 获取所有记录列表</span></div><div class="line">        results = cursor.fetchall()</div><div class="line">        p = np.array(results)</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> p</div><div class="line"></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        print(<span class="string">"Error: unable to fecth data"</span>)</div><div class="line">        <span class="keyword">return</span> np.nan</div></pre></td></tr></table></figure>
+<p>通过<code>MySQLdb</code>库来拿到数据的游标，执行sql语句，就可以通过<code>.fetchall()</code>获取所有的列表信息。</p>
+<ul>
+<li>Numpy分析</li>
+</ul>
+<p>在Python3.X上开发是个很开心的过程，因为丰富的第三方库，给我们提供了各式各样的轮子，我们只需要按照自己的需求组装或者组合。我们可以通过Numpy库来处理目前我们能拿到的数据。</p>
+<p>上面的<code>np.array</code>其实就是将从数据库的二维数据向量化。</p>
+<p>我们需要将1996-1997赛季到2016-2017赛季所有的按照月份给列出来，首先我们需要获取每隔赛季有哪几个月是比赛月(常规赛和季后赛)，因为每隔赛季的情况千差万别，如停摆，全明星赛，以及各种因素会导致每隔赛季有所差异。</p>
+<p>那我们如何拿到每隔赛季的月份呢:</p>
+<ol>
+<li>过滤2017-2018赛季（比赛尚未结束）</li>
+<li>按照月份来去重，拿到有比赛的月份(比赛月)</li>
+<li>每一个的比赛求总和</li>
+</ol>
+<p><strong>过滤2017-2018赛季以及求月份</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从数据库获取数据</span></div><div class="line">data_arr = getAllData()</div><div class="line"><span class="comment">#  过滤2017-2018赛季</span></div><div class="line">data_arr = data_arr[  (data_arr[:, <span class="number">6</span>] != <span class="string">"2017-2018"</span>)]</div><div class="line"></div><div class="line"><span class="comment"># 拿到月份</span></div><div class="line">month_list = np.unique(data_arr[:, <span class="number">4</span>])</div></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'1'</span> <span class="string">'10'</span> <span class="string">'11'</span> <span class="string">'12'</span> <span class="string">'2'</span> <span class="string">'3'</span> <span class="string">'4'</span> <span class="string">'5'</span> <span class="string">'6'</span>]</div></pre></td></tr></table></figure></p>
+<p>跟实际情况是一致的。</p>
+<p><strong>求每个月份比赛数</strong></p>
+<p>只需将刚才的比赛月一一遍历，求和即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">month_list_result = []</div><div class="line"><span class="keyword">for</span> month <span class="keyword">in</span> month_list:</div><div class="line">    <span class="comment"># 和month相同的月份的向量</span></div><div class="line">    month_list_data = data_arr[data_arr[:,<span class="number">4</span>] == month]</div><div class="line">    <span class="comment"># 求和，Y轴</span></div><div class="line">    match_cnt = np.sum(month_list_data[:, <span class="number">1</span>].astype(int), axis=<span class="number">0</span>)</div><div class="line">    month_list_result.append([month, match_cnt])</div></pre></td></tr></table></figure>
+<p>将获取的<code>month_list_result</code>存到csv文件中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">file_name = os.path.join(<span class="string">"./"</span>,   <span class="string">"month_cnt.csv"</span>)</div><div class="line">save_stats_to_csv(np.array(month_list_result), file_name, headers=[<span class="string">'month'</span>, <span class="string">"match_cnt"</span>])</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果</li>
+<li>打开csv文件，用excel的图表展示如下:<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201804012343.png" alt=""></li>
+</ul>
+<p>通过这个图，我们很容易知道：<strong>NBA 3月份的比赛最多</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: 数据分析–NBA哪个月的比赛最多&lt;br&gt;date: 2018-03-25&lt;br&gt;tags: [Python]&lt;/p&gt;
+&lt;h2 id=&quot;categories-数据分析&quot;&gt;&lt;a href=&quot;#categories-数据分析&quot; class=&quot;headerl
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>（译文）手把手教你用Java实现AOP</title>
     <link href="http://ownwell.github.io/2018/03/20/aop/"/>
     <id>http://ownwell.github.io/2018/03/20/aop/</id>
@@ -1287,75 +1346,6 @@
     
     
       <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitflow工作流</title>
-    <link href="http://ownwell.github.io/2016/08/17/git-work-flow/"/>
-    <id>http://ownwell.github.io/2016/08/17/git-work-flow/</id>
-    <published>2016-08-17T13:13:23.000Z</published>
-    <updated>2017-05-24T07:19:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。</p>
-<p><img src="http://img3.imgtn.bdimg.com/it/u=1698758481,31368498&amp;fm=21&amp;gp=0.jpg" alt="毕业设计"><br><a id="more"></a><br>毕业后用过SVN，在超星时用得就是SVN，后来在世界邦用的是Git，对于版本控制来说那种都无所谓，不过对于用过Git的人来说，Git在分支和分布式版本这块和SVN还是有很大的区别，不过就冲Git优秀分支管理这块很适合客户端的开发，版本迭代快、团队人数不多，用起Git更能提高自己的效率。有了天书第六部，我们还怕张小凡么？</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471440527718.png" width="200"></p>
-<h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p>至于Git的基础命令我推荐几个比较好的网站：</p>
-<ol>
-<li><a href="http://git-scm.com/book/zh" target="_blank" rel="external">Pro Git官网</a></li>
-<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></li>
-<li><a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="external">Git入门指南使用资料汇总及文章推荐</a></li>
-<li><a href="http://backlogtool.com/git-guide/cn/" target="_blank" rel="external">图文并茂-猴子都能懂的git入门教程</a></li>
-<li><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a></li>
-</ol>
-<p>其中<a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="external">Git入门指南使用资料汇总及文章推荐</a>提到了<code>git flow</code>–<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">项目地址</a>,<code>git flow</code>其实是为了更好的利用Git分支对git 命令的一个封装，省时省力，不信来张图。</p>
-<h1 id="git-flow"><a href="#git-flow" class="headerlink" title="git flow"></a>git flow</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Git Flow模型中定义了主分支和辅助分支两类分支。其中主分支用于组织与软件开发、部署相关的活动；辅助分支组织为了解决特定的问题而进行的各种开发活动。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443465028.png" width="500"></p>
-<p><a href="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471441229112.png" target="_blank" rel="external">另外的一个</a></p>
-<h2 id="master分支"><a href="#master分支" class="headerlink" title="master分支"></a><code>master分支</code></h2><p> 主分支，是你发版的release时打的tag，是稳定版本，每一个版本都要打一个version tag。</p>
-<h2 id="develop分支"><a href="#develop分支" class="headerlink" title="develop分支"></a><code>develop分支</code></h2><p> develop分支，主分支开发分支，总是我们最新版本，虽然不稳定，但是有我们最新的版本，当开发完，QA通过，版本迭代完毕，将<code>develop</code> <code>merge</code>回主分支。</p>
-<h2 id="辅助分支"><a href="#辅助分支" class="headerlink" title="辅助分支"></a>辅助分支</h2><ol>
-<li><code>release分支</code> release分支是为发布新的产品版本而设计的。在这个分支上的代码允许做小的缺陷修正、准备发布版本所需的各项说明信息（版本号、发布时间、编译时间等等）。</li>
-<li><code>feature分支</code>：是develop的功能分支，如有几个同事同时开发，需要切换成几个小功能，每个人都需要从从develop中拉出一个feature分支，但是每个feature颗粒要尽量小，因为它需要我们能尽早merge会develop分支，否则冲突解决起来就没完没了。同时，当一个功能因为各种原因不开发了或者放弃了，这个分支直接废弃，不影响其他develop分支。</li>
-<li><code>hot-fix</code>分支：是一个比较特殊的分支，如图是从master分支上分出来的一个分支，如发版后发现有个紧急修复的bug，这时就需要用到hot-fix分支，修改完bug，结束了这个<code>hot-fix</code>，回合并修改的内容到<code>develop</code>分支和<code>mastar</code>分支。</li>
-</ol>
-<blockquote>
-<p>常用的分支约定：</p>
-<p>用于新建发布分支的分支: develop<br>用于合并的分支: master<br>分支命名: release-<em> 或 release/</em></p>
-</blockquote>
-<p>截了一个<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a>网站上的图。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471442358943.png" width="670"></p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="创建开发分支"><a href="#创建开发分支" class="headerlink" title="创建开发分支"></a>创建开发分支</h3><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443398542.png" width="275"></p>
-<p><a href="http://backlogtool.com/git-guide/cn/reference/branch.html#sec2" target="_blank" rel="external">创建一个本地分支</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch develop</div><div class="line">git push -u origin develop</div></pre></td></tr></table></figure></p>
-<p>或者<a href="http://backlogtool.com/git-guide/cn/reference/remote.html#sec4" target="_blank" rel="external">checkout一份到本地</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop origin/develop</div></pre></td></tr></table></figure>
-<h3 id="初始化git-flow"><a href="#初始化git-flow" class="headerlink" title="初始化git flow"></a>初始化git flow</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow init</div></pre></td></tr></table></figure>
-<h3 id="feature分支"><a href="#feature分支" class="headerlink" title="feature分支"></a>feature分支</h3><p>开始创建新的需求分支</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature start feature1 #这时项目会自动切换 feature/feature1分支</div></pre></td></tr></table></figure>
-<p>提交日志到本地仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -a -m <span class="string">"修改日志"</span></div></pre></td></tr></table></figure></p>
-<p>完成开发分支合并develop(自动)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature finish feature1</div></pre></td></tr></table></figure></p>
-<p>发布到远程开发分支<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin develop</div></pre></td></tr></table></figure></p>
-<h3 id="hotfix分支"><a href="#hotfix分支" class="headerlink" title="hotfix分支"></a>hotfix分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">更新master分支</div><div class="line">git pull origin master（更新master分支为最新）    </div><div class="line"></div><div class="line"> 切换到master分支</div><div class="line">git checkout master</div><div class="line"></div><div class="line">生成一个hotfix分支</div><div class="line">git flow hotfix start hfx     </div><div class="line"></div><div class="line"> 通知相关得工程师和测试人员hotfix分支名称   </div><div class="line"></div><div class="line"> 最终测试完成后拉回分支最新代码</div><div class="line">git pull origin hotfix/hfx</div><div class="line"></div><div class="line">最终修改和测试完成后，结束hot fix以供发布</div><div class="line">git flow hot fix finish hfx</div><div class="line"></div><div class="line"> 发布最终的master分支</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
-<hr>
-<p>参考文章</p>
-<ol>
-<li><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="external">基于git的源代码管理模型——git flow</a></li>
-<li><a href="http://backlogtool.com/" target="_blank" rel="external">猴子都能懂得git入门</a></li>
-<li><a href="http://blog.jobbole.com/76867/" target="_blank" rel="external">Git工作流指南：Gitflow工作流</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://img3.imgtn.bdimg.com/it/u=1698758481,31368498&amp;amp;fm=21&amp;amp;gp=0.jpg&quot; alt=&quot;毕业设计&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tools" scheme="http://ownwell.github.io/categories/Tools/"/>
-    
-    
-      <category term="Git" scheme="http://ownwell.github.io/tags/Git/"/>
     
   </entry>
   
