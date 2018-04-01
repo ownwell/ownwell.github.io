@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     
+  <url>
+    <loc>http://ownwell.github.io/2018/04/01/introduce-to-unicode/</loc>
+    <lastmod>2018-04-01T13:55:17.490Z</lastmod>
+    <data>
+        <display>
+        <title>白话ACSCII，GBK，Unicode，UTF-8</title>
+        <pubTime>2018-04-01T13:48:26.000Z</pubTime>
+        
+        <tag>编程 </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://ownwell.github.io/2018/03/19/server-install-apps/</loc>
@@ -331,12 +351,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -351,12 +371,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -765,26 +785,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring学习笔记（1）</title>
-        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -805,14 +805,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
+    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>关于Mysql允许远程连接</title>
-        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
+        <title>Spring学习笔记（1）</title>
+        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
         
-        <tag>JavaEE </tag>
+        <tag>Java </tag>
          
          
            
@@ -838,6 +838,26 @@
            
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于Mysql允许远程连接</title>
+        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
+        
+        <tag>JavaEE </tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
           
         </display>
     </data>
@@ -1023,50 +1043,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
-        
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1129,21 +1105,43 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
         
-        <tag>Android </tag>
-         
         <tag>Tools </tag>
          
          
            
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -1164,6 +1162,28 @@
            
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
