@@ -4,7 +4,7 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/04/01/python-data-analysis-nba-01/</loc>
-    <lastmod>2018-04-01T15:55:41.050Z</lastmod>
+    <lastmod>2018-04-01T16:01:35.070Z</lastmod>
     <data>
         <display>
         <title></title>
@@ -820,12 +820,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        <title>多渠道打包时，多渠道不同的配置文件夹</title>
+        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -840,12 +840,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/12/02/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E5%A4%9A%E6%B8%A0%E9%81%93%E6%B3%A8%E6%84%8F%E4%BA%8B%E5%AE%9C/</loc>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>多渠道打包时，多渠道不同的配置文件夹</title>
-        <pubTime>2015-12-02T12:44:31.000Z</pubTime>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1140,26 +1140,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
-        
-        <tag>Tools </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1184,15 +1164,13 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
         
-        <tag>Android </tag>
-         
         <tag>Tools </tag>
          
          
@@ -1239,6 +1217,28 @@
            
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>

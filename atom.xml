@@ -61,27 +61,25 @@
     <link href="http://ownwell.github.io/2018/04/01/python-data-analysis-nba-01/"/>
     <id>http://ownwell.github.io/2018/04/01/python-data-analysis-nba-01/</id>
     <published>2018-03-31T16:00:00.000Z</published>
-    <updated>2018-04-01T15:55:41.050Z</updated>
+    <updated>2018-04-01T16:01:35.070Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>title: 数据分析–NBA哪个月的比赛最多<br>date: 2018-03-25<br>tags: [Python]</p>
-<h2 id="categories-数据分析"><a href="#categories-数据分析" class="headerlink" title="categories: [数据分析]"></a>categories: [数据分析]</h2><p>我是个NBA伪球迷，去打篮球很少，但是天天看球赛，什么NBA，CBA甚至连NCAA的八强赛也关注，前几天接触Python的数据分析，发现挺有意思，于是我就自己搞了一个简单的程序来分析—从96年哪个月的比赛最多。</p>
+<h2 id="categories-数据分析"><a href="#categories-数据分析" class="headerlink" title="categories: [数据分析]"></a>categories: [数据分析]</h2><p>我是个NBA伪球迷，去打篮球很少，但是天天看球赛，什么NBA，CBA甚至连NCAA的八强赛也关注，前几天接触Python的数据分析，发现挺有意思，于是我就自己搞了一个简单的程序来分析—从96-97赛季开始，平均哪个月的NBA比赛最多。</p>
 <h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>我自己喜欢搞爬虫，自己爬了一点数据到数据库，至于怎么爬取，请关注公众号:<strong>爱代码的Cyning</strong>，后续会将爬虫代码程序发出来。<br>我将爬取的数据放到了Mysql的数据库，大概的数据如下：<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/20180401230409.png" alt=""></p>
 <h3 id="数据库连接和数据获取"><a href="#数据库连接和数据获取" class="headerlink" title="数据库连接和数据获取"></a>数据库连接和数据获取</h3><ul>
 <li><strong>安装pymysql</strong> </li>
 </ul>
-<p>对于这个分享程序使用的是Python3.X，Python怎么链接Mysql呢？<br>首先需要安装<code>pymysql</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install -i http://pypi.douban.com/simple --trusted-host pypi.douban.com pymysql</div></pre></td></tr></table></figure>
+<p>目前使用的是Python3.5+，那么Python怎么链接Mysql呢？<br>首先需要安装<code>pymysql</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install -i http://pypi.douban.com/simple --trusted-host pypi.douban.com pymysql</div></pre></td></tr></table></figure></p>
 <ul>
 <li>获取数据库的数据</li>
 </ul>
-<p>跟其他语言获取数据库方式一样，拿到游标就可以拿到数据:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>  MySQLdb.connect(host=<span class="string">'localhost'</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'root'</span>, port=<span class="number">3306</span>, db=<span class="string">"nba"</span>) <span class="keyword">as</span> cursor:</div><div class="line">    <span class="comment"># 使用cursor()方法获取操作游标</span></div><div class="line">    sql = <span class="string">"select * from `match-time`"</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="comment"># 执行SQL语句</span></div><div class="line">        cursor.execute(sql)</div><div class="line">        <span class="comment"># 获取所有记录列表</span></div><div class="line">        results = cursor.fetchall()</div><div class="line">        p = np.array(results)</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> p</div><div class="line"></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        print(<span class="string">"Error: unable to fecth data"</span>)</div><div class="line">        <span class="keyword">return</span> np.nan</div></pre></td></tr></table></figure>
-<p>通过<code>MySQLdb</code>库来拿到数据的游标，执行sql语句，就可以通过<code>.fetchall()</code>获取所有的列表信息。</p>
+<p>跟其他语言获取数据库方式一样，拿到游标就可以拿到数据:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>  MySQLdb.connect(host=<span class="string">'localhost'</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'root'</span>, port=<span class="number">3306</span>, db=<span class="string">"nba"</span>) <span class="keyword">as</span> cursor:</div><div class="line">    <span class="comment"># 使用cursor()方法获取操作游标</span></div><div class="line">    sql = <span class="string">"select * from `match-time`"</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="comment"># 执行SQL语句</span></div><div class="line">        cursor.execute(sql)</div><div class="line">        <span class="comment"># 获取所有记录列表</span></div><div class="line">        results = cursor.fetchall()</div><div class="line">        p = np.array(results)</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> p</div><div class="line"></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        print(<span class="string">"Error: unable to fecth data"</span>)</div><div class="line">        <span class="keyword">return</span> np.nan</div></pre></td></tr></table></figure></p>
+<p>通过<code>MySQLdb</code>库来拿到数据库的游标，执行sql语句，就可以通过<code>.fetchall()</code>获取数据库中所有的列表信息。</p>
 <ul>
 <li>Numpy分析</li>
 </ul>
-<p>在Python3.X上开发是个很开心的过程，因为丰富的第三方库，给我们提供了各式各样的轮子，我们只需要按照自己的需求组装或者组合。我们可以通过Numpy库来处理目前我们能拿到的数据。</p>
+<p>在Python3.X上开发是个很开心的过程，因为Python平台下丰富的第三方库，为我们提供了各式各样的轮子，我们只需要按照自己的需求组装或者组合。我们可以通过Numpy库来处理目前我们能拿到的数据。</p>
 <p>上面的<code>np.array</code>其实就是将从数据库的二维数据向量化。</p>
 <p>我们需要将1996-1997赛季到2016-2017赛季所有的按照月份给列出来，首先我们需要获取每隔赛季有哪几个月是比赛月(常规赛和季后赛)，因为每隔赛季的情况千差万别，如停摆，全明星赛，以及各种因素会导致每隔赛季有所差异。</p>
 <p>那我们如何拿到每隔赛季的月份呢:</p>
@@ -94,12 +92,11 @@
 <p>输出结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'1'</span> <span class="string">'10'</span> <span class="string">'11'</span> <span class="string">'12'</span> <span class="string">'2'</span> <span class="string">'3'</span> <span class="string">'4'</span> <span class="string">'5'</span> <span class="string">'6'</span>]</div></pre></td></tr></table></figure></p>
 <p>跟实际情况是一致的。</p>
 <p><strong>求每个月份比赛数</strong></p>
-<p>只需将刚才的比赛月一一遍历，求和即可：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">month_list_result = []</div><div class="line"><span class="keyword">for</span> month <span class="keyword">in</span> month_list:</div><div class="line">    <span class="comment"># 和month相同的月份的向量</span></div><div class="line">    month_list_data = data_arr[data_arr[:,<span class="number">4</span>] == month]</div><div class="line">    <span class="comment"># 求和，Y轴</span></div><div class="line">    match_cnt = np.sum(month_list_data[:, <span class="number">1</span>].astype(int), axis=<span class="number">0</span>)</div><div class="line">    month_list_result.append([month, match_cnt])</div></pre></td></tr></table></figure>
+<p>只需将刚才的比赛月一一遍历，求和即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">month_list_result = []</div><div class="line"><span class="keyword">for</span> month <span class="keyword">in</span> month_list:</div><div class="line">    <span class="comment"># 和month相同的月份的向量</span></div><div class="line">    month_list_data = data_arr[data_arr[:,<span class="number">4</span>] == month]</div><div class="line">    <span class="comment"># 求和，Y轴</span></div><div class="line">    match_cnt = np.sum(month_list_data[:, <span class="number">1</span>].astype(int), axis=<span class="number">0</span>)</div><div class="line">    month_list_result.append([month, match_cnt])</div></pre></td></tr></table></figure></p>
 <p>将获取的<code>month_list_result</code>存到csv文件中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">file_name = os.path.join(<span class="string">"./"</span>,   <span class="string">"month_cnt.csv"</span>)</div><div class="line">save_stats_to_csv(np.array(month_list_result), file_name, headers=[<span class="string">'month'</span>, <span class="string">"match_cnt"</span>])</div></pre></td></tr></table></figure></p>
 <ul>
 <li>结果</li>
-<li>打开csv文件，用excel的图表展示如下:<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201804012343.png" alt=""></li>
+<li>打开csv文件，用excel的图标展示如下:<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201804012343.png" alt=""></li>
 </ul>
 <p>通过这个图，我们很容易知道：<strong>NBA 3月份的比赛最多</strong></p>
 ]]></content>
