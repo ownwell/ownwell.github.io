@@ -749,7 +749,6 @@ figure.highlight,
 	color: #333;
 	overflow: hidden;
 	border-radius: 4px;
-	margin-top: 0px;
 }
 
 figure.highlight table,
@@ -1386,10 +1385,6 @@ figure.highlight .line,
 }
 
 .code-header {
-	background: -webkit-linear-gradient(#888, #ddd); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(#888, #ddd); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(#888, #ddd); /* Firefox 3.6 - 15 */
-    background: linear-gradient(#888, #ddd); /* 标准的语法（必须放在最后） */
 	padding: 8px 6px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
