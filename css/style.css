@@ -263,6 +263,9 @@ a:focus {
 	padding: 25px 0 15px;
 }
 
+.post-list-link {
+	font-size: 15px;
+}
 .post .post-title {
 	margin: 0;
 	color: #111;
