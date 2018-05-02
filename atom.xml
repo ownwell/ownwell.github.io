@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-04-01T13:55:17.490Z</updated>
+  <updated>2018-05-02T13:53:01.630Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JNI开发笔记（1）</title>
+    <link href="http://ownwell.github.io/2018/05/02/JNI%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
+    <id>http://ownwell.github.io/2018/05/02/JNI开发笔记（1）/</id>
+    <published>2018-05-02T13:52:10.000Z</published>
+    <updated>2018-05-02T13:53:01.630Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android Studio 3.0 更新了很多新特性，其中对C++开发者也越来越友好。目前Android Studio默认构建工具是CMake（当然也是支持ndk-build），我们将使用Cmake来开始编写我们的Helleworld。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p> 更新我们的sdk-tool中的LLDB、CMake和NDK三个选项。</p>
+<p><img src="http://7xwwa2.com1.z0.glb.clouddn.com/MacHi%202018-05-02%2021-19-17.png" alt=""></p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>可以先创建一个helloWorld项目来看下它和普通的Android项目的区别。<br><img src="http://7xwwa2.com1.z0.glb.clouddn.com/2018-05-02-21-25-11.png" alt=""></p>
+<p><img src="http://7xwwa2.com1.z0.glb.clouddn.com/2018-05-02-21-25-59.png" alt=""></p>
+<p>这样一步步的next创建了一个简单的Helleworld的用CMake作为构建工具的JNI程序。</p>
+<p>来看下它和普通的Android程序的区别吧。</p>
+<p><img src="http://7xwwa2.com1.z0.glb.clouddn.com/2018-05-02-21-32-48.png" alt=""></p>
+<p>这三处使我们和一般应用程序中所没有的，所以我们在普通程序中添加这三处也是可以添加自己的c/c++代码的。</p>
+<ol>
+<li><p>cpp文件夹使我们的c/c++代码代码的目录，这和src是我们的源代码目录类似。</p>
+</li>
+<li><p><code>CMakeLists.txt</code>是和Gradle交互的一个桥梁，里面的内容类似于我们之前写的make文件。</p>
+</li>
+<li><p>在主APP下要写两处<code>externalNativeBuild</code>,一处是可以根据处理的来打某一个平台的so文件，而另一处是为了将<code>CMakeLists.txt</code>和Gradle构建关联。</p>
+</li>
+</ol>
+<p>运行项目，通过<code>Analyze APK</code>是可以直接看到打出来的APK是有这个so的。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="配置某个平台（如x86）的so"><a href="#配置某个平台（如x86）的so" class="headerlink" title="配置某个平台（如x86）的so"></a>配置某个平台（如x86）的so</h3><p>如上图上的标记3，在第一处添加cpu对应的架构：</p>
+<p>```groovy<br>android {<br>    defaultConfig {</p>
+<pre><code>......
+externalNativeBuild {
+    cmake {
+        cppFlags &quot;&quot;
+    }
+    ndk {
+        abiFilters  &apos;x86&apos;
+    }
+</code></pre><p>//            ndk {<br>//                abiFilters ‘x86’, ‘x86_64’, ‘armeabi-v7a’,  ‘arm64-v8a’,’armeabi’<br>//            }<br>        }<br>    }<br>    buildTypes {<br>        ……<br>    }<br>    ……<br>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android Studio 3.0 更新了很多新特性，其中对C++开发者也越来越友好。目前Android Studio默认构建工具是CMake（当然也是支持ndk-build），我们将使用Cmake来开始编写我们的Helleworld。&lt;/p&gt;
+&lt;h2 id=&quot;准备&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
+    
+    
+      <category term="JNI开发" scheme="http://ownwell.github.io/tags/JNI%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>白话ACSCII，GBK，Unicode，UTF-8</title>
@@ -1249,79 +1301,6 @@
     
     
       <category term="Android热修复" scheme="http://ownwell.github.io/tags/Android%E7%83%AD%E4%BF%AE%E5%A4%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android热修复--实现原理</title>
-    <link href="http://ownwell.github.io/2016/08/30/android-hot-fix-introduce/"/>
-    <id>http://ownwell.github.io/2016/08/30/android-hot-fix-introduce/</id>
-    <published>2016-08-30T09:18:11.000Z</published>
-    <updated>2017-05-24T07:19:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于热修复其实很早都想动手写，不过由于没研究过具体的实践，不敢乱谈。<br>那么何为热修复呢？所谓热修复，无非是线上出了bug，开发人员可以发补丁，应用程序默默下载好对应问题的补丁，修复这个bug。这种热修复其实很适合client-server的模式，当然了客户端肯定也是适用的。</p>
-<a id="more"></a>
-<p>热修复/热部署 最早使用在web后端的，至于客户端热修复，最早听到热修复是2014年，当时在阿里技术嘉年华分享会上，阿里分享的插件化部署专题中讲到其中的热修复。反而在去年（2015年），出了很多热修复和插件化的框架，可以说是插件化/热部署元年。</p>
-<p>虽然我们落后了半年，所以赶快补上热修复这一章。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1472549584377.png" width="350"></p>
-<h1 id="为什么需要热修复"><a href="#为什么需要热修复" class="headerlink" title="为什么需要热修复"></a>为什么需要热修复</h1><p>上周去百度，和<a href="http://blog.csdn.net/lmj623565791/" target="_blank" rel="external">鸿洋</a>有过交流，当时，鸿洋大神说：热修复只能在国内玩，国外都是Google play。<br>的确，目前热修复尽管有很多坑，做了好多工作，可能吃力不讨好，各种适配可能还是没修复线上的有些Bug。不过呢，对于一个产品有热修复毕竟是件好事。尤其是对于一个有众多用户的app（如支付宝、微信、手淘等），一个bug不只是影响到几个几十个用户，一些创业公司的APP，崩溃或者bug可能直接导致用户卸载和永不使用，所以，就冲它有不用发版也可以解决我们线上的bug，我们的app也要适当考虑加入热修复。</p>
-<blockquote>
-<p>在IOS上，有JsPatch、有waxPatch，有些游戏公司自己搞了一个lua引擎放到应用里，搞一些类似动态部署的东西。<br>也可以采用其他方案，如RN，阿里的Weex等方案。</p>
-</blockquote>
-<h1 id="热修复"><a href="#热修复" class="headerlink" title="热修复"></a>热修复</h1><p>热修复，这个词是在去年QQ空间开发团队，发表的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">安卓App热补丁动态修复技术介绍</a>出现后，在”江湖”上引起了”动荡。Android程序员奔走相告–“我们终于找到梦寐以求的实现热修复的理论支持”。</p>
-<blockquote>
-<p>可能还有其他方案如阿里的And-Fix,ClassLoader的替代方案。<a href="#参考文章">参考文章</a>下有and-fix和ClassLoader的文章，记得点开阅读 。其中 <a href="http://blog.zhaiyifan.cn/" target="_blank" rel="external">markzhai</a>也提到了现在classLoader替换方案已经成这一年多来新的变化。</p>
-</blockquote>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">安卓App热补丁动态修复技术介绍</a>建议大家多看几遍，一遍远远不够的。</p>
-<p>这个链接你一定要<a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">点开</a>。<br>这个链接你一定要<a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">点开</a>。<br>这个链接你一定要<a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">点开</a>。<br>重要的事情说三遍！！！！！！</p>
-<p>记得看下， 他是热修复的始祖级的文章，也是本文重点抄袭对象。</p>
-<p>我们知道Android系统也是仿照java搞了一个虚拟机，不过它不叫JVM，它叫Dalvik/ART VM<a href="http://geyubin.iteye.com/blog/1513918" target="_blank" rel="external">他们还是有很大区别</a>的（这是不是我们的重点, 点开是个拓展阅读)。我们只需要知道，Dalvik/ART VM 虚拟机加载类和资源也是要用到<code>ClassLoader</code>，不过Jvm通过<code>ClassLoader</code>加载的class字节码，而Dalvik/ART VM通过<code>ClassLoader</code>加载则是dex。</p>
-<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1472552007400.png" width="300"></p>
-<p>在Android中，我们常用的ClassLoader关系如上图，其中<a href="https://android.googlesource.com/platform/libcore/+/android-5.0.0_r6/dalvik/src/main/java/dalvik/system/BaseDexClassLoader.java" target="_blank" rel="external">BaseDexClassLoader</a>。</p>
-<p>其中DexClass可以加载apk,jar,及dex文件，但PathClassLoader只能加载已安装到系统中（即/data/app目录下）的apk文件。</p>
-<h2 id="Dex加载方式"><a href="#Dex加载方式" class="headerlink" title="Dex加载方式"></a>Dex加载方式</h2><p>就让我们来稍微寻找下热修复的突破口。</p>
-<p>先来瞅瞅<code>BaseDexClassLoader</code>的源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">**</div><div class="line"> * Base <span class="class"><span class="keyword">class</span> <span class="title">for</span> <span class="title">common</span> <span class="title">functionality</span> <span class="title">between</span> <span class="title">various</span> <span class="title">dex</span>-<span class="title">based</span></span></div><div class="line"> * &#123;<span class="meta">@link</span> ClassLoader&#125; implementations.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDexClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DexPathList pathList;</div><div class="line"></div><div class="line">   ……</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</div><div class="line">        List&lt;Throwable&gt; suppressedExceptions = <span class="keyword">new</span> ArrayList&lt;Throwable&gt;();</div><div class="line">        Class c = pathList.findClass(name, suppressedExceptions);</div><div class="line">        <span class="keyword">if</span> (c == <span class="keyword">null</span>) &#123;</div><div class="line">            ClassNotFoundException cnfe = <span class="keyword">new</span> ClassNotFoundException(<span class="string">"Didn't find class \""</span> + name + <span class="string">"\" on path: "</span> + pathList);</div><div class="line">            <span class="keyword">for</span> (Throwable t : suppressedExceptions) &#123;</div><div class="line">                cnfe.addSuppressed(t);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">throw</span> cnfe;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> c;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<hr>
-<p><a href="https://android.googlesource.com/platform/libcore/+/android-5.0.0_r6/dalvik/src/main/java/dalvik/system/DexPathList.java" target="_blank" rel="external">5.0的DexPathList</a>部分代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">DexPathList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEX_SUFFIX = <span class="string">".dex"</span>;  </div><div class="line"></div><div class="line">     <span class="keyword">private</span> <span class="keyword">final</span> Element[] dexElements;</div><div class="line"></div><div class="line">    <span class="comment">/** List of native library directories. */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> File[] nativeLibraryDirectories;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Constructs an instance.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> definingContext the context in which any as-yet unresolved</div><div class="line">     * classes should be defined</div><div class="line">     * <span class="doctag">@param</span> dexPath list of dex/resource path elements, separated by</div><div class="line">     * &#123;<span class="doctag">@code</span> File.pathSeparator&#125;</div><div class="line">     * <span class="doctag">@param</span> libraryPath list of native library directory path elements,</div><div class="line">     * separated by &#123;<span class="doctag">@code</span> File.pathSeparator&#125;</div><div class="line">     * <span class="doctag">@param</span> optimizedDirectory directory where optimized &#123;<span class="doctag">@code</span> .dex&#125; files</div><div class="line">     * should be found and written to, or &#123;<span class="doctag">@code</span> null&#125; to use the default</div><div class="line">     * system directory for same</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DexPathList</span><span class="params">(ClassLoader definingContext, String dexPath,</span></span></div><div class="line">            String libraryPath, File optimizedDirectory) &#123;</div><div class="line">        <span class="keyword">if</span> (definingContext == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"definingContext == null"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dexPath == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"dexPath == null"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (optimizedDirectory != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (!optimizedDirectory.exists())  &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</div><div class="line">                        <span class="string">"optimizedDirectory doesn't exist: "</span></div><div class="line">                        + optimizedDirectory);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (!(optimizedDirectory.canRead()</div><div class="line">                            &amp;&amp; optimizedDirectory.canWrite())) &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</div><div class="line">                        <span class="string">"optimizedDirectory not readable/writable: "</span></div><div class="line">                        + optimizedDirectory);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.definingContext = definingContext;</div><div class="line">        ArrayList&lt;IOException&gt; suppressedExceptions = <span class="keyword">new</span> ArrayList&lt;IOException&gt;();</div><div class="line">        <span class="keyword">this</span>.dexElements = makeDexElements(splitDexPath(dexPath), optimizedDirectory,</div><div class="line">                                           suppressedExceptions);</div><div class="line">        <span class="keyword">if</span> (suppressedExceptions.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.dexElementsSuppressedExceptions =</div><div class="line">                suppressedExceptions.toArray(<span class="keyword">new</span> IOException[suppressedExceptions.size()]);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            dexElementsSuppressedExceptions = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.nativeLibraryDirectories = splitLibraryPath(libraryPath);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> Class <span class="title">findClass</span><span class="params">(String name, List&lt;Throwable&gt; suppressed)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (Element element : dexElements) &#123;</div><div class="line">            DexFile dex = element.dexFile;</div><div class="line">            <span class="keyword">if</span> (dex != <span class="keyword">null</span>) &#123;</div><div class="line">                Class clazz = dex.loadClassBinaryName(name, definingContext, suppressed);</div><div class="line">                <span class="keyword">if</span> (clazz != <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">return</span> clazz;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dexElementsSuppressedExceptions != <span class="keyword">null</span>) &#123;</div><div class="line">            suppressed.addAll(Arrays.asList(dexElementsSuppressedExceptions));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<hr>
-<p>DexFile部分源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">DexFile</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mCookie;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mFileName;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> CloseGuard guard = CloseGuard.get();</div><div class="line"></div><div class="line">    ……</div><div class="line">    <span class="function"><span class="keyword">public</span> Class <span class="title">loadClass</span><span class="params">(String name, ClassLoader loader)</span> </span>&#123;</div><div class="line">        String slashName = name.replace(<span class="string">'.'</span>, <span class="string">'/'</span>);</div><div class="line">        <span class="keyword">return</span> loadClassBinaryName(slashName, loader, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Class <span class="title">loadClassBinaryName</span><span class="params">(String name, ClassLoader loader, List&lt;Throwable&gt; suppressed)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> defineClass(name, loader, mCookie, suppressed);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Class <span class="title">defineClass</span><span class="params">(String name, ClassLoader loader, <span class="keyword">long</span> cookie,</span></span></div><div class="line">                                     List&lt;Throwable&gt; suppressed) &#123;</div><div class="line">        Class result = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            result = defineClassNative(name, loader, cookie);</div><div class="line">        &#125; <span class="keyword">catch</span> (NoClassDefFoundError e) &#123;</div><div class="line">            <span class="keyword">if</span> (suppressed != <span class="keyword">null</span>) &#123;</div><div class="line">                suppressed.add(e);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">            <span class="keyword">if</span> (suppressed != <span class="keyword">null</span>) &#123;</div><div class="line">                suppressed.add(e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ……</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> Class <span class="title">defineClassNative</span><span class="params">(String name, ClassLoader loader, <span class="keyword">long</span> cookie)</span></span></div><div class="line">            <span class="keyword">throws</span> ClassNotFoundException, NoClassDefFoundError;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中5.0的DexPathList源码中的<code>dexElements</code>（Line 4）就是我们Element（保存有dex信息）的数组。当需要寻找一个class时，<code>BaseDexClassLoader</code>会先调用<code>BaseDexClassLoader</code>中的pathList的findClass方法，而pathList实际上是一个<code>DexPathList</code>对象，查看<code>DexPathList</code>的源码发现，findClass方式其实是去遍历dexElements中的element元素，通过DexFile的对象去loadClass。</p>
-<p>热修复就是利用<code>dexElements</code>的顺序来做文章，当一个补丁的patch.dex放到了<code>dexElements</code>的第一位，那么当加载一个bug类时，发现在patch.dex中，则直接加载这个类，原来的bug类可能就被覆盖了。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1472568213083.png" width="500"></p>
-<p>发版后发现class1.dex中的Bug.class有一个bug,修复后有一个修复好的patch.dex.</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1472568240996.png" width="500"></p>
-<h2 id="CLASS-ISPREVERIFIED问题"><a href="#CLASS-ISPREVERIFIED问题" class="headerlink" title="CLASS_ISPREVERIFIED问题"></a>CLASS_ISPREVERIFIED问题</h2><p>根据QQ空间谈到的在虚拟机启动的时候，在verify选项被打开的时候，如果static方法、private方法、构造函数等，其中的直接引用（第一层关系）到的类都在同一个dex文件中，那么该类就会被打上CLASS_ISPREVERIFIED标志，且一旦类被打上CLASS_ISPREVERIFIED标志其他dex就不能再去替换这个类。所以一定要想办法去阻止类被打上CLASS_ISPREVERIFIED标志。</p>
-<p>为了阻止类被打上CLASS_ISPREVERIFIED标志，QQ空间开发团队提出了一个方法是先将一个预备好的hack.dex加入到<code>dexElements</code>的第一项，让后面的dex的所有类都引用hack.dex其中的一个类，这样原来的class1.dex、class2.dex、class3.dex中的所有类都引用了hack.dex的类，所以其中的都不会打上CLASS_ISPREVERIFIED标志。</p>
-<p>我们可以参考<a href="https://github.com/dodola/HotFix" target="_blank" rel="external">dodola/HotFix</a>项目来说明。</p>
-<p>app中有一个LoadBugClass类，他引用了BugClass类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoadBugClass</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBugString</span><span class="params">()</span> </span>&#123;</div><div class="line">        BugClass bugClass = <span class="keyword">new</span> BugClass();</div><div class="line">        <span class="keyword">return</span> bugClass.bug();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中BugClass出现了bug。按照刚才的理论LoadBugClass会被打成CLASS_ISPREVERIFIED标志。为了阻止它打上CLASS_ISPREVERIFIED标志，需要在他的构造函数里添加hack.dex一个类引用，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">LoadBugClass()&#123;</div><div class="line">      …………</div><div class="line"></div><div class="line">      System.out.println(dodola.hackdex.AntilazyLoad.class)</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>其中<code>AntilazyLoad</code>就是hack.dex的类。这样处理不会增加方法数，对代码的侵入较少。</p>
-<p>好了这节介绍了Android热修复的实现原理，下一篇会结合<a href="https://github.com/jasonross/Nuwa" target="_blank" rel="external">jasonross/Nuwa</a>和<a href="https://github.com/dodola/HotFix" target="_blank" rel="external">dodola/HotFix</a>来谈一下他们的实践。</p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><hr>
-<ol>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI1MTA1MzM2Nw==&amp;mid=400118620&amp;idx=1&amp;sn=b4fdd5055731290eef12ad0d17f39d4a&amp;scene=1&amp;srcid=1106Imu9ZgwybID13e7y2nEi#wechat_redirect" target="_blank" rel="external">QQ空间 – 安卓App热补丁动态修复技术介绍</a></li>
-<li><a href="http://my.oschina.net/853294317/blog/308583" target="_blank" rel="external">Android dex分包方案</a></li>
-<li><a href="http://www.kymjs.com/code/2016/05/08/01" target="_blank" rel="external">张涛 – Android 热修复，没你想的那么难</a></li>
-<li><a href="http://blog.csdn.net/lmj623565791/article/details/49883661" target="_blank" rel="external">鸿洋 –Android 热补丁动态修复框架小结</a></li>
-<li><a href="http://blog.hwangjr.com/2016/03/02/Android-HotFix%E6%96%B9%E6%A1%88/" target="_blank" rel="external">Android HotFix方案</a></li>
-<li>classLoader 替换方案 <a href="http://weishu.me/2016/04/05/understand-plugin-framework-classloader/" target="_blank" rel="external">Android 插件化原理解析——插件加载机制</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关于热修复其实很早都想动手写，不过由于没研究过具体的实践，不敢乱谈。&lt;br&gt;那么何为热修复呢？所谓热修复，无非是线上出了bug，开发人员可以发补丁，应用程序默默下载好对应问题的补丁，修复这个bug。这种热修复其实很适合client-server的模式，当然了客户端肯定也是适用的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="hot-fix" scheme="http://ownwell.github.io/tags/hot-fix/"/>
     
   </entry>
   
