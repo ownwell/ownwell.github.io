@@ -52,7 +52,7 @@
     <link href="http://ownwell.github.io/2018/04/26/JNI%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
     <id>http://ownwell.github.io/2018/04/26/JNI开发笔记（1）/</id>
     <published>2018-04-26T13:52:10.000Z</published>
-    <updated>2018-05-02T13:58:04.680Z</updated>
+    <updated>2018-05-02T14:40:41.450Z</updated>
     
     <content type="html"><![CDATA[<p>Android Studio 3.0 更新了很多新特性，其中对C++开发者也越来越友好。目前Android Studio默认构建工具是CMake（当然也是支持ndk-build），我们将使用Cmake来开始编写我们的Helleworld。</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p> 更新我们的sdk-tool中的LLDB、CMake和NDK三个选项。</p>
@@ -72,17 +72,27 @@
 </li>
 </ol>
 <p>运行项目，通过<code>Analyze APK</code>是可以直接看到打出来的APK是有这个so的。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="配置某个平台（如x86）的so"><a href="#配置某个平台（如x86）的so" class="headerlink" title="配置某个平台（如x86）的so"></a>配置某个平台（如x86）的so</h3><p>如上图上的标记3，在第一处添加cpu对应的架构：</p>
-<p>```groovy<br>android {<br>    defaultConfig {</p>
-<pre><code>......
-externalNativeBuild {
-    cmake {
-        cppFlags &quot;&quot;
-    }
-    ndk {
-        abiFilters  &apos;x86&apos;
-    }
-</code></pre><p>//            ndk {<br>//                abiFilters ‘x86’, ‘x86_64’, ‘armeabi-v7a’,  ‘arm64-v8a’,’armeabi’<br>//            }<br>        }<br>    }<br>    buildTypes {<br>        ……<br>    }<br>    ……<br>}</p>
+<blockquote>
+<p>配置某个平台（如x86）的so</p>
+</blockquote>
+<p>如上图上的标记3，在第一处添加cpu对应的架构：</p>
+<p>&gt;<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line"></div><div class="line">        ......</div><div class="line">        externalNativeBuild &#123;</div><div class="line">            cmake &#123;</div><div class="line">                cppFlags ""</div><div class="line">            &#125;</div><div class="line">            ndk &#123;</div><div class="line">                abiFilters  'x86'</div><div class="line">            &#125;</div><div class="line">//            ndk &#123;</div><div class="line">//                abiFilters 'x86', 'x86_64', 'armeabi-v7a',  'arm64-v8a','armeabi'</div><div class="line">//            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        ......</div><div class="line">    &#125;</div><div class="line">    ......</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">## 编写一个简单的JNI程序</div><div class="line"></div><div class="line">之前在网易工作时，发现网易系的有些应用是通过so文件来保证数据校验，如加密一个字符串，同时会传一个Context，这样可以通过context来校验是不是正版应用，校验应用的安全信息。我们就来实现一个通过Context来获取包名。</div><div class="line"></div><div class="line">1. native方法</div><div class="line">我们是通过java代码调用native方法，所以先声明一个native方法：</div><div class="line">```java</div><div class="line">package me.cyning.helloworld;</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line"></div><div class="line">public class NativeUtils &#123;</div><div class="line"></div><div class="line">    public static  native String getPackageName(Context context);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>native代码<br>在我们的<code>native-lib.cpp</code>来实现具体的功能:<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">JNIEXPORT jstring</span></div><div class="line">JNICALL</div><div class="line"><span class="title">Java_me_cyning_helloworld_NativeUtils_getPackageName</span><span class="params">(</span></div><div class="line">        JNIEnv *env, jclass clazz, jobject instance) &#123;</div><div class="line">    jclass nativeClass = env-&gt;GetObjectClass(instance);</div><div class="line">    jmethodID jmethodID1 = env-&gt;GetMethodID(nativeClass, <span class="string">"getPackageName"</span>, <span class="string">"()Ljava/lang/String;"</span>);</div><div class="line">    jstring packageName = <span class="keyword">static_cast</span>&lt;jstring&gt;(env-&gt;CallObjectMethod(instance, jmethodID1));</div><div class="line">    <span class="keyword">return</span>  packageName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>让我们来解释下：</p>
+<ul>
+<li>函数签名：Java-(包名+类型+函数)(参数)</li>
+<li><p>jni编程的类型和java类型的区别<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/944365-e2d3218e2bf0934f.png" alt=""></p>
+</li>
+<li><p>JNI 函数访问 Java 对象的变量<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/2018-05-02-22-35-22.png" alt=""></p>
+</li>
+</ul>
+<p>结合上面的具体代码，很容易理解，先拿到<code>Context</code>对应的class类，通过这个类得到<code>getPackageName</code>方法的id，通过<code>CallObjectMethod</code>这个<code>Context</code>实例的<code>getPackageName</code>方法，看着很像反射的用法。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/cloverjf/article/details/78652245" target="_blank" rel="external">https://blog.csdn.net/cloverjf/article/details/78652245</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
