@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2018/05/02/jni-security-4-app/</loc>
+    <lastmod>2018-05-03T14:02:17.640Z</lastmod>
+    <data>
+        <display>
+        <title>JNI开发笔记（2） -- Native要校验APP安全</title>
+        <pubTime>2018-05-02T13:52:10.000Z</pubTime>
+        
+        <tag>JNI开发 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2018/05/02/JNI%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</loc>
     <lastmod>2018-05-02T14:46:35.370Z</lastmod>
     <data>
@@ -1046,14 +1066,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/07/28/realm-note/</loc>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Realm分享直播笔记</title>
-        <pubTime>2016-07-28T14:53:51.000Z</pubTime>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
         
-        <tag>Realm </tag>
+        <tag>Android </tag>
          
          
            
@@ -1271,14 +1291,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2016/07/28/realm-note/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>Realm分享直播笔记</title>
+        <pubTime>2016-07-28T14:53:51.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Realm </tag>
          
          
            
@@ -1291,12 +1311,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
