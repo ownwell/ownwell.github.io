@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</loc>
+    <lastmod>2018-05-03T14:29:44.770Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin学习01-基础</title>
+        <pubTime>2018-02-26T06:15:55.000Z</pubTime>
+        
+        <tag>Kotlin </tag>
+         
+         
+           
+             
+              <breadCrumb title="Kotlin" url="http://ownwell.github.io/categories/Kotlin/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2018/04/27/JNI%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</loc>
     <lastmod>2018-05-03T14:24:10.800Z</lastmod>
     <data>
@@ -170,26 +190,6 @@
         <display>
         <title>Kotlin学习02-lambda表达式 </title>
         <pubTime>2018-03-01T14:25:08.000Z</pubTime>
-        
-        <tag>Kotlin </tag>
-         
-         
-           
-             
-              <breadCrumb title="Kotlin" url="http://ownwell.github.io/categories/Kotlin/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2018/02/26/learning-kotlin-1/</loc>
-    <lastmod>2018-03-01T16:03:45.230Z</lastmod>
-    <data>
-        <display>
-        <title>Kotlin学习01-基础</title>
-        <pubTime>2018-02-26T06:15:55.000Z</pubTime>
         
         <tag>Kotlin </tag>
          
