@@ -1,230 +1,686 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | Gitflow工作流</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>Gitflow工作流 | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gitflow工作流">
+<meta property="og:url" content="http://ownwell.github.io/2016/08/17/git-work-flow/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img3.imgtn.bdimg.com/it/u=1698758481,31368498&fm=21&gp=0.jpg">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471440527718.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443465028.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471442358943.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443398542.png">
+<meta property="og:updated_time" content="2017-05-24T07:19:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gitflow工作流">
+<meta name="twitter:description" content="现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。">
+<meta name="twitter:image" content="http://img3.imgtn.bdimg.com/it/u=1698758481,31368498&fm=21&gp=0.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/17/git-work-flow/" title="Gitflow工作流" itemprop="url">Gitflow工作流</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-17T13:13:23.000Z" itemprop="datePublished"> Published 2016-08-17</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="Gitflow工作流" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                Gitflow工作流
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2016-08-17T13:13:23.000Z" itemprop="datePublished">2016-08-17</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Tools/' title=''>Tools</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p>现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐"><span class="toc-number">1.</span> <span class="toc-text">推荐</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-flow"><span class="toc-number">2.</span> <span class="toc-text">git flow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#master分支"><span class="toc-number">2.2.</span> <span class="toc-text">master分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#develop分支"><span class="toc-number">2.3.</span> <span class="toc-text">develop分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辅助分支"><span class="toc-number">2.4.</span> <span class="toc-text">辅助分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">2.5.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建开发分支"><span class="toc-number">2.5.1.</span> <span class="toc-text">创建开发分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化git-flow"><span class="toc-number">2.5.2.</span> <span class="toc-text">初始化git flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature分支"><span class="toc-number">2.5.3.</span> <span class="toc-text">feature分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hotfix分支"><span class="toc-number">2.5.4.</span> <span class="toc-text">hotfix分支</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<p>现在的版本控制越来越重要，还记得毕业那会写毕业设计一个个版本，搞得头昏脑涨，不过当时已经接触了版本迭代在自己的机器上部署了一个SVN Server，用程序员的方式轻松解决一个个版本。</p>
 <p><img src="http://img3.imgtn.bdimg.com/it/u=1698758481,31368498&amp;fm=21&amp;gp=0.jpg" alt="毕业设计"><br><a id="more"></a><br>毕业后用过SVN，在超星时用得就是SVN，后来在世界邦用的是Git，对于版本控制来说那种都无所谓，不过对于用过Git的人来说，Git在分支和分布式版本这块和SVN还是有很大的区别，不过就冲Git优秀分支管理这块很适合客户端的开发，版本迭代快、团队人数不多，用起Git更能提高自己的效率。有了天书第六部，我们还怕张小凡么？</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471440527718.png" width="200"></p>
 <h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p>至于Git的基础命令我推荐几个比较好的网站：</p>
 <ol>
-<li><a href="http://git-scm.com/book/zh" target="_blank" rel="external">Pro Git官网</a></li>
-<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></li>
-<li><a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="external">Git入门指南使用资料汇总及文章推荐</a></li>
-<li><a href="http://backlogtool.com/git-guide/cn/" target="_blank" rel="external">图文并茂-猴子都能懂的git入门教程</a></li>
-<li><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">A successful Git branching model</a></li>
+<li><a href="http://git-scm.com/book/zh" target="_blank" rel="noopener">Pro Git官网</a></li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的Git教程</a></li>
+<li><a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="noopener">Git入门指南使用资料汇总及文章推荐</a></li>
+<li><a href="http://backlogtool.com/git-guide/cn/" target="_blank" rel="noopener">图文并茂-猴子都能懂的git入门教程</a></li>
+<li><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model</a></li>
 </ol>
-<p>其中<a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="external">Git入门指南使用资料汇总及文章推荐</a>提到了<code>git flow</code>–<a href="https://github.com/nvie/gitflow" target="_blank" rel="external">项目地址</a>,<code>git flow</code>其实是为了更好的利用Git分支对git 命令的一个封装，省时省力，不信来张图。</p>
+<p>其中<a href="http://www.ixirong.com/2014/11/19/the-way-to-learn-git/" target="_blank" rel="noopener">Git入门指南使用资料汇总及文章推荐</a>提到了<code>git flow</code>–<a href="https://github.com/nvie/gitflow" target="_blank" rel="noopener">项目地址</a>,<code>git flow</code>其实是为了更好的利用Git分支对git 命令的一个封装，省时省力，不信来张图。</p>
 <h1 id="git-flow"><a href="#git-flow" class="headerlink" title="git flow"></a>git flow</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Git Flow模型中定义了主分支和辅助分支两类分支。其中主分支用于组织与软件开发、部署相关的活动；辅助分支组织为了解决特定的问题而进行的各种开发活动。</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443465028.png" width="500"></p>
-<p><a href="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471441229112.png" target="_blank" rel="external">另外的一个</a></p>
+<p><a href="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471441229112.png" target="_blank" rel="noopener">另外的一个</a></p>
 <h2 id="master分支"><a href="#master分支" class="headerlink" title="master分支"></a><code>master分支</code></h2><p> 主分支，是你发版的release时打的tag，是稳定版本，每一个版本都要打一个version tag。</p>
 <h2 id="develop分支"><a href="#develop分支" class="headerlink" title="develop分支"></a><code>develop分支</code></h2><p> develop分支，主分支开发分支，总是我们最新版本，虽然不稳定，但是有我们最新的版本，当开发完，QA通过，版本迭代完毕，将<code>develop</code> <code>merge</code>回主分支。</p>
-<h2 id="辅助分支"><a href="#辅助分支" class="headerlink" title="辅助分支"></a>辅助分支</h2><ol>
+<h2 id="辅助分支"><a href="#辅助分支" class="headerlink" title="辅助分支"></a>辅助分支</h2><ol start="3">
 <li><code>release分支</code> release分支是为发布新的产品版本而设计的。在这个分支上的代码允许做小的缺陷修正、准备发布版本所需的各项说明信息（版本号、发布时间、编译时间等等）。</li>
 <li><code>feature分支</code>：是develop的功能分支，如有几个同事同时开发，需要切换成几个小功能，每个人都需要从从develop中拉出一个feature分支，但是每个feature颗粒要尽量小，因为它需要我们能尽早merge会develop分支，否则冲突解决起来就没完没了。同时，当一个功能因为各种原因不开发了或者放弃了，这个分支直接废弃，不影响其他develop分支。</li>
 <li><code>hot-fix</code>分支：是一个比较特殊的分支，如图是从master分支上分出来的一个分支，如发版后发现有个紧急修复的bug，这时就需要用到hot-fix分支，修改完bug，结束了这个<code>hot-fix</code>，回合并修改的内容到<code>develop</code>分支和<code>mastar</code>分支。</li>
 </ol>
 <blockquote>
 <p>常用的分支约定：</p>
+</blockquote>
+<blockquote>
 <p>用于新建发布分支的分支: develop<br>用于合并的分支: master<br>分支命名: release-<em> 或 release/</em></p>
 </blockquote>
-<p>截了一个<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">git-flow 备忘清单</a>网站上的图。</p>
+<p>截了一个<a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="noopener">git-flow 备忘清单</a>网站上的图。</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471442358943.png" width="670"></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="创建开发分支"><a href="#创建开发分支" class="headerlink" title="创建开发分支"></a>创建开发分支</h3><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1471443398542.png" width="275"></p>
-<p><a href="http://backlogtool.com/git-guide/cn/reference/branch.html#sec2" target="_blank" rel="external">创建一个本地分支</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git branch develop</div><div class="line">git push -u origin develop</div></pre></td></tr></table></figure></p>
-<p>或者<a href="http://backlogtool.com/git-guide/cn/reference/remote.html#sec4" target="_blank" rel="external">checkout一份到本地</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b develop origin/develop</div></pre></td></tr></table></figure>
-<h3 id="初始化git-flow"><a href="#初始化git-flow" class="headerlink" title="初始化git flow"></a>初始化git flow</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow init</div></pre></td></tr></table></figure>
+<p><a href="http://backlogtool.com/git-guide/cn/reference/branch.html#sec2" target="_blank" rel="noopener">创建一个本地分支</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch develop</span><br><span class="line">git push -u origin develop</span><br></pre></td></tr></table></figure></p>
+<p>或者<a href="http://backlogtool.com/git-guide/cn/reference/remote.html#sec4" target="_blank" rel="noopener">checkout一份到本地</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop origin/develop</span><br></pre></td></tr></table></figure>
+<h3 id="初始化git-flow"><a href="#初始化git-flow" class="headerlink" title="初始化git flow"></a>初始化git flow</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure>
 <h3 id="feature分支"><a href="#feature分支" class="headerlink" title="feature分支"></a>feature分支</h3><p>开始创建新的需求分支</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature start feature1 #这时项目会自动切换 feature/feature1分支</div></pre></td></tr></table></figure>
-<p>提交日志到本地仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -a -m <span class="string">"修改日志"</span></div></pre></td></tr></table></figure></p>
-<p>完成开发分支合并develop(自动)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git flow feature finish feature1</div></pre></td></tr></table></figure></p>
-<p>发布到远程开发分支<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin develop</div></pre></td></tr></table></figure></p>
-<h3 id="hotfix分支"><a href="#hotfix分支" class="headerlink" title="hotfix分支"></a>hotfix分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">更新master分支</div><div class="line">git pull origin master（更新master分支为最新）    </div><div class="line"></div><div class="line"> 切换到master分支</div><div class="line">git checkout master</div><div class="line"></div><div class="line">生成一个hotfix分支</div><div class="line">git flow hotfix start hfx     </div><div class="line"></div><div class="line"> 通知相关得工程师和测试人员hotfix分支名称   </div><div class="line"></div><div class="line"> 最终测试完成后拉回分支最新代码</div><div class="line">git pull origin hotfix/hfx</div><div class="line"></div><div class="line">最终修改和测试完成后，结束hot fix以供发布</div><div class="line">git flow hot fix finish hfx</div><div class="line"></div><div class="line"> 发布最终的master分支</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature start feature1 #这时项目会自动切换 feature/feature1分支</span><br></pre></td></tr></table></figure>
+<p>提交日志到本地仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m <span class="string">"修改日志"</span></span><br></pre></td></tr></table></figure></p>
+<p>完成开发分支合并develop(自动)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git flow feature finish feature1</span><br></pre></td></tr></table></figure></p>
+<p>发布到远程开发分支<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure></p>
+<h3 id="hotfix分支"><a href="#hotfix分支" class="headerlink" title="hotfix分支"></a>hotfix分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">更新master分支</span><br><span class="line">git pull origin master（更新master分支为最新）    </span><br><span class="line"></span><br><span class="line"> 切换到master分支</span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">生成一个hotfix分支</span><br><span class="line">git flow hotfix start hfx     </span><br><span class="line"></span><br><span class="line"> 通知相关得工程师和测试人员hotfix分支名称   </span><br><span class="line"></span><br><span class="line"> 最终测试完成后拉回分支最新代码</span><br><span class="line">git pull origin hotfix/hfx</span><br><span class="line"></span><br><span class="line">最终修改和测试完成后，结束hot fix以供发布</span><br><span class="line">git flow hot fix finish hfx</span><br><span class="line"></span><br><span class="line"> 发布最终的master分支</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <hr>
 <p>参考文章</p>
 <ol>
-<li><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="external">基于git的源代码管理模型——git flow</a></li>
-<li><a href="http://backlogtool.com/" target="_blank" rel="external">猴子都能懂得git入门</a></li>
-<li><a href="http://blog.jobbole.com/76867/" target="_blank" rel="external">Git工作流指南：Gitflow工作流</a></li>
+<li><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="noopener">基于git的源代码管理模型——git flow</a></li>
+<li><a href="http://backlogtool.com/" target="_blank" rel="noopener">猴子都能懂得git入门</a></li>
+<li><a href="http://blog.jobbole.com/76867/" target="_blank" rel="noopener">Git工作流指南：Gitflow工作流</a></li>
 </ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="现在的版本控制越来越重要，还记得毕业那会写毕业设计一个..."></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2016/08/17/git-work-flow/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tools/">Tools</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Git/">Git</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐"><span class="toc-text">推荐</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-flow"><span class="toc-text">git flow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#master分支"><span class="toc-text">master分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#develop分支"><span class="toc-text">develop分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辅助分支"><span class="toc-text">辅助分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建开发分支"><span class="toc-text">创建开发分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化git-flow"><span class="toc-text">初始化git flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature分支"><span class="toc-text">feature分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hotfix分支"><span class="toc-text">hotfix分支</span></a></li></ol></li></ol></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2016/08/17/git-work-flow/" data-title="Gitflow工作流 | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/08/26/android-status-bar/" title="Android下多彩的StatusView的实现">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android下多彩的StatusView的实现</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2016/08/11/Anroid沉浸式状态栏/"  title="Anroid沉浸式状态栏">
+ <strong>下一篇：</strong><br/> 
+ <span>Anroid沉浸式状态栏
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#推荐"><span class="toc-number">1.</span> <span class="toc-text">推荐</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-flow"><span class="toc-number">2.</span> <span class="toc-text">git flow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#master分支"><span class="toc-number">2.2.</span> <span class="toc-text">master分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#develop分支"><span class="toc-number">2.3.</span> <span class="toc-text">develop分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辅助分支"><span class="toc-number">2.4.</span> <span class="toc-text">辅助分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">2.5.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建开发分支"><span class="toc-number">2.5.1.</span> <span class="toc-text">创建开发分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化git-flow"><span class="toc-number">2.5.2.</span> <span class="toc-text">初始化git flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature分支"><span class="toc-number">2.5.3.</span> <span class="toc-text">feature分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hotfix分支"><span class="toc-number">2.5.4.</span> <span class="toc-text">hotfix分支</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

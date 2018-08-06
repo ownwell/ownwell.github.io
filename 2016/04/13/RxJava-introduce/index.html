@@ -1,225 +1,672 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | 站在大神肩膀上看RxJava</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>站在大神肩膀上看RxJava | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="站在大神肩膀上看RxJava">
+<meta property="og:url" content="http://ownwell.github.io/2016/04/13/RxJava-introduce/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-1.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-2.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-3.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-4.png">
+<meta property="og:updated_time" content="2017-05-24T07:19:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="站在大神肩膀上看RxJava">
+<meta name="twitter:description" content="RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/13/RxJava-introduce/" title="站在大神肩膀上看RxJava" itemprop="url">站在大神肩膀上看RxJava</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-13T13:44:49.000Z" itemprop="datePublished"> Published 2016-04-13</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="站在大神肩膀上看RxJava" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                站在大神肩膀上看RxJava
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2016-04-13T13:44:49.000Z" itemprop="datePublished">2016-04-13</time>
-                    </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png"></p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是RxJava以及RxJava能干什么"><span class="toc-number">1.</span> <span class="toc-text">什么是RxJava以及RxJava能干什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该怎么用RxJava"><span class="toc-number">2.</span> <span class="toc-text">该怎么用RxJava</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展库"><span class="toc-number">3.</span> <span class="toc-text">拓展库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit"><span class="toc-number">3.1.</span> <span class="toc-text">Retrofit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxBinding"><span class="toc-number">3.2.</span> <span class="toc-text">RxBinding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxLifecycle"><span class="toc-number">3.3.</span> <span class="toc-text">RxLifecycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rx-preferences"><span class="toc-number">3.4.</span> <span class="toc-text">Rx-preferences</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storio"><span class="toc-number">3.5.</span> <span class="toc-text">Storio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">参考文章</span></a></li></ol>
+		
+		</div>
+		
+		<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1470727585294.png"></p>
 <p>RxJava是作为Android开发中的新贵， 越来越多的人参与到RxJava的拓展和使用上，如JakeWharton参与了多个RxJava项目。国内呢，一大批（如扔物线、小邓子、代码家等）对RxJava推广，你要不没听过它，你都觉得不好意思，因为它太火了。<br><a id="more"></a></p>
 <p>今天我们就是要踩在这些过来人的肩膀上，来学习RxJava，这个主要是针对不熟悉RxJava的，若是已经很熟练使用了，这篇可能就不太适合你。</p>
 <p>大概是在14年底，我在一个创业公司，从yahoo来的曾Sir就给我们分享RxJava但是当时资料甚少，加上项目赶紧，就大概知道了RxJava这种响应式处理数据太好了，但是使用起来需要自己写一堆配套的库，所以就搁置了。但是随着Retrofit 2.0、RxVolley等这些好用的第三方RxJava拓展库 —-用一次就觉得爽到爆—我决定在公司的项目中使用RxJava了。</p>
 <p>RxJava是一个针对JVM通用的工具库，在Github上你会发现一堆的扩展库，在简书、CSDN等技术论坛上，你会发现有N多篇RxJava的文章，对于一个新手或者进阶的开发者，我就以过来人的身份为大家列出一些入门的文章和项目，本人不会有什么实质性的介绍或者解释，会给大家列出一系列的文章和书，一步步给大家知道。</p>
-<h1 id="什么是RxJava以及RxJava能干什么"><a href="#什么是RxJava以及RxJava能干什么" class="headerlink" title="什么是RxJava以及RxJava能干什么"></a>什么是RxJava以及RxJava能干什么</h1><p>在Flipboard工作的扔物线同学用通俗的描述为我们讲述什么是Rxjava，为什么要用RxJava — <a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">给 Android 开发者的 RxJava </a>详解。很喜欢他的文章风格，图文都是让你过目不忘。还是建议你直接跳转去看看扔物线的<a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">文章</a>。</p>
+<h1 id="什么是RxJava以及RxJava能干什么"><a href="#什么是RxJava以及RxJava能干什么" class="headerlink" title="什么是RxJava以及RxJava能干什么"></a>什么是RxJava以及RxJava能干什么</h1><p>在Flipboard工作的扔物线同学用通俗的描述为我们讲述什么是Rxjava，为什么要用RxJava — <a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">给 Android 开发者的 RxJava </a>详解。很喜欢他的文章风格，图文都是让你过目不忘。还是建议你直接跳转去看看扔物线的<a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">文章</a>。</p>
 <h1 id="该怎么用RxJava"><a href="#该怎么用RxJava" class="headerlink" title="该怎么用RxJava"></a>该怎么用RxJava</h1><p>其实我以前是先看的大头鬼翻译的文章，觉得翻译的很好（英文的，看着多多少少有时不太理解），深入浅出告诉你怎么使用RxJava。</p>
 <ol>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/41833541" target="_blank" rel="external">深入浅出RxJava（一：基础篇）</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/44094895" target="_blank" rel="external">深入浅出RxJava(二：操作符)</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/44891933" target="_blank" rel="external">深入浅出RxJava三–响应式的好处</a></li>
-<li><a href="http://blog.csdn.net/lzyzsd/article/details/45033611" target="_blank" rel="external">深入浅出RxJava四-在Android中使用响应式编程</a></li>
+<li><a href="http://blog.csdn.net/lzyzsd/article/details/41833541" target="_blank" rel="noopener">深入浅出RxJava（一：基础篇）</a></li>
+<li><a href="http://blog.csdn.net/lzyzsd/article/details/44094895" target="_blank" rel="noopener">深入浅出RxJava(二：操作符)</a></li>
+<li><a href="http://blog.csdn.net/lzyzsd/article/details/44891933" target="_blank" rel="noopener">深入浅出RxJava三–响应式的好处</a></li>
+<li><a href="http://blog.csdn.net/lzyzsd/article/details/45033611" target="_blank" rel="noopener">深入浅出RxJava四-在Android中使用响应式编程</a></li>
 </ol>
-<p>看完了这些你或许对RxJava有个大概的印象和使用常见的操作符，那你可以试试用RxJava和RxAndroid来一个简单的项目。<br><a href="https://github.com/jpetitto/MovieListApp" target="_blank" rel="external">MovieListApp</a>没事可以看看这个项目，将请求的服务器远程数据请求后，通过Observable.just(）后，可以处理这些数据，通过map转换、onNext（）里缓存，线程切换、最后通过subcriber交给我们需要展示的UI组件上。</p>
-<p>是不是有点意思了。<br>还有一个<a href="https://github.com/kaushikgopal/RxJava-Android-Samples" target="_blank" rel="external">Demo</a>。</p>
+<p>看完了这些你或许对RxJava有个大概的印象和使用常见的操作符，那你可以试试用RxJava和RxAndroid来一个简单的项目。<br><a href="https://github.com/jpetitto/MovieListApp" target="_blank" rel="noopener">MovieListApp</a>没事可以看看这个项目，将请求的服务器远程数据请求后，通过Observable.just(）后，可以处理这些数据，通过map转换、onNext（）里缓存，线程切换、最后通过subcriber交给我们需要展示的UI组件上。</p>
+<p>是不是有点意思了。<br>还有一个<a href="https://github.com/kaushikgopal/RxJava-Android-Samples" target="_blank" rel="noopener">Demo</a>。</p>
 <p>等等，我感觉我还是不熟练啊。没关系，我是雷锋，继续给你发放福利。</p>
 <ol>
-<li><p><a href="https://github.com/mcxiaoke/RxDocs" target="_blank" rel="external">ReactiveX文档中文翻译</a></p>
+<li><p><a href="https://github.com/mcxiaoke/RxDocs" target="_blank" rel="noopener">ReactiveX文档中文翻译</a></p>
 </li>
-<li><p><a href="http://rxmarbles.com/" target="_blank" rel="external">各种操作符的示例图</a>，满足你的视觉。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-1.png" alt=""></p>
+<li><p><a href="http://rxmarbles.com/" target="_blank" rel="noopener">各种操作符的示例图</a>，满足你的视觉。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-1.png" alt=""></p>
 </li>
-<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0430/2815.html" target="_blank" rel="external">泡网相关的RxJava总结</a>，泡网里决定是都良心博文。</p>
+<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0430/2815.html" target="_blank" rel="noopener">泡网相关的RxJava总结</a>，泡网里决定是都良心博文。</p>
 </li>
 </ol>
 <h1 id="拓展库"><a href="#拓展库" class="headerlink" title="拓展库"></a>拓展库</h1><p>RxJava的拓展库太多了，如JakeWharton参与或者主导的项目就参与了RxBinding、RxAndroid等项目，现在越来越多的人参与RxJava的推广中。</p>
 <p>我就项目中可能会用到的一些库给大家推荐几款。</p>
-<h2 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a><a href="http://square.github.io/retrofit/" target="_blank" rel="external">Retrofit</a></h2><p>一个懒人必备神器，可以简化我们对网络请求的封装，用它可能也有一些问题，需要你再开发中解决。建议使用Retrofit 2.0。</p>
+<h2 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a><a href="http://square.github.io/retrofit/" target="_blank" rel="noopener">Retrofit</a></h2><p>一个懒人必备神器，可以简化我们对网络请求的封装，用它可能也有一些问题，需要你再开发中解决。建议使用Retrofit 2.0。</p>
 <ol>
-<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html" target="_blank" rel="external">Retrofit 2.0：有史以来最大的改进</a></p>
+<li><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0915/3460.html" target="_blank" rel="noopener">Retrofit 2.0：有史以来最大的改进</a></p>
 </li>
-<li><p><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">RxJava 与 Retrofit 结合的最佳实践</a> Gank.io的匠心写作系列文章。</p>
+<li><p><a href="http://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="noopener">RxJava 与 Retrofit 结合的最佳实践</a> Gank.io的匠心写作系列文章。</p>
 </li>
-<li><p><a href="https://futurestud.io/blog/retrofit-getting-started-and-android-client" target="_blank" rel="external">Retrofit的使用手册</a>，必备手册。</p>
+<li><p><a href="https://futurestud.io/blog/retrofit-getting-started-and-android-client" target="_blank" rel="noopener">Retrofit的使用手册</a>，必备手册。</p>
 </li>
 </ol>
-<h2 id="RxBinding"><a href="#RxBinding" class="headerlink" title="RxBinding"></a><a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="external">RxBinding</a></h2><p>JakeWharton大神操刀项目，主要是各种组件绑定，将Onclick、TextWatcher等时间作为一个事件源，通过RxJava可以改善用户的交互体验，避免了快速点击会出现两个点击事件。另外，还支持kotlin。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-2.png" alt=""></p>
-<h2 id="RxLifecycle"><a href="#RxLifecycle" class="headerlink" title="RxLifecycle"></a><a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">RxLifecycle</a></h2><p>用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。</p>
+<h2 id="RxBinding"><a href="#RxBinding" class="headerlink" title="RxBinding"></a><a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="noopener">RxBinding</a></h2><p>JakeWharton大神操刀项目，主要是各种组件绑定，将Onclick、TextWatcher等时间作为一个事件源，通过RxJava可以改善用户的交互体验，避免了快速点击会出现两个点击事件。另外，还支持kotlin。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-2.png" alt=""></p>
+<h2 id="RxLifecycle"><a href="#RxLifecycle" class="headerlink" title="RxLifecycle"></a><a href="https://github.com/trello/RxLifecycle" target="_blank" rel="noopener">RxLifecycle</a></h2><p>用来严格控制由于发布了一个订阅后，由于没有及时取消，导致Activity/Fragment无法销毁导致的内存泄露。</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-3.png" alt=""></p>
-<h2 id="Rx-preferences"><a href="#Rx-preferences" class="headerlink" title="Rx-preferences"></a><a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">Rx-preferences</a></h2><p>用RxJava实现Android中的SharedPreferences</p>
+<h2 id="Rx-preferences"><a href="#Rx-preferences" class="headerlink" title="Rx-preferences"></a><a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="noopener">Rx-preferences</a></h2><p>用RxJava实现Android中的SharedPreferences</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20160413-4.png" alt="image">)</p>
-<h2 id="Storio"><a href="#Storio" class="headerlink" title="Storio"></a><a href="https://github.com/pushtorefresh/storio" target="_blank" rel="external">Storio</a></h2><p>支持RxJava的数据库</p>
+<h2 id="Storio"><a href="#Storio" class="headerlink" title="Storio"></a><a href="https://github.com/pushtorefresh/storio" target="_blank" rel="noopener">Storio</a></h2><p>支持RxJava的数据库</p>
 <h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
-<li><a href="https://github.com/lzyzsd/Awesome-RxJava" target="_blank" rel="external">Awesome-RxJava</a></li>
-<li><a href="http://www.jianshu.com/p/6917510b0e4c" target="_blank" rel="external">RxJava常见的使用场景总结</a></li>
+<li><a href="https://github.com/lzyzsd/Awesome-RxJava" target="_blank" rel="noopener">Awesome-RxJava</a></li>
+<li><a href="http://www.jianshu.com/p/6917510b0e4c" target="_blank" rel="noopener">RxJava常见的使用场景总结</a></li>
 </ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="
-RxJava是作为Android开发中的新贵， 越来..."></div>
 
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2016/04/13/RxJava-introduce/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
 </div>
 
-            
-
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
 
 
-<h3>Post Directory</h3>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2016/04/13/RxJava-introduce/" data-title="站在大神肩膀上看RxJava | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是RxJava以及RxJava能干什么"><span class="toc-text">什么是RxJava以及RxJava能干什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该怎么用RxJava"><span class="toc-text">该怎么用RxJava</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展库"><span class="toc-text">拓展库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit"><span class="toc-text">Retrofit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxBinding"><span class="toc-text">RxBinding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxLifecycle"><span class="toc-text">RxLifecycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rx-preferences"><span class="toc-text">Rx-preferences</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storio"><span class="toc-text">Storio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
-	</section>
-</div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
-
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
-
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/04/16/Android-developer-to-learn-to-python-01/" title="Python学习-pip和virtualenv">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Python学习-pip和virtualenv</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2016/03/16/how-to-debug-application-with-stetho/"  title="用chrome调试Android程序">
+ <strong>下一篇：</strong><br/> 
+ <span>用chrome调试Android程序
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是RxJava以及RxJava能干什么"><span class="toc-number">1.</span> <span class="toc-text">什么是RxJava以及RxJava能干什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#该怎么用RxJava"><span class="toc-number">2.</span> <span class="toc-text">该怎么用RxJava</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拓展库"><span class="toc-number">3.</span> <span class="toc-text">拓展库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit"><span class="toc-number">3.1.</span> <span class="toc-text">Retrofit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxBinding"><span class="toc-number">3.2.</span> <span class="toc-text">RxBinding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RxLifecycle"><span class="toc-number">3.3.</span> <span class="toc-text">RxLifecycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rx-preferences"><span class="toc-number">3.4.</span> <span class="toc-text">Rx-preferences</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storio"><span class="toc-number">3.5.</span> <span class="toc-text">Storio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">参考文章</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

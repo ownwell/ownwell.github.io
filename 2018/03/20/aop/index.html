@@ -1,82 +1,114 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | （译文）手把手教你用Java实现AOP</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>（译文）手把手教你用Java实现AOP | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="介绍众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。">
+<meta name="keywords" content="译文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（译文）手把手教你用Java实现AOP">
+<meta property="og:url" content="http://ownwell.github.io/2018/03/20/aop/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="介绍众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-01T14:41:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="（译文）手把手教你用Java实现AOP">
+<meta name="twitter:description" content="介绍众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/03/20/aop/" title="（译文）手把手教你用Java实现AOP" itemprop="url">（译文）手把手教你用Java实现AOP</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-19T16:00:00.000Z" itemprop="datePublished"> Published 2018-03-20</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="（译文）手把手教你用Java实现AOP" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                （译文）手把手教你用Java实现AOP
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2018-03-19T16:00:00.000Z" itemprop="datePublished">2018-03-20</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Java/' title=''>Java</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。<br><a id="more"></a><br>那AOP在Spring中是怎样运作的呢？当你只能使用core java，却需要AOP技术时，这个问题的解答变得极为关键。不仅如此，在高级技术岗位的面试中，此类问题也常作为考题出现。这不，我的朋友最近参加了一个面试，就被问到了这样一个棘手的问题——如何在不使用Spring及相关库，只用core Java的条件下实现AOP。因此，我将在本文中提供一份大纲，帮助大家了解如何只用core Java实现一个AOP（当然啦，这种AOP在功能上有一定的局限性）。注意，本文不是一篇有关Spring AOP与Java AOP的对比研究，而是有关在core Java中借助固有的设计模式 。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术实现概要"><span class="toc-number">2.</span> <span class="toc-text">技术实现概要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>众所周知，AOP（面向切面编程）是web框架Spring的特色功能之一。通过设置横切关注点（cross cutting concerns），AOP提供了极高的扩展性。<br><a id="more"></a><br>那AOP在Spring中是怎样运作的呢？当你只能使用core java，却需要AOP技术时，这个问题的解答变得极为关键。不仅如此，在高级技术岗位的面试中，此类问题也常作为考题出现。这不，我的朋友最近参加了一个面试，就被问到了这样一个棘手的问题——如何在不使用Spring及相关库，只用core Java的条件下实现AOP。因此，我将在本文中提供一份大纲，帮助大家了解如何只用core Java实现一个AOP（当然啦，这种AOP在功能上有一定的局限性）。注意，本文不是一篇有关Spring AOP与Java AOP的对比研究，而是有关在core Java中借助固有的设计模式 。</p>
 <p>想必大家已经知道AOP是什么，也知道在Spring框架中如何使用它，因此本文只着眼于如何在不用Spring的前提下实现AOP。首先，我们得知道，Spring是借助了JDK proxy和CGlib两种技术实现AOP的。JDK dynamic proxy提供了一种灵活的方式来hook一个方法并执行指定的操作，但执行操作时得有一个限制条件：必须先提供一个相关的接口以及该接口的实现类。实践出真知，让我们透过一个案例来理解这句吧！现在有一个计算器程序，用于完成一些数学运算。让我们来考虑下除法功能，此时的问题是：如果core framework 已经具备了一份实现除法的代码，我们能否在代码执行时劫持（highjack）它并执行额外的校验呢？答案是肯定的，我将用下面提供的代码片段来证明这点。首先来看基础接口的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>该接口实现类的代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalculatorImpl</span> <span class="keyword">implements</span> <span class="title">Calculator</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> a/b;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalculatorImpl</span> <span class="keyword">implements</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a/b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>假设我们既不能修该上面的代码，也不能对核心库进行任何改动，怎样才能完美地实现校验功能呢？不如试下JDK dynamic proxy的功能吧。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SomeHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="comment">// Code omitted for simplicity…..</span></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] params)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line"><span class="comment">// Your complex business validation and logic</span></div><div class="line">        Object result = method.invoke(targetObject ,params);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SomeHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Code omitted for simplicity…..</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] params)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line"><span class="comment">// Your complex business validation and logic</span></span><br><span class="line">        Object result = method.invoke(targetObject ,params);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>让我们通过测试类来看看由JDK dynamic proxy实现的校验功能的效果如何。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        CalculatorImpl calcImpl = <span class="keyword">new</span> CalculatorImpl();</div><div class="line">        Calculator proxied = (Calculator)ProxyFactory.getProxy (Calculator.class, calcImpl, </div><div class="line">                <span class="keyword">new</span> SomeHandler(calcImpl));</div><div class="line">        <span class="keyword">int</span> result = proxied.calculate(<span class="number">20</span>, <span class="number">10</span>);</div><div class="line">        System.out.println(<span class="string">"FInal Result :::"</span> + result);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        CalculatorImpl calcImpl = <span class="keyword">new</span> CalculatorImpl();</span><br><span class="line">        Calculator proxied = (Calculator)ProxyFactory.getProxy (Calculator.class, calcImpl, </span><br><span class="line">                <span class="keyword">new</span> SomeHandler(calcImpl));</span><br><span class="line">        <span class="keyword">int</span> result = proxied.calculate(<span class="number">20</span>, <span class="number">10</span>);</span><br><span class="line">        System.out.println(<span class="string">"FInal Result :::"</span> + result);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>从结果可以看出，简单地实现功能强大的<strong>InvocationHandler</strong>接口，我们便能得到一个hooking implementation。按照JDK文档的描述，<strong>InvocationHandler</strong>接口是借助一个代理实例（proxy instance）来处理一个方法调用的。</p>
 <p>现在我们已经知道，InvocationHandler的invoke()方法能够帮助我们解决问题。那么再来解决一个新问题——怎样才能在方法执行的前后执行操作呢？说的更具体一些，我们能通过添加多个aop（before、after、around）来hook一个方法吗（译注：原文为add multiple aops，但我认为Handler是充当Aspect的角色）？答案同样是肯定的。按照以下的步骤建立一个精简的代码模板便能满足这样的需求：</p>
-<ol>
+<ol start="2">
 <li>创建一个抽象类，用于将aop应用于目标对象上。</li>
 <li>创建名为BeforeHandler 和 AfterHandler的两个aop。前者在方法执行之前工作，而后者则在方法执行结束后工作。</li>
 <li>创建一个代理类，使所有的aop handler和目标对象只需作为参数传入，就能创建一个hook。</li>
@@ -85,135 +117,551 @@
 </ol>
 <h3 id="技术实现概要"><a href="#技术实现概要" class="headerlink" title="技术实现概要"></a>技术实现概要</h3><p>（译注：此处是核心代码片段，如果想运行该实例，需进入下方提供的链接下载完整代码）</p>
 <p>创建一个handler的抽象类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Object targetObject;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTargetObject</span><span class="params">(Object targetObject)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.targetObject = targetObject;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Object targetObject;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTargetObject</span><span class="params">(Object targetObject)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.targetObject = targetObject;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>创建名为<strong>BeforeHandler</strong>和<strong>AfterHandler</strong>的两个易扩展的handler抽象类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BeforeHandler</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleBefore</span><span class="params">(Object proxy, Method method, Object[] args)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">		handleBefore(proxy, method, args);</div><div class="line">		<span class="keyword">return</span> method.invoke(getTargetObject(), args);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AfterHandler</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleAfter</span><span class="params">(Object proxy, Method method, Object[] args)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">		Object result = method.invoke(getTargetObject(), args);</div><div class="line">		handleAfter(proxy, method, args);</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BeforeHandler</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleBefore</span><span class="params">(Object proxy, Method method, Object[] args)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		handleBefore(proxy, method, args);</span><br><span class="line">		<span class="keyword">return</span> method.invoke(getTargetObject(), args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AfterHandler</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleAfter</span><span class="params">(Object proxy, Method method, Object[] args)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		Object result = method.invoke(getTargetObject(), args);</span><br><span class="line">		handleAfter(proxy, method, args);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>创建Proxy的工厂类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getProxy</span><span class="params">(Object targetObject,</span></span></div><div class="line">			List handlers) &#123;</div><div class="line">			<span class="comment">//Code to get the proxy</span></div><div class="line">			<span class="keyword">return</span> proxyObject;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> targetObject;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getProxy</span><span class="params">(Object targetObject,</span></span></span><br><span class="line"><span class="function"><span class="params">			List handlers)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//Code to get the proxy</span></span><br><span class="line">			<span class="keyword">return</span> proxyObject;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> targetObject;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以下为测试代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CalculatorImpl calcImpl = <span class="keyword">new</span> CalculatorImpl();</div><div class="line">BeforeHandler before = <span class="keyword">new</span> BeforeHandlerImpl();</div><div class="line">AfterHandler after = <span class="keyword">new</span> AfterHandlerImpl();</div><div class="line">List&lt;AbstractHandler&gt; handlers = <span class="keyword">new</span> ArrayList&lt;AbstractHandler&gt;();</div><div class="line">handlers.add(before);</div><div class="line">handlers.add(after);</div><div class="line">Calculator proxy = (Calculator) ProxyFactory.getProxy(calcImpl,</div><div class="line">				handlers);</div><div class="line"><span class="keyword">int</span> result = proxy.calculate(<span class="number">20</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CalculatorImpl calcImpl = <span class="keyword">new</span> CalculatorImpl();</span><br><span class="line">BeforeHandler before = <span class="keyword">new</span> BeforeHandlerImpl();</span><br><span class="line">AfterHandler after = <span class="keyword">new</span> AfterHandlerImpl();</span><br><span class="line">List&lt;AbstractHandler&gt; handlers = <span class="keyword">new</span> ArrayList&lt;AbstractHandler&gt;();</span><br><span class="line">handlers.add(before);</span><br><span class="line">handlers.add(after);</span><br><span class="line">Calculator proxy = (Calculator) ProxyFactory.getProxy(calcImpl,</span><br><span class="line">				handlers);</span><br><span class="line"><span class="keyword">int</span> result = proxy.calculate(<span class="number">20</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>以上的代码片段简明扼要地解释了AOP在结构上的实现（structural implementation）。当然，如果能通过实际的测试将其运用到现实中去，那就再好不过了。读者可在下面的链接中获取完整的工程文件，并在Java编辑器中配置它们，最后通过其中的测试类来检验效果。</p>
 <ul>
-<li><a href="https://github.com/debjava/aopusingjdkdynamicproxy" target="_blank" rel="external">https://github.com/debjava/aopusingjdkdynamicproxy</a></li>
+<li><a href="https://github.com/debjava/aopusingjdkdynamicproxy" target="_blank" rel="noopener">https://github.com/debjava/aopusingjdkdynamicproxy</a></li>
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>希望这篇简短的有关AOP文章能够帮助到大家。需说明的是，本文只实现了before和after两种aop，而另外两种，即“Around”和“Throw”，则希望读者自行完成。</p>
 <hr>
-<p>原文：<a href="https://www.javacodegeeks.com/2015/03/create-your-own-aop-in-java.html" target="_blank" rel="external">Create your own AOP in Java</a></p>
+<p>原文：<a href="https://www.javacodegeeks.com/2015/03/create-your-own-aop-in-java.html" target="_blank" rel="noopener">Create your own AOP in Java</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="介绍众所周知，AOP（面向切面编程）是web框架Spr..."></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2018/03/20/aop/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/译文/">译文</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术实现概要"><span class="toc-text">技术实现概要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2018/03/20/aop/" data-title="（译文）手把手教你用Java实现AOP | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/03/25/python-data-analysis-nba-01/" title="数据分析--NBA哪个月的比赛最多">
+  <strong>上一篇：</strong><br/>
+  <span>
+  数据分析--NBA哪个月的比赛最多</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2018/03/19/server-install-apps/"  title="Center OS下安装常用软件">
+ <strong>下一篇：</strong><br/> 
+ <span>Center OS下安装常用软件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术实现概要"><span class="toc-number">2.</span> <span class="toc-text">技术实现概要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

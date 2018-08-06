@@ -1,71 +1,107 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | Android的快速多渠道打包</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>Android的快速多渠道打包 | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。">
+<meta name="keywords" content="多渠道,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android的快速多渠道打包">
+<meta property="og:url" content="http://ownwell.github.io/2015/09/28/mutichannel4Android/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/b1f9ddc451da81cb302607745666d0160b2431d9.jpg">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20150928-1@2x.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/md/1474528187208.png">
+<meta property="og:updated_time" content="2017-05-24T07:19:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android的快速多渠道打包">
+<meta name="twitter:description" content="听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/b1f9ddc451da81cb302607745666d0160b2431d9.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/28/mutichannel4Android/" title="Android的快速多渠道打包" itemprop="url">Android的快速多渠道打包</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-28T15:09:32.000Z" itemprop="datePublished"> Published 2015-09-28</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="Android的快速多渠道打包" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                Android的快速多渠道打包
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2015-09-28T15:09:32.000Z" itemprop="datePublished">2015-09-28</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Android/' title=''>Android</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/b1f9ddc451da81cb302607745666d0160b2431d9.jpg" alt=""></p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多渠道打包"><span class="toc-number">1.</span> <span class="toc-text">多渠道打包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速打包方案"><span class="toc-number">2.</span> <span class="toc-text">快速打包方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#渠道"><span class="toc-number">2.1.</span> <span class="toc-text">渠道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python脚本"><span class="toc-number">2.2.</span> <span class="toc-text">Python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取渠道名称"><span class="toc-number">2.3.</span> <span class="toc-text">读取渠道名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博文更新"><span class="toc-number">3.</span> <span class="toc-text">博文更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2016年9月22日"><span class="toc-number">3.1.</span> <span class="toc-text">2016年9月22日</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/b1f9ddc451da81cb302607745666d0160b2431d9.jpg" alt=""></p>
 <p>听说Google play快来中国了，不知道这个消息对于奋战在一线的Android开发者来说是不是个福音，终于可以不用翻墙下载Android SDK、下载Android Studio（避免XCodeGhost闹剧），不过也有一个威胁，对国内的引用市场什么360、百度、豌豆荚等渠道市场是不是会有影响呢？就让我们拭目以待吧。<br><a id="more"></a></p>
 <p>其实这篇博客应该在上周就要写的，因为本人搬家的缘故一直此次往后退，今天终于可以腾出时间来写这篇博客了—-Android的多渠道打包。</p>
 <!-- more -->
@@ -76,142 +112,557 @@
 </li>
 </ol>
 <p>不过现在你在product Flavor这个打包仍旧很慢，网易财经30多个渠道一个小时，这个是我们难以忍受的，怎么办怎么办？</p>
-<h1 id="快速打包方案"><a href="#快速打包方案" class="headerlink" title="快速打包方案"></a>快速打包方案</h1><p>这个问题也困扰着美团的一群工程师们，美团的<a href="http://tech.meituan.com/mt-apk-packaging.html" target="_blank" rel="external">多渠道打包</a>。</p>
+<h1 id="快速打包方案"><a href="#快速打包方案" class="headerlink" title="快速打包方案"></a>快速打包方案</h1><p>这个问题也困扰着美团的一群工程师们，美团的<a href="http://tech.meituan.com/mt-apk-packaging.html" target="_blank" rel="noopener">多渠道打包</a>。</p>
 <p>第一种是maven打包和Gradle的product Flavor差不多，替换一次渠道名称，打一个包，100渠道，100*3分钟。</p>
 <p>第二种其实就是现在有些黑心公司，利用反编译技术改变一些文件、重新签名，再打包，很是不正规。</p>
 <p>第三种就是今天的重头戏，就是将mate-inf下新建一个空文件，这文件的名称中有渠道名称，每次只需要读取渠道名称即可，这个脚本用的是Python。</p>
 <p>说起来简单，就来一步步分析吧。</p>
 <h2 id="渠道"><a href="#渠道" class="headerlink" title="渠道"></a>渠道</h2><p>准备好各个渠道名，放到一个文件里，每个渠道一行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">wandoujia</div><div class="line">hiapk</div><div class="line"><span class="number">91</span></div><div class="line">QQ</div><div class="line"><span class="number">360</span></div><div class="line">miliao</div><div class="line">goapk</div></pre></td></tr></table></figure>
-<h2 id="Python脚本"><a href="#Python脚本" class="headerlink" title="Python脚本"></a>Python脚本</h2><p>创建一个空文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> 空文件 便于写入此空文件到apk包中作为channel文件</div><div class="line">src_empty_file = <span class="string">'info/imoney.txt'</span></div><div class="line"><span class="comment"># 创建一个空文件（不存在则创建）</span></div><div class="line">f = open(src_empty_file, <span class="string">'w'</span>)</div><div class="line">f.close()</div></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 获取当前目录中所有的apk源包</span></div><div class="line">src_apks = []</div><div class="line"><span class="comment"># python3 : os.listdir()即可，这里使用兼容Python2的os.listdir('.')</span></div><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(<span class="string">'.'</span>):</div><div class="line">    <span class="keyword">if</span> os.path.isfile(file):</div><div class="line">        extension = os.path.splitext(file)[<span class="number">1</span>][<span class="number">1</span>:]</div><div class="line">        <span class="keyword">if</span> extension <span class="keyword">in</span> <span class="string">'apk'</span>:</div><div class="line">            src_apks.append(file)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 获取渠道列表</span></div><div class="line">channel_file = <span class="string">'info/channel.txt'</span></div><div class="line">f = open(channel_file)</div><div class="line">lines = f.readlines()</div><div class="line">f.close()</div><div class="line">`</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">for</span> src_apk <span class="keyword">in</span> src_apks:</div><div class="line">    <span class="comment"># file name (with extension)</span></div><div class="line">    src_apk_file_name = os.path.basename(src_apk)</div><div class="line">    <span class="comment"># 分割文件名与后缀</span></div><div class="line">    temp_list = os.path.splitext(src_apk_file_name)</div><div class="line">    <span class="comment"># name without extension</span></div><div class="line">    src_apk_name = temp_list[<span class="number">0</span>]</div><div class="line">    <span class="comment"># 后缀名，包含.   例如: ".apk "</span></div><div class="line">    src_apk_extension = temp_list[<span class="number">1</span>]</div><div class="line"></div><div class="line">    <span class="comment"># 创建生成目录,与文件名相关</span></div><div class="line">    output_dir = <span class="string">'output_'</span> + src_apk_name + <span class="string">'/'</span></div><div class="line">    <span class="comment"># 目录不存在则创建</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</div><div class="line">        os.mkdir(output_dir)</div><div class="line"></div><div class="line">    <span class="comment"># 遍历渠道号并创建对应渠道号的apk文件</span></div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</div><div class="line">        <span class="comment"># 获取当前渠道号，因为从渠道文件中获得带有\n,所有strip一下</span></div><div class="line">        target_channel = line.strip()</div><div class="line">        <span class="comment"># 拼接对应渠道号的apk</span></div><div class="line">        target_apk = output_dir + src_apk_name + <span class="string">"_"</span> + target_channel + src_apk_extension  </div><div class="line">        <span class="comment"># 拷贝建立新apk</span></div><div class="line">        shutil.copy(src_apk,  target_apk)</div><div class="line">        <span class="comment"># zip获取新建立的apk文件</span></div><div class="line">        zipped = zipfile.ZipFile(target_apk, <span class="string">'a'</span>, zipfile.ZIP_DEFLATED)</div><div class="line">        <span class="comment"># 初始化渠道信息</span></div><div class="line">        empty_channel_file = <span class="string">"META-INF/channel_&#123;channel&#125;"</span>.format(channel = target_channel)</div><div class="line">        <span class="comment"># 写入渠道信息</span></div><div class="line">        zipped.write(src_empty_file, empty_channel_file)</div><div class="line">        <span class="comment"># 关闭zip流</span></div><div class="line">        zipped.close()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wandoujia</span><br><span class="line">hiapk</span><br><span class="line"><span class="number">91</span></span><br><span class="line">QQ</span><br><span class="line"><span class="number">360</span></span><br><span class="line">miliao</span><br><span class="line">goapk</span><br></pre></td></tr></table></figure>
+<h2 id="Python脚本"><a href="#Python脚本" class="headerlink" title="Python脚本"></a>Python脚本</h2><p>创建一个空文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 空文件 便于写入此空文件到apk包中作为channel文件</span><br><span class="line">src_empty_file = <span class="string">'info/imoney.txt'</span></span><br><span class="line"><span class="comment"># 创建一个空文件（不存在则创建）</span></span><br><span class="line">f = open(src_empty_file, <span class="string">'w'</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 获取当前目录中所有的apk源包</span></span><br><span class="line">src_apks = []</span><br><span class="line"><span class="comment"># python3 : os.listdir()即可，这里使用兼容Python2的os.listdir('.')</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(<span class="string">'.'</span>):</span><br><span class="line">    <span class="keyword">if</span> os.path.isfile(file):</span><br><span class="line">        extension = os.path.splitext(file)[<span class="number">1</span>][<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">if</span> extension <span class="keyword">in</span> <span class="string">'apk'</span>:</span><br><span class="line">            src_apks.append(file)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 获取渠道列表</span></span><br><span class="line">channel_file = <span class="string">'info/channel.txt'</span></span><br><span class="line">f = open(channel_file)</span><br><span class="line">lines = f.readlines()</span><br><span class="line">f.close()</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> src_apk <span class="keyword">in</span> src_apks:</span><br><span class="line">    <span class="comment"># file name (with extension)</span></span><br><span class="line">    src_apk_file_name = os.path.basename(src_apk)</span><br><span class="line">    <span class="comment"># 分割文件名与后缀</span></span><br><span class="line">    temp_list = os.path.splitext(src_apk_file_name)</span><br><span class="line">    <span class="comment"># name without extension</span></span><br><span class="line">    src_apk_name = temp_list[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 后缀名，包含.   例如: ".apk "</span></span><br><span class="line">    src_apk_extension = temp_list[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建生成目录,与文件名相关</span></span><br><span class="line">    output_dir = <span class="string">'output_'</span> + src_apk_name + <span class="string">'/'</span></span><br><span class="line">    <span class="comment"># 目录不存在则创建</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.mkdir(output_dir)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历渠道号并创建对应渠道号的apk文件</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        <span class="comment"># 获取当前渠道号，因为从渠道文件中获得带有\n,所有strip一下</span></span><br><span class="line">        target_channel = line.strip()</span><br><span class="line">        <span class="comment"># 拼接对应渠道号的apk</span></span><br><span class="line">        target_apk = output_dir + src_apk_name + <span class="string">"_"</span> + target_channel + src_apk_extension  </span><br><span class="line">        <span class="comment"># 拷贝建立新apk</span></span><br><span class="line">        shutil.copy(src_apk,  target_apk)</span><br><span class="line">        <span class="comment"># zip获取新建立的apk文件</span></span><br><span class="line">        zipped = zipfile.ZipFile(target_apk, <span class="string">'a'</span>, zipfile.ZIP_DEFLATED)</span><br><span class="line">        <span class="comment"># 初始化渠道信息</span></span><br><span class="line">        empty_channel_file = <span class="string">"META-INF/channel_&#123;channel&#125;"</span>.format(channel = target_channel)</span><br><span class="line">        <span class="comment"># 写入渠道信息</span></span><br><span class="line">        zipped.write(src_empty_file, empty_channel_file)</span><br><span class="line">        <span class="comment"># 关闭zip流</span></span><br><span class="line">        zipped.close()</span><br></pre></td></tr></table></figure>
 <p>**<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20150928-1@2x.png" alt=""></p>
 <p>通过python可以直接运行，20s 30多个渠道就出来。</p>
 <h2 id="读取渠道名称"><a href="#读取渠道名称" class="headerlink" title="读取渠道名称"></a>读取渠道名称</h2><p>由于我们的将渠道信息放到了meta-inf下，而不是以前的那个放到Manifest文件，所以需要在meta-inf获取渠道名称，并将这个渠道手动设置到对应统计的SDK（如Umeng，百度等）中去。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> Cyning</div><div class="line"> * <span class="doctag">@since</span> 2015.09.17</div><div class="line"> * Time    下午9:07</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MutiChannelConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Version         = <span class="string">"version"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Channel         = <span class="string">"channel"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_CHANNEL = <span class="string">"netease"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Channel_File = <span class="string">"channel"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getChannelFromMeta</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        ApplicationInfo appinfo = context.getApplicationInfo();</div><div class="line">        String sourceDir = appinfo.sourceDir;</div><div class="line">        String ret = <span class="string">""</span>;</div><div class="line">        ZipFile zipfile = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            zipfile = <span class="keyword">new</span> ZipFile(sourceDir);</div><div class="line">            Enumeration&lt;?&gt; entries = zipfile.entries();</div><div class="line">            <span class="keyword">while</span> (entries.hasMoreElements()) &#123;</div><div class="line">                ZipEntry entry = ((ZipEntry) entries.nextElement());</div><div class="line">                String entryName = entry.getName();</div><div class="line">                <span class="keyword">if</span> (entryName.startsWith(<span class="string">"META-INF"</span>) &amp;&amp; entryName.contains(<span class="string">"channel_"</span>)) &#123;</div><div class="line">                    ret = entryName;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            <span class="keyword">if</span> (zipfile != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    zipfile.close();</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        String[] split = ret.split(<span class="string">"_"</span>);</div><div class="line">        <span class="keyword">if</span> (split != <span class="keyword">null</span> &amp;&amp; split.length &gt;= <span class="number">2</span>) &#123;</div><div class="line">            <span class="keyword">return</span> ret.substring(split[<span class="number">0</span>].length() + <span class="number">1</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> DEFAULT_CHANNEL;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 得到渠道名</div><div class="line">     * <span class="doctag">@param</span> mContext</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getChannel</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">        String channel = <span class="string">""</span>;</div><div class="line">        <span class="keyword">if</span> (isNewVersion(mContext)) &#123;<span class="comment">//是新版本</span></div><div class="line">            LayzLog.e(<span class="string">"isNewVersion  %s"</span>, <span class="string">"isNewVersion"</span>);</div><div class="line">            saveChannel(mContext);<span class="comment">//保存当前版本</span></div><div class="line">            channel = getChannelFromMeta(mContext);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            channel = getCachChannel(mContext);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> channel;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 保存当前的版本号和渠道名</div><div class="line">     * <span class="doctag">@param</span> mContext</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveChannel</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</div><div class="line">        SharedPreferences.Editor mSettinsEd = mSettinsSP.edit();</div><div class="line">        mSettinsEd.putString(Version, APPUtils.getAppVersion(mContext));</div><div class="line">        mSettinsEd.putString(Channel, getChannelFromMeta(mContext));</div><div class="line">        <span class="comment">//提交保存</span></div><div class="line">        mSettinsEd.commit();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNewVersion</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</div><div class="line">        String version = APPUtils.getAppVersion(mContext);</div><div class="line">        LayzLog.e(<span class="string">"version%s"</span>, version);</div><div class="line">        <span class="keyword">return</span> !mSettinsSP.getString(Version, <span class="string">""</span>).equals(version);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getCachChannel</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</div><div class="line">        <span class="keyword">return</span> mSettinsSP.getString(Channel, DEFAULT_CHANNEL);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>具体的项目脚本请参考：<a href="https://github.com/ownwell/AndroidMultiChannelBuild" target="_blank" rel="external">ownwell/AndroidMultiChannelBuild</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Cyning</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2015.09.17</span></span><br><span class="line"><span class="comment"> * Time    下午9:07</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MutiChannelConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Version         = <span class="string">"version"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Channel         = <span class="string">"channel"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_CHANNEL = <span class="string">"netease"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Channel_File = <span class="string">"channel"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getChannelFromMeta</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        ApplicationInfo appinfo = context.getApplicationInfo();</span><br><span class="line">        String sourceDir = appinfo.sourceDir;</span><br><span class="line">        String ret = <span class="string">""</span>;</span><br><span class="line">        ZipFile zipfile = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            zipfile = <span class="keyword">new</span> ZipFile(sourceDir);</span><br><span class="line">            Enumeration&lt;?&gt; entries = zipfile.entries();</span><br><span class="line">            <span class="keyword">while</span> (entries.hasMoreElements()) &#123;</span><br><span class="line">                ZipEntry entry = ((ZipEntry) entries.nextElement());</span><br><span class="line">                String entryName = entry.getName();</span><br><span class="line">                <span class="keyword">if</span> (entryName.startsWith(<span class="string">"META-INF"</span>) &amp;&amp; entryName.contains(<span class="string">"channel_"</span>)) &#123;</span><br><span class="line">                    ret = entryName;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (zipfile != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    zipfile.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] split = ret.split(<span class="string">"_"</span>);</span><br><span class="line">        <span class="keyword">if</span> (split != <span class="keyword">null</span> &amp;&amp; split.length &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ret.substring(split[<span class="number">0</span>].length() + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> DEFAULT_CHANNEL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 得到渠道名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mContext</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getChannel</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        String channel = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (isNewVersion(mContext)) &#123;<span class="comment">//是新版本</span></span><br><span class="line">            LayzLog.e(<span class="string">"isNewVersion  %s"</span>, <span class="string">"isNewVersion"</span>);</span><br><span class="line">            saveChannel(mContext);<span class="comment">//保存当前版本</span></span><br><span class="line">            channel = getChannelFromMeta(mContext);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            channel = getCachChannel(mContext);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> channel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存当前的版本号和渠道名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mContext</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveChannel</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</span><br><span class="line">        SharedPreferences.Editor mSettinsEd = mSettinsSP.edit();</span><br><span class="line">        mSettinsEd.putString(Version, APPUtils.getAppVersion(mContext));</span><br><span class="line">        mSettinsEd.putString(Channel, getChannelFromMeta(mContext));</span><br><span class="line">        <span class="comment">//提交保存</span></span><br><span class="line">        mSettinsEd.commit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNewVersion</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</span><br><span class="line">        String version = APPUtils.getAppVersion(mContext);</span><br><span class="line">        LayzLog.e(<span class="string">"version%s"</span>, version);</span><br><span class="line">        <span class="keyword">return</span> !mSettinsSP.getString(Version, <span class="string">""</span>).equals(version);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getCachChannel</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        SharedPreferences mSettinsSP = mContext.getSharedPreferences(Channel_File, Activity.MODE_PRIVATE);</span><br><span class="line">        <span class="keyword">return</span> mSettinsSP.getString(Channel, DEFAULT_CHANNEL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的项目脚本请参考：<a href="https://github.com/ownwell/AndroidMultiChannelBuild" target="_blank" rel="noopener">ownwell/AndroidMultiChannelBuild</a></p>
 <h1 id="博文更新"><a href="#博文更新" class="headerlink" title="博文更新"></a>博文更新</h1><h2 id="2016年9月22日"><a href="#2016年9月22日" class="headerlink" title="2016年9月22日"></a>2016年9月22日</h2><hr>
 <p>之前发现以前的脚本需要zipalign对齐，否则在有些商店会报这个错误，我们需要用到zipalign,需要老版本打好的包再进行zipalign对齐。7-9行即为新加的关键代码。</p>
 <p>其中zg是我为zipalign   </p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/md/1474528187208.png" width="420"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 写入渠道信息</span></div><div class="line">zipped.write(src_empty_file, empty_channel_file)</div><div class="line"><span class="comment"># 关闭zip流</span></div><div class="line">zipped.close()</div><div class="line"></div><div class="line">    zipalign = os.environ.get(<span class="string">'zg'</span>)</div><div class="line">    <span class="comment">## zipAlign</span></div><div class="line">    zipAlign = <span class="string">"%s -v 4 %s %s"</span> % (zipalign,target_apk, last_apk)</div><div class="line">    subprocess.call(zipAlign, shell=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">zipshell = <span class="string">"zip apks.zip %s"</span>%last_dir</div><div class="line">subprocess.call(zipshell, shell=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入渠道信息</span></span><br><span class="line">zipped.write(src_empty_file, empty_channel_file)</span><br><span class="line"><span class="comment"># 关闭zip流</span></span><br><span class="line">zipped.close()</span><br><span class="line"></span><br><span class="line">    zipalign = os.environ.get(<span class="string">'zg'</span>)</span><br><span class="line">    <span class="comment">## zipAlign</span></span><br><span class="line">    zipAlign = <span class="string">"%s -v 4 %s %s"</span> % (zipalign,target_apk, last_apk)</span><br><span class="line">    subprocess.call(zipAlign, shell=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">zipshell = <span class="string">"zip apks.zip %s"</span>%last_dir</span><br><span class="line">subprocess.call(zipshell, shell=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="
-听说Google play快来中国了，不知道这个消息..."></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2015/09/28/mutichannel4Android/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/多渠道/">多渠道</a><a href="/tags/python/">python</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多渠道打包"><span class="toc-text">多渠道打包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速打包方案"><span class="toc-text">快速打包方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#渠道"><span class="toc-text">渠道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python脚本"><span class="toc-text">Python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取渠道名称"><span class="toc-text">读取渠道名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博文更新"><span class="toc-text">博文更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2016年9月22日"><span class="toc-text">2016年9月22日</span></a></li></ol></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2015/09/28/mutichannel4Android/" data-title="Android的快速多渠道打包 | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/09/30/swipeback-windowIsTranslucent/" title="SwipeBackLayout的一个让人揪心的问题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  SwipeBackLayout的一个让人揪心的问题</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2015/09/02/learn-spring-1/"  title="Spring学习笔记（1）">
+ <strong>下一篇：</strong><br/> 
+ <span>Spring学习笔记（1）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多渠道打包"><span class="toc-number">1.</span> <span class="toc-text">多渠道打包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速打包方案"><span class="toc-number">2.</span> <span class="toc-text">快速打包方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#渠道"><span class="toc-number">2.1.</span> <span class="toc-text">渠道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python脚本"><span class="toc-number">2.2.</span> <span class="toc-text">Python脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取渠道名称"><span class="toc-number">2.3.</span> <span class="toc-text">读取渠道名称</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博文更新"><span class="toc-number">3.</span> <span class="toc-text">博文更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2016年9月22日"><span class="toc-number">3.1.</span> <span class="toc-text">2016年9月22日</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

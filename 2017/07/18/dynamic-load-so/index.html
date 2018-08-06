@@ -1,71 +1,106 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | 【Android进阶】Android动态加载so文件</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>【Android进阶】Android动态加载so文件 | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。 结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让">
+<meta name="keywords" content="Android进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android进阶】Android动态加载so文件">
+<meta property="og:url" content="http://ownwell.github.io/2017/07/18/dynamic-load-so/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。 结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/so_fix_libs_path.png">
+<meta property="og:updated_time" content="2017-12-04T15:13:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android进阶】Android动态加载so文件">
+<meta name="twitter:description" content="随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。 结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/18/dynamic-load-so/" title="【Android进阶】Android动态加载so文件" itemprop="url">【Android进阶】Android动态加载so文件</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-17T16:29:19.000Z" itemprop="datePublished"> Published 2017-07-18</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="【Android进阶】Android动态加载so文件" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                【Android进阶】Android动态加载so文件
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2017-07-17T16:29:19.000Z" itemprop="datePublished">2017-07-18</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Android/' title=''>Android</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要动态加载"><span class="toc-number">1.</span> <span class="toc-text">为什么要动态加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态加载so文件"><span class="toc-number">2.</span> <span class="toc-text">动态加载so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System-load-String-filePath"><span class="toc-number">2.1.</span> <span class="toc-text">1. System.load(String filePath)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-支持静态加载"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持静态加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">3.</span> <span class="toc-text">出现的问题</span></a></li></ol>
+		
+		</div>
+		
+		<p>随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。</p>
 <p>结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让so文件不随apk一起发布呢，而是按需下载(只有当需要播放视频时才去服务器下载，然后再在本地load)。<br><a id="more"></a><br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png" alt=""></p>
 <h1 id="为什么要动态加载"><a href="#为什么要动态加载" class="headerlink" title="为什么要动态加载"></a>为什么要动态加载</h1><p>其实刚才已经解释了，可以有效避免apk安装包过大，因为这些so文件是依赖server的下发，本地只是load的过程。<br>其次，动态加载可以动态升级so文件，也是动态化的一部分。可以在不发版的情况下，升级so文件。</p>
 <blockquote>
@@ -81,136 +116,552 @@
 </ol>
 <p>所以下发的so没有权限放到图2-1下，只能通过加载的so文件路径的方式来动态加载so文件。</p>
 <p>方案1： 将so文件copy到/data/**{package}下，system.load(filePath).</p>
-<h2 id="2-支持静态加载"><a href="#2-支持静态加载" class="headerlink" title="2. 支持静态加载"></a>2. 支持静态加载</h2><p>但是我们这样做还是解决不了问题，因为有些so文件加载的过程是放到sdkxia的，如百度地图sdk，已经封装了加载so文件（静态加载），即使你已经实现了方案1仍然扔出<code>UnsatisfiedLinkError</code>的异常。<br>要弄清这个过程，就必须了解so的加载过程，以我的本地的android skd（Android）为例。<br>System源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadLibrary</span><span class="params">(String libname)</span> </span>&#123;</div><div class="line">              Runtime.getRuntime().loadLibrary0(VMStack.getCallingClassLoader(), libname);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>RunningTime<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">loadLibrary0</span><span class="params">(ClassLoader loader, String libname)</span> </span>&#123;</div><div class="line">      <span class="keyword">if</span> (libname.indexOf((<span class="keyword">int</span>)File.separatorChar) != -<span class="number">1</span>) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(</div><div class="line">  <span class="string">"Directory separator should not appear in library name: "</span> + libname);</div><div class="line">      &#125;</div><div class="line">      String libraryName = libname;</div><div class="line">      <span class="keyword">if</span> (loader != <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="comment">// 去loade中查找libraryName命令的library</span></div><div class="line">          String filename = loader.findLibrary(libraryName);</div><div class="line">          <span class="keyword">if</span> (filename == <span class="keyword">null</span>) &#123;</div><div class="line">              <span class="comment">// It's not necessarily true that the ClassLoader used</span></div><div class="line">              <span class="comment">// System.mapLibraryName, but the default setup does, and it's</span></div><div class="line">              <span class="comment">// misleading to say we didn't find "libMyLibrary.so" when we</span></div><div class="line">              <span class="comment">// actually searched for "liblibMyLibrary.so.so".</span></div><div class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(loader + <span class="string">" couldn't find \""</span> +</div><div class="line">                                             System.mapLibraryName(libraryName) + <span class="string">"\""</span>);</div><div class="line">          &#125;</div><div class="line">          String error = doLoad(filename, loader);</div><div class="line">          <span class="keyword">if</span> (error != <span class="keyword">null</span>) &#123;</div><div class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(error);</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">return</span>;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      String filename = System.mapLibraryName(libraryName);</div><div class="line">      List&lt;String&gt; candidates = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">      String lastError = <span class="keyword">null</span>;</div><div class="line">      <span class="keyword">for</span> (String directory : getLibPaths()) &#123;</div><div class="line">          String candidate = directory + filename;</div><div class="line">          candidates.add(candidate);</div><div class="line"></div><div class="line">          <span class="keyword">if</span> (IoUtils.canOpenReadOnly(candidate)) &#123;</div><div class="line">              String error = doLoad(candidate, loader);</div><div class="line">              <span class="keyword">if</span> (error == <span class="keyword">null</span>) &#123;</div><div class="line">                  <span class="keyword">return</span>; <span class="comment">// We successfully loaded the library. Job done.</span></div><div class="line">              &#125;</div><div class="line">              lastError = error;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (lastError != <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(lastError);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(<span class="string">"Library "</span> + libraryName + <span class="string">" not found; tried "</span> + candidates);</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-支持静态加载"><a href="#2-支持静态加载" class="headerlink" title="2. 支持静态加载"></a>2. 支持静态加载</h2><p>但是我们这样做还是解决不了问题，因为有些so文件加载的过程是放到sdkxia的，如百度地图sdk，已经封装了加载so文件（静态加载），即使你已经实现了方案1仍然扔出<code>UnsatisfiedLinkError</code>的异常。<br>要弄清这个过程，就必须了解so的加载过程，以我的本地的android skd（Android）为例。<br>System源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadLibrary</span><span class="params">(String libname)</span> </span>&#123;</span><br><span class="line">              Runtime.getRuntime().loadLibrary0(VMStack.getCallingClassLoader(), libname);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>RunningTime<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">loadLibrary0</span><span class="params">(ClassLoader loader, String libname)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (libname.indexOf((<span class="keyword">int</span>)File.separatorChar) != -<span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(</span><br><span class="line">  <span class="string">"Directory separator should not appear in library name: "</span> + libname);</span><br><span class="line">      &#125;</span><br><span class="line">      String libraryName = libname;</span><br><span class="line">      <span class="keyword">if</span> (loader != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 去loade中查找libraryName命令的library</span></span><br><span class="line">          String filename = loader.findLibrary(libraryName);</span><br><span class="line">          <span class="keyword">if</span> (filename == <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// It's not necessarily true that the ClassLoader used</span></span><br><span class="line">              <span class="comment">// System.mapLibraryName, but the default setup does, and it's</span></span><br><span class="line">              <span class="comment">// misleading to say we didn't find "libMyLibrary.so" when we</span></span><br><span class="line">              <span class="comment">// actually searched for "liblibMyLibrary.so.so".</span></span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(loader + <span class="string">" couldn't find \""</span> +</span><br><span class="line">                                             System.mapLibraryName(libraryName) + <span class="string">"\""</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          String error = doLoad(filename, loader);</span><br><span class="line">          <span class="keyword">if</span> (error != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(error);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      String filename = System.mapLibraryName(libraryName);</span><br><span class="line">      List&lt;String&gt; candidates = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">      String lastError = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">for</span> (String directory : getLibPaths()) &#123;</span><br><span class="line">          String candidate = directory + filename;</span><br><span class="line">          candidates.add(candidate);</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (IoUtils.canOpenReadOnly(candidate)) &#123;</span><br><span class="line">              String error = doLoad(candidate, loader);</span><br><span class="line">              <span class="keyword">if</span> (error == <span class="keyword">null</span>) &#123;</span><br><span class="line">                  <span class="keyword">return</span>; <span class="comment">// We successfully loaded the library. Job done.</span></span><br><span class="line">              &#125;</span><br><span class="line">              lastError = error;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (lastError != <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(lastError);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> UnsatisfiedLinkError(<span class="string">"Library "</span> + libraryName + <span class="string">" not found; tried "</span> + candidates);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <p>代码中的loader是<code>ClassLoader</code>的对象，对于Android实际上是<code>PathClassLoader</code>,这个意思就是当有classLoader时就通过<code>PathClassLoader</code>的<code>findLibrary(libraryName)</code>来加载（这个好像加载class），若无classLoader就通过<code>mapLibraryName1（）</code></p>
 <blockquote>
-<p>建议大家看下native层怎么实现的：<a href="https://www.v2ex.com/t/364978" target="_blank" rel="external">深入理解 System.loadLibrary</a></p>
+<p>建议大家看下native层怎么实现的：<a href="https://www.v2ex.com/t/364978" target="_blank" rel="noopener">深入理解 System.loadLibrary</a></p>
 </blockquote>
-<p>我们加载so看classLoader是怎么实现的，Android 5.0的源码源码：<br><a href="https://android.googlesource.com/platform/libcore/+/android-5.0.0_r6/dalvik/src/main/java/dalvik/system/BaseDexClassLoader.java" target="_blank" rel="external">BaseDexClassLoader.java的源码</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">findLibrary</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> pathList.findLibrary(name);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>我们加载so看classLoader是怎么实现的，Android 5.0的源码源码：<br><a href="https://android.googlesource.com/platform/libcore/+/android-5.0.0_r6/dalvik/src/main/java/dalvik/system/BaseDexClassLoader.java" target="_blank" rel="noopener">BaseDexClassLoader.java的源码</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">findLibrary</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> pathList.findLibrary(name);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>pathList就是我们的DexPathList对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">DexPathList</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEX_SUFFIX = <span class="string">".dex"</span>;</div><div class="line">    <span class="comment">/** class definition context */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ClassLoader definingContext;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * List of dex/resource (class path) elements.</div><div class="line">     * Should be called pathElements, but the Facebook app uses reflection</div><div class="line">     * to modify 'dexElements' (http://b/7726934).</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Element[] dexElements;</div><div class="line">    <span class="comment">/** List of native library directories. */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> File[] nativeLibraryDirectories;</div><div class="line">     …………</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findLibrary</span><span class="params">(String libraryName)</span> </span>&#123;</div><div class="line">        String fileName = System.mapLibraryName(libraryName);</div><div class="line">        <span class="keyword">for</span> (File directory : nativeLibraryDirectories) &#123;</div><div class="line">            String path = <span class="keyword">new</span> File(directory, fileName).getPath();</div><div class="line">            <span class="keyword">if</span> (IoUtils.canOpenReadOnly(path)) &#123;</div><div class="line">                <span class="keyword">return</span> path;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    …………</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>看到了吧，会先找system下的so文件，再找<code>nativeLibraryDirectories</code>下的，而这个<code>nativeLibraryDirectories</code>就是我们的自己项目中jniLibs下对应的so文件的路径。<br>当以当我们静态加载时，其实找的so文件就是<code>nativeLibraryDirectories</code>，所以我们可以以此作为突破口，利用反射，将这个nativeLibraryDirectories的开始处加上我们自己放so的文件夹下（感觉像QQ空间对class做patch的方式哦，其实替换旧的so文件这种可以可行的）。<br>开始hook啦。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">PathClassLoader pathClassLoader = (PathClassLoader) context.getApplicationContext().getClassLoader();</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           Object pathList = getPathList(pathClassLoader);</div><div class="line">                </div><div class="line">           <span class="comment">// 拿到nativeLibraryDirectories的Field</span></div><div class="line">           Field nativeLibraryDirectoriesField = pathList.getClass().getDeclaredField(<span class="string">"nativeLibraryDirectories"</span>);</div><div class="line">           nativeLibraryDirectoriesField.setAccessible(<span class="keyword">true</span>);</div><div class="line">           File[] libPaths = (File[]) nativeLibraryDirectoriesField.get(pathList);</div><div class="line">           File[] envilLibPaths = <span class="keyword">new</span> File[libPaths.length + <span class="number">1</span>];</div><div class="line">           <span class="comment">// 将存放我们自己so的文件夹加到第一位</span></div><div class="line">           envilLibPaths[<span class="number">0</span>] = dir;</div><div class="line">           <span class="comment">// 将原来的路径追加到后面</span></div><div class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; libPaths.length; i++) &#123;</div><div class="line">               envilLibPaths[i + <span class="number">1</span>] = libPaths[i];</div><div class="line">           &#125;</div><div class="line">           <span class="comment">// 将新的nativeLibraryDirectories设置给pathList</span></div><div class="line">           nativeLibraryDirectoriesField.set(pathList, envilLibPaths);</div><div class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
-<p>这个代码是在14-22都是ok的，但是23源码不是这样滴，看源码吧：<br><a href="https://android.googlesource.com/platform/libcore/+/android-6.0.1_r48/dalvik/src/main/java/dalvik/system/DexPathList.java" target="_blank" rel="external">23的源码</a>先放这,hook起来也不难。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">DexPathList</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEX_SUFFIX = <span class="string">".dex"</span>;</span><br><span class="line">    <span class="comment">/** class definition context */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ClassLoader definingContext;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * List of dex/resource (class path) elements.</span></span><br><span class="line"><span class="comment">     * Should be called pathElements, but the Facebook app uses reflection</span></span><br><span class="line"><span class="comment">     * to modify 'dexElements' (http://b/7726934).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Element[] dexElements;</span><br><span class="line">    <span class="comment">/** List of native library directories. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> File[] nativeLibraryDirectories;</span><br><span class="line">     …………</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findLibrary</span><span class="params">(String libraryName)</span> </span>&#123;</span><br><span class="line">        String fileName = System.mapLibraryName(libraryName);</span><br><span class="line">        <span class="keyword">for</span> (File directory : nativeLibraryDirectories) &#123;</span><br><span class="line">            String path = <span class="keyword">new</span> File(directory, fileName).getPath();</span><br><span class="line">            <span class="keyword">if</span> (IoUtils.canOpenReadOnly(path)) &#123;</span><br><span class="line">                <span class="keyword">return</span> path;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    …………</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到了吧，会先找system下的so文件，再找<code>nativeLibraryDirectories</code>下的，而这个<code>nativeLibraryDirectories</code>就是我们的自己项目中jniLibs下对应的so文件的路径。<br>当以当我们静态加载时，其实找的so文件就是<code>nativeLibraryDirectories</code>，所以我们可以以此作为突破口，利用反射，将这个nativeLibraryDirectories的开始处加上我们自己放so的文件夹下（感觉像QQ空间对class做patch的方式哦，其实替换旧的so文件这种可以可行的）。<br>开始hook啦。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">PathClassLoader pathClassLoader = (PathClassLoader) context.getApplicationContext().getClassLoader();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Object pathList = getPathList(pathClassLoader);</span><br><span class="line">                </span><br><span class="line">           <span class="comment">// 拿到nativeLibraryDirectories的Field</span></span><br><span class="line">           Field nativeLibraryDirectoriesField = pathList.getClass().getDeclaredField(<span class="string">"nativeLibraryDirectories"</span>);</span><br><span class="line">           nativeLibraryDirectoriesField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">           File[] libPaths = (File[]) nativeLibraryDirectoriesField.get(pathList);</span><br><span class="line">           File[] envilLibPaths = <span class="keyword">new</span> File[libPaths.length + <span class="number">1</span>];</span><br><span class="line">           <span class="comment">// 将存放我们自己so的文件夹加到第一位</span></span><br><span class="line">           envilLibPaths[<span class="number">0</span>] = dir;</span><br><span class="line">           <span class="comment">// 将原来的路径追加到后面</span></span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; libPaths.length; i++) &#123;</span><br><span class="line">               envilLibPaths[i + <span class="number">1</span>] = libPaths[i];</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">// 将新的nativeLibraryDirectories设置给pathList</span></span><br><span class="line">           nativeLibraryDirectoriesField.set(pathList, envilLibPaths);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个代码是在14-22都是ok的，但是23源码不是这样滴，看源码吧：<br><a href="https://android.googlesource.com/platform/libcore/+/android-6.0.1_r48/dalvik/src/main/java/dalvik/system/DexPathList.java" target="_blank" rel="noopener">23的源码</a>先放这,hook起来也不难。</p>
 <blockquote>
 <p>Android 23源码建议hook <code>nativeLibraryPathElements</code>这个而不是<code>nativeLibraryDirectories;</code></p>
 </blockquote>
 <p>方案2：Hook DexPathList的nativeLibraryPathElements或者nativeLibraryDirectories，将我们自定义存so文件的文件夹作为他们的第一个元素。</p>
-<h1 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h1><p>刚开始我把所有视频相关的so文件扔到本地的一个文件下，再copy到/data/**{package}下，居然报<code>32-bit instead of 64-bit</code> 这个错误，我把so再放到jniLibs/armeabi下再跑可以啊，后来google了下发现有人在<a href="https://github.com/singwhatiwanna/dynamic-load-apk/issues/113" target="_blank" rel="external">动态化</a>时也遇到了，其中Anjon-github提到了一个方案：只要找任意一个32位的so文件（当然越小越好了）放到主程序中即可,于是我找了个1k的so文件放到了项目的jniLibs/armeabi下居然真的可以，这个原因不知为何，这个涉及到native代码，本人技术有限暂时没找到答案，不知道大家是否更好的解答或者解决方法。</p>
+<h1 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h1><p>刚开始我把所有视频相关的so文件扔到本地的一个文件下，再copy到/data/**{package}下，居然报<code>32-bit instead of 64-bit</code> 这个错误，我把so再放到jniLibs/armeabi下再跑可以啊，后来google了下发现有人在<a href="https://github.com/singwhatiwanna/dynamic-load-apk/issues/113" target="_blank" rel="noopener">动态化</a>时也遇到了，其中Anjon-github提到了一个方案：只要找任意一个32位的so文件（当然越小越好了）放到主程序中即可,于是我找了个1k的so文件放到了项目的jniLibs/armeabi下居然真的可以，这个原因不知为何，这个涉及到native代码，本人技术有限暂时没找到答案，不知道大家是否更好的解答或者解决方法。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="随着业务的增大，我们的业务代码也随之增多，包的大小是有..."></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2017/07/18/dynamic-load-so/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android进阶/">Android进阶</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要动态加载"><span class="toc-text">为什么要动态加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态加载so文件"><span class="toc-text">动态加载so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System-load-String-filePath"><span class="toc-text">1. System.load(String filePath)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-支持静态加载"><span class="toc-text">2. 支持静态加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-text">出现的问题</span></a></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2017/07/18/dynamic-load-so/" data-title="【Android进阶】Android动态加载so文件 | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/08/08/annotation-for-andrroid-one/" title="注解（1）-- 什么是注解">
+  <strong>上一篇：</strong><br/>
+  <span>
+  注解（1）-- 什么是注解</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2017/05/24/Robust热修复-入门使用/"  title="Robust热修复-使用和项目介绍">
+ <strong>下一篇：</strong><br/> 
+ <span>Robust热修复-使用和项目介绍
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要动态加载"><span class="toc-number">1.</span> <span class="toc-text">为什么要动态加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态加载so文件"><span class="toc-number">2.</span> <span class="toc-text">动态加载so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System-load-String-filePath"><span class="toc-number">2.1.</span> <span class="toc-text">1. System.load(String filePath)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-支持静态加载"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持静态加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">3.</span> <span class="toc-text">出现的问题</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

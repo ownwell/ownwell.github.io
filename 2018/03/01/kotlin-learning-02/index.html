@@ -1,218 +1,670 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | Kotlin学习02-lambda表达式 </title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>Kotlin学习02-lambda表达式  | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。 今天继续Kotlin的学习,主要从lambda的历史，定义，和集合的函数API，以及推荐使用的with和apply两个常用的函数。 lambda表达式Lambda表达式基于数学中的λ演算得名，直接对应于其中的lambda抽象(lambda abstraction)，是一个匿名函数，即没有函数名的函数。Lambda表达式">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin学习02-lambda表达式 ">
+<meta property="og:url" content="http://ownwell.github.io/2018/03/01/kotlin-learning-02/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。 今天继续Kotlin的学习,主要从lambda的历史，定义，和集合的函数API，以及推荐使用的with和apply两个常用的函数。 lambda表达式Lambda表达式基于数学中的λ演算得名，直接对应于其中的lambda抽象(lambda abstraction)，是一个匿名函数，即没有函数名的函数。Lambda表达式">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/33cb401b621d0d06bc19caf4fc87b566%20.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/8856b545cc3a45aa283ec43cd0587940.png-blog">
+<meta property="og:updated_time" content="2018-03-01T16:09:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin学习02-lambda表达式 ">
+<meta name="twitter:description" content="不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。 今天继续Kotlin的学习,主要从lambda的历史，定义，和集合的函数API，以及推荐使用的with和apply两个常用的函数。 lambda表达式Lambda表达式基于数学中的λ演算得名，直接对应于其中的lambda抽象(lambda abstraction)，是一个匿名函数，即没有函数名的函数。Lambda表达式">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/03/01/kotlin-learning-02/" title="Kotlin学习02-lambda表达式 " itemprop="url">Kotlin学习02-lambda表达式 </a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-01T14:25:08.000Z" itemprop="datePublished"> Published 2018-03-01</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="Kotlin学习02-lambda表达式 " >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                Kotlin学习02-lambda表达式 
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2018-03-01T14:25:08.000Z" itemprop="datePublished">2018-03-01</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Kotlin/' title=''>Kotlin</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p>不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png" alt=""></p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合的函数式API"><span class="toc-number">2.1.</span> <span class="toc-text">集合的函数式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter和map"><span class="toc-number">2.1.1.</span> <span class="toc-text">filter和map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预言：all-any-count和find"><span class="toc-number">2.1.2.</span> <span class="toc-text">预言：all, any, count和find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupBy"><span class="toc-number">2.1.3.</span> <span class="toc-text">groupBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#with和apply函数"><span class="toc-number">2.2.</span> <span class="toc-text">with和apply函数</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png" alt=""></p>
 <p>今天继续<code>Kotlin</code>的学习,主要从<code>lambda</code>的历史，定义，和集合的函数API，以及推荐使用的<code>with</code>和<code>apply</code>两个常用的函数。</p>
 <h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>Lambda表达式基于数学中的λ演算得名，直接对应于其中的lambda抽象(lambda abstraction)，是一个匿名函数，即没有函数名的函数。Lambda表达式可以表示闭包。在<code>Java8</code>中，加入了lambda表达式，可以简化代码，方便开发者开发更高效的代码。</p>
 <p>其表达式很简单：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(argument) -&gt; (body)</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(argument) -&gt; (body)</span><br></pre></td></tr></table></figure>
 <p><code>lambda</code>编码了一小块你可以用作一个值进行传递的行为。它可以被独立的声明并存储在一个变量中。但是更常见的是，当它被传递给一个函数时直接声明。在<code>Kotlin</code>中，一个<code>lambda</code>表达式往往被一个大括号所包围,如下段代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val sum = &#123; x: Int, y: Int -&gt; x + y &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val sum = &#123; x: Int, y: Int -&gt; x + y &#125;</span><br></pre></td></tr></table></figure>
 <p>用java实现可能如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>为了更好简化代码，<code>lambda</code>表达式也是越来越简短，我们就用点击一个button时，打印对应的view的id，如代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">btn?.setOnClickListener(&#123; v -&gt;</div><div class="line">           print(v.id)</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">btn?.setOnClickListener(&#123; v -&gt;</span><br><span class="line">           print(v.id)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>当<code>lambda</code>表达式作为参数时，且是参数列表里的最后一个参数，可以把{}放到外面：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btn?.setOnClickListener()&#123; v -&gt;</div><div class="line">           print(v.id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn?.setOnClickListener()&#123; v -&gt;</span><br><span class="line">           print(v.id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当lambda是函数的唯一参数时，你也可以删掉空的圆括号：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btn?.setOnClickListener&#123; v -&gt;</div><div class="line">           print(v.id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn?.setOnClickListener&#123; v -&gt;</span><br><span class="line">           print(v.id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="集合的函数式API"><a href="#集合的函数式API" class="headerlink" title="集合的函数式API"></a>集合的函数式API</h2><p>函数式风格代码，简化了代码，使得代码不被各种逻辑分离，其中集合也提供一些常见的函数式API，使得我们的开发事半功倍。</p>
-<h3 id="filter和map"><a href="#filter和map" class="headerlink" title="filter和map"></a>filter和map</h3><p>记得之前学习RxJava时有这两个函数，在Kotlin中其实也很类似，可以参考RxJava来理解这两个函数(<a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Filter.html" target="_blank" rel="external">filter</a>, <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Map.html" target="_blank" rel="external">map</a>)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val nums = listof(<span class="number">1</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>)</div><div class="line">list.filter&#123; it % <span class="number">2</span> == <span class="number">0</span>&#125; <span class="comment">//  偶数</span></div></pre></td></tr></table></figure>
+<h3 id="filter和map"><a href="#filter和map" class="headerlink" title="filter和map"></a>filter和map</h3><p>记得之前学习RxJava时有这两个函数，在Kotlin中其实也很类似，可以参考RxJava来理解这两个函数(<a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Filter.html" target="_blank" rel="noopener">filter</a>, <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Map.html" target="_blank" rel="noopener">map</a>)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val nums = listof(<span class="number">1</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>)</span><br><span class="line">list.filter&#123; it % <span class="number">2</span> == <span class="number">0</span>&#125; <span class="comment">//  偶数</span></span><br></pre></td></tr></table></figure>
 <p>打印结果是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[<span class="number">2</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 <p>filter里面实际上返回的是个boolean值，只有返回值为true才会被留下，当然返回值依然是之前的类型（如例子中的list返回依然是list）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val nums = listof(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line">list.map&#123; it *it &#125; <span class="comment">//</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val nums = listof(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">list.map&#123; it *it &#125; <span class="comment">//</span></span><br></pre></td></tr></table></figure>
 <p>打印结果是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">16</span>, <span class="number">25</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
 <h3 id="预言：all-any-count和find"><a href="#预言：all-any-count和find" class="headerlink" title="预言：all, any, count和find"></a>预言：all, any, count和find</h3><p>all是所有都满足指定条件（预言）才返回true，any则判断至少有一个满足条件，find则查找第一个指定条件，count表示满足预言的元素个数。</p>
 <h3 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h3><p>将指定维度的条件分组，将指定维度下的相同元素进行分组，返回是map类型<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/33cb401b621d0d06bc19caf4fc87b566%20.png" alt=""></p>
-<h2 id="with和apply函数"><a href="#with和apply函数" class="headerlink" title="with和apply函数"></a>with和apply函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</div><div class="line">    val result = StringBuilder()</div><div class="line">    <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</div><div class="line">        result.append(letter)</div><div class="line">    &#125;</div><div class="line">    result.append(<span class="string">"\nNow I know the alphabet!"</span>)</div><div class="line">    <span class="keyword">return</span> result.toString()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="with和apply函数"><a href="#with和apply函数" class="headerlink" title="with和apply函数"></a>with和apply函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line">    val result = StringBuilder()</span><br><span class="line">    <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</span><br><span class="line">        result.append(letter)</span><br><span class="line">    &#125;</span><br><span class="line">    result.append(<span class="string">"\nNow I know the alphabet!"</span>)</span><br><span class="line">    <span class="keyword">return</span> result.toString()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于在代码大量使用<code>result</code>, 写起来很是麻烦。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</div><div class="line">    val stringBuilder = StringBuilder()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> with(stringBuilder) &#123;                <span class="comment">// 1　在你调用的方法中制定接收器的值</span></div><div class="line">        <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.append(letter)                 <span class="comment">// 2 通过显式的“this”调用接收器值的方法</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        append(<span class="string">"\nNow I know the alphabet!"</span>)   <span class="comment">// 3 调用方法，忽略“this”</span></div><div class="line"></div><div class="line">        <span class="keyword">this</span>.toString()                        <span class="comment">// 4　从lambda中返回值</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line">    val stringBuilder = StringBuilder()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> with(stringBuilder) &#123;                <span class="comment">// 1　在你调用的方法中制定接收器的值</span></span><br><span class="line">        <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.append(letter)                 <span class="comment">// 2 通过显式的“this”调用接收器值的方法</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        append(<span class="string">"\nNow I know the alphabet!"</span>)   <span class="comment">// 3 调用方法，忽略“this”</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.toString()                        <span class="comment">// 4　从lambda中返回值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>文中的this都可以都可以忽略，不过有时需要alphabet内写这个类的this对象时，可以声明变量来实现。</p>
 <p>apply基本上使用和with类似：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</div><div class="line">    val stringBuilder = StringBuilder()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> StringBuilder().apply &#123;                <span class="comment">// 1　在你调用的方法中制定接收器的值</span></div><div class="line">        <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.append(letter)                 <span class="comment">// 2 通过显式的“this”调用接收器值的方法</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        append(<span class="string">"\nNow I know the alphabet!"</span>)   <span class="comment">// 3 调用方法，忽略“this”</span></div><div class="line"></div><div class="line">                               <span class="comment">// 4　从lambda中返回值</span></div><div class="line">    &#125;.toString()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">fun <span class="title">alphabet</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line">    val stringBuilder = StringBuilder()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> StringBuilder().apply &#123;                <span class="comment">// 1　在你调用的方法中制定接收器的值</span></span><br><span class="line">        <span class="keyword">for</span> (letter in <span class="string">'A'</span>..<span class="string">'Z'</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.append(letter)                 <span class="comment">// 2 通过显式的“this”调用接收器值的方法</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        append(<span class="string">"\nNow I know the alphabet!"</span>)   <span class="comment">// 3 调用方法，忽略“this”</span></span><br><span class="line"></span><br><span class="line">                               <span class="comment">// 4　从lambda中返回值</span></span><br><span class="line">    &#125;.toString()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>二者的不同主要在返回值，用with返回值不是<code>stringBuilder</code>自己的类型，而apply返回则仍然是<code>StringBuilder</code>类型。</p>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/8856b545cc3a45aa283ec43cd0587940.png-blog" alt=""></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2018/03/01/kotlin-learning-02/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Kotlin/">Kotlin</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式"><span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合的函数式API"><span class="toc-text">集合的函数式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter和map"><span class="toc-text">filter和map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预言：all-any-count和find"><span class="toc-text">预言：all, any, count和find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupBy"><span class="toc-text">groupBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#with和apply函数"><span class="toc-text">with和apply函数</span></a></li></ol></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2018/03/01/kotlin-learning-02/" data-title="Kotlin学习02-lambda表达式  | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/03/03/kotlin-learning-03/" title="Kotlin学习03-函数">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Kotlin学习03-函数</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2018/02/26/learning-kotlin-1/"  title="Kotlin学习01-基础">
+ <strong>下一篇：</strong><br/> 
+ <span>Kotlin学习01-基础
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合的函数式API"><span class="toc-number">2.1.</span> <span class="toc-text">集合的函数式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter和map"><span class="toc-number">2.1.1.</span> <span class="toc-text">filter和map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预言：all-any-count和find"><span class="toc-number">2.1.2.</span> <span class="toc-text">预言：all, any, count和find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupBy"><span class="toc-number">2.1.3.</span> <span class="toc-text">groupBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#with和apply函数"><span class="toc-number">2.2.</span> <span class="toc-text">with和apply函数</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

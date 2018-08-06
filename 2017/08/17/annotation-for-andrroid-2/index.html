@@ -1,85 +1,124 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
-<head>
-  <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="icon" href="/favicon.ico">
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
   
-  <title>cyning | 注解（2）-- 定义自己的Annotation Processor</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+    <title>注解（2）-- 定义自己的Annotation Processor | Cyning的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cyning">
+    
+
+    
+    <meta name="description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta name="keywords" content="Android进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="注解（2）-- 定义自己的Annotation Processor">
+<meta property="og:url" content="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/index.html">
+<meta property="og:site_name" content="Cyning的博客">
+<meta property="og:description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/5C6689ADF977FB09DD3B60ADFD839FF.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/d90d56a0fadfdc05505e5d34474e7159.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/5a4a5f5683d9ef3e.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/4d8b64798c909ea083157d59d9fe77b0.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/aac48d97892865f4e111cfa0b8741f10.png">
+<meta property="og:updated_time" content="2018-02-27T07:00:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="注解（2）-- 定义自己的Annotation Processor">
+<meta name="twitter:description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="http://7xj9f0.com1.z0.glb.clouddn.com/icon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-	<header class="site-header navfixed-false">
-  <div class="container">
-      <h1><a href="/" title="cyning"><span class="octicon octicon-mark-github"></span> cyning</a></h1>
-      <nav class="site-header-nav" role="navigation">
-        
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
-        
-              
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
-        
-      </nav>
-  </div>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
+				<h2 class="blog-motto">Follow your Heart</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					<!-- 
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						</form>
+					 -->
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/17/annotation-for-andrroid-2/" title="注解（2）-- 定义自己的Annotation Processor" itemprop="url">注解（2）-- 定义自己的Annotation Processor</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-17T13:15:58.000Z" itemprop="datePublished"> Published 2017-08-17</time>
+    
+  </p>
 </header>
-
-	
-<section class="collection-head geopattern" data-pattern-id="注解（2）-- 定义自己的Annotation Processor" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                注解（2）-- 定义自己的Annotation Processor
-            </h1>
-            
-                <div class="collection-info">
-                    <span class="meta-info">
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2017-08-17T13:15:58.000Z" itemprop="datePublished">2017-08-17</time>
-                    </span>
-                    
-                        <span class="meta-info">
-                            <span class="octicon octicon-file-directory"></span>
-                            <a href='/categories/Android/' title=''>Android</a>
-                        </span>
-                    
-                </div>
-            
-        </div>
-    </div>
-</section>
-	<section class="container">
-    <div class="columns">
-        <div class="column  three-fourths " >
-            <article class="article-content markdown-body">
-                <p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog" alt=""><br><a id="more"></a><br>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Hello-world"><span class="toc-number">1.</span> <span class="toc-text">一、Hello world</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-声明注解"><span class="toc-number">1.1.</span> <span class="toc-text">1. 声明注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Annotation-Processor"><span class="toc-number">1.2.</span> <span class="toc-text">2. Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Processor类"><span class="toc-number">1.2.1.</span> <span class="toc-text">Processor类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明processor类"><span class="toc-number">1.2.2.</span> <span class="toc-text">声明processor类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解Annotation-Processor"><span class="toc-number">2.</span> <span class="toc-text">理解Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AbstractProcessor"><span class="toc-number">2.1.</span> <span class="toc-text">AbstractProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AbstractProcessor-函数实现"><span class="toc-number">2.1.1.</span> <span class="toc-text">AbstractProcessor 函数实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">2.1.2.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javapoet"><span class="toc-number">2.2.</span> <span class="toc-text">javapoet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仿ButterKnife"><span class="toc-number">3.</span> <span class="toc-text">仿ButterKnife</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义注解"><span class="toc-number">3.1.</span> <span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现Processor类"><span class="toc-number">3.2.</span> <span class="toc-text">实现Processor类</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog" alt=""><br><a id="more"></a><br>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
 <h1 id="一、Hello-world"><a href="#一、Hello-world" class="headerlink" title="一、Hello world"></a>一、Hello world</h1><p>万事先从一个HelloWorld开始，我们可以通过<code>Annotation Processor</code>来自己生成一个类，这个类中的main方法可以打印hello world。</p>
 <h2 id="1-声明注解"><a href="#1-声明注解" class="headerlink" title="1. 声明注解"></a>1. 声明注解</h2><p>需要我们通过Android Studio来新建一个java lib项目 helloAnotation。<br>其中需要声明一个注解如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> HelloWorld &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">version</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> HelloWorld &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">version</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="2-Annotation-Processor"><a href="#2-Annotation-Processor" class="headerlink" title="2. Annotation Processor"></a>2. Annotation Processor</h2><p>再来一个java lib项目我们给它起名字为<code>helloAnotation</code>，这个库中的核心是一个需要继承<code>AbstractProcessor</code>的类，为了快捷实现这个类我们还需要借助<code>javapoet</code>这个工具包。</p>
 <p>后面会详细介绍<code>AbstractProcessor</code>和<code>javapoet</code>，我们先来自己定义一个Processor类。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/5C6689ADF977FB09DD3B60ADFD839FF.png" alt=""></p>
-<h3 id="Processor类"><a href="#Processor类" class="headerlink" title="Processor类"></a>Processor类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWord</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</div><div class="line">        MethodSpec main = MethodSpec.methodBuilder(<span class="string">"main"</span>)</div><div class="line">                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)</div><div class="line">                .returns(<span class="keyword">void</span>.class)</div><div class="line">                .addParameter(String[].class, <span class="string">"args"</span>)</div><div class="line">                .addStatement(<span class="string">"$T.out.println($S)"</span>, System.class, <span class="string">"Hello, World! "</span> )</div><div class="line">                .build();</div><div class="line">        TypeSpec helloWorld = TypeSpec.classBuilder(<span class="string">"HelloWorldC"</span>)</div><div class="line">                .addModifiers(Modifier.PUBLIC, Modifier.FINAL)</div><div class="line">                .addMethod(main)</div><div class="line">                .build();</div><div class="line">        JavaFile javaFile = JavaFile.builder(<span class="string">"com.example.helloworld"</span>, helloWorld)</div><div class="line">                .build();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            javaFile.writeTo(processingEnv.getFiler());</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"> ……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Processor类"><a href="#Processor类" class="headerlink" title="Processor类"></a>Processor类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWord</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</span><br><span class="line">        MethodSpec main = MethodSpec.methodBuilder(<span class="string">"main"</span>)</span><br><span class="line">                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)</span><br><span class="line">                .returns(<span class="keyword">void</span>.class)</span><br><span class="line">                .addParameter(String[].class, <span class="string">"args"</span>)</span><br><span class="line">                .addStatement(<span class="string">"$T.out.println($S)"</span>, System.class, <span class="string">"Hello, World! "</span> )</span><br><span class="line">                .build();</span><br><span class="line">        TypeSpec helloWorld = TypeSpec.classBuilder(<span class="string">"HelloWorldC"</span>)</span><br><span class="line">                .addModifiers(Modifier.PUBLIC, Modifier.FINAL)</span><br><span class="line">                .addMethod(main)</span><br><span class="line">                .build();</span><br><span class="line">        JavaFile javaFile = JavaFile.builder(<span class="string">"com.example.helloworld"</span>, helloWorld)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            javaFile.writeTo(processingEnv.getFiler());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="声明processor类"><a href="#声明processor类" class="headerlink" title="声明processor类"></a>声明processor类</h3><p>如今已经编写完毕了 processor，需要告知系统，我们创建/<code>src/main/resources/META-INF/services</code>文件夹，同时在这个文件夹下创建<code>javax.annotation.processing.Processor</code>文件，在这个文件下，写入我们的processor的完全路径。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">me.cyning.anotationcore.HelloWord</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">me.cyning.anotationcore.HelloWord</span><br></pre></td></tr></table></figure>
 <p>整个<code>helloAnotation</code>库的<code>build.gradle</code>需要配置如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">'com.squareup:javapoet:1.7.0'</span></div><div class="line">implementation <span class="string">'com.google.guava:guava:23.3-android</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.squareup:javapoet:1.7.0'</span></span><br><span class="line">implementation <span class="string">'com.google.guava:guava:23.3-android</span></span><br></pre></td></tr></table></figure>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在主项目的入口类TestActivity的类使用这个注解：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@HelloWorld</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HelloWorld</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span></span><br></pre></td></tr></table></figure>
 <p>build.gradle</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function">annotationProcessor <span class="title">project</span><span class="params">(<span class="string">':AnotationCompiler'</span>)</span></span></div><div class="line">implementation <span class="title">project</span><span class="params">(<span class="string">': helloAnotation'</span>)</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">annotationProcessor <span class="title">project</span><span class="params">(<span class="string">':AnotationCompiler'</span>)</span></span></span><br><span class="line"><span class="function">implementation <span class="title">project</span><span class="params">(<span class="string">': helloAnotation'</span>)</span></span></span><br></pre></td></tr></table></figure>
 <p>再次编译就可以在你的主项目的build/generated/source/apt/debug下看到我们生成的类。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/d90d56a0fadfdc05505e5d34474e7159.png" alt=""></p>
 <h1 id="理解Annotation-Processor"><a href="#理解Annotation-Processor" class="headerlink" title="理解Annotation Processor"></a>理解Annotation Processor</h1><p>在这个<code>helloWorld</code>的 🌰  中，我们需要掌握两个知识点：<code>AbstractProcessor</code>和<code>javapoet</code>.</p>
 <h2 id="AbstractProcessor"><a href="#AbstractProcessor" class="headerlink" title="AbstractProcessor"></a>AbstractProcessor</h2><h3 id="AbstractProcessor-函数实现"><a href="#AbstractProcessor-函数实现" class="headerlink" title="AbstractProcessor 函数实现"></a>AbstractProcessor 函数实现</h3><p><code>AbstractProcessor</code>是自定义<code>Annotation Processor</code>核心，它是运行在我们的编译代码阶段，也就是说我们每次在编译前，我们的编译器会根据我们实现的<code>AbstractProcessor</code>类来生成相关类。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/5a4a5f5683d9ef3e.png" alt=""></p>
@@ -89,8 +128,8 @@
 <li><code>process(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment env)</code>: 这相当于每个处理器的主函数main()。你在这里写你的扫描、评估和处理注解的代码，以及生成Java文件。输入参数<code>RoundEnviroment</code>，可以让你查询出包含特定注解的被注解元素。后面我们将看到详细的内容。</li>
 <li><code>getSupportedAnnotationTypes</code>  是给那些注解使用的，因为可能一个项目中有多个注解器，所有这个是检查步骤，只有在<code>getSupportedAnnotationTypes</code>中就可以继续执行下面的操作。如刚才的helloworld项目中的<code>HelloWorld</code>注解,需要我们声明下：</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">return</span> Collections.singleton(<span class="string">"me.cyning.anotationan.HelloWorld"</span>);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> Collections.singleton(<span class="string">"me.cyning.anotationan.HelloWorld"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
 <li><code>getSupportedSourceVersion</code> 指定java版本。通常我们设置为：SourceVersion.latestSupported()，当然你可以自己指定，如指定java 7 SourceVersion.RELEASE_7.</li>
 </ol>
 <blockquote>
@@ -102,20 +141,20 @@
 <li><code>Element</code>.在获取我们的注解变量时，我们需要根据我们的实际情况来判断，如这个变量是方法，类或者包时，需要借助如下几个类：<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/4d8b64798c909ea083157d59d9fe77b0.png" alt=""></li>
 </ol>
 <p>Element代表java源文件中的程序构建元素，例如包、类、方法等。</p>
-<ol>
+<ol start="2">
 <li><code>TypeMirror</code>: <code>TypeMirror</code>用来描述类信息，如判断类继承关系等。<br>通过Element.asType()接口可以获取Element的TypeMirror。</li>
 </ol>
 <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/aac48d97892865f4e111cfa0b8741f10.png" alt=""></p>
 <p>当TypeMirror是DeclaredType或者TypeVariable时，TypeMirror可以转化成Element:<br><code>Element element = processingEviroment.getTypeUtils().asElement(typeMirror);</code></p>
-<ol>
+<ol start="3">
 <li><p>工具类：有几个工具类对我们的开发很有用。</p>
 <p><code>Log</code><br> 通过 init方法中获取Messager()对象，<code>messager = processingEnv.getMessager()</code>，在需要打日志的地方打印只需要            <code>messager.printMessage(Diagnostic.Kind.NOTE, logStr)</code></p>
 <p><code>通过string获取TypeMirror</code><br> 如需要获得<code>android.view.View</code>对应的<code>TypeMirror</code>,只需要在init方法中加入如下代码：</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">elementUtils = processingEnv.getElementUtils();</div><div class="line">mIViewBindType =   elementUtils.getTypeElement(``android.view.View``).asType();</div></pre></td></tr></table></figure>
-<h2 id="javapoet"><a href="#javapoet" class="headerlink" title="javapoet"></a><code>javapoet</code></h2><p><code>javapoet</code>是square公司开源的一个可以生产java文件的库，在Github上的地址：<a href="https://github.com/square/javapoet" target="_blank" rel="external">square/javapoet</a>.他是一个很好的工具，有个它，会让你事半功倍。<br>如在刚才例子中生产的一个类的写法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">        MethodSpec main = MethodSpec.methodBuilder(<span class="string">"main"</span>)</div><div class="line">        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)</div><div class="line">        .returns(<span class="keyword">void</span>.class)</div><div class="line">        .addParameter(String[].class, <span class="string">"args"</span>)</div><div class="line">        .addStatement(<span class="string">"$T.out.println($S)"</span>, System.class, <span class="string">"Hello, World! "</span> )</div><div class="line">        .build();</div><div class="line">TypeSpec helloWorld = TypeSpec.classBuilder(<span class="string">"HelloWorldC"</span>)</div><div class="line">        .addModifiers(Modifier.PUBLIC, Modifier.FINAL)</div><div class="line">        .addMethod(main)</div><div class="line">        .build();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">elementUtils = processingEnv.getElementUtils();</span><br><span class="line">mIViewBindType =   elementUtils.getTypeElement(``android.view.View``).asType();</span><br></pre></td></tr></table></figure>
+<h2 id="javapoet"><a href="#javapoet" class="headerlink" title="javapoet"></a><code>javapoet</code></h2><p><code>javapoet</code>是square公司开源的一个可以生产java文件的库，在Github上的地址：<a href="https://github.com/square/javapoet" target="_blank" rel="noopener">square/javapoet</a>.他是一个很好的工具，有个它，会让你事半功倍。<br>如在刚才例子中生产的一个类的写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">        MethodSpec main = MethodSpec.methodBuilder(<span class="string">"main"</span>)</span><br><span class="line">        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)</span><br><span class="line">        .returns(<span class="keyword">void</span>.class)</span><br><span class="line">        .addParameter(String[].class, <span class="string">"args"</span>)</span><br><span class="line">        .addStatement(<span class="string">"$T.out.println($S)"</span>, System.class, <span class="string">"Hello, World! "</span> )</span><br><span class="line">        .build();</span><br><span class="line">TypeSpec helloWorld = TypeSpec.classBuilder(<span class="string">"HelloWorldC"</span>)</span><br><span class="line">        .addModifiers(Modifier.PUBLIC, Modifier.FINAL)</span><br><span class="line">        .addMethod(main)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
 <p> 只需要添加修饰符（<code>addModifiers</code>）、传参（<code>addParameter</code>）、添加代码块（<code>addStatement</code>）这样一个方法搞定，至于类的生成似乎更简单。<br>这样优雅的写法，有没有电到你。</p>
 <h1 id="仿ButterKnife"><a href="#仿ButterKnife" class="headerlink" title="仿ButterKnife"></a>仿ButterKnife</h1><p>在仿butterknife之前我们可以先预习下我们自定义<code>Annotation Processor</code> 的三部曲：</p>
 <blockquote>
@@ -125,126 +164,542 @@
 <li>写我们的入口类，如butterKnife的<code>ButterKnife.bind(Activity activity)</code></li>
 </ol>
 </blockquote>
-<p><strong>目的</strong>： <code>仿ButterKnife</code>学习写自己的注解库， 期望结果，我们写如下类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span>(R.id.btnTest)</div><div class="line">    <span class="keyword">public</span> Button btnTest;</div><div class="line"></div><div class="line">    <span class="meta">@Inject</span>(R.id.btnTest2)</div><div class="line">    <span class="keyword">public</span> Button btnTes2;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        DroidFinder.bind(<span class="keyword">this</span>);</div><div class="line"></div><div class="line"></div><div class="line">        btnTes2.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        btnTest.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, v.getId() +<span class="string">" "</span>, Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>目的</strong>： <code>仿ButterKnife</code>学习写自己的注解库， 期望结果，我们写如下类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Inject</span>(R.id.btnTest)</span><br><span class="line">    <span class="keyword">public</span> Button btnTest;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Inject</span>(R.id.btnTest2)</span><br><span class="line">    <span class="keyword">public</span> Button btnTes2;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        DroidFinder.bind(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        btnTes2.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        btnTest.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(MainActivity.<span class="keyword">this</span>, v.getId() +<span class="string">" "</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>能通过<code>DroidFinder.bind(this)</code>这个入口和 <code>Inject</code>生成的类，自己去实现哪些findViewById这个重复代码。</p>
 <h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p>由于我们是类中的变量来注解，所以可以直接使用<code>FIELD</code>,而注解 <code>Inject</code>后的value是view的id为整形，所以可以自定义注解如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.FIELD)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Inject &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Inject &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个注解需要放到一个单独的java lib下，我们命名为<code>inject-anotation</code>.</p>
-<h2 id="实现Processor类"><a href="#实现Processor类" class="headerlink" title="实现Processor类"></a>实现Processor类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div></pre></td><td class="code"><pre><div class="line">mport com.google.auto.service.AutoService;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.JavaFile;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.MethodSpec;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeName;</div><div class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeSpec;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.Set;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.annotation.processing.AbstractProcessor;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.Messager;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.ProcessingEnvironment;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.Processor;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.RoundEnvironment;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedAnnotationTypes;</div><div class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedSourceVersion;</div><div class="line"><span class="keyword">import</span> javax.lang.model.SourceVersion;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.Element;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.Modifier;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.PackageElement;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.TypeElement;</div><div class="line"><span class="keyword">import</span> javax.lang.model.element.VariableElement;</div><div class="line"><span class="keyword">import</span> javax.lang.model.type.TypeMirror;</div><div class="line"><span class="keyword">import</span> javax.lang.model.util.Elements;</div><div class="line"><span class="keyword">import</span> javax.tools.Diagnostic;</div><div class="line"></div><div class="line"><span class="keyword">import</span> me.cyning.anotationan.Inject;</div><div class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.ClassTarget;</div><div class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.FieldTarget;</div><div class="line"></div><div class="line"><span class="meta">@SupportedSourceVersion</span>(SourceVersion.RELEASE_8)</div><div class="line"><span class="meta">@AutoService</span>(Processor.class)</div><div class="line"><span class="meta">@SupportedAnnotationTypes</span>(<span class="string">"me.cyning.anotationan.Inject"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> ProcessingEnvironment mProEnv;</div><div class="line">    Messager messager = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SUFFIX = <span class="string">"_Binder"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BINDER_INTERFACE = <span class="string">"me.cyning.core.bind.IViewBind"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> TypeMirror mIViewBindType;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Elements elementUtils;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnv)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.init(processingEnv);</div><div class="line">        mProEnv = processingEnv;</div><div class="line"></div><div class="line">        messager = processingEnv.getMessager();</div><div class="line"></div><div class="line">        elementUtils = processingEnv.getElementUtils();</div><div class="line">        mIViewBindType = elementUtils.getTypeElement(BINDER_INTERFACE).asType();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</div><div class="line"></div><div class="line">        Map&lt;TypeElement, ClassTarget&gt; mTargetMaps = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        String packageStr = <span class="keyword">null</span>;</div><div class="line">        String classNameStr = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        TypeElement classElem = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        Set&lt;Element&gt; mElements = (Set&lt;Element&gt;) roundEnv.getElementsAnnotatedWith(Inject.class);</div><div class="line">        <span class="keyword">for</span> (Element mElement : mElements) &#123;</div><div class="line"></div><div class="line">            <span class="comment">//ElementType.FIELD注解可以直接强转VariableElement</span></div><div class="line">            VariableElement variableElement = (VariableElement) mElement;</div><div class="line">            classElem = (TypeElement) variableElement.getEnclosingElement();</div><div class="line"></div><div class="line">            String name = variableElement.getSimpleName().toString();</div><div class="line">            <span class="comment">// 获取Inject跟的view的id</span></div><div class="line">            <span class="keyword">int</span> id = variableElement.getAnnotation(Inject.class).value();</div><div class="line">            TypeMirror type = variableElement.asType();</div><div class="line"></div><div class="line"></div><div class="line">            PackageElement pkgElem = mProEnv.getElementUtils().getPackageOf(classElem);</div><div class="line">            packageStr = pkgElem.getQualifiedName().toString();</div><div class="line">            classNameStr = classElem.getSimpleName().toString() + SUFFIX;</div><div class="line"></div><div class="line"></div><div class="line">            ClassTarget mClassTarget = mTargetMaps.get(classElem);</div><div class="line">            <span class="keyword">if</span> (mClassTarget == <span class="keyword">null</span>) &#123;</div><div class="line">                mClassTarget = <span class="keyword">new</span> ClassTarget();</div><div class="line">                mClassTarget.clazzName = classNameStr;</div><div class="line">                mClassTarget.packageName = packageStr;</div><div class="line">                mClassTarget.classType = classElem.asType();</div><div class="line">                mTargetMaps.put(classElem, mClassTarget);</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            FieldTarget fieldTarget = <span class="keyword">new</span> FieldTarget();</div><div class="line">            fieldTarget.id = id;</div><div class="line">            fieldTarget.name = name;</div><div class="line">            fieldTarget.type = type;</div><div class="line">            mClassTarget.add(fieldTarget);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">            log(<span class="string">"getEnclosingElement"</span>, classElem.getEnclosingElement().toString());</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        log(<span class="string">"getEnclosingElement"</span>, <span class="string">'1'</span>);</div><div class="line">        log(<span class="string">"classNameStr "</span>, classNameStr);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line"></div><div class="line">            <span class="keyword">if</span> (classNameStr != <span class="keyword">null</span>) &#123;</div><div class="line"></div><div class="line"></div><div class="line">                Iterator entries = mTargetMaps.entrySet().iterator();</div><div class="line"></div><div class="line">                <span class="keyword">while</span> (entries.hasNext()) &#123;</div><div class="line"></div><div class="line">                    Map.Entry&lt;TypeElement, ClassTarget&gt; entry = (Map.Entry&lt;TypeElement, ClassTarget&gt;) entries.next();</div><div class="line"></div><div class="line">                    TypeElement key = (TypeElement) entry.getKey();</div><div class="line"></div><div class="line">                    ClassTarget value = (ClassTarget) entry.getValue();</div><div class="line"></div><div class="line"></div><div class="line">                    MethodSpec.Builder builder = MethodSpec.methodBuilder(<span class="string">"findViews"</span>)</div><div class="line">                            .addModifiers(Modifier.PUBLIC)</div><div class="line">                            .addAnnotation(Override.class)</div><div class="line">                            .addParameter(Object.class, <span class="string">"obj"</span>, Modifier.FINAL)</div><div class="line">                            .returns(<span class="keyword">void</span>.class)</div><div class="line">                            .addStatement(<span class="string">"$T target = (($T) obj)"</span>, value.classType, value.classType);</div><div class="line"></div><div class="line"></div><div class="line">                    <span class="keyword">for</span> (FieldTarget mFieldTarget : value.mFieldTargets) &#123;</div><div class="line">                        builder.addStatement(<span class="string">"target."</span> + mFieldTarget.name + <span class="string">" = "</span> + <span class="string">"($T)target.findViewById("</span> + mFieldTarget.id + <span class="string">")"</span>, mFieldTarget.type);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    MethodSpec flux = MethodSpec.constructorBuilder()</div><div class="line">                            .addModifiers(Modifier.PUBLIC)</div><div class="line">                            .build();</div><div class="line"></div><div class="line"></div><div class="line">                    MethodSpec findViews = builder</div><div class="line">                            .build();</div><div class="line"></div><div class="line"></div><div class="line">                    TypeSpec bindClazz = TypeSpec.classBuilder(value.clazzName)</div><div class="line">                            .addModifiers(Modifier.PUBLIC)</div><div class="line">                            .addMethod(findViews)</div><div class="line">                            .addMethod(flux)</div><div class="line">                            .addSuperinterface(TypeName.get(mIViewBindType))</div><div class="line">                            .build();</div><div class="line"></div><div class="line">                    JavaFile javaFile = JavaFile.builder(value.packageName, bindClazz)</div><div class="line">                            .build();</div><div class="line"></div><div class="line">                    javaFile.writeTo(processingEnv.getFiler());</div><div class="line"></div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//        try &#123;</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//        &#125; catch (IOException e) &#123;</span></div><div class="line"><span class="comment">//            e.printStackTrace();</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * https://lizhaoxuan.github.io/2016/07/17/apt-Grammar-explanation/</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String tag, Object object)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (object != <span class="keyword">null</span>) &#123;</div><div class="line">            messager.printMessage(Diagnostic.Kind.NOTE, tag + <span class="string">" --- "</span> + object.toString());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现Processor类"><a href="#实现Processor类" class="headerlink" title="实现Processor类"></a>实现Processor类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line">mport com.google.auto.service.AutoService;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.JavaFile;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.MethodSpec;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeName;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeSpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.AbstractProcessor;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.Messager;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.ProcessingEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.Processor;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.RoundEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedAnnotationTypes;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedSourceVersion;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.SourceVersion;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Element;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Modifier;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.PackageElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.TypeElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.VariableElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.type.TypeMirror;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.Elements;</span><br><span class="line"><span class="keyword">import</span> javax.tools.Diagnostic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationan.Inject;</span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.ClassTarget;</span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.FieldTarget;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SupportedSourceVersion</span>(SourceVersion.RELEASE_8)</span><br><span class="line"><span class="meta">@AutoService</span>(Processor.class)</span><br><span class="line"><span class="meta">@SupportedAnnotationTypes</span>(<span class="string">"me.cyning.anotationan.Inject"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ProcessingEnvironment mProEnv;</span><br><span class="line">    Messager messager = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SUFFIX = <span class="string">"_Binder"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BINDER_INTERFACE = <span class="string">"me.cyning.core.bind.IViewBind"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TypeMirror mIViewBindType;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Elements elementUtils;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnv)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.init(processingEnv);</span><br><span class="line">        mProEnv = processingEnv;</span><br><span class="line"></span><br><span class="line">        messager = processingEnv.getMessager();</span><br><span class="line"></span><br><span class="line">        elementUtils = processingEnv.getElementUtils();</span><br><span class="line">        mIViewBindType = elementUtils.getTypeElement(BINDER_INTERFACE).asType();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;TypeElement, ClassTarget&gt; mTargetMaps = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String packageStr = <span class="keyword">null</span>;</span><br><span class="line">        String classNameStr = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        TypeElement classElem = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        Set&lt;Element&gt; mElements = (Set&lt;Element&gt;) roundEnv.getElementsAnnotatedWith(Inject.class);</span><br><span class="line">        <span class="keyword">for</span> (Element mElement : mElements) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//ElementType.FIELD注解可以直接强转VariableElement</span></span><br><span class="line">            VariableElement variableElement = (VariableElement) mElement;</span><br><span class="line">            classElem = (TypeElement) variableElement.getEnclosingElement();</span><br><span class="line"></span><br><span class="line">            String name = variableElement.getSimpleName().toString();</span><br><span class="line">            <span class="comment">// 获取Inject跟的view的id</span></span><br><span class="line">            <span class="keyword">int</span> id = variableElement.getAnnotation(Inject.class).value();</span><br><span class="line">            TypeMirror type = variableElement.asType();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            PackageElement pkgElem = mProEnv.getElementUtils().getPackageOf(classElem);</span><br><span class="line">            packageStr = pkgElem.getQualifiedName().toString();</span><br><span class="line">            classNameStr = classElem.getSimpleName().toString() + SUFFIX;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            ClassTarget mClassTarget = mTargetMaps.get(classElem);</span><br><span class="line">            <span class="keyword">if</span> (mClassTarget == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mClassTarget = <span class="keyword">new</span> ClassTarget();</span><br><span class="line">                mClassTarget.clazzName = classNameStr;</span><br><span class="line">                mClassTarget.packageName = packageStr;</span><br><span class="line">                mClassTarget.classType = classElem.asType();</span><br><span class="line">                mTargetMaps.put(classElem, mClassTarget);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            FieldTarget fieldTarget = <span class="keyword">new</span> FieldTarget();</span><br><span class="line">            fieldTarget.id = id;</span><br><span class="line">            fieldTarget.name = name;</span><br><span class="line">            fieldTarget.type = type;</span><br><span class="line">            mClassTarget.add(fieldTarget);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            log(<span class="string">"getEnclosingElement"</span>, classElem.getEnclosingElement().toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        log(<span class="string">"getEnclosingElement"</span>, <span class="string">'1'</span>);</span><br><span class="line">        log(<span class="string">"classNameStr "</span>, classNameStr);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (classNameStr != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                Iterator entries = mTargetMaps.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (entries.hasNext()) &#123;</span><br><span class="line"></span><br><span class="line">                    Map.Entry&lt;TypeElement, ClassTarget&gt; entry = (Map.Entry&lt;TypeElement, ClassTarget&gt;) entries.next();</span><br><span class="line"></span><br><span class="line">                    TypeElement key = (TypeElement) entry.getKey();</span><br><span class="line"></span><br><span class="line">                    ClassTarget value = (ClassTarget) entry.getValue();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    MethodSpec.Builder builder = MethodSpec.methodBuilder(<span class="string">"findViews"</span>)</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .addAnnotation(Override.class)</span><br><span class="line">                            .addParameter(Object.class, <span class="string">"obj"</span>, Modifier.FINAL)</span><br><span class="line">                            .returns(<span class="keyword">void</span>.class)</span><br><span class="line">                            .addStatement(<span class="string">"$T target = (($T) obj)"</span>, value.classType, value.classType);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span> (FieldTarget mFieldTarget : value.mFieldTargets) &#123;</span><br><span class="line">                        builder.addStatement(<span class="string">"target."</span> + mFieldTarget.name + <span class="string">" = "</span> + <span class="string">"($T)target.findViewById("</span> + mFieldTarget.id + <span class="string">")"</span>, mFieldTarget.type);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    MethodSpec flux = MethodSpec.constructorBuilder()</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    MethodSpec findViews = builder</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    TypeSpec bindClazz = TypeSpec.classBuilder(value.clazzName)</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .addMethod(findViews)</span><br><span class="line">                            .addMethod(flux)</span><br><span class="line">                            .addSuperinterface(TypeName.get(mIViewBindType))</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line">                    JavaFile javaFile = JavaFile.builder(value.packageName, bindClazz)</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line">                    javaFile.writeTo(processingEnv.getFiler());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//        try &#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        &#125; catch (IOException e) &#123;</span></span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * https://lizhaoxuan.github.io/2016/07/17/apt-Grammar-explanation/</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String tag, Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (object != <span class="keyword">null</span>) &#123;</span><br><span class="line">            messager.printMessage(Diagnostic.Kind.NOTE, tag + <span class="string">" --- "</span> + object.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description="大家还记得[JakeWharton](https://..."></div>
-
-<script src="/js/share.min.js"></script>
-
-                </div>    
-            
-
-            
-            
-                
-<div class="comments">
-    <div id="container"></div>
-        <script src="/js/gitment.browser.js"></script>
-         <script>
-            var gitment = new Gitment({
-                id: '/2017/08/17/annotation-for-andrroid-2/',
-                owner: 'undefined',
-                repo: 'undefined',
-                oauth: {
-                    client_id: "undefined",
-                    client_secret: "undefined",
-                }
-            })
-        gitment.render('container')
-        </script>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
 </div>
 
-            
 
-        </div>
-        <div class="column one-fourth">
-            
-                
-                
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android进阶/">Android进阶</a>
+  </div>
 
-
-<h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Hello-world"><span class="toc-text">一、Hello world</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-声明注解"><span class="toc-text">1. 声明注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Annotation-Processor"><span class="toc-text">2. Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Processor类"><span class="toc-text">Processor类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明processor类"><span class="toc-text">声明processor类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解Annotation-Processor"><span class="toc-text">理解Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AbstractProcessor"><span class="toc-text">AbstractProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AbstractProcessor-函数实现"><span class="toc-text">AbstractProcessor 函数实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javapoet"><span class="toc-text">javapoet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仿ButterKnife"><span class="toc-text">仿ButterKnife</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义注解"><span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现Processor类"><span class="toc-text">实现Processor类</span></a></li></ol></li></ol>
-	</section>
 </div>
-            
-        </div>
-    </div>
-</section>
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
 
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/" data-title="注解（2）-- 定义自己的Annotation Processor | Cyning的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="Home">Home</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="Category">Category</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/message/"  title="Message">Message</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
 </footer>
 
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/10/13/apk-two-signer/" title="【Android进阶】Android的APK两种签名">
+  <strong>上一篇：</strong><br/>
+  <span>
+  【Android进阶】Android的APK两种签名</span>
+</a>
+</div>
 
+
+<div class="next">
+<a href="/2017/08/08/annotation-for-andrroid-one/"  title="注解（1）-- 什么是注解">
+ <strong>下一篇：</strong><br/> 
+ <span>注解（1）-- 什么是注解
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Hello-world"><span class="toc-number">1.</span> <span class="toc-text">一、Hello world</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-声明注解"><span class="toc-number">1.1.</span> <span class="toc-text">1. 声明注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Annotation-Processor"><span class="toc-number">1.2.</span> <span class="toc-text">2. Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Processor类"><span class="toc-number">1.2.1.</span> <span class="toc-text">Processor类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明processor类"><span class="toc-number">1.2.2.</span> <span class="toc-text">声明processor类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解Annotation-Processor"><span class="toc-number">2.</span> <span class="toc-text">理解Annotation Processor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AbstractProcessor"><span class="toc-number">2.1.</span> <span class="toc-text">AbstractProcessor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AbstractProcessor-函数实现"><span class="toc-number">2.1.1.</span> <span class="toc-text">AbstractProcessor 函数实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">2.1.2.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javapoet"><span class="toc-number">2.2.</span> <span class="toc-text">javapoet</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仿ButterKnife"><span class="toc-number">3.</span> <span class="toc-text">仿ButterKnife</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义注解"><span class="toc-number">3.1.</span> <span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现Processor类"><span class="toc-number">3.2.</span> <span class="toc-text">实现Processor类</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			<script src="/js/toc.js"></script>
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>29</sup></a></li>
+		  
 		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
-		<script src="/js/index.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
-	</body>
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	<!-- 
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	 -->
+	<!-- 
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	  -->
+	<!-- <div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		 -->
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Cyning">Cyning</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c01cc8a847f9091e2448fb88ca55ceae";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>
