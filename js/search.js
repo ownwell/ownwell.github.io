@@ -1,3 +1,4 @@
+
 var searchFunc = function(path, search_id, content_id) {
     'use strict';
     $.ajax({
@@ -15,7 +16,7 @@ var searchFunc = function(path, search_id, content_id) {
             var $input = document.getElementById(search_id);
             var $resultContent = document.getElementById(content_id);
             $input.addEventListener('input', function(){
-                var str='<ul class=\"search-result-list\">';
+                var str='<ul class=\"search-result-list\">';                
                 var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
                 $resultContent.innerHTML = "";
                 if (this.value.trim().length <= 0) {
@@ -50,36 +51,33 @@ var searchFunc = function(path, search_id, content_id) {
                     }
                     // show search results
                     if (isMatch) {
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        str += "<li><a href='"+ data_url +"' class='search-result-title' target='_self'>"+ data_title;
                         var content = data.content.trim().replace(/<[^>]+>/g,"");
                         if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 20;
+                            // cut out characters
+                            var start = first_occur - 6;
+                            var end = first_occur + 6;
                             if(start < 0){
                                 start = 0;
                             }
                             if(start == 0){
-                                end = 40;
+                                end = 10;
                             }
                             if(end > content.length){
                                 end = content.length;
                             }
-                            var match_content = content.substr(start, end);
+                            var match_content = content.substr(start, end); 
                             // highlight all keywords
                             keywords.forEach(function(keyword){
                                 var regS = new RegExp(keyword, "gi");
                                 match_content = match_content.replace(regS, "<em class=\"search-keyword\">"+keyword+"</em>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                            })
+                            str += "<p class=\"search-result\">" + match_content +"...</p>" +"</a>";
                         }
-                        str += "</li>";
                     }
-                });
-                str += "</ul>";
+                })
                 $resultContent.innerHTML = str;
-            });
+            })
         }
-    });
+    })
 }
