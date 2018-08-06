@@ -1,30 +1,30 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html >
 <head>
   <meta charset="UTF-8">
   
-    <title>Cyning的博客</title>
+    <title>Gradle插件开发(1) | Cyning的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cyning">
     
 
     
-    <meta name="description" content="项目结构    插件使用 2.1. maven 本地仓库配置 2.2. 使用插件      小结      简单的插件开发 目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cyning的博客">
-<meta property="og:url" content="http://ownwell.github.io/temp/gradle-plugin.html">
+    <meta name="description" content="目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3.0+) gradle 4.0+">
+<meta name="keywords" content="Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle插件开发(1)">
+<meta property="og:url" content="http://ownwell.github.io/2018/05/02/jni-gradle_1/index.html">
 <meta property="og:site_name" content="Cyning的博客">
-<meta property="og:description" content="项目结构    插件使用 2.1. maven 本地仓库配置 2.2. 使用插件      小结      简单的插件开发 目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3">
+<meta property="og:description" content="目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3.0+) gradle 4.0+">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2022-28-39_20188122298.png">
 <meta property="og:image" content="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2023-02-28_20188123242.png">
-<meta property="og:updated_time" content="2018-08-01T15:42:17.465Z">
+<meta property="og:updated_time" content="2018-08-06T14:51:53.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cyning的博客">
-<meta name="twitter:description" content="项目结构    插件使用 2.1. maven 本地仓库配置 2.2. 使用插件      小结      简单的插件开发 目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3">
+<meta name="twitter:title" content="Gradle插件开发(1)">
+<meta name="twitter:description" content="目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3.0+) gradle 4.0+">
 <meta name="twitter:image" content="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2022-28-39_20188122298.png">
 
     
@@ -40,9 +40,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-      <body>
-        <header>
-          
+  <body>
+    <header>
+      
 <div>
 		
 			<div id="textlogo">
@@ -72,60 +72,43 @@
 				</ul>
 			</nav>			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/temp/gradle-plugin.html" title="" itemprop="url"></a>
+      <a href="/2018/05/02/jni-gradle_1/" title="Gradle插件开发(1)" itemprop="url">Gradle插件开发(1)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2018-08-06T14:49:07.393Z" itemprop="datePublished"> Published 2018-08-06</time>
+    <time datetime="2018-05-02T13:52:10.000Z" itemprop="datePublished"> Published 2018-05-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<!-- vscode-markdown-toc -->
-<ul>
-<li><ol>
-<li><a href="#">项目结构</a></li>
-</ol>
-</li>
-<li><ol start="2">
-<li><a href="#-1">插件使用</a><ul>
-<li>2.1. <a href="#maven">maven 本地仓库配置</a></li>
-<li>2.2. <a href="#-1">使用插件</a></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><ol start="3">
-<li><a href="#-1">小结</a></li>
-</ol>
-</li>
-</ul>
-<!-- vscode-markdown-toc-config
-    numbering=true
-    autoSave=true
-    /vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-<p>简单的插件开发</p>
-<p>目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。<br>这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。</p>
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-项目结构"><span class="toc-number">1.</span> <span class="toc-text">1. 项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-插件使用"><span class="toc-number">2.</span> <span class="toc-text">2. 插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li></ol>
+		
+		</div>
+		
+		<p>目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。<br>这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。</p>
 <blockquote>
 <p>准备工作</p>
 <ol>
 <li>Android Studio(建议3.0+)</li>
-<li>gradle4+</li>
+<li>gradle 4.0+</li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <p>我们需要开发一个能打印<code>hello world</code>的gradle插件,看到hello world，是不是觉得凉凉了，哈哈，一个好的程序员都是从hello world开始的，千里之行始于足下。<br>我们希望希望开发一个简单的插件，就是打印一行：hello world。</p>
 <p>先解释下，所以的gradle的插件，其实就是一个可以挂载在我们工作空间的一个工具，但我们运行我们的gradle脚本时，我们就可以运行我们的插件，这个插件是为我们做一些人工也可以替代的工作，甚至是多个task任务。</p>
 <h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1. 项目结构"></a>1. <a name=""></a>项目结构</h2><p>我们先在我们的工作控件新建一个Android library项目plugin，仅保留src下的main其他的都删掉吧.</p>
@@ -160,6 +143,16 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Gradle/">Gradle</a>
+  </div>
 
 </div>
 
@@ -167,7 +160,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://ownwell.github.io/temp/gradle-plugin.html" data-title="Cyning的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="http://ownwell.github.io/2018/05/02/jni-gradle_1/" data-title="Gradle插件开发(1) | Cyning的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -178,13 +171,260 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/05/02/jni-security-4-app/"  title="JNI开发笔记（2） -- Native要校验APP安全">
+ <strong>下一篇：</strong><br/> 
+ <span>JNI开发笔记（2） -- Native要校验APP安全
+</span>
+</a>
+</div>
+
+</nav>
+
 	
 
 
 
 </div>  
-        </div>
-        <footer><div id="footer" >
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-项目结构"><span class="toc-number">1.</span> <span class="toc-text">1. 项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-插件使用"><span class="toc-number">2.</span> <span class="toc-text">2. 插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>30</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Android热修复/" title="Android热修复">Android热修复<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Java源码/" title="Java源码">Java源码<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据分析/" title="数据分析">数据分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程/" title="编程">编程<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书/" title="读书">读书<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Kotlin/" title="Kotlin">Kotlin<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JNI开发/" title="JNI开发">JNI开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Transition/" title="Transition">Transition<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Animations/" title="Animations">Animations<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wanandroid.com" target="_blank" title="wanAndroid">wanAndroid</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://macshuo.com/" target="_blank" title="MacTalk">MacTalk</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://stormzhang.github.io" target="_blank" title="StormZhang">StormZhang</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://androidweekly.cn/" target="_blank" title="Android开发周报">Android开发周报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gank.io" target="_blank" title="GankIO">GankIO</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wjdiankong.cn/" target="_blank" title="尼古拉斯-赵四">尼古拉斯-赵四</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/#/" target="_blank" title="稀土掘金">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://app.memect.com/" target="_blank" title="App开发日报">App开发日报</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.stylingandroid.com" target="_blank" title="AndroidStyle">AndroidStyle</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
 	<!-- 
 	<div class="line">
 		<span></span>
@@ -223,7 +463,7 @@
 		</p>
 </div>
 </footer>
-        <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -267,8 +507,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -393,6 +661,5 @@ var _hmt = _hmt || [];
 
 <!-- Tiny_search End -->
 
-      </body>
-     </html>
-     
+  </body>
+</html>
