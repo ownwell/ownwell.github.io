@@ -21,7 +21,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2022-28-39_20188122298.png">
 <meta property="og:image" content="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2023-02-28_20188123242.png">
-<meta property="og:updated_time" content="2018-08-07T01:12:51.380Z">
+<meta property="og:updated_time" content="2018-08-07T01:14:30.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle插件开发(1)">
 <meta name="twitter:description" content="目前的开发工具主要是在Android Studio上，对这个工具真的是又恨又爱，只能收希望它越来越好。这几天，一直在看Gradle插件的相关的东西，希望将自己的这些学习成长的经历记录下来。由易到难，开发一个自己的插件。  准备工作  Android Studio(建议3.0+) gradle 4.0+">
@@ -96,7 +96,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-项目结构"><span class="toc-number">1.</span> <span class="toc-text">1. 项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-插件使用"><span class="toc-number">2.</span> <span class="toc-text">2. 插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件使用"><span class="toc-number">2.</span> <span class="toc-text">插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
 		
 		</div>
 		
@@ -111,7 +111,7 @@
 <a id="more"></a>
 <p>我们需要开发一个能打印<code>hello world</code>的gradle插件,看到hello world，是不是觉得凉凉了，哈哈，一个好的程序员都是从hello world开始的，千里之行始于足下。<br>我们希望希望开发一个简单的插件，就是打印一行：hello world。</p>
 <p>先解释下，所以的gradle的插件，其实就是一个可以挂载在我们工作空间的一个工具，但我们运行我们的gradle脚本时，我们就可以运行我们的插件，这个插件是为我们做一些人工也可以替代的工作，甚至是多个task任务。</p>
-<h2 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1. 项目结构"></a>1. <a name=""></a>项目结构</h2><p>我们先在我们的工作控件新建一个Android library项目plugin，仅保留src下的main其他的都删掉吧.</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a><a name=""></a>项目结构</h2><p>我们先在我们的工作控件新建一个Android library项目plugin，仅保留src下的main其他的都删掉吧.</p>
 <p><img src="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2022-28-39_20188122298.png" alt="20188122298"></p>
 <p>src/main下新建一个groovy和resources的文件夹。<br>其中groovy的文件用来存源码，resources存放静态资源和配置，build.gradle是我们的build环境。<br>先来看下build.gradle吧。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'groovy'</span></span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">//gradle sdk</span></span><br><span class="line">    <span class="function">compile <span class="title">gradleApi</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="comment">//groovy sdk</span></span></span><br><span class="line"><span class="function">    compile <span class="title">localGroovy</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">repositories </span>&#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -125,7 +125,7 @@
 <p>resources<br><br>&nbsp;&nbsp;└── META-INF<br><br> &nbsp;&nbsp;&nbsp;&nbsp; └── gradle-plugins<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── cyning.properties<br></p>
 <p> cyning.property：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-<span class="class"><span class="keyword">class</span></span>=cc.cyning.plugin.MyPlugin</span><br></pre></td></tr></table></figure></p>
 <p>这样就是一个完整的插件项目的结构，groovy是我们的实现代码，·、<code>resources/META-INF</code>配置插件的实现类。</p>
-<h2 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2. 插件使用"></a>2. <a name="-1"></a>插件使用</h2><h3 id="2-1-maven-本地仓库配置"><a href="#2-1-maven-本地仓库配置" class="headerlink" title="2.1. maven 本地仓库配置"></a>2.1. <a name="maven"></a>maven 本地仓库配置</h3><p>为了插件的使用，我们需要引入maven本地仓库，怎么上传远程仓库，可以参考我的另外一篇拙作：<a href="http://ownwell.github.io/2016/07/14/push-library-to-jcenter/">开源自己的项目到JCenter</a>,不过为了插架开发没必要这么麻烦。</p>
+<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a><a name="-1"></a>插件使用</h2><h3 id="maven-本地仓库配置"><a href="#maven-本地仓库配置" class="headerlink" title="maven 本地仓库配置"></a><a name="maven"></a>maven 本地仓库配置</h3><p>为了插件的使用，我们需要引入maven本地仓库，怎么上传远程仓库，可以参考我的另外一篇拙作：<a href="http://ownwell.github.io/2016/07/14/push-library-to-jcenter/">开源自己的项目到JCenter</a>,不过为了插架开发没必要这么麻烦。</p>
 <blockquote>
 <p>若是你了解可以直接跳过本小节内容。</p>
 </blockquote>
@@ -133,11 +133,11 @@
 <p>使用<code>./gradlew :plugin:uploadArchives</code>即可在项目下看到maven文件下产生了文件：</p>
 <p><img src="http://pc0oz0yc3.bkt.clouddn.com/MacHi%202018-08-01%2023-02-28_20188123242.png" alt="20188123242"></p>
 <p>而我们的项目怎么用呢？</p>
-<h3 id="2-2-使用插件"><a href="#2-2-使用插件" class="headerlink" title="2.2. 使用插件"></a>2.2. <a name="-1"></a>使用插件</h3><p>上一步，我们已经生成maven插件，为了能让插件运行，我们需要导入这个gradle插件。<br>app的<code>build.gradle</code>配置：</p>
+<h3 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a><a name="-1"></a>使用插件</h3><p>上一步，我们已经生成maven插件，为了能让插件运行，我们需要导入这个gradle插件。<br>app的<code>build.gradle</code>配置：</p>
 <figure class="highlight groovy"><figcaption><span>&#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;<span class="comment">//本地Maven仓库地址 切记：三个斜杠，</span></span><br><span class="line">            url <span class="string">"file:///$&#123;rootProject.projectDir&#125;/maven/"</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        <span class="comment">//格式为--&gt;group:module:version</span></span><br><span class="line">        classpath <span class="string">'cc.cyning.plugin:plugin:1.0.0'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cyning为resources/META-INF/gradle-plugins</span></span><br><span class="line"><span class="comment">//下的properties文件名称</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'cyning'</span></span><br></pre></td></tr></table></figure>
 <p>运行我们的插件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">./gradlew :app:clean            </span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Configure project :app </span></span><br><span class="line">========================</span><br><span class="line">hello world</span><br><span class="line">========================</span><br></pre></td></tr></table></figure>
-<h2 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. <a name="-1"></a>小结</h2><p>我们这节的目的就是能熟悉插件的卡法流程，尤其是开发插件和使用的各种配置，要对应上，properties的配置，以及gradle使用。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><a name="-1"></a>小结</h2><p>我们这节的目的就是能熟悉插件的卡法流程，尤其是开发插件和使用的各种配置，要对应上，properties的配置，以及gradle使用。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -194,7 +194,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-项目结构"><span class="toc-number">1.</span> <span class="toc-text">1. 项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-插件使用"><span class="toc-number">2.</span> <span class="toc-text">2. 插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-小结"><span class="toc-number">3.</span> <span class="toc-text">3. 小结</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-number">1.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件使用"><span class="toc-number">2.</span> <span class="toc-text">插件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#maven-本地仓库配置"><span class="toc-number">2.1.</span> <span class="toc-text">maven 本地仓库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用插件"><span class="toc-number">2.2.</span> <span class="toc-text">使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
  
   </div>
 
@@ -272,11 +272,11 @@
 			
 		
 			
-				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
+				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Tools/" title="Tools">Tools<sup>4</sup></a></li>
+				<li><a href="/tags/Android进阶/" title="Android进阶">Android进阶<sup>4</sup></a></li>
 			
 		
 			
@@ -300,11 +300,7 @@
 			
 		
 			
-				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
 			
 		
 			
@@ -328,11 +324,7 @@
 			
 		
 			
-				<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
 			
 		
 			
@@ -340,7 +332,15 @@
 			
 		
 			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
 			
 		
 		</ul>
