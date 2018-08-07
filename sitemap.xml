@@ -3,12 +3,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2018/05/02/android-gradle_1/</loc>
-    <lastmod>2018-08-06T14:51:53.022Z</lastmod>
+    <loc>http://ownwell.github.io/2018/07/30/android-gradle_1/</loc>
+    <lastmod>2018-08-07T01:12:51.380Z</lastmod>
     <data>
         <display>
         <title>Gradle插件开发(1)</title>
-        <pubTime>2018-05-02T13:52:10.000Z</pubTime>
+        <pubTime>2018-07-30T13:52:10.000Z</pubTime>
         
         <tag>Gradle </tag>
          
@@ -305,12 +305,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
+    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
     <lastmod>2018-02-26T06:51:34.000Z</lastmod>
     <data>
         <display>
-        <title>【Android进阶】Android的APK两种签名</title>
-        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
+        <title>【Android进阶】Android中使用ProGuard</title>
+        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -325,12 +325,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
+    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
     <lastmod>2018-02-26T06:51:34.000Z</lastmod>
     <data>
         <display>
-        <title>【Android进阶】Android中使用ProGuard</title>
-        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
+        <title>【Android进阶】Android的APK两种签名</title>
+        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -492,12 +492,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -512,12 +512,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -866,19 +866,19 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
+    <loc>http://ownwell.github.io/2015/05/23/Ruby-learson/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>关于Mysql允许远程连接</title>
-        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
+        <title>初尝Ruby</title>
+        <pubTime>2015-05-23T09:27:38.000Z</pubTime>
         
-        <tag>JavaEE </tag>
+        <tag>Ruby </tag>
          
          
            
              
-              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -900,45 +900,6 @@
              
               <breadCrumb title="生活" url="http://ownwell.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python学习笔记(1)</title>
-        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
-        
-        <tag>Python </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Google IO 2015 APK 来了</title>
-        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Google </tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -967,19 +928,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
+    <loc>http://ownwell.github.io/2015/06/23/introduce-to-python2-7/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
+        <title>Python学习笔记(1)</title>
+        <pubTime>2015-06-23T14:38:00.000Z</pubTime>
         
-        <tag>Tools </tag>
+        <tag>Python </tag>
          
          
            
              
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -1007,19 +968,23 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -1047,19 +1012,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/23/Ruby-learson/</loc>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>初尝Ruby</title>
-        <pubTime>2015-05-23T09:27:38.000Z</pubTime>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
         
-        <tag>Ruby </tag>
+        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -1067,12 +1032,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/04/14/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAView%E7%9A%84%E5%88%86%E5%89%B2%E7%BA%BF/</loc>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何创建一个View的分割线</title>
-        <pubTime>2015-04-13T16:00:00.000Z</pubTime>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1087,12 +1052,48 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        <title>Google IO 2015 APK 来了</title>
+        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Google </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>leakCanary</title>
+        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1147,65 +1148,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/05/23/leakCanary/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>leakCanary</title>
-        <pubTime>2015-05-22T20:12:57.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>为IDEA设置Google's Code Stytle </title>
-        <pubTime>2015-05-13T11:41:29.000Z</pubTime>
-        
-        <tag>CodeStyle </tag>
-         
-        <tag>IDEA </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1248,46 +1190,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Mac系统读写NFTS磁盘分区的方法</title>
-        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
-        
-        <tag>Mac </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Spring学习笔记（1）</title>
-        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1308,12 +1210,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <loc>http://ownwell.github.io/2015/04/14/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAView%E7%9A%84%E5%88%86%E5%89%B2%E7%BA%BF/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        <title>[Android]如何创建一个View的分割线</title>
+        <pubTime>2015-04-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1321,6 +1223,48 @@
            
              
               <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>为IDEA设置Google's Code Stytle </title>
+        <pubTime>2015-05-13T11:41:29.000Z</pubTime>
+        
+        <tag>CodeStyle </tag>
+         
+        <tag>IDEA </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac系统读写NFTS磁盘分区的方法</title>
+        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
+        
+        <tag>Mac </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
         </display>
     </data>
@@ -1348,23 +1292,79 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
+    <loc>http://ownwell.github.io/2015/08/11/mysql-remote/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
+        <title>关于Mysql允许远程连接</title>
+        <pubTime>2015-08-11T14:19:04.000Z</pubTime>
         
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
+        <tag>JavaEE </tag>
          
          
            
              
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Spring学习笔记（1）</title>
+        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
+        
+        <tag>Java </tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
