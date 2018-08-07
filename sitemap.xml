@@ -305,12 +305,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
+    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
     <lastmod>2018-02-26T06:51:34.000Z</lastmod>
     <data>
         <display>
-        <title>【Android进阶】Android中使用ProGuard</title>
-        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
+        <title>【Android进阶】Android的APK两种签名</title>
+        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -325,12 +325,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2017/10/13/apk-two-signer/</loc>
+    <loc>http://ownwell.github.io/2017/10/30/android-better-progurad/</loc>
     <lastmod>2018-02-26T06:51:34.000Z</lastmod>
     <data>
         <display>
-        <title>【Android进阶】Android的APK两种签名</title>
-        <pubTime>2017-10-12T16:24:48.000Z</pubTime>
+        <title>【Android进阶】Android中使用ProGuard</title>
+        <pubTime>2017-10-30T14:08:30.000Z</pubTime>
         
         <tag>Android进阶 </tag>
          
@@ -492,12 +492,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
+    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记（3）--函数式编程</title>
-        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
+        <title>Python学习笔记(2)</title>
+        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -512,12 +512,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/07/02/python-learning-series1/</loc>
+    <loc>http://ownwell.github.io/2015/07/05/learn-notes/</loc>
     <lastmod>2017-05-24T07:19:35.000Z</lastmod>
     <data>
         <display>
-        <title>Python学习笔记(2)</title>
-        <pubTime>2015-07-02T14:34:58.000Z</pubTime>
+        <title>Python学习笔记（3）--函数式编程</title>
+        <pubTime>2015-07-05T03:03:22.000Z</pubTime>
         
         <tag>Python </tag>
          
@@ -926,6 +926,25 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Google IO 2015 APK 来了</title>
+        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Google </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2015/06/15/A-sharp-tool-Charles/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -948,19 +967,60 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
+    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Google IO 2015 APK 来了</title>
-        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        <title>关于多渠道打包</title>
+        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
         
-        <tag>Android </tag>
-         
-        <tag>Google </tag>
+        <tag>Tools </tag>
          
          
            
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/06/01/android-material-color/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android Material的主题</title>
+        <pubTime>2015-06-01T15:41:42.000Z</pubTime>
+        
+        <tag>Material </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>【Android】状态栏颜色的适配</title>
+        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
         </display>
     </data>
     </url>
@@ -1000,70 +1060,6 @@
            
              
               <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2017/04/13/Android-%E7%8A%B6%E6%80%81%E6%A0%8F%E9%A2%9C%E8%89%B2%E7%9A%84%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>【Android】状态栏颜色的适配</title>
-        <pubTime>2017-04-12T16:03:25.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
-        
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
-         
-         
-           
-             
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/01/android-material-color/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android Material的主题</title>
-        <pubTime>2015-06-01T15:41:42.000Z</pubTime>
-        
-        <tag>Material </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -1131,14 +1127,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>热修复之美团方案</title>
+        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Android热修复 </tag>
          
          
            
@@ -1151,14 +1147,14 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>热修复之美团方案</title>
-        <pubTime>2016-09-30T11:49:24.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
-        <tag>Android热修复 </tag>
+        <tag>Android </tag>
          
          
            
@@ -1198,6 +1194,28 @@
         <tag>CodeStyle </tag>
          
         <tag>IDEA </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
+        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Tools </tag>
          
          
            
@@ -1250,26 +1268,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>[Android]Android 版本兼容库</title>
-        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1310,21 +1308,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
+    <loc>http://ownwell.github.io/2014/10/15/android_support/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]关于Android在Gradlew多渠道打包方式</title>
-        <pubTime>2014-11-16T16:00:00.000Z</pubTime>
+        <title>[Android]Android 版本兼容库</title>
+        <pubTime>2014-10-14T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
-         
-        <tag>Tools </tag>
          
          
            
              
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -1352,19 +1348,23 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/06/24/package4Android/</loc>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>关于多渠道打包</title>
-        <pubTime>2014-06-23T16:00:00.000Z</pubTime>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
         
-        <tag>Tools </tag>
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
          
          
            
              
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
