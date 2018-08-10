@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ownwell.github.io/2016/02/29/Android开发中事半功倍的小知识点/index.html">
 <meta property="og:site_name" content="Cyning的博客">
 <meta property="og:description" content="最近一直在偷懒，没有更新自己的博客，曾经想放弃更新博客，觉得别人都写的挺好，为什么我的博客越写越不想写，产生了困惑和疑问，不过我后来觉得自己还是要写，是给自己写，一篇优质的博客，何尝不是自己从零开始思考，想通了也就决定今天开始，没一周至少一篇动心思写的博客或者翻译文章，由于女朋友也要复习自己的考试的东西，也要读读一些自己一直没看的书。 开发Android也已经快3年，在网易也已经呆了快一年，觉得自">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-19T05:57:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发中事半功倍的小知识点">
@@ -46,7 +46,7 @@
 				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
 				<h2 class="blog-motto">不抛弃，不放弃，做有意义的事</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -62,7 +62,7 @@
  					<!-- 
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					 -->
 					</li>
@@ -84,14 +84,14 @@
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-29T13:52:28.000Z" itemprop="datePublished"> Published 2016-02-29</time>
+    <time datetime="2016-02-29T13:52:28.000Z" itemprop="datePublished"> 发表于 2016-02-29</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开发工具"><span class="toc-number">1.</span> <span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA-Android-Studio"><span class="toc-number">1.1.</span> <span class="toc-text">IDEA/Android Studio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#干货聚集地"><span class="toc-number">2.</span> <span class="toc-text">干货聚集地</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#好用第三方库"><span class="toc-number">3.</span> <span class="toc-text">好用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件化框架"><span class="toc-number">4.</span> <span class="toc-text">插件化框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高质量的APP"><span class="toc-number">5.</span> <span class="toc-text">高质量的APP</span></a></li></ol>
 		
@@ -166,18 +166,34 @@
 
 
 
+
+<div id="container5678"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id:  location.href, // 可选。默认为 location.href
+  owner: 'ownwell',  //改你自己的名字
+  repo: 'Comments',  //专门储存评论一个GitHub仓库
+  oauth: {
+    client_id: '0fa16a6a45ebd5cbc2d1', //改为你自己的，下同
+    client_secret: '8be1501d0dfbd4f4155622658fe02f05442ecded', 
+  },
+})
+gitment.render('container5678')
+</script>
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开发工具"><span class="toc-number">1.</span> <span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA-Android-Studio"><span class="toc-number">1.1.</span> <span class="toc-text">IDEA/Android Studio</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#干货聚集地"><span class="toc-number">2.</span> <span class="toc-text">干货聚集地</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#好用第三方库"><span class="toc-number">3.</span> <span class="toc-text">好用第三方库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件化框架"><span class="toc-number">4.</span> <span class="toc-text">插件化框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#高质量的APP"><span class="toc-number">5.</span> <span class="toc-text">高质量的APP</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -185,7 +201,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -238,7 +254,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -278,11 +294,11 @@
 			
 		
 			
-				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
+				<li><a href="/tags/Realm/" title="Realm">Realm<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
 			
 		
 			
@@ -310,15 +326,15 @@
 			
 		
 			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -326,7 +342,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -390,7 +406,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -617,7 +633,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

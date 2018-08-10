@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ownwell.github.io/2017/07/18/dynamic-load-so/index.html">
 <meta property="og:site_name" content="Cyning的博客">
 <meta property="og:description" content="随着业务的增大，我们的业务代码也随之增多，包的大小是有增无减，所以适当的时候思考下:怎么做减法–减小包的体积。 结合最近在做的公司的项目，觉得动态加载so文件是一个很好精简apk包的方法。举个例子，视频播放器的SDK（如IJKplayer，VLC player），他们的各种视频的解码器一般都是通过C/C++编译的so文件，这些so文件其实都不小，这样导致我们从市场上下载的apk包很大，所以能不能让">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/so-fix.png">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/so_fix_libs_path.png">
 <meta property="og:updated_time" content="2017-12-04T15:13:05.000Z">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
 				<h2 class="blog-motto">不抛弃，不放弃，做有意义的事</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					<!-- 
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					 -->
 					</li>
@@ -87,14 +87,14 @@
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-17T16:29:19.000Z" itemprop="datePublished"> Published 2017-07-18</time>
+    <time datetime="2017-07-17T16:29:19.000Z" itemprop="datePublished"> 发表于 2017-07-18</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要动态加载"><span class="toc-number">1.</span> <span class="toc-text">为什么要动态加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态加载so文件"><span class="toc-number">2.</span> <span class="toc-text">动态加载so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System-load-String-filePath"><span class="toc-number">2.1.</span> <span class="toc-text">1. System.load(String filePath)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-支持静态加载"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持静态加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">3.</span> <span class="toc-text">出现的问题</span></a></li></ol>
 		
@@ -190,18 +190,34 @@
 
 
 
+
+<div id="container5678"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id:  location.href, // 可选。默认为 location.href
+  owner: 'ownwell',  //改你自己的名字
+  repo: 'Comments',  //专门储存评论一个GitHub仓库
+  oauth: {
+    client_id: '0fa16a6a45ebd5cbc2d1', //改为你自己的，下同
+    client_secret: '8be1501d0dfbd4f4155622658fe02f05442ecded', 
+  },
+})
+gitment.render('container5678')
+</script>
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要动态加载"><span class="toc-number">1.</span> <span class="toc-text">为什么要动态加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态加载so文件"><span class="toc-number">2.</span> <span class="toc-text">动态加载so文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-System-load-String-filePath"><span class="toc-number">2.1.</span> <span class="toc-text">1. System.load(String filePath)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-支持静态加载"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持静态加载</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">3.</span> <span class="toc-text">出现的问题</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -209,7 +225,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -262,7 +278,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -302,11 +318,11 @@
 			
 		
 			
-				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
+				<li><a href="/tags/Realm/" title="Realm">Realm<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
 			
 		
 			
@@ -334,15 +350,15 @@
 			
 		
 			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -350,7 +366,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -414,7 +430,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -641,7 +657,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

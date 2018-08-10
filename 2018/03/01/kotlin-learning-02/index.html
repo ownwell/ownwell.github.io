@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ownwell.github.io/2018/03/01/kotlin-learning-02/index.html">
 <meta property="og:site_name" content="Cyning的博客">
 <meta property="og:description" content="不知不觉间，2月份就过去，也就是说2018年已经过去了六分之一，再细想真可怕。 今天继续Kotlin的学习,主要从lambda的历史，定义，和集合的函数API，以及推荐使用的with和apply两个常用的函数。 lambda表达式Lambda表达式基于数学中的λ演算得名，直接对应于其中的lambda抽象(lambda abstraction)，是一个匿名函数，即没有函数名的函数。Lambda表达式">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/f774ac0904410c6d7dc77afc86cea5f8%20.png">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/33cb401b621d0d06bc19caf4fc87b566%20.png">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/8856b545cc3a45aa283ec43cd0587940.png-blog">
@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
 				<h2 class="blog-motto">不抛弃，不放弃，做有意义的事</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@
  					<!-- 
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					 -->
 					</li>
@@ -88,14 +88,14 @@
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2018-03-01T14:25:08.000Z" itemprop="datePublished"> Published 2018-03-01</time>
+    <time datetime="2018-03-01T14:25:08.000Z" itemprop="datePublished"> 发表于 2018-03-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合的函数式API"><span class="toc-number">2.1.</span> <span class="toc-text">集合的函数式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter和map"><span class="toc-number">2.1.1.</span> <span class="toc-text">filter和map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预言：all-any-count和find"><span class="toc-number">2.1.2.</span> <span class="toc-text">预言：all, any, count和find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupBy"><span class="toc-number">2.1.3.</span> <span class="toc-text">groupBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#with和apply函数"><span class="toc-number">2.2.</span> <span class="toc-text">with和apply函数</span></a></li></ol></li></ol>
 		
@@ -193,18 +193,34 @@
 
 
 
+
+<div id="container5678"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id:  location.href, // 可选。默认为 location.href
+  owner: 'ownwell',  //改你自己的名字
+  repo: 'Comments',  //专门储存评论一个GitHub仓库
+  oauth: {
+    client_id: '0fa16a6a45ebd5cbc2d1', //改为你自己的，下同
+    client_secret: '8be1501d0dfbd4f4155622658fe02f05442ecded', 
+  },
+})
+gitment.render('container5678')
+</script>
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合的函数式API"><span class="toc-number">2.1.</span> <span class="toc-text">集合的函数式API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter和map"><span class="toc-number">2.1.1.</span> <span class="toc-text">filter和map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预言：all-any-count和find"><span class="toc-number">2.1.2.</span> <span class="toc-text">预言：all, any, count和find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupBy"><span class="toc-number">2.1.3.</span> <span class="toc-text">groupBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#with和apply函数"><span class="toc-number">2.2.</span> <span class="toc-text">with和apply函数</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -212,7 +228,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -265,7 +281,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -305,11 +321,11 @@
 			
 		
 			
-				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
+				<li><a href="/tags/Realm/" title="Realm">Realm<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
 			
 		
 			
@@ -337,15 +353,15 @@
 			
 		
 			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -353,7 +369,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -417,7 +433,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -644,7 +660,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

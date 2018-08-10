@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ownwell.github.io/2017/04/13/Android-状态栏颜色的适配/index.html">
 <meta property="og:site_name" content="Cyning的博客">
 <meta property="og:description" content="最近一直忙着写业务，一直没精力更新博客，趁着最近有点空闲事件，觉得很有必要写一篇博客捡回以前的那个状态。就写一个自己当时总结的一个适配功能吧：关于状态栏的字体/图标颜色适配。 随着Android6.0 Android7.0系统的系统升级，开发者来说适配的容易程度越来越低，我们需要将精力放到适配4.4+以上，而Android4.4相对来说是一个比较稳定的版本，尤其是在UI上它又和Android 6.">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/14920106163118.jpg">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/14920106348516.jpg">
 <meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/14920119504831.jpg">
@@ -51,7 +51,7 @@
 				<h1 class="site-name"><a href="/" title="Cyning的博客">Cyning的博客</a></h1>
 				<h2 class="blog-motto">不抛弃，不放弃，做有意义的事</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@
  					<!-- 
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 5495506123734175000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					 -->
 					</li>
@@ -89,14 +89,14 @@
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-12T16:03:25.000Z" itemprop="datePublished"> Published 2017-04-13</time>
+    <time datetime="2017-04-12T16:03:25.000Z" itemprop="datePublished"> 发表于 2017-04-13</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#状态字体颜色有区分"><span class="toc-number">1.</span> <span class="toc-text">状态字体颜色有区分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适配状态栏的字体-图标颜色"><span class="toc-number">2.</span> <span class="toc-text">适配状态栏的字体/图标颜色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小米的MIUI："><span class="toc-number">2.1.</span> <span class="toc-text">小米的MIUI：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#魅族的Flyme"><span class="toc-number">2.2.</span> <span class="toc-text">魅族的Flyme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-M"><span class="toc-number">2.3.</span> <span class="toc-text">Android M</span></a></li></ol></li></ol>
 		
@@ -180,18 +180,34 @@
 
 
 
+
+<div id="container5678"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id:  location.href, // 可选。默认为 location.href
+  owner: 'ownwell',  //改你自己的名字
+  repo: 'Comments',  //专门储存评论一个GitHub仓库
+  oauth: {
+    client_id: '0fa16a6a45ebd5cbc2d1', //改为你自己的，下同
+    client_secret: '8be1501d0dfbd4f4155622658fe02f05442ecded', 
+  },
+})
+gitment.render('container5678')
+</script>
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#状态字体颜色有区分"><span class="toc-number">1.</span> <span class="toc-text">状态字体颜色有区分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适配状态栏的字体-图标颜色"><span class="toc-number">2.</span> <span class="toc-text">适配状态栏的字体/图标颜色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#小米的MIUI："><span class="toc-number">2.1.</span> <span class="toc-text">小米的MIUI：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#魅族的Flyme"><span class="toc-number">2.2.</span> <span class="toc-text">魅族的Flyme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-M"><span class="toc-number">2.3.</span> <span class="toc-text">Android M</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -199,7 +215,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -252,7 +268,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -292,11 +308,11 @@
 			
 		
 			
-				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
+				<li><a href="/tags/Realm/" title="Realm">Realm<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/抓包/" title="抓包">抓包<sup>1</sup></a></li>
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
 			
 		
 			
@@ -324,15 +340,15 @@
 			
 		
 			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>1</sup></a></li>
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Google/" title="Google">Google<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -340,7 +356,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -404,7 +420,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -631,7 +647,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
