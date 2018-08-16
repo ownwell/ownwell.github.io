@@ -4,27 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Mac 下安装配置Tomcat | Cyning的博客</title>
+    <title>conda_for_python2or3 | Cyning的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cyning">
     
 
     
-    <meta name="description" content="这几天手痒痒，一直在想着自己的APP（虽然公司也有项目，但是自己还是挺想做一个自己特希望的项目–一个学习站点应用）。 这不，大热天，就想着怎么抓取数据，于是乎，有了这个博客—在Mac Os 下安装tomcat。">
-<meta name="keywords" content="Tomcat">
+    <meta name="description" content="由于mac使用到期，公司给还了新的mac，安装时安装了Anaconda(for 3.6+), Python 2.7慢慢没人维护了，是时候开始切换到3.6+上了。但是很尴尬的是，有些不再维护的库，却依然只支持python2.7,搞得很湿头痛，后来在网上查了资料，发现用conda是可以做到的。 condaconda是Anaconda的工具箱，它是 pip 和 vitualenv 的组合，也就是说他可以">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac 下安装配置Tomcat">
-<meta property="og:url" content="http://ownwell.github.io/2015/07/29/use-tomcat-on-mac-os/index.html">
+<meta property="og:title" content="conda_for_python2or3">
+<meta property="og:url" content="http://ownwell.github.io/2018/08/17/conda-for-python2or3/index.html">
 <meta property="og:site_name" content="Cyning的博客">
-<meta property="og:description" content="这几天手痒痒，一直在想着自己的APP（虽然公司也有项目，但是自己还是挺想做一个自己特希望的项目–一个学习站点应用）。 这不，大热天，就想着怎么抓取数据，于是乎，有了这个博客—在Mac Os 下安装tomcat。">
+<meta property="og:description" content="由于mac使用到期，公司给还了新的mac，安装时安装了Anaconda(for 3.6+), Python 2.7慢慢没人维护了，是时候开始切换到3.6+上了。但是很尴尬的是，有些不再维护的库，却依然只支持python2.7,搞得很湿头痛，后来在网上查了资料，发现用conda是可以做到的。 condaconda是Anaconda的工具箱，它是 pip 和 vitualenv 的组合，也就是说他可以">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/tomcat_20150729.png">
-<meta property="og:updated_time" content="2017-05-24T07:19:33.000Z">
+<meta property="og:updated_time" content="2018-08-16T16:22:49.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac 下安装配置Tomcat">
-<meta name="twitter:description" content="这几天手痒痒，一直在想着自己的APP（虽然公司也有项目，但是自己还是挺想做一个自己特希望的项目–一个学习站点应用）。 这不，大热天，就想着怎么抓取数据，于是乎，有了这个博客—在Mac Os 下安装tomcat。">
-<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/tomcat_20150729.png">
+<meta name="twitter:title" content="conda_for_python2or3">
+<meta name="twitter:description" content="由于mac使用到期，公司给还了新的mac，安装时安装了Anaconda(for 3.6+), Python 2.7慢慢没人维护了，是时候开始切换到3.6+上了。但是很尴尬的是，有些不再维护的库，却依然只支持python2.7,搞得很湿头痛，后来在网上查了资料，发现用conda是可以做到的。 condaconda是Anaconda的工具箱，它是 pip 和 vitualenv 的组合，也就是说他可以">
 
     
     <link rel="alternative" href="/atom.xml" title="Cyning的博客" type="application/atom+xml">
@@ -79,14 +77,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/07/29/use-tomcat-on-mac-os/" title="Mac 下安装配置Tomcat" itemprop="url">Mac 下安装配置Tomcat</a>
+      <a href="/2018/08/17/conda-for-python2or3/" title="conda_for_python2or3" itemprop="url">conda_for_python2or3</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Cyning" target="_blank" itemprop="author">Cyning</a>
 		
   <p class="article-time">
-    <time datetime="2015-07-29T14:08:47.000Z" itemprop="datePublished"> 发表于 2015-07-29</time>
+    <time datetime="2018-08-16T16:21:57.000Z" itemprop="datePublished"> 发表于 2018-08-17</time>
     
   </p>
 </header>
@@ -95,44 +93,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动Tomacat"><span class="toc-number">2.</span> <span class="toc-text">启动Tomacat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#conda"><span class="toc-number">1.</span> <span class="toc-text">conda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切换Python2-x和Python3-x"><span class="toc-number">2.</span> <span class="toc-text">切换Python2.x和Python3.x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conda安装包"><span class="toc-number">3.</span> <span class="toc-text">conda安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置高速下载"><span class="toc-number">4.</span> <span class="toc-text">配置高速下载</span></a></li></ol>
 		
 		</div>
 		
-		<p>这几天手痒痒，一直在想着自己的APP（虽然公司也有项目，但是自己还是挺想做一个自己特希望的项目–一个学习站点应用）。</p>
-<p>这不，大热天，就想着怎么抓取数据，于是乎，有了这个博客—在Mac Os 下安装tomcat。<br><a id="more"></a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>去<a href="http://tomcat.apache.org/download-70.cgi" target="_blank" rel="noopener">Apache Tomcat</a>上下载一个Tomcat，记得以前就用Tomcat 7 ，有感情了。</p>
-<p>下载完，放到你的根目录下；/Library/Tomcat</p>
-<p>给你的运行脚本权限，这个在window是没有这个的：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755  /Library/Tomcat/bin/*.sh</span><br></pre></td></tr></table></figure>
-<h1 id="启动Tomacat"><a href="#启动Tomacat" class="headerlink" title="启动Tomacat"></a>启动Tomacat</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh /Library/Tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure>
-<p> 成功的话会出现：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> Using CATALINA_BASE:   /Library/Tomcat</span><br><span class="line">Using CATALINA_HOME:   /Library/Tomcat</span><br><span class="line">Using CATALINA_TMPDIR: /Library/Tomcat/temp</span><br><span class="line">Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home</span><br><span class="line">Using CLASSPATH:       /Library/Tomcat/bin/bootstrap.jar:/Library/Tomcat/bin/tomcat-juli.jar</span><br></pre></td></tr></table></figure></p>
-<p>OK，打开浏览器输入：localhost8080<br>就可以看见可爱的tom猫了。</p>
-<p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/tomcat_20150729.png" alt=""></p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>这样每次启动太麻烦了，没事都要跑到library去启动tomcat的shel脚本，麻烦死了。</p>
-<p>在终端的包含路径下（如/usr/bin），下新建一个tomcat的文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜ /usr/bin &gt;sudo touch tomcat</span><br></pre></td></tr></table></figure>
-<p>打开这个文件，配置shell脚本如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">start)</span><br><span class="line">sh /Library/Tomcat/bin/startup.sh</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">sh /Library/Tomcat/bin/shutdown.sh</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line">sh /Library/Tomcat/bin/shutdown.sh</span><br><span class="line">sh /Library/Tomcat/bin/startup.sh</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo “Usage: start|stop|restart”</span><br><span class="line">;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
-<p>保存，好了这样，你就可以在任何位置启动或者关闭tomat了：<br>快捷命令如下：</p>
-<ol>
-<li>tomcat start</li>
-<li>tomcat stop</li>
-<li>tomcat restart</li>
-</ol>
-  
+		<p>由于mac使用到期，公司给还了新的mac，安装时安装了<code>Anaconda(for 3.6+)</code>, Python 2.7慢慢没人维护了，是时候开始切换到3.6+上了。但是很尴尬的是，有些不再维护的库，却依然只支持<code>python2.7</code>,搞得很湿头痛，后来在网上查了资料，发现用<code>conda</code>是可以做到的。</p>
+<h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><p><code>conda</code>是<code>Anaconda</code>的工具箱，它是 pip 和 vitualenv 的组合，也就是说他可以像pip来管理包，也可以像vitualenv来切换环境</p>
+<h2 id="切换Python2-x和Python3-x"><a href="#切换Python2-x和Python3-x" class="headerlink" title="切换Python2.x和Python3.x"></a>切换Python2.x和Python3.x</h2><p>那么怎么切换Python2.x和Python3.x呢。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基于 python3.6 创建一个名为test_py3 的环境</span></span><br><span class="line">conda create --name test_py3 python=<span class="number">3.6</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于 python2.7 创建一个名为test_py2 的环境</span></span><br><span class="line">conda create --name test_py2 python=<span class="number">2.7</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活 test 环境</span></span><br><span class="line">activate test_py2  <span class="comment"># windows</span></span><br><span class="line">source activate test_py2 <span class="comment"># linux/mac</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到python3</span></span><br><span class="line">source test_py3</span><br></pre></td></tr></table></figure>
+<p>在mac下只要能<code>source test_py2</code>或者<code>source test_py3</code>做到只有切换</p>
+<h2 id="conda安装包"><a href="#conda安装包" class="headerlink" title="conda安装包"></a>conda安装包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 安装 matplotlib </span></span><br><span class="line">conda install matplotlib</span><br><span class="line"><span class="comment"># 查看已安装的包</span></span><br><span class="line">conda list </span><br><span class="line"><span class="comment"># 包更新</span></span><br><span class="line">conda update matplotlib</span><br><span class="line"><span class="comment"># 删除包</span></span><br><span class="line">conda remove matplotlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索</span></span><br><span class="line">conda search flask</span><br></pre></td></tr></table></figure>
+<h2 id="配置高速下载"><a href="#配置高速下载" class="headerlink" title="配置高速下载"></a>配置高速下载</h2><p>打开我们的<code>~/.condarc</code>文件，配置如下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> channels:</span><br><span class="line">   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">   - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">ssl_verify: <span class="literal">true</span></span><br><span class="line">~</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Java/">Java</a>
+  <a class="article-category-link" href="/categories/Tools/">Tools</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Tomcat/">Tomcat</a>
+  <span></span> <a href="/tags/Python/">Python</a>
   </div>
 
 </div>
@@ -141,7 +126,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://ownwell.github.io/2015/07/29/use-tomcat-on-mac-os/" data-title="Mac 下安装配置Tomcat | Cyning的博客" data-tsina="null" class="share clearfix">
+	  <div data-url="http://ownwell.github.io/2018/08/17/conda-for-python2or3/" data-title="conda_for_python2or3 | Cyning的博客" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -154,19 +139,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/08/11/mysql-remote/" title="关于Mysql允许远程连接">
-  <strong>上一篇：</strong><br/>
-  <span>
-  关于Mysql允许远程连接</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/07/27/Android-Studio自定LiveTemplates/"  title="Android Studio自定LiveTemplates">
+<a href="/2018/08/16/try-baidu-ai/"  title="试了一把Baidu的语言处理sdk">
  <strong>下一篇：</strong><br/> 
- <span>Android Studio自定LiveTemplates
+ <span>试了一把Baidu的语言处理sdk
 </span>
 </a>
 </div>
@@ -199,7 +176,7 @@ gitment.render('container')
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动Tomacat"><span class="toc-number">2.</span> <span class="toc-text">启动Tomacat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#conda"><span class="toc-number">1.</span> <span class="toc-text">conda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切换Python2-x和Python3-x"><span class="toc-number">2.</span> <span class="toc-text">切换Python2.x和Python3.x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conda安装包"><span class="toc-number">3.</span> <span class="toc-text">conda安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置高速下载"><span class="toc-number">4.</span> <span class="toc-text">配置高速下载</span></a></li></ol>
  
   </div>
 
