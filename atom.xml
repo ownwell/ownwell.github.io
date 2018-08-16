@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2018-08-16T15:39:23.194Z</updated>
+  <updated>2018-08-16T15:43:21.775Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>优秀的配置和插件送给优秀的VS code</title>
+    <title>VS code的好用的插件和方便的配置</title>
     <link href="http://ownwell.github.io/2018/08/16/good-tools-for-vs-code/"/>
     <id>http://ownwell.github.io/2018/08/16/good-tools-for-vs-code/</id>
     <published>2018-08-16T15:33:01.000Z</published>
-    <updated>2018-08-16T15:39:23.194Z</updated>
+    <updated>2018-08-16T15:43:21.775Z</updated>
     
     <content type="html"><![CDATA[<p>[toc]</p><p>作为一个Android的开发者，很多时候是和<code>Android Studio</code>打交道，可是他实在太重，于是就习惯了一个很轻盈的文本工具，没错，有很多选择，比如<a href="https://www.sublimetext.com/" target="_blank" rel="noopener">sublimetext</a>,<a href="https://atom.io/" target="_blank" rel="noopener">atom</a>,不过我还是喜欢Vscode，出身贵族(微软)，插件很多，主要是的操作方便，颜值很高，不信，给你图感受下。</p><p><img src="http://pc0oz0yc3.bkt.clouddn.com/1534431572.png?imageMogr2/thumbnail/!70p" alt="图1"></p><p>有没雨觉得很舒服。</p><p>这就给大家介绍几款在使用Vs Code常用的工具或者配置</p><h1 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h1><p><code>VS code</code>集成了很多插件，也有自己的插件应用市场，你可以直接在VS code里面搜索。<br><code>VS code</code>集成的插件如代码高亮，Markdown编辑预览等功能也是很赞的。那我们就给的大家推荐几个我常用的几款插件。</p><h2 id="code-blue"><a href="#code-blue" class="headerlink" title="code blue"></a>code blue</h2><p>如上图中的所示，我们可以看到这样的配合，很保护眼睛，且很美观，很惊艳吧。</p><p>可以直接去<code>VS Code</code>的时长搜索<code>code blue</code>进行下载。</p><h2 id="JSON-Tools"><a href="#JSON-Tools" class="headerlink" title="JSON Tools"></a>JSON Tools</h2><p>这个插件主要是用于格式化，使用它可以直接格式话json<br>markdown插件<br><img src="http://pc0oz0yc3.bkt.clouddn.com/json-format.gif?imageMogr2/thumbnail/!70p" alt=""></p><h2 id="Material-Icon-Theme"><a href="#Material-Icon-Theme" class="headerlink" title="Material Icon Theme"></a>Material Icon Theme</h2><p>可以是我们的文件看起来很美观哦，这个对于开发html/js可能更适合，会用图标区分每个文件的类型。</p><p><img src="http://pc0oz0yc3.bkt.clouddn.com/1534432446.png?imageMogr2/thumbnail/!70p" alt=""></p><p>## </p><h1 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h1><h2 id="配置VS-code到环境变量"><a href="#配置VS-code到环境变量" class="headerlink" title="配置VS code到环境变量"></a>配置<code>VS code</code>到环境变量</h2><p>给我们的code起个别名，使得我们在命令终端就可以直接打开<code>VS code</code>。<br>配置也很简单，只需要在你的shell配置里起个别名形式即可。<br>在<code>~/.zshrc</code>(若你使用的bash，可以在<code>~/.bashrc</code>)下配置如下命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p><p>就可以直接在terminal下直接输入<code>code ~/.zshrc</code>直接打开zshrc配置了(有点类似vim)</p><h2 id="markdown-image-alfred"><a href="#markdown-image-alfred" class="headerlink" title="markdown-image-alfred"></a>markdown-image-alfred</h2><p>可以直接将年粘贴板的图上传到七牛，并生成markdown格式的链接,这个是Alfred的一个workflow,可以按照<a href="https://github.com/kaito-kidd/markdown-image-alfred" target="_blank" rel="noopener">markdown-image-alfred</a>介绍来一步步配置，我现在上传图片还是很方便的，只需好复制，<code>command+shift+ V</code>就生成了一个<code>markdown</code>格式的链接了。<br>。<br>如下图的操作。</p><p><img src="http://pc0oz0yc3.bkt.clouddn.com/markdown-pic.gif?imageMogr2/thumbnail/!70p" alt=""></p>]]></content>
     

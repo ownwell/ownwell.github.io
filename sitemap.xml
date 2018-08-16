@@ -4,10 +4,10 @@
     
   <url>
     <loc>http://ownwell.github.io/2018/08/16/good-tools-for-vs-code/</loc>
-    <lastmod>2018-08-16T15:39:23.194Z</lastmod>
+    <lastmod>2018-08-16T15:43:21.775Z</lastmod>
     <data>
         <display>
-        <title>优秀的配置和插件送给优秀的VS code</title>
+        <title>VS code的好用的插件和方便的配置</title>
         <pubTime>2018-08-16T15:33:01.000Z</pubTime>
         
         <tag>VS code </tag>
@@ -886,23 +886,19 @@
     
     
   <url>
-    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
+    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>设计模式之单例模式</title>
-        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
+        <title>Activity生命周期的回调妙用</title>
+        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
         
-        <tag>Java </tag>
-         
-        <tag>设计模式 </tag>
-         
-        <tag>单例 </tag>
+        <tag>Android源码 </tag>
          
          
            
              
-              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -970,6 +966,25 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Google IO 2015 APK 来了</title>
+        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
+        
+        <tag>Android </tag>
+         
+        <tag>Google </tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2015/06/15/A-sharp-tool-Charles/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -986,25 +1001,6 @@
              
               <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/06/05/google-io-2015/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Google IO 2015 APK 来了</title>
-        <pubTime>2015-06-05T09:45:49.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-        <tag>Google </tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -1031,19 +1027,23 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/28/Activity-lifeCircle-CallBack/</loc>
+    <loc>http://ownwell.github.io/2014/07/02/desigSingleton/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Activity生命周期的回调妙用</title>
-        <pubTime>2015-05-28T12:08:16.000Z</pubTime>
+        <title>设计模式之单例模式</title>
+        <pubTime>2014-07-01T16:00:00.000Z</pubTime>
         
-        <tag>Android源码 </tag>
+        <tag>Java </tag>
+         
+        <tag>设计模式 </tag>
+         
+        <tag>单例 </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="编程" url="http://ownwell.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
@@ -1148,26 +1148,6 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android开发中事半功倍的小知识点</title>
-        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
-        
-        <tag>Android </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://ownwell.github.io/2016/09/30/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E7%BE%8E%E5%9B%A2%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1188,19 +1168,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/23/Good-Way-to-Parse-Json/</loc>
+    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>一个很好解析和生成Json的工具</title>
-        <pubTime>2015-05-22T17:54:55.000Z</pubTime>
+        <title>Spring学习笔记（1）</title>
+        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
         
-        <tag>Android </tag>
+        <tag>Java </tag>
          
          
            
              
-              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
           
         </display>
     </data>
@@ -1208,12 +1188,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
+    <loc>http://ownwell.github.io/2015/05/23/Good-Way-to-Parse-Json/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]Android UI线程和非UI线程</title>
-        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
+        <title>一个很好解析和生成Json的工具</title>
+        <pubTime>2015-05-22T17:54:55.000Z</pubTime>
         
         <tag>Android </tag>
          
@@ -1248,6 +1228,28 @@
 
     
   <url>
+    <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>为IDEA设置Google's Code Stytle </title>
+        <pubTime>2015-05-13T11:41:29.000Z</pubTime>
+        
+        <tag>CodeStyle </tag>
+         
+        <tag>IDEA </tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ownwell.github.io/2014/11/17/GradlewMutilChannelInAndroid/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
@@ -1270,16 +1272,34 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/05/13/set-google-code-for-idea/</loc>
+    <loc>http://ownwell.github.io/2016/02/29/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>为IDEA设置Google's Code Stytle </title>
-        <pubTime>2015-05-13T11:41:29.000Z</pubTime>
+        <title>Android开发中事半功倍的小知识点</title>
+        <pubTime>2016-02-29T13:52:28.000Z</pubTime>
         
-        <tag>CodeStyle </tag>
+        <tag>Android </tag>
          
-        <tag>IDEA </tag>
+         
+           
+             
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
+    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac系统读写NFTS磁盘分区的方法</title>
+        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
+        
+        <tag>Mac </tag>
          
          
            
@@ -1312,39 +1332,19 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2015/09/02/learn-spring-1/</loc>
+    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>Spring学习笔记（1）</title>
-        <pubTime>2015-09-02T15:21:02.000Z</pubTime>
+        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
+        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
         
-        <tag>Java </tag>
+        <tag>Android </tag>
          
          
            
              
-              <breadCrumb title="Java" url="http://ownwell.github.io/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://ownwell.github.io/2015/01/08/mac_ntfs/</loc>
-    <lastmod>2017-04-19T05:57:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Mac系统读写NFTS磁盘分区的方法</title>
-        <pubTime>2015-01-07T16:00:00.000Z</pubTime>
-        
-        <tag>Mac </tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://ownwell.github.io/categories/Tools/"/>
+              <breadCrumb title="Android" url="http://ownwell.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -1372,12 +1372,12 @@
 
     
   <url>
-    <loc>http://ownwell.github.io/2014/09/08/InfiniteScrollListener/</loc>
+    <loc>http://ownwell.github.io/2014/10/14/android_thread_handler/</loc>
     <lastmod>2017-04-19T05:57:19.000Z</lastmod>
     <data>
         <display>
-        <title>[Android]如何实现无限滚动的ListViw/GridView</title>
-        <pubTime>2014-09-07T16:00:00.000Z</pubTime>
+        <title>[Android]Android UI线程和非UI线程</title>
+        <pubTime>2014-10-13T16:00:00.000Z</pubTime>
         
         <tag>Android </tag>
          
