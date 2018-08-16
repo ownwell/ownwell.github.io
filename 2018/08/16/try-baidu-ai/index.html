@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Cyning的博客">
 <meta property="og:description" content="不知怎么滴，一开始都唱衰Baidu的自媒体，突然之间改了风向，改打击腾讯了，看来Robin的在Summer Party上的正能量还是很有用的么？ 今天无意间看了ai.baidu.com发现已经有了语言分析的sdk，于是乎试了一把，挺好用，就过来按理给大家把。 我用的java版本的语言处理基础技术。先注册，获取appid等应用信息，下载sdk。下面就是很有意思，我其实一直想学习如何给文章打标签。有了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T16:00:16.253Z">
+<meta property="og:updated_time" content="2018-08-16T16:02:49.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="试了一把Baidu的语言处理sdk">
 <meta name="twitter:description" content="不知怎么滴，一开始都唱衰Baidu的自媒体，突然之间改了风向，改打击腾讯了，看来Robin的在Summer Party上的正能量还是很有用的么？ 今天无意间看了ai.baidu.com发现已经有了语言分析的sdk，于是乎试了一把，挺好用，就过来按理给大家把。 我用的java版本的语言处理基础技术。先注册，获取appid等应用信息，下载sdk。下面就是很有意思，我其实一直想学习如何给文章打标签。有了">
@@ -103,7 +103,8 @@
 <p>我从头条上搞到了一条新闻，试了下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">sample2</span><span class="params">(AipNlp client)</span> </span>&#123;</span><br><span class="line">        String title = <span class="string">"房叔房婶都跪了！“房祖宗”坐拥 15645 套房产"</span>;</span><br><span class="line">        String content = <span class="string">"港元（约合人民币 2.06 亿元）。其中，减税最多的那位，也就是坐拥 15645 套房产的房祖宗，获得减税额度高达 1.026 亿港元（约合人民币 8200 万元）。另外 9 位，即使是名单中的最后一位，也拥有 1258 套房产，免税额为 890 万港元（约合人民币 713 万元）。"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 传入可选参数调用接口</span></span><br><span class="line">        HashMap&lt;String, Object&gt; options = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 文章标签</span></span><br><span class="line">        JSONObject res = client.keyword(title, content, options);</span><br><span class="line">        System.out.println(res.toString(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>结果很赞。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"log_id"</span>: <span class="number">403842984771490524</span>,</span><br><span class="line">  <span class="string">"items"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"score"</span>: <span class="number">0.836735</span>,</span><br><span class="line">      <span class="string">"tag"</span>: <span class="string">"港元人民币"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"score"</span>: <span class="number">0.80301</span>,</span><br><span class="line">      <span class="string">"tag"</span>: <span class="string">"购房"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"score"</span>: <span class="number">0.776263</span>,</span><br><span class="line">      <span class="string">"tag"</span>: <span class="string">"房地产业"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>居然给每个标签还打了分。是不是可以为自己写博客时给自己的文章打了个tag呢？</p>
+<p>居然给每个标签还打了分。是不是可以为自己的博客，打了个tag呢？</p>
+<p>更多好玩的，还在摊上中……</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -282,11 +283,7 @@ gitment.render('container')
 			
 		
 			
-				<li><a href="/tags/View/" title="View">View<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+				<li><a href="/tags/JCenter/" title="JCenter">JCenter<sup>1</sup></a></li>
 			
 		
 			
@@ -295,10 +292,6 @@ gitment.render('container')
 		
 			
 				<li><a href="/tags/Sublime-Text/" title="Sublime Text">Sublime Text<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
 			
 		
 			
@@ -314,15 +307,23 @@ gitment.render('container')
 			
 		
 			
+				<li><a href="/tags/Android源码/" title="Android源码">Android源码<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CodeStyle/" title="CodeStyle">CodeStyle<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
+				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Material/" title="Material">Material<sup>1</sup></a></li>
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>1</sup></a></li>
 			
 		
 		</ul>
