@@ -258,7 +258,10 @@ var _hmt = _hmt || [];
 
     </body>
    </html>
-(window).resize(function(){
+.scrollTop()));
+  });
+  
+  $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
       $('header nav').removeClass('shownav');
