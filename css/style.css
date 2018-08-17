@@ -647,6 +647,7 @@ header nav ul li a:hover {
 #main section.post a span.top_article {
   color: #e24234;
   border: 1px solid #e24234;
+  border-radius: 3px;
   height: 20px;
   font-size: 15px;
   padding-left: 3px;
