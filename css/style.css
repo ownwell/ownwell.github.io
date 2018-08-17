@@ -644,12 +644,19 @@ header nav ul li a:hover {
   color: #2ca6cb;
   line-height: 2;
 }
+#main section.post a span.top_article {
+  color: #e24234;
+  border: 1px solid #e24234;
+  height: 20px;
+  font-size: 15px;
+  padding-left: 3px;
+  margin-right: 10px;
+}
 #main section.post a p {
   color: #817c7c;
 }
 #main section.post a time {
   color: #817c7c;
-  display: block;
   margin: 0.5em 0;
   font-size: 0.9em;
 }
