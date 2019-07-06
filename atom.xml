@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2019-07-06T14:44:47.949Z</updated>
+  <updated>2019-07-06T16:25:09.866Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://ownwell.github.io/2019/06/27/2019-06-27-%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BHookActivity/"/>
     <id>http://ownwell.github.io/2019/06/27/2019-06-27-插件化之HookActivity/</id>
     <published>2019-06-27T14:11:25.000Z</published>
-    <updated>2019-07-06T14:44:47.949Z</updated>
+    <updated>2019-07-06T16:25:09.866Z</updated>
     
     <content type="html"><![CDATA[<p>插件化是最近几年的比较流行的技术，最近腾讯出了以<a href="https://github.com/Tencent/Shadow" target="_blank" rel="noopener">Shadow</a>,和其他框架比，官方介绍还是很多的。</p><a id="more"></a><p><img src="https://raw.githubusercontent.com/ownwell/image-bed/master/img/2019-07-02-22-42-40.png" alt></p><p>这个后面会探索下，一直觉得国内的开发者在我们自己的范围内玩的真的玩出花了（Google play是不允许这些动态化和热修的东西的，否则等着警告吧）。</p><p>为了看Shadow我又把之前看动态的文章给找出来，也算是复习了。<br>对于插件化，就要理解什么是插件化</p><h1 id="插件化"><a href="#插件化" class="headerlink" title="插件化"></a>插件化</h1><p>插件化技术最初源于免安装运行apk的想法，这个免安装的apk或者dex可以理解为插件。支持插件化的app（宿主App host）可以在运行时加载和运行插件，这样便可以将app中一些不常用的功能模块做成插件，一方面减小了安装包的大小，另一方面可以实现app功能的动态扩展。</p>]]></content>
     
@@ -31,10 +31,10 @@
     
     </summary>
     
-      <category term="插件化" scheme="http://ownwell.github.io/categories/%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
+      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://ownwell.github.io/tags/Android/"/>
+      <category term="插件化" scheme="http://ownwell.github.io/tags/%E6%8F%92%E4%BB%B6%E5%8C%96/"/>
     
   </entry>
   
