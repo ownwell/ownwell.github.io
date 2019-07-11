@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>[Android]关于Android在Gradlew多渠道打包方式 | Cyning</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">[Android]关于Android在Gradlew多渠道打包方式</h1><a id="logo" href="/.">Cyning</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">[Android]关于Android在Gradlew多渠道打包方式</h1><div class="post-meta">Nov 17, 2014<span> | </span><span class="category"><a href="/categories/Tools/">Tools</a></span></div><div class="post-content"><hr>
+<p>记得以前在Eclipse开发，用的是一个插件，现在好不容易转到IDEA上（下一步就是Android Studio），在文件结构保持和Eclipse一段后，采用了Gradlew进行编译，加上我们公司的香香同学又整理好了Jenkin这个CI自动集成系统，瞬间感觉高大上了。</p>
+<p>今天结束了公司的一个版本的开发，回家在整理多渠道包的问题，看了友盟的多渠道方式，有个1.11的在我机器上死活报那个manifest下没有对应渠道的manifest文件，果断采取了copy的方法，也是没办法了。</p>
+<a id="more"></a>
+
+<p>今天先把代码贴出来，明天在好好整理下，太困了。</p>
+<p>```Java<br>    apply plugin: ‘android’</p>
+<pre><code>android {
+    compileSdkVersion    19
+    buildToolsVersion    &quot;19.1&quot;
+
+    sourceSets {
+        main {
+            manifest.srcFile &apos;AndroidManifest.xml&apos;
+            java.srcDirs = [&apos;src&apos;]
+            res.srcDirs = [&apos;res&apos;]
+            assets.srcDirs = [&apos;assets&apos;]
+        }
+
+    }    
+
+    defaultConfig {
+        minSdkVersion    11
+        targetSdkVersion    19
+        versionCode    20141107
+        versionName    &quot;2.2.0&quot;
+    }
+
+    packagingOptions {
+        exclude &apos;META-INF/DEPENDENCIES.txt&apos;
+        exclude &apos;META-INF/LICENSE.txt&apos;
+        exclude &apos;META-INF/NOTICE.txt&apos;
+        exclude &apos;META-INF/NOTICE&apos;
+        exclude &apos;META-INF/LICENSE&apos;
+        exclude &apos;META-INF/DEPENDENCIES&apos;
+        exclude &apos;META-INF/notice.txt&apos;
+        exclude &apos;META-INF/license.txt&apos;
+        exclude &apos;META-INF/dependencies.txt&apos;
+        exclude &apos;META-INF/LGPL2.1&apos;
+    }
+
+
+
+//下面一段是将libs/*/*.so文件加入打包
+//如果你的项目是使用Eclipse+ADT建立的，则需要这段代码
+    task copyNativeLibs(type: Copy) {
+        from(new File(&apos;libs&apos;)) { include &apos;**/*.so&apos; }
+        into new File(buildDir, &apos;native-libs&apos;)
+    }
+
+    tasks.withType(Compile) { compileTask -&gt; compileTask.dependsOn copyNativeLibs }
+
+    clean.dependsOn &apos;cleanCopyNativeLibs&apos;
+
+    tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask -&gt;
+        pkgTask.jniFolders = new HashSet&lt;File&gt;()
+        pkgTask.jniFolders.add(new File(buildDir, &apos;native-libs&apos;))
+    }
+    signingConfigs {
+        release {
+            storeFile = file(System.getenv()[&apos;APK_SIGNING_KEYSTORE&apos;])    
+            storePassword = System.getenv()[&apos;APK_SIGNING_STOREPASS&apos;]
+            keyAlias = System.getenv()[&apos;APK_SIGNING_KEYALIAS&apos;]
+            keyPassword = System.getenv()[&apos;APK_SIGNING_KEYPASS&apos;]
+        }    
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            runProguard false    
+            proguardFiles    getDefaultProguardFile(&apos;proguard-android.txt&apos;), \
+                &apos;proguard-rules.txt&apos;
+
+
+        }
+    }
+
+    //渠道
+    productFlavors {
+        Wandoujia{}
+        Qihu360{}
+        QQYingyongBao{}
+
+    }
+
+    //这个是解决lint报错的代码
+    lintOptions {
+        abortOnError false
+    }
+
+
+
+}
+
+
+dependencies {
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+
+    compile project(&quot;:libs:libapp&quot;)
+
+
+}
+
+
+//替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称
+android.applicationVariants.all{ variant -&gt;
+    variant.processManifest.doLast{
+        copy{
+            from(&quot;${buildDir}/manifests&quot;){
+                include &quot;${variant.dirName}/AndroidManifest.xml&quot;
+            }
+            into(&quot;${buildDir}/manifests/$variant.name&quot;)
+
+            filter{
+                String line -&gt; line.replaceAll(&quot;UMENG_CHANNEL_VALUE&quot;, &quot;$variant.name&quot;)
+            }
+
+            variant.processResources.manifestFile = file(&quot;${buildDir}/manifests/${variant.name}/${variant.dirName}/AndroidManifest.xml&quot;)
+
+
+//            applicationVariants.all { variant -&gt;
+                def file = variant.outputFile
+                def manifestParser = new com.android.builder.core.DefaultManifestParser()
+                def destName = &quot;AppName_&quot;+manifestParser.getVersionName(android.sourceSets.main.manifest.srcFile)+&quot;20141117&quot;+&quot;_&quot;+&quot;$variant.name&quot;+&quot;_release&quot;+&quot;.apk&quot;
+                variant.outputFile = new File(file.parent,destName)
+//            }
+
+
+
+        }
+
+
+    }
+
+
+}
+
+
+////替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称 By Remex Huang
+//android.applicationVariants.all{ variant -&gt;
+//    variant.processManifest.doLast{
+//
+//        //之前这里用的copy{}，我换成了文件操作，这样可以在v1.11版本正常运行，并保持文件夹整洁
+////${buildDir}是指./build文件夹
+////${variant.dirName}是flavor/buildtype，例如GooglePlay/release，运行时会自动生成
+////下面的路径是类似这样：./build/manifests/GooglePlay/release/AndroidManifest.xml
+//def manifestFile = &quot;${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml&quot;
+//
+////将字符串UMENG_CHANNEL_VALUE替换成flavor的名字
+//def updatedContent = new File(manifestFile).getText(&apos;UTF-8&apos;).replaceAll(&quot;UMENG_CHANNEL_VALUE&quot;, &quot;${variant.productFlavors[0].name}&quot;)
+//new File(manifestFile).write(updatedContent, &apos;UTF-8&apos;)
+//
+////将此次flavor的AndroidManifest.xml文件指定为我们修改过的这个文件
+//variant.processResources.manifestFile = file(&quot;${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml&quot;)
+//}
+//}</code></pre><p>```Java</p>
+</div><div class="tags"><a href="/tags/Android/">Android</a><a href="/tags/Tools/">Tools</a></div><div class="post-nav"><a class="pre" href="/2015/01/08/mac_ntfs/">Mac系统读写NFTS磁盘分区的方法</a><a class="next" href="/2014/10/15/android_support/">[Android]Android 版本兼容库</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://ownwell.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java源码/">Java源码</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JCenter/" style="font-size: 15px;">JCenter</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/CodeStyle/" style="font-size: 15px;">CodeStyle</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/Android源码/" style="font-size: 15px;">Android源码</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Material/" style="font-size: 15px;">Material</a> <a href="/tags/抓包/" style="font-size: 15px;">抓包</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Transition/" style="font-size: 15px;">Transition</a> <a href="/tags/Animations/" style="font-size: 15px;">Animations</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/Tomcat/" style="font-size: 15px;">Tomcat</a> <a href="/tags/UI/" style="font-size: 15px;">UI</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Jenkins/" style="font-size: 15px;">Jenkins</a> <a href="/tags/View/" style="font-size: 15px;">View</a> <a href="/tags/Realm/" style="font-size: 15px;">Realm</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/注解/" style="font-size: 15px;">注解</a> <a href="/tags/2018/" style="font-size: 15px;">2018</a> <a href="/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/热修复/" style="font-size: 15px;">热修复</a> <a href="/tags/译文/" style="font-size: 15px;">译文</a> <a href="/tags/服务器/" style="font-size: 15px;">服务器</a> <a href="/tags/动态代理/" style="font-size: 15px;">动态代理</a> <a href="/tags/编程/" style="font-size: 15px;">编程</a> <a href="/tags/JNI开发/" style="font-size: 15px;">JNI开发</a> <a href="/tags/VS-code/" style="font-size: 15px;">VS code</a> <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/Gradle/" style="font-size: 15px;">Gradle</a> <a href="/tags/pandas/" style="font-size: 15px;">pandas</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/单例/" style="font-size: 15px;">单例</a> <a href="/tags/多渠道/" style="font-size: 15px;">多渠道</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/hot-fix/" style="font-size: 15px;">hot-fix</a> <a href="/tags/Android热修复/" style="font-size: 15px;">Android热修复</a> <a href="/tags/Android进阶/" style="font-size: 15px;">Android进阶</a> <a href="/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/tags/插件化/" style="font-size: 15px;">插件化</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/27/插件化之HookActivity/">插件化之Hook Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/20/2019-06-20-alfred插件开发/">alfred插件开发-将github作为图床</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/12/Flutter-从一个demo开始/">Flutter 从一个demo开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/23/Aspect和aop打点调研/">Aspect和AOP打点调研</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/android-gradle-3/">Gradle插件开发(3) - 无侵入的函数运行时间统计的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/android-gradle-2/">Gradle插件开发(2) - extensions和Task</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/conda-for-python2or3/">conda切换Python2和Python3环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/16/try-baidu-ai/">试了一把Baidu的语言处理sdk</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/16/good-tools-for-vs-code/">VS code的好用的插件和方便的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/android-gradle_1/">Gradle插件开发(1) - Hello world</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://wanandroid.com/" title="wanAndroid" target="_blank">wanAndroid</a><ul></ul><a href="https://blog.csdn.net/luoshengyang" title="老罗" target="_blank">老罗</a><ul></ul><a href="http://androidxref.com/" title="androidxref" target="_blank">androidxref</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Cyning.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
