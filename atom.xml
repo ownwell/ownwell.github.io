@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2019-07-07T01:55:30.873Z</updated>
+  <updated>2019-07-11T16:24:41.370Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>插件化之Resource</title>
+    <link href="http://ownwell.github.io/2019/07/12/%E6%8F%92%E4%BB%B6%E5%8C%96%E4%B9%8BResource/"/>
+    <id>http://ownwell.github.io/2019/07/12/插件化之Resource/</id>
+    <published>2019-07-11T16:24:41.000Z</published>
+    <updated>2019-07-11T16:24:41.370Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>插件化之Hook Activity</title>
@@ -481,31 +495,6 @@
     
     
       <category term="算法" scheme="http://ownwell.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模拟下Retrofit的动态代理</title>
-    <link href="http://ownwell.github.io/2018/03/11/dynamic-proxy-for-retrofit/"/>
-    <id>http://ownwell.github.io/2018/03/11/dynamic-proxy-for-retrofit/</id>
-    <published>2018-03-10T16:00:00.000Z</published>
-    <updated>2018-04-02T15:29:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Retrofit是目前使用的最Six的网络请求框架，他具有很好的拓展性，支持Xml，Json，Protobuf等协议，调度上支持RxJava，Guava，Java8等方式。为了更好理解Retrofit，我看了下他的源码，发现Square就是牛，代码分层清晰，可复用性强，提供的API对开发者友好诸多优点，虽然用到了反射，但是依然不影响它的优美之处。</p><h1 id="模仿Retrofit"><a href="#模仿Retrofit" class="headerlink" title="模仿Retrofit"></a>模仿Retrofit</h1><p>对于Retrofit我们可以通过一个接口，生成一个对象，这个是如何做到的呢？一开始我就是带着这个问题来看源码的，为了更好理解我自己模拟了Retrofit的实现方式，我们也给这个关键类起名叫Retrofit，其使用方式如下。</p><p>code 1</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dynamicproxy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  <span class="class"><span class="keyword">interface</span> <span class="title">VPN</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Url</span>(<span class="string">"twitter.con"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">visitNetwork</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span>  <span class="class"><span class="keyword">interface</span> <span class="title">ChinaNetwork</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Url</span>(<span class="string">"baidu.com"</span>)</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">visitNetwork</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        VPN vpn = <span class="keyword">new</span> Retrofit().create(VPN.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(vpn.visitNetwork());;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>就是<code>new Retrofit().create(VPN.class)</code>让我满脸的疑惑，现在我们可以看下<code>visitNetwork</code>的结果，实际上是打印的<code>twitter.con</code>.若是我们把<code>VPN</code>换成<code>ChinaNetwork</code>,打印的是<code>baidu.com</code>.</p><p>这个API是不是和Retrofit有几分神似?</p><p>我们可以知道拿到Url注解里的value其实不难，可以参考之前注解的文章，主要拿到了这个方法，就可以获得和它相关的注解。</p><p>那么，怎么生产一个通过接口生成一个对象呢，其实很简单，就是动态代理？</p><h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p>动态代理不是什么新词，在Java里很多框架都是基于动态代理实现的，动态代理在很大程度上解决了解耦的问题，不像静态代理（或者继承）那样强关联。<br>在了解动态代理前，我们需要先了解一个静态方法。<br>java.lang.reflect.Proxy的newProxyInstance方法，它需要三个参数：</p><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/MacHi%202018-04-02%2022-22-31.png" alt></p><ol><li>ClassLoader 这个是我们加载class中很必要的。</li><li>Class[] 这个实际上就是我们需要使用动态代理的接口或者抽象类</li><li>InvocationHandler 实际上就是这个对象在运行中的回调，并返回对应函数的结果。</li></ol><p>可以结合code1的代码来实现我们的动态代理类：<br>code 2</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Retrofit</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">create</span><span class="params">(<span class="keyword">final</span> Class&lt;T&gt; service)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (T) Proxy.newProxyInstance(service.getClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> Class[]&#123;service&#125;, <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                        System.out.println(<span class="string">"before"</span>);</span><br><span class="line">                        Annotation[] annotations = method.getAnnotations();</span><br><span class="line">                        String html = <span class="string">""</span>;</span><br><span class="line">                        <span class="keyword">for</span> (Annotation annotation : annotations) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (annotation <span class="keyword">instanceof</span> Url) &#123;</span><br><span class="line">                                String url = ((Url) annotation).value();</span><br><span class="line">                                System.out.println(<span class="string">"访问的页面: "</span> + url);</span><br><span class="line">                                html = <span class="string">"&lt;html &gt; "</span> + url + <span class="string">" &lt;/html&gt;"</span>;</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        System.out.println(<span class="string">"after"</span>);</span><br><span class="line">                        <span class="keyword">return</span> html;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Retrofit2.0通过注解拿到我们配置的各种参数，如请求方法，url，请求参数等，再通过动态代理生成一个新的VPN或者ChinaNetwork对象来处理这些参数，像code2中我们可以通过拿到的url参数，来进行请求网页等其他操作，但对于程序的入口类是无感知的。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Retrofit是目前使用的最Six的网络请求框架，他具有很好的拓展性，支持Xml，Json，Protobuf等协议，调度上支持RxJava，Guava，Java8等方式。为了更好理解Retrofit，我看了下他的源码，发现Square就是牛，代码分层清晰，可复用性强，提供
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://ownwell.github.io/categories/Android/"/>
-    
-    
-      <category term="动态代理" scheme="http://ownwell.github.io/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
