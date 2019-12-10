@@ -1,4 +1,363 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>注解（2）-- 定义自己的Annotation Processor | Cyning</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">注解（2）-- 定义自己的Annotation Processor</h1><a id="logo" href="/.">Cyning</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">注解（2）-- 定义自己的Annotation Processor</h1><div class="post-meta">Aug 17, 2017<span> | </span><span class="category"><a href="/categories/Android/">Android</a></span></div><div class="post-content"><p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog" alt></p>
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>注解（2）-- 定义自己的Annotation Processor | Hexo</title>
+  <meta name="description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta name="keywords" content="Android进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="注解（2）-- 定义自己的Annotation Processor">
+<meta property="og:url" content="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/index.html">
+<meta property="og:site_name" content="Cyning">
+<meta property="og:description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/5C6689ADF977FB09DD3B60ADFD839FF.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/d90d56a0fadfdc05505e5d34474e7159.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/5a4a5f5683d9ef3e.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/4d8b64798c909ea083157d59d9fe77b0.png">
+<meta property="og:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/aac48d97892865f4e111cfa0b8741f10.png">
+<meta property="og:updated_time" content="2018-02-27T07:00:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="注解（2）-- 定义自己的Annotation Processor">
+<meta name="twitter:description" content="大家还记得[JakeWharton](https://github.com/JakeWharton)写的翻遍ui注解的库butterknife么？之前我们都是使用findviewById来查找view，有了butterknife我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。">
+<meta name="twitter:image" content="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Cyning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ownwell" target="_blank">
+          <img class="img-circle img-rotate" src="/images/cyning.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Cyning</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Android Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ownwell" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flutter/">Flutter</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android源码/">Android源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android热修复/">Android热修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android进阶/">Android进阶</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Animations/">Animations</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeStyle/">CodeStyle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCenter/">JCenter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI开发/">JNI开发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material/">Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Realm/">Realm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transition/">Transition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-code/">VS code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hot-fix/">hot-fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例/">单例</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多渠道/">多渠道</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓包/">抓包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件化/">插件化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热修复/">热修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译文/">译文</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/2018/" style="font-size: 13px;">2018</a> <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Android源码/" style="font-size: 13px;">Android源码</a> <a href="/tags/Android热修复/" style="font-size: 13px;">Android热修复</a> <a href="/tags/Android进阶/" style="font-size: 13.5px;">Android进阶</a> <a href="/tags/Animations/" style="font-size: 13px;">Animations</a> <a href="/tags/CodeStyle/" style="font-size: 13px;">CodeStyle</a> <a href="/tags/Flutter/" style="font-size: 13.17px;">Flutter</a> <a href="/tags/Git/" style="font-size: 13.17px;">Git</a> <a href="/tags/Google/" style="font-size: 13px;">Google</a> <a href="/tags/Gradle/" style="font-size: 13.33px;">Gradle</a> <a href="/tags/IDEA/" style="font-size: 13px;">IDEA</a> <a href="/tags/JCenter/" style="font-size: 13px;">JCenter</a> <a href="/tags/JNI开发/" style="font-size: 13.17px;">JNI开发</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 13px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 13.33px;">Kotlin</a> <a href="/tags/Mac/" style="font-size: 13px;">Mac</a> <a href="/tags/Material/" style="font-size: 13px;">Material</a> <a href="/tags/Python/" style="font-size: 13.83px;">Python</a> <a href="/tags/Realm/" style="font-size: 13px;">Realm</a> <a href="/tags/Ruby/" style="font-size: 13px;">Ruby</a> <a href="/tags/Sublime-Text/" style="font-size: 13px;">Sublime Text</a> <a href="/tags/Tomcat/" style="font-size: 13px;">Tomcat</a> <a href="/tags/Tools/" style="font-size: 13.67px;">Tools</a> <a href="/tags/Transition/" style="font-size: 13px;">Transition</a> <a href="/tags/UI/" style="font-size: 13px;">UI</a> <a href="/tags/VS-code/" style="font-size: 13px;">VS code</a> <a href="/tags/View/" style="font-size: 13px;">View</a> <a href="/tags/hot-fix/" style="font-size: 13px;">hot-fix</a> <a href="/tags/pandas/" style="font-size: 13px;">pandas</a> <a href="/tags/python/" style="font-size: 13px;">python</a> <a href="/tags/动态代理/" style="font-size: 13px;">动态代理</a> <a href="/tags/单例/" style="font-size: 13px;">单例</a> <a href="/tags/多渠道/" style="font-size: 13px;">多渠道</a> <a href="/tags/抓包/" style="font-size: 13px;">抓包</a> <a href="/tags/插件化/" style="font-size: 13px;">插件化</a> <a href="/tags/服务器/" style="font-size: 13px;">服务器</a> <a href="/tags/注解/" style="font-size: 13px;">注解</a> <a href="/tags/热修复/" style="font-size: 13px;">热修复</a> <a href="/tags/生活/" style="font-size: 13.17px;">生活</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a> <a href="/tags/编程/" style="font-size: 13px;">编程</a> <a href="/tags/翻译/" style="font-size: 13px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 13px;">设计模式</a> <a href="/tags/译文/" style="font-size: 13px;">译文</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/27/插件化之HookActivity/" class="title">插件化之Hook Activity</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-27T14:11:25.000Z" itemprop="datePublished">2019-06-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Tools/">Tools</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/20/2019-06-20-alfred插件开发/" class="title">alfred插件开发-将github作为图床</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-20T15:27:11.000Z" itemprop="datePublished">2019-06-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Flutter/">Flutter</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/16/flutter-learning-2/" class="title">Flutter 请求网络数据和列表展示</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-16T10:53:58.000Z" itemprop="datePublished">2019-05-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Flutter/">Flutter</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/12/Flutter-从一个demo开始/" class="title">Flutter 从一个demo开始</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-12T06:31:02.000Z" itemprop="datePublished">2019-05-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/12/23/Aspect和aop打点调研/" class="title">Aspect和AOP打点调研</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-12-23T10:57:56.000Z" itemprop="datePublished">2018-12-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-annotation-for-andrroid-2" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      注解（2）-- 定义自己的Annotation Processor
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/17/annotation-for-andrroid-2/" class="article-date">
+	  <time datetime="2017-08-17T13:15:58.000Z" itemprop="datePublished">2017-08-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android进阶/">Android进阶</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/17/annotation-for-andrroid-2/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>大家还记得<code>[JakeWharton](https://github.com/JakeWharton)</code>写的翻遍ui注解的库<code>butterknife</code>么？<br>之前我们都是使用findviewById来查找view，有了<code>butterknife</code>我们摆脱了这种重复代码，通过注解我们解放了生产力，我们可以把更多的经理放到我们的业务和整体的架构上来，而不是不断重复的代码。<br><img src="http://7xj9f0.com1.z0.glb.clouddn.com/201802091588.png-blog" alt></p>
 <a id="more"></a>
 <p>在开始前我们需要了解一下<code>Annotation Processor</code>，使用 Annotation Processor 来自动生成可以提高编写代码的效率和质量，手工编写毕竟容易出现纰漏，工具自动生成是有质量保证的。Annotation Processor 主要涉及 3 部分，注解本身（Annotation）、注解处理器（Annotation Processor）以及 如何使用注解器。</p>
 <h1><span id="一-hello-world">一、Hello world</span></h1><p>万事先从一个HelloWorld开始，我们可以通过<code>Annotation Processor</code>来自己生成一个类，这个类中的main方法可以打印hello world。</p>
@@ -81,4 +440,218 @@
 <p>这个注解需要放到一个单独的java lib下，我们命名为<code>inject-anotation</code>.</p>
 <h2><span id="实现processor类">实现Processor类</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line">mport com.google.auto.service.AutoService;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.JavaFile;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.MethodSpec;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeName;</span><br><span class="line"><span class="keyword">import</span> com.squareup.javapoet.TypeSpec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.AbstractProcessor;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.Messager;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.ProcessingEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.Processor;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.RoundEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedAnnotationTypes;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.SupportedSourceVersion;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.SourceVersion;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Element;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Modifier;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.PackageElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.TypeElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.VariableElement;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.type.TypeMirror;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.Elements;</span><br><span class="line"><span class="keyword">import</span> javax.tools.Diagnostic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationan.Inject;</span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.ClassTarget;</span><br><span class="line"><span class="keyword">import</span> me.cyning.anotationcore.inter.FieldTarget;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SupportedSourceVersion</span>(SourceVersion.RELEASE_8)</span><br><span class="line"><span class="meta">@AutoService</span>(Processor.class)</span><br><span class="line"><span class="meta">@SupportedAnnotationTypes</span>(<span class="string">"me.cyning.anotationan.Inject"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ProcessingEnvironment mProEnv;</span><br><span class="line">    Messager messager = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SUFFIX = <span class="string">"_Binder"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BINDER_INTERFACE = <span class="string">"me.cyning.core.bind.IViewBind"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TypeMirror mIViewBindType;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Elements elementUtils;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnv)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.init(processingEnv);</span><br><span class="line">        mProEnv = processingEnv;</span><br><span class="line"></span><br><span class="line">        messager = processingEnv.getMessager();</span><br><span class="line"></span><br><span class="line">        elementUtils = processingEnv.getElementUtils();</span><br><span class="line">        mIViewBindType = elementUtils.getTypeElement(BINDER_INTERFACE).asType();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;TypeElement, ClassTarget&gt; mTargetMaps = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String packageStr = <span class="keyword">null</span>;</span><br><span class="line">        String classNameStr = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        TypeElement classElem = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        Set&lt;Element&gt; mElements = (Set&lt;Element&gt;) roundEnv.getElementsAnnotatedWith(Inject.class);</span><br><span class="line">        <span class="keyword">for</span> (Element mElement : mElements) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//ElementType.FIELD注解可以直接强转VariableElement</span></span><br><span class="line">            VariableElement variableElement = (VariableElement) mElement;</span><br><span class="line">            classElem = (TypeElement) variableElement.getEnclosingElement();</span><br><span class="line"></span><br><span class="line">            String name = variableElement.getSimpleName().toString();</span><br><span class="line">            <span class="comment">// 获取Inject跟的view的id</span></span><br><span class="line">            <span class="keyword">int</span> id = variableElement.getAnnotation(Inject.class).value();</span><br><span class="line">            TypeMirror type = variableElement.asType();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            PackageElement pkgElem = mProEnv.getElementUtils().getPackageOf(classElem);</span><br><span class="line">            packageStr = pkgElem.getQualifiedName().toString();</span><br><span class="line">            classNameStr = classElem.getSimpleName().toString() + SUFFIX;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            ClassTarget mClassTarget = mTargetMaps.get(classElem);</span><br><span class="line">            <span class="keyword">if</span> (mClassTarget == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mClassTarget = <span class="keyword">new</span> ClassTarget();</span><br><span class="line">                mClassTarget.clazzName = classNameStr;</span><br><span class="line">                mClassTarget.packageName = packageStr;</span><br><span class="line">                mClassTarget.classType = classElem.asType();</span><br><span class="line">                mTargetMaps.put(classElem, mClassTarget);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            FieldTarget fieldTarget = <span class="keyword">new</span> FieldTarget();</span><br><span class="line">            fieldTarget.id = id;</span><br><span class="line">            fieldTarget.name = name;</span><br><span class="line">            fieldTarget.type = type;</span><br><span class="line">            mClassTarget.add(fieldTarget);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            log(<span class="string">"getEnclosingElement"</span>, classElem.getEnclosingElement().toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        log(<span class="string">"getEnclosingElement"</span>, <span class="string">'1'</span>);</span><br><span class="line">        log(<span class="string">"classNameStr "</span>, classNameStr);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (classNameStr != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                Iterator entries = mTargetMaps.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (entries.hasNext()) &#123;</span><br><span class="line"></span><br><span class="line">                    Map.Entry&lt;TypeElement, ClassTarget&gt; entry = (Map.Entry&lt;TypeElement, ClassTarget&gt;) entries.next();</span><br><span class="line"></span><br><span class="line">                    TypeElement key = (TypeElement) entry.getKey();</span><br><span class="line"></span><br><span class="line">                    ClassTarget value = (ClassTarget) entry.getValue();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    MethodSpec.Builder builder = MethodSpec.methodBuilder(<span class="string">"findViews"</span>)</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .addAnnotation(Override.class)</span><br><span class="line">                            .addParameter(Object.class, <span class="string">"obj"</span>, Modifier.FINAL)</span><br><span class="line">                            .returns(<span class="keyword">void</span>.class)</span><br><span class="line">                            .addStatement(<span class="string">"$T target = (($T) obj)"</span>, value.classType, value.classType);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span> (FieldTarget mFieldTarget : value.mFieldTargets) &#123;</span><br><span class="line">                        builder.addStatement(<span class="string">"target."</span> + mFieldTarget.name + <span class="string">" = "</span> + <span class="string">"($T)target.findViewById("</span> + mFieldTarget.id + <span class="string">")"</span>, mFieldTarget.type);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    MethodSpec flux = MethodSpec.constructorBuilder()</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    MethodSpec findViews = builder</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    TypeSpec bindClazz = TypeSpec.classBuilder(value.clazzName)</span><br><span class="line">                            .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                            .addMethod(findViews)</span><br><span class="line">                            .addMethod(flux)</span><br><span class="line">                            .addSuperinterface(TypeName.get(mIViewBindType))</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line">                    JavaFile javaFile = JavaFile.builder(value.packageName, bindClazz)</span><br><span class="line">                            .build();</span><br><span class="line"></span><br><span class="line">                    javaFile.writeTo(processingEnv.getFiler());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//        try &#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        &#125; catch (IOException e) &#123;</span></span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * https://lizhaoxuan.github.io/2016/07/17/apt-Grammar-explanation/</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String tag, Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (object != <span class="keyword">null</span>) &#123;</span><br><span class="line">            messager.printMessage(Diagnostic.Kind.NOTE, tag + <span class="string">" --- "</span> + object.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</div><div class="tags"><a href="/tags/Android进阶/">Android进阶</a></div><div class="post-nav"><a class="pre" href="/2017/10/13/apk-two-signer/">【Android进阶】Android的APK两种签名</a><a class="next" href="/2017/08/08/annotation-for-andrroid-one/">注解（1）-- 什么是注解</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://ownwell.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flutter/">Flutter</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周报/">周报</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JCenter/" style="font-size: 15px;">JCenter</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/CodeStyle/" style="font-size: 15px;">CodeStyle</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/Android源码/" style="font-size: 15px;">Android源码</a> <a href="/tags/Material/" style="font-size: 15px;">Material</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/抓包/" style="font-size: 15px;">抓包</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Transition/" style="font-size: 15px;">Transition</a> <a href="/tags/Animations/" style="font-size: 15px;">Animations</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/Tomcat/" style="font-size: 15px;">Tomcat</a> <a href="/tags/Jenkins/" style="font-size: 15px;">Jenkins</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/UI/" style="font-size: 15px;">UI</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/View/" style="font-size: 15px;">View</a> <a href="/tags/Realm/" style="font-size: 15px;">Realm</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/热修复/" style="font-size: 15px;">热修复</a> <a href="/tags/注解/" style="font-size: 15px;">注解</a> <a href="/tags/2018/" style="font-size: 15px;">2018</a> <a href="/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/tags/服务器/" style="font-size: 15px;">服务器</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/动态代理/" style="font-size: 15px;">动态代理</a> <a href="/tags/译文/" style="font-size: 15px;">译文</a> <a href="/tags/编程/" style="font-size: 15px;">编程</a> <a href="/tags/JNI开发/" style="font-size: 15px;">JNI开发</a> <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/Gradle/" style="font-size: 15px;">Gradle</a> <a href="/tags/VS-code/" style="font-size: 15px;">VS code</a> <a href="/tags/pandas/" style="font-size: 15px;">pandas</a> <a href="/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/tags/【周报】/" style="font-size: 15px;">【周报】</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/单例/" style="font-size: 15px;">单例</a> <a href="/tags/多渠道/" style="font-size: 15px;">多渠道</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/hot-fix/" style="font-size: 15px;">hot-fix</a> <a href="/tags/Android热修复/" style="font-size: 15px;">Android热修复</a> <a href="/tags/Android进阶/" style="font-size: 15px;">Android进阶</a> <a href="/tags/插件化/" style="font-size: 15px;">插件化</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/26/2019年第30周-Android知识点汇总/">2019年第30周 Android知识点汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/27/插件化之HookActivity/">插件化之Hook Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/20/2019-06-20-alfred插件开发/">alfred插件开发-将github作为图床</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/16/flutter-learning-2/">Flutter 请求网络数据和列表展示</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/12/Flutter-从一个demo开始/">Flutter 从一个demo开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/23/Aspect和aop打点调研/">Aspect和AOP打点调研</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/android-gradle-3/">Gradle插件开发(3) - 无侵入的函数运行时间统计的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/android-gradle-2/">Gradle插件开发(2) - extensions和Task</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/conda-for-python2or3/">conda切换Python2和Python3环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/16/try-baidu-ai/">试了一把Baidu的语言处理sdk</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://wanandroid.com/" title="wanAndroid" target="_blank">wanAndroid</a><ul></ul><a href="https://blog.csdn.net/luoshengyang" title="老罗" target="_blank">老罗</a><ul></ul><a href="http://androidxref.com/" title="androidxref" target="_blank">androidxref</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Cyning.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/" title="注解（2）-- 定义自己的Annotation Processor" target="_blank" rel="external">http://ownwell.github.io/2017/08/17/annotation-for-andrroid-2/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/ownwell" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/cyning.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/ownwell" target="_blank"><span class="text-dark">Cyning</span><small class="ml-1x">Android Developer</small></a></h3>
+        <div>士不可不弘毅，任重而道远</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2017/10/13/apk-two-signer/" title="【Android进阶】Android的APK两种签名"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2017/08/08/annotation-for-andrroid-one/" title="注解（1）-- 什么是注解"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ownwell" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

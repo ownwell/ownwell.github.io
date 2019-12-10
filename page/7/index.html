@@ -1,6 +1,808 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Cyning</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Cyning</h1><a id="logo" href="/.">Cyning</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2015/07/02/python-learning-series1/">Python学习笔记(2)</a></h1><div class="post-meta">2015-07-02</div><div class="post-content"><p>记得以前学习C++时，首先学的就是面向过程编程，所有的操作都是通过一个个的函数实现，一个好的函数，可以被导出调用，省时省力，函数是面向过程的一个主要元素。</p></div><p class="readmore"><a href="/2015/07/02/python-learning-series1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/07/01/Android-CheckStyle/">Android Studio配置CheckStyle</a></h1><div class="post-meta">2015-07-01</div><div class="post-content"><p>在开发中，我们需要不仅仅是个人的超强的能力（学习能力、解决问题能力等），我们也需要团队合作能力，我们要明白，我们的成功来自于我们的团队（一个英雄是很难自靠自己的能力来创造一个时代的）。今天我们就介绍一种，在团队开发中遵守某些编码规范的工具—CheckStyle。</p></div><p class="readmore"><a href="/2015/07/01/Android-CheckStyle/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/28/love-your-life/">热爱生活，珍爱生命</a></h1><div class="post-meta">2015-06-28</div><div class="post-content"><img src="http://7xj9f0.com1.z0.glb.clouddn.com/6e95ce11494c967d456a3&690.jpeg" class="img-center">
-![Love your Life]()</div><p class="readmore"><a href="/2015/06/28/love-your-life/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/27/渐变动画/">[译]Android渐变动画 Part1</a></h1><div class="post-meta">2015-06-27</div><div class="post-content"><blockquote>
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Hexo</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Cyning">
+<meta property="og:url" content="http://ownwell.github.io/page/7/index.html">
+<meta property="og:site_name" content="Cyning">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cyning">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://ownwell.github.io/page/7/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Cyning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ownwell" target="_blank">
+          <img class="img-circle img-rotate" src="/images/cyning.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Cyning</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Android Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ownwell" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flutter/">Flutter</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2018/">2018</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android源码/">Android源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android热修复/">Android热修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android进阶/">Android进阶</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Animations/">Animations</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CodeStyle/">CodeStyle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCenter/">JCenter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI开发/">JNI开发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material/">Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Realm/">Realm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime-Text/">Sublime Text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transition/">Transition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-code/">VS code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/View/">View</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hot-fix/">hot-fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pandas/">pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态代理/">动态代理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例/">单例</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多渠道/">多渠道</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抓包/">抓包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件化/">插件化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热修复/">热修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译文/">译文</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/2018/" style="font-size: 13px;">2018</a> <a href="/tags/AI/" style="font-size: 13px;">AI</a> <a href="/tags/Android/" style="font-size: 14px;">Android</a> <a href="/tags/Android源码/" style="font-size: 13px;">Android源码</a> <a href="/tags/Android热修复/" style="font-size: 13px;">Android热修复</a> <a href="/tags/Android进阶/" style="font-size: 13.5px;">Android进阶</a> <a href="/tags/Animations/" style="font-size: 13px;">Animations</a> <a href="/tags/CodeStyle/" style="font-size: 13px;">CodeStyle</a> <a href="/tags/Flutter/" style="font-size: 13.17px;">Flutter</a> <a href="/tags/Git/" style="font-size: 13.17px;">Git</a> <a href="/tags/Google/" style="font-size: 13px;">Google</a> <a href="/tags/Gradle/" style="font-size: 13.33px;">Gradle</a> <a href="/tags/IDEA/" style="font-size: 13px;">IDEA</a> <a href="/tags/JCenter/" style="font-size: 13px;">JCenter</a> <a href="/tags/JNI开发/" style="font-size: 13.17px;">JNI开发</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 13px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 13.33px;">Kotlin</a> <a href="/tags/Mac/" style="font-size: 13px;">Mac</a> <a href="/tags/Material/" style="font-size: 13px;">Material</a> <a href="/tags/Python/" style="font-size: 13.83px;">Python</a> <a href="/tags/Realm/" style="font-size: 13px;">Realm</a> <a href="/tags/Ruby/" style="font-size: 13px;">Ruby</a> <a href="/tags/Sublime-Text/" style="font-size: 13px;">Sublime Text</a> <a href="/tags/Tomcat/" style="font-size: 13px;">Tomcat</a> <a href="/tags/Tools/" style="font-size: 13.67px;">Tools</a> <a href="/tags/Transition/" style="font-size: 13px;">Transition</a> <a href="/tags/UI/" style="font-size: 13px;">UI</a> <a href="/tags/VS-code/" style="font-size: 13px;">VS code</a> <a href="/tags/View/" style="font-size: 13px;">View</a> <a href="/tags/hot-fix/" style="font-size: 13px;">hot-fix</a> <a href="/tags/pandas/" style="font-size: 13px;">pandas</a> <a href="/tags/python/" style="font-size: 13px;">python</a> <a href="/tags/动态代理/" style="font-size: 13px;">动态代理</a> <a href="/tags/单例/" style="font-size: 13px;">单例</a> <a href="/tags/多渠道/" style="font-size: 13px;">多渠道</a> <a href="/tags/抓包/" style="font-size: 13px;">抓包</a> <a href="/tags/插件化/" style="font-size: 13px;">插件化</a> <a href="/tags/服务器/" style="font-size: 13px;">服务器</a> <a href="/tags/注解/" style="font-size: 13px;">注解</a> <a href="/tags/热修复/" style="font-size: 13px;">热修复</a> <a href="/tags/生活/" style="font-size: 13.17px;">生活</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a> <a href="/tags/编程/" style="font-size: 13px;">编程</a> <a href="/tags/翻译/" style="font-size: 13px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 13px;">设计模式</a> <a href="/tags/译文/" style="font-size: 13px;">译文</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/27/插件化之HookActivity/" class="title">插件化之Hook Activity</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-27T14:11:25.000Z" itemprop="datePublished">2019-06-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Tools/">Tools</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/06/20/2019-06-20-alfred插件开发/" class="title">alfred插件开发-将github作为图床</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-06-20T15:27:11.000Z" itemprop="datePublished">2019-06-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Flutter/">Flutter</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/16/flutter-learning-2/" class="title">Flutter 请求网络数据和列表展示</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-16T10:53:58.000Z" itemprop="datePublished">2019-05-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Flutter/">Flutter</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/12/Flutter-从一个demo开始/" class="title">Flutter 从一个demo开始</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-12T06:31:02.000Z" itemprop="datePublished">2019-05-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/12/23/Aspect和aop打点调研/" class="title">Aspect和AOP打点调研</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-12-23T10:57:56.000Z" itemprop="datePublished">2018-12-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/01/Android-CheckStyle/">Android Studio配置CheckStyle</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>在开发中，我们需要不仅仅是个人的超强的能力（学习能力、解决问题能力等），我们也需要团队合作能力，我们要明白，我们的成功来自于我们的团队（一个英雄是很难自靠自己的能力来创造一个时代的）。今天我们就介绍一种，在团队开发中遵守某些编码规范的工具—CheckStyle。</p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/07/01/Android-CheckStyle/" class="article-date">
+	  <time datetime="2015-07-01T13:27:13.000Z" itemprop="datePublished">7月 1</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/07/01/Android-CheckStyle/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/love-your-life/">热爱生活，珍爱生命</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <img src="http://7xj9f0.com1.z0.glb.clouddn.com/6e95ce11494c967d456a3&690.jpeg" class="img-center">
+![Love your Life]()
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/28/love-your-life/" class="article-date">
+	  <time datetime="2015-06-28T13:40:07.000Z" itemprop="datePublished">6月 28</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/生活/">生活</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/生活/">生活</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/28/love-your-life/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/27/渐变动画/">[译]Android渐变动画 Part1</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <blockquote>
 <p>译者语：在开源社区上逛久了，的确涨了新知识，不过也发现已经旧的很好的东西，没人留意，我就吧<a href="https://blog.stylingandroid.com/" target="_blank" rel="noopener">StyleAndroid</a>上一些东西翻译出来供大家来学习（StyleAndroid貌似在国内访问比较慢，还是建议大家卖个VPN，很便宜实惠）</p>
-</blockquote></div><p class="readmore"><a href="/2015/06/27/渐变动画/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/23/introduce-to-python2-7/">Python学习笔记(1)</a></h1><div class="post-meta">2015-06-23</div><div class="post-content"><p>python是一门很方便的脚本程序，在开发过程中，可以编写一些python脚本来作为工具使用。我也很感兴趣，想通过它来实现自己的爬虫。</p></div><p class="readmore"><a href="/2015/06/23/introduce-to-python2-7/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/17/sublimeText/">SublimeText的小技巧</a></h1><div class="post-meta">2015-06-17</div><div class="post-content"><p>Sublime Text是一个跨平台的文本工具，对于大多数的开发者，大家并不陌生，我只是将我自己长常用的记录下来，好记性不如懒笔头。</p>
-<p>SublimeText分为 Sublime Text2和Sublime Text3，其中3是收费版，会定时弹广告，不过我更喜欢3。其官网：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a></p></div><p class="readmore"><a href="/2015/06/17/sublimeText/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/15/A-sharp-tool-Charles/">一个犀利的抓包工具---Charles</a></h1><div class="post-meta">2015-06-15</div><div class="post-content"><p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20150918-1@2x.png" alt="charles"></p>
-<p>NBA总决赛，如火如荼进行，是不是觉得很过瘾啊，看库里的三分，手起刀落，打得骑士丢盔卸甲，一个字–爽！库里有三分利器，我们也来一个在开发中常用的利器—抓包工具Charles。</p></div><p class="readmore"><a href="/2015/06/15/A-sharp-tool-Charles/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/08/git-learning/">Git学习笔记</a></h1><div class="post-meta">2015-06-08</div><div class="post-content"><p>个人收集了一些常用的Git命令</p></div><p class="readmore"><a href="/2015/06/08/git-learning/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/05/google-io-2015/">Google IO 2015 APK 来了</a></h1><div class="post-meta">2015-06-05</div><div class="post-content"><p>这几天安卓界仿佛开启了兴奋模式，虽然国内没啥感觉。。主要是因为万众瞩目一年一度的google I/O大会就要召开了。2015年Google I/O大会定于5月28 - 29日在旧金山芳草地艺术中心召开。虽然现在还不知道会议的细节，但是上周谷歌公布的会议日程中简短的提到了Android M，Android M极有可能是安卓系统的下一个版本。<br></p></div><p class="readmore"><a href="/2015/06/05/google-io-2015/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2015/06/01/android-material-color/">Android Material的主题</a></h1><div class="post-meta">2015-06-01</div><div class="post-content"><p>5月28日，一年一度的Google IO在美国旧金山召开，Android M、 Brillo等众多亮点值得开发者关注。</p></div><p class="readmore"><a href="/2015/06/01/android-material-color/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://ownwell.github.io"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flutter/">Flutter</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/周报/">周报</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据分析/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JCenter/" style="font-size: 15px;">JCenter</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/CodeStyle/" style="font-size: 15px;">CodeStyle</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Ruby/" style="font-size: 15px;">Ruby</a> <a href="/tags/Android源码/" style="font-size: 15px;">Android源码</a> <a href="/tags/Material/" style="font-size: 15px;">Material</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Sublime-Text/" style="font-size: 15px;">Sublime Text</a> <a href="/tags/抓包/" style="font-size: 15px;">抓包</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Transition/" style="font-size: 15px;">Transition</a> <a href="/tags/Animations/" style="font-size: 15px;">Animations</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/Tomcat/" style="font-size: 15px;">Tomcat</a> <a href="/tags/Jenkins/" style="font-size: 15px;">Jenkins</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/UI/" style="font-size: 15px;">UI</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/View/" style="font-size: 15px;">View</a> <a href="/tags/Realm/" style="font-size: 15px;">Realm</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/热修复/" style="font-size: 15px;">热修复</a> <a href="/tags/注解/" style="font-size: 15px;">注解</a> <a href="/tags/2018/" style="font-size: 15px;">2018</a> <a href="/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/tags/服务器/" style="font-size: 15px;">服务器</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/动态代理/" style="font-size: 15px;">动态代理</a> <a href="/tags/译文/" style="font-size: 15px;">译文</a> <a href="/tags/编程/" style="font-size: 15px;">编程</a> <a href="/tags/JNI开发/" style="font-size: 15px;">JNI开发</a> <a href="/tags/AI/" style="font-size: 15px;">AI</a> <a href="/tags/Gradle/" style="font-size: 15px;">Gradle</a> <a href="/tags/VS-code/" style="font-size: 15px;">VS code</a> <a href="/tags/pandas/" style="font-size: 15px;">pandas</a> <a href="/tags/Flutter/" style="font-size: 15px;">Flutter</a> <a href="/tags/【周报】/" style="font-size: 15px;">【周报】</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/单例/" style="font-size: 15px;">单例</a> <a href="/tags/多渠道/" style="font-size: 15px;">多渠道</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/hot-fix/" style="font-size: 15px;">hot-fix</a> <a href="/tags/Android热修复/" style="font-size: 15px;">Android热修复</a> <a href="/tags/Android进阶/" style="font-size: 15px;">Android进阶</a> <a href="/tags/插件化/" style="font-size: 15px;">插件化</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/26/2019年第30周-Android知识点汇总/">2019年第30周 Android知识点汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/27/插件化之HookActivity/">插件化之Hook Activity</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/20/2019-06-20-alfred插件开发/">alfred插件开发-将github作为图床</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/16/flutter-learning-2/">Flutter 请求网络数据和列表展示</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/12/Flutter-从一个demo开始/">Flutter 从一个demo开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/23/Aspect和aop打点调研/">Aspect和AOP打点调研</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/android-gradle-3/">Gradle插件开发(3) - 无侵入的函数运行时间统计的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/android-gradle-2/">Gradle插件开发(2) - extensions和Task</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/conda-for-python2or3/">conda切换Python2和Python3环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/16/try-baidu-ai/">试了一把Baidu的语言处理sdk</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://wanandroid.com/" title="wanAndroid" target="_blank">wanAndroid</a><ul></ul><a href="https://blog.csdn.net/luoshengyang" title="老罗" target="_blank">老罗</a><ul></ul><a href="http://androidxref.com/" title="androidxref" target="_blank">androidxref</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Cyning.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</blockquote>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/27/渐变动画/" class="article-date">
+	  <time datetime="2015-06-27T02:12:55.000Z" itemprop="datePublished">6月 27</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Animations/">Animations</a>, <a class="article-tag-link" href="/tags/Transition/">Transition</a>, <a class="article-tag-link" href="/tags/翻译/">翻译</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/27/渐变动画/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/23/introduce-to-python2-7/">Python学习笔记(1)</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>python是一门很方便的脚本程序，在开发过程中，可以编写一些python脚本来作为工具使用。我也很感兴趣，想通过它来实现自己的爬虫。</p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/23/introduce-to-python2-7/" class="article-date">
+	  <time datetime="2015-06-23T14:38:00.000Z" itemprop="datePublished">6月 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Python/">Python</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/23/introduce-to-python2-7/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/17/sublimeText/">SublimeText的小技巧</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>Sublime Text是一个跨平台的文本工具，对于大多数的开发者，大家并不陌生，我只是将我自己长常用的记录下来，好记性不如懒笔头。</p>
+<p>SublimeText分为 Sublime Text2和Sublime Text3，其中3是收费版，会定时弹广告，不过我更喜欢3。其官网：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a></p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/17/sublimeText/" class="article-date">
+	  <time datetime="2015-06-17T15:37:01.000Z" itemprop="datePublished">6月 17</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Sublime-Text/">Sublime Text</a>, <a class="article-tag-link" href="/tags/Tools/">Tools</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/17/sublimeText/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/15/A-sharp-tool-Charles/">一个犀利的抓包工具---Charles</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p><img src="http://7xj9f0.com1.z0.glb.clouddn.com/QQ20150918-1@2x.png" alt="charles"></p>
+<p>NBA总决赛，如火如荼进行，是不是觉得很过瘾啊，看库里的三分，手起刀落，打得骑士丢盔卸甲，一个字–爽！库里有三分利器，我们也来一个在开发中常用的利器—抓包工具Charles。</p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/15/A-sharp-tool-Charles/" class="article-date">
+	  <time datetime="2015-06-15T12:36:57.000Z" itemprop="datePublished">6月 15</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Tools/">Tools</a>, <a class="article-tag-link" href="/tags/抓包/">抓包</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/15/A-sharp-tool-Charles/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/08/git-learning/">Git学习笔记</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>个人收集了一些常用的Git命令</p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/08/git-learning/" class="article-date">
+	  <time datetime="2015-06-08T13:04:47.000Z" itemprop="datePublished">6月 8</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Git/">Git</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/08/git-learning/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/05/google-io-2015/">Google IO 2015 APK 来了</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>这几天安卓界仿佛开启了兴奋模式，虽然国内没啥感觉。。主要是因为万众瞩目一年一度的google I/O大会就要召开了。2015年Google I/O大会定于5月28 - 29日在旧金山芳草地艺术中心召开。虽然现在还不知道会议的细节，但是上周谷歌公布的会议日程中简短的提到了Android M，Android M极有可能是安卓系统的下一个版本。<br>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/05/google-io-2015/" class="article-date">
+	  <time datetime="2015-06-05T09:45:49.000Z" itemprop="datePublished">6月 5</time>
+	</a>
+</span>
+    
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android/">Android</a>, <a class="article-tag-link" href="/tags/Google/">Google</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/05/google-io-2015/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/01/android-material-color/">Android Material的主题</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>5月28日，一年一度的Google IO在美国旧金山召开，Android M、 Brillo等众多亮点值得开发者关注。</p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/06/01/android-material-color/" class="article-date">
+	  <time datetime="2015-06-01T15:41:42.000Z" itemprop="datePublished">6月 1</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Material/">Material</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/06/01/android-material-color/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/28/Activity-lifeCircle-CallBack/">Activity生命周期的回调妙用</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <p>今天闲来无事，查看源码，发现一个有意思的接口<code>Application.ActivityLifecycleCallbacks</code></p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2015/05/28/Activity-lifeCircle-CallBack/" class="article-date">
+	  <time datetime="2015-05-28T12:08:16.000Z" itemprop="datePublished">5月 28</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Android源码/">Android源码</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2015/05/28/Activity-lifeCircle-CallBack/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/6/">
+                    <i class="icon icon-angle-left"></i>
+                    上一页
+                </a>
+            </li>
+            
+            
+            <li class="next">
+                <a href="/page/8/">
+                    下一页
+                    <i class="icon icon-angle-right"></i>
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 7 of 9</div>
+        </div>
+    </nav>
+    
+ 
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ownwell" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+</body>
+</html>

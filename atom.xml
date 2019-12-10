@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ownwell.github.io/"/>
-  <updated>2019-07-26T12:16:45.882Z</updated>
+  <updated>2019-07-22T11:41:09.301Z</updated>
   <id>http://ownwell.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2019年第30周 Android知识点汇总</title>
-    <link href="http://ownwell.github.io/2019/07/26/2019%E5%B9%B4%E7%AC%AC30%E5%91%A8-Android%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB/"/>
-    <id>http://ownwell.github.io/2019/07/26/2019年第30周-Android知识点汇总/</id>
-    <published>2019-07-26T15:17:39.000Z</published>
-    <updated>2019-07-26T12:16:45.882Z</updated>
-    
-    <content type="html"><![CDATA[<p>以前有个看知识的习惯，后来因为看公众号等原因，慢慢也不放弃了，不过还是觉得应该直接去整理和梳理一些零散的知识，而不能依赖眼前有什么就看什么，要有重点，有层次，推荐鸿洋发起的wanAndroid和掘金，可以在零碎时间（地铁上，吃饭排队或者等她时间等），这样就可以在很短的时间内看一些短小精悍的文章，这样的文章若是太晦涩，推荐用自己的笔记（纸质笔记或者电子笔记evernote， 有道笔记，为知笔记或者notion）形成自己的知识体系。</p><a id="more"></a><p>以后每周六都会为大家准备一波，一个重复一万遍就成了习惯，希望我有周六写知识点的习惯，这周是2019年的第30周，一年一共52周，留给我们的时间真的不多啦。<br><img src="https://raw.githubusercontent.com/ownwell/image-bed/master/img/2019-07-26-00-01-13.png" alt></p><p>尽量从<code>Java/Kotlin</code>、<code>Flutter</code>和<code>工具</code>三块内容写，每个模块3到5篇，多而不益，希望给需要的人带来帮助。</p><h1><span id="javakotlin">Java/Kotlin</span></h1><p><a href="https://juejin.im/post/5d331fa8f265da1bba593ff6" target="_blank" rel="noopener">Shadow 插件化框架分析</a><br><a href="https://juejin.im/post/5d1968545188255543342406" target="_blank" rel="noopener">Shadow的跨进程设计与插件Service原理</a></p><p><a href="https://juejin.im/post/5d2605f8f265da1bc23fa07c" target="_blank" rel="noopener">安卓Webview网页秒开策略探索</a></p><h1><span id="flutter">Flutter</span></h1><p><a href="https://blog.csdn.net/carson_ho/article/details/97233628" target="_blank" rel="noopener">Android：手把手带你入门跨平台UI开发框架Flutter</a></p><p><a href="https://juejin.im/post/5d37b328518825453b6057b2" target="_blank" rel="noopener">Flutter 实现原理及在马蜂窝的跨平台开发实践</a></p><p><a href="https://juejin.im/post/5d383fd9e51d45508c2fb92b" target="_blank" rel="noopener">flutter 与native通信初探</a></p><p><a href="https://juejin.im/post/5d32f47a6fb9a07ee7431961" target="_blank" rel="noopener">Flex布局完全解读</a></p><h1><span id="工具">工具</span></h1><p><a href="https://juejin.im/post/5d36eacee51d454f73356e18" target="_blank" rel="noopener">Android Gradle 编译过程中的优化</a><br><a href="https://www.jianshu.com/p/0624a18cf8fa" target="_blank" rel="noopener">知乎 Android Gradle plugin 实践</a><br><a href="https://juejin.im/post/5d25a79ee51d4556db694a8d" target="_blank" rel="noopener">Soloπ：支付宝开源的Android专项测试工具</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以前有个看知识的习惯，后来因为看公众号等原因，慢慢也不放弃了，不过还是觉得应该直接去整理和梳理一些零散的知识，而不能依赖眼前有什么就看什么，要有重点，有层次，推荐鸿洋发起的wanAndroid和掘金，可以在零碎时间（地铁上，吃饭排队或者等她时间等），这样就可以在很短的时间内看一些短小精悍的文章，这样的文章若是太晦涩，推荐用自己的笔记（纸质笔记或者电子笔记evernote， 有道笔记，为知笔记或者notion）形成自己的知识体系。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="周报" scheme="http://ownwell.github.io/categories/%E5%91%A8%E6%8A%A5/"/>
-    
-    
-      <category term="【周报】" scheme="http://ownwell.github.io/tags/%E3%80%90%E5%91%A8%E6%8A%A5%E3%80%91/"/>
-    
-  </entry>
   
   <entry>
     <title>插件化之Hook Activity</title>
@@ -498,6 +476,28 @@
 &lt;h1&gt;&lt;span id=&quot;异或x-or&quot;&gt;异或（x or)&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;异或运算就是一个神器，异或有个最基本的原理就是自己异或等于0。&lt;/p&gt;
 &lt;p&gt;如resu
       
+    
+    </summary>
+    
+      <category term="算法" scheme="http://ownwell.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://ownwell.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>top K的解题思路</title>
+    <link href="http://ownwell.github.io/2018/03/11/top-K%E7%9A%84%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/"/>
+    <id>http://ownwell.github.io/2018/03/11/top-K的解题思路/</id>
+    <published>2018-03-11T14:20:37.000Z</published>
+    <updated>2019-07-22T11:38:11.618Z</updated>
+    
+    <content type="html"><![CDATA[<p>很早记得，出去面试，经常有人问：最大值怎么求，对一个经过变成训练的人，或许都会解这个题目，因为最大值是我们程序员的一个最最基本的素养。其实还可以拓展就最K大的值，也就是我们常说的<code>top K</code>问题，最大其实就是top 1大，还有第二大，第三大的问题吧。</p><a id="more"></a><p>其实对于K的问题，最简单的方式，就是先排序，排完序，孰大孰小，一目了然，这个是最基础的思路，不过本文会从其他更高效的路径出发，来解题。</p><h2><span id="最值求法">最值求法</span></h2><p>关于最大值求法，直接附伪代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int  max(arr) </span><br><span class="line">  if(arr == null) </span><br><span class="line">   throw expection</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   max = arr[0]</span><br><span class="line"></span><br><span class="line">   for(i = 1; i&lt;arr.length ; i ++) </span><br><span class="line">       if(arr[i] &gt; max)</span><br><span class="line">             max = arr[i]</span><br></pre></td></tr></table></figure><p>这个就是将最大值默认设置未第一个值，后面就和这个最大值比较，比这个最大值大的就直接替换掉，再和后面的值比较，直到最后，得到的最大值肯定是整个数组中最大的一个。</p><h2><span id="冒泡">冒泡</span></h2><p>冒泡排序其实就是这个思路，最大值（或者最小值）肯定在最后，次大在最大值（或者最小值）前面。</p><p>如对<code>76，18，99，35， 12</code> 进行排序：<br><img src="https://wiki.jikexueyuan.com/project/easy-learn-algorithm/images/2.1.png" alt></p><p>冒泡一次，可将最小值求出，以此类推，第一次，需要<code>76，18，99，35</code>排序，次小值<code>18</code>就被冒泡出。</p><p>所以冒泡是可以解决<code>top K</code>的问题的，如求第二大的值，只需要进行K次冒泡即可：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// k表示第k大 k&gt;=1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">top_k_max</span><span class="params">(arr, k)</span> </span></span><br><span class="line"><span class="function">  <span class="title">if</span><span class="params">(arr == <span class="keyword">null</span>)</span> </span></span><br><span class="line"><span class="function">   throw expection</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  </span></span><br><span class="line"><span class="function">  <span class="title">for</span><span class="params">(j = <span class="number">0</span>; j &lt; k; j++)</span></span></span><br><span class="line"><span class="function">    <span class="title">for</span><span class="params">(i = <span class="number">0</span>; i &lt; arr.length -j ; i++)</span></span></span><br><span class="line"><span class="function">       max </span>= arr[<span class="number">0</span>]</span><br><span class="line">       <span class="keyword">if</span>(arr[i] &gt; arr[i+<span class="number">1</span>]):</span><br><span class="line">          exchange arr[i] with max <span class="comment">// 相互交换</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span>  arr[arr.length -k]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## 快排衍生</span><br><span class="line"></span><br><span class="line">快排，绝对是高频词出现的排序算法，像java默认的数组排序就是排序的变种，那么top k咋还能跟快排有关系呢？我们就需要从快排的基本实现说起：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"></span><br><span class="line">  Quick-sort(Arr, p, r)</span><br><span class="line">     <span class="comment">// 分层两部分</span></span><br><span class="line">     q  = Partition(Arr, p, r)</span><br><span class="line">     <span class="comment">// 比目标值大的</span></span><br><span class="line">     Quick-sort(A, p, q-<span class="number">1</span>)</span><br><span class="line">     Quick-sort(A, q+<span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Partition(Arr, p, r)</span><br><span class="line">    <span class="comment">// 将最右边的作为目标值</span></span><br><span class="line">    x = Arr[r]</span><br><span class="line"></span><br><span class="line">    i = p-<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span>（j = p to r-<span class="number">1</span>）</span><br><span class="line">        <span class="keyword">if</span>(A[j] &lt;= x)</span><br><span class="line">            i = i +<span class="number">1</span></span><br><span class="line">            exchange A[i] with A[j]</span><br><span class="line">    exchange A[i+<span class="number">1</span>] with x</span><br></pre></td></tr></table></figure><p>我们假设是一个数据<code>2,8,7,1,3.5,6,4</code></p><p>可以知道，第一轮排序</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 1 3 4 7 5 6 8</span><br></pre></td></tr></table></figure><p>作为参考物的4 放到第4位，所以<code>4</code>肯定是第5大（7 5 6 8都比5大）的，因为前面的比它小（或相等），后面比它大（或相等）,这么一说你是不是有点思路啦。</p><blockquote><p>你求K大，若是按照从小到大的顺序排序的话，肯定是在<code>A.size - K</code>位置上,需要转化下</p></blockquote><p>其实快速排序将整个长数组，切成两部分，假设它所在的位置M，那他肯定是是第<code>A.size-M</code>大，如果这个<code>A.size-M</code>的值比K大，说明你要找的第k大是在比它大的那部分里面，再进行一次Partition，肯定还会有个中间数，在比较，知道你找到即可。<br>如刚才的<code>2 1 3 4 7 5 6 8</code>若是你求第6大，那么 <code>A.size-M</code> = 8-3 (<code>4</code>说在位置)&lt; 6 ,所以去左边找，若是 <code>A.size-M</code> &gt; k,去右边。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是求k大，从小到大排序应该是A.size-k </span></span><br><span class="line">Qsort-top-k(Arr, p, r, k)</span><br><span class="line">     <span class="comment">// 分层两部分</span></span><br><span class="line">     q  = Partition(Arr, p, r)</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(A.size-k  &lt; q) </span><br><span class="line">        <span class="comment">// 左边</span></span><br><span class="line">        <span class="keyword">return</span> Qsort-top-k(Arr, p, q-<span class="number">1</span>, k)</span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">if</span>(A.size-k  &gt;  q) </span><br><span class="line">         <span class="keyword">return</span>  Qsort-top-k(Arr, q+<span class="number">1</span>, r, k)</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">         <span class="keyword">return</span> Arr[q];</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很早记得，出去面试，经常有人问：最大值怎么求，对一个经过变成训练的人，或许都会解这个题目，因为最大值是我们程序员的一个最最基本的素养。其实还可以拓展就最K大的值，也就是我们常说的&lt;code&gt;top K&lt;/code&gt;问题，最大其实就是top 1大，还有第二大，第三大的问题吧。&lt;/p&gt;
     
     </summary>
     
